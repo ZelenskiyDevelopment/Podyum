@@ -1,0 +1,18 @@
+md-dialog(aria-label='Choose admin' flex='50')
+  form
+    md-toolbar
+      .md-toolbar-tools
+        h2(ng-show="type==='rosterAdmin' || type === 'statsAdmin'") Grant admin privileges
+        h2(ng-show="type==='recruitMember' || type ==='recruitMemberAsAdmin'") Recruit player from your followers
+        span(flex)
+        md-button(ng-click='cancel()').md-icon-button
+          md-icon(md-svg-src='assets/images/ic_close_24px.svg' aria-label='Close dialog')
+    md-dialog-content
+      team-members-selector(selected-users='users' type="type" user="user" team="team")
+    .md-actions(layout='row')
+      span(flex)
+      md-button(ng-disabled='_.isEmpty(users)' ng-click='callFunction(users)' ng-show="type==='rosterAdmin' || type === 'statsAdmin'").md-primary Grant
+      md-button(ng-disabled='_.isEmpty(users)' ng-click='callFunction(users)' ng-show="type==='recruitMember' || type ==='recruitMemberAsAdmin'").md-primary Recruit
+      md-button(ng-click='cancel()').md-primary Cancel
+
+

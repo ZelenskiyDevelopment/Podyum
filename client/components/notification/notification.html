@@ -1,0 +1,40 @@
+<div>
+  <div ng-switch="type">
+    <div ng-switch-when="friendAccepted">
+      <div ng-include="'components/notification/friendAcceptedNotification.html'"></div>
+
+    </div>
+    <div ng-switch-when="assignAccepted">
+      <div ng-include="'components/notification/assignAcceptedNotification.html'"></div>
+
+    </div>
+    <div ng-switch-when="congrats">
+      <div ng-include="'components/notification/congrats_notification.html'"></div>
+
+    </div>
+    <div ng-switch-when="recruitAccepted">
+      <div ng-include="'components/notification/recruitAcceptedNotification.html'"></div>
+    </div>
+    <div ng-switch-when="followedBy">
+      <div ng-include="'components/notification/followedBy.html'"></div>
+    </div>
+    <div ng-switch-when="commentedBy">
+      <div ng-include="'components/notification/commentedBy.html'"></div>
+    </div>
+    <div ng-switch-when="rosterAdminGranted">
+      <div ng-include="'components/notification/rosterAdminGrantedNotification.html'"></div>
+    </div>
+    <div ng-switch-when="statsAdminGranted">
+      <div ng-include="'components/notification/statsAdminGrantedNotification.html'"></div>
+    </div>
+    <div ng-switch-when="rosterAdminRevoked">
+      <div ng-include="'components/notification/rosterAdminRevokedNotification.html'"></div>
+    </div>
+    <div ng-switch-when="statsAdminRevoked">
+      <div ng-include="'components/notification/statsAdminRevokedNotification.html'"></div>
+    </div>
+    <!--    <div ng-switch-default>
+          <div ng-include="'components/profileBasicData/profileBasicDataLoading.html'"></div>
+        </div>-->
+  </div>
+</div>

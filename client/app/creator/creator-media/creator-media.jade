@@ -1,0 +1,38 @@
+label
+  | What's your media name?
+  input(type="text" class="form-inline" id="name" ng-model="formData.name")
+label
+  | Founder
+  input(type="text" class="form-inline" id="founded" ng-model="formData.personalData.founder")
+label
+  | When was your media founded?
+  input(type="date" class="form-inline" id="founded" ng-model="formData.personalData.founded" placeholder="yyyy-MM-dd")
+label
+  | What's the link to your page?
+  input(type="text" class="form-inline" id="link" ng-model="formData.personalData.link")
+label
+  | About
+  textarea(ng-model="formData.personalData.bio" value="bio")
+country-select(ng-model="formData.country")
+label
+  | City
+  input(type="text" class="form-inline" id="link" ng-model="formData.personalData.city")
+md-content(class="md-padding" layout="column")
+  h2(class="md-title")
+    | Writers
+  md-chips(ng-model="formData.personalData.writers" readonly="false")
+    md-chip-template
+      | {{$chip}}
+md-content(class="md-padding" layout="column")
+  h2(class="md-title")
+    | Tags
+  md-chips(ng-model="formData.personalData.tags" readonly="false")
+    md-chip-template
+      | {{$chip}}
+.form-group.row(ng-show="formData.type && formData.sport")
+  a(ui-sref="creator.photo")
+    .md-button.create-button Back
+  .col-xs-6.col-xs-offset-3
+    a(ui-sref="creator.finish" class="btn btn-block btn-info")
+      | Next step
+      .span(class="glyphicon glyphicon-circle-arrow-right")

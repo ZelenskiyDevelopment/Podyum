@@ -1,0 +1,10 @@
+<div>
+  <div ng-switch="game.sport">
+    <div ng-switch-when="football">
+      <live-stats-football user="user" game="game" roster1="roster1" roster2="roster2"></live-stats-football>
+    </div>
+    <div ng-switch-when="basketball">
+      <live-stats-basketball user="user" game="game" roster1="roster1" roster2="roster2"></live-stats-basketball>
+    </div>
+  </div>
+</div>

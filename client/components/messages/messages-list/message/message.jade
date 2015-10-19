@@ -1,0 +1,7 @@
+md-list-item
+  img(ng-src='photos/{{message.author.profilePhoto}}').md-avatar
+  .md-list-item-text
+    h4
+      a(ui-sref='profile.common-story({id: message.author._id})') {{message.author[message.author.kind].firstName}} {{message.author[message.author.kind].lastName}} {{message.author[message.author.kind].name}}
+      small {{message.date | date : 'hh:mm dd-MM-yyyy'}}
+    p {{message.content}}

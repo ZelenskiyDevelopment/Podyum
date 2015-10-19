@@ -1,0 +1,44 @@
+.container(style='margin-top:400px ')
+  #home.row
+    .col-md-3.col-sm-3.col-xs-3.panel(style='background-color: #fff; height:264px;')
+      .row(style='text-align:center;')
+        div(ng-switch='user.kind')
+          div(ng-switch-when='player')
+            h1(style='margin-left:10px;') {{user.player.firstName}} {{user.player.lastName}}
+          div(ng-switch-when='coach')
+            h3 {{user.coach.firstName}} {{user.coach.lastName}}
+          div(ng-switch-when='team')
+            h3 {{user.team.name}}
+          div(ng-switch-when='league')
+            h3 {{user.league.name}}
+          div(ng-switch-when='fan')
+            h3 {{user.fan.firstName}} {{user.fan.lastName}}
+      .row(style=' margin-top:2px;')
+        .col-md-8
+          img.img-rounded(ng-src='photos/{{user.profilePhoto}}', alt='', style='width:100%;')
+        .col-md-4.col-sm-6.col-xs-6(style='text-align:left; margin-top:2px;')
+          .row
+            div
+              h4 Fans : {{followersNumber}}
+            div
+              h4 Friends : {{friendsNumber}}
+    .col-md-9.col-sm-9.col-xs-9.panel
+      .row(style='background-color: #fff;')
+        .col-md-8
+          h4 Milestones
+          milestones(user-promise='userPromise')
+        .col-md-4
+          img(src='assets/images/graph.png', width='100%', height='200px;')
+  .row
+    .col-md-3(style='padding-left:0px; padding-right:0px;')
+      .btn-group-vertical(role='group', aria-label='...', style='width:100%;')
+        a.btn.btn-default(ui-sref='home.newsfeed') News Feed
+        a.btn.btn-default(ui-sref='home.messages') Messages
+        a.btn.btn-default(ui-sref='manageRoster') Manage Roster
+        a.btn.btn-default(ui-sref='manageStats') Manage Stats
+        button.btn.btn-default(type='button') Fan
+        button.btn.btn-default(type='button', ng-click='changeMembership()') Change membership
+        div(ng-show="user.role === 'free'") You are free user
+        div(ng-show="user.role === 'premium'") You are premium user
+    .col-md-9(ui-view='')
+    .col-md-3

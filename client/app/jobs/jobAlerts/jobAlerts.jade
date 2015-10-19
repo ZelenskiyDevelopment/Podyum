@@ -1,0 +1,5 @@
+md-grid-tile-header
+  header-with-toggle(label="Alerted jobs: last {{alertedJobsLimit}} added jobs" is-expanded='isAlertedOpen' on-toggle='onAlertedChange')
+span(ng-if="!alertedJobs.length") Be the first to find out about a new job opportunity
+.jobs-list(ng-if="alertedJobs.length")
+  job(ng-repeat='job in alertedJobs | limitTo: alertedJobsLimit')

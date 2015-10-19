@@ -1,0 +1,16 @@
+navigationbar(jobs="jobs")
+
+div(style="margin-top: 220px")
+  md-grid-list(ng-if="changingJobTilesSettlmentFinished" md-cols-sm='1', md-cols-md='6', md-cols-gt-md='6', md-row-height-gt-md='1:1', md-row-height='2:2', md-gutter='12px', md-gutter-gt-sm='8px')
+    md-grid-tile.gray.jobs-filtering(md-rowspan-gt-sm='{{tilesSettlement.filtering.rows}}'  md-colspan-gt-sm='{{tilesSettlement.filtering.columns}}' jobs-searcher)
+      jobs-filtering
+    md-grid-tile.yellow(md-colspan-gt-sm='{{tilesSettlement.favourite.columns}}' md-rowspan-gt-sm='{{tilesSettlement.favourite.rows}}')
+      favourite-jobs
+    md-grid-tile.blue(md-rowspan-gt-sm='{{tilesSettlement.jobList.rows}}' md-colspan-gt-sm='{{tilesSettlement.jobList.columns}}')
+      jobs-list
+    md-grid-tile.green(md-colspan-gt-sm='{{tilesSettlement.createJob.columns}}')
+      create-job
+    md-grid-tile.red(md-colspan-gt-sm='{{tilesSettlement.alerted.columns}}' md-rowspan-gt-sm="{{tilesSettlement.alerted.rows}}")
+      job-alerts
+    md-grid-tile.green(md-rowspan-gt-sm='{{tilesSettlement.featured.rows}}', md-colspan-gt-sm='{{tilesSettlement.featured.columns}}')
+      featured-jobs

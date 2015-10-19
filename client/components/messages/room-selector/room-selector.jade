@@ -1,0 +1,41 @@
+div
+  md-content.md-padding
+    div(ng-if='rooms.length > 0 && team || !team')
+      md-tabs(md-selected='selectedIndex' md-border-bottom md-autoselect)
+        md-tab(md-on-deselect='resetThread()' md-on-select='checkIsAdmin($index)' ng-repeat='tab in rooms | filter:search' label='{{tab.title}}')
+          .row.disable-side-margin(ng-if='selectedIndex === $index && type === "room"')
+            .content
+              .col-md-4
+                .threads-box
+                  thread-list(room-id='tab._id')
+                thread-creator(room-id='tab._id')
+              .col-md-8
+                .messages-box(show-tail)
+                  .fab-menu
+                    md-fab-speed-dial(md-direction="down" ng-class="'md-fling'")
+                      md-fab-trigger
+                        md-button(aria-label='Menu').md-fab.md-warn
+                          md-icon(md-svg-src='assets/svg/ic_menu_24px.svg')
+                      md-fab-actions
+                        new-room-modal(room='tab' team='team' ng-if='isAdmin')
+                          md-button(aria-label='Edit').md-fab.md-primary.md-mini
+                            md-icon(md-svg-src='assets/svg/ic_person_add_24px.svg')
+                        members-list(room='tab' is-admin='isAdmin')
+                          md-button(aria-label='Members').md-fab.md-primary.md-mini
+                            md-icon(md-svg-src='assets/svg/ic_build_24px.svg')
+                        md-button(aria-label='Leave room' ng-click='leaveRoom($event, tab._id)').md-fab.md-primary.md-mini
+                          md-icon(md-svg-src='assets/svg/ic_delete_24px.svg')
+                  messages-list(room-id='tab._id' thread='selectedThread' type='"room"')
+                message-creator(room-id='tab._id' thread='selectedThread' type='"room"')
+        md-tab(md-on-deselect='resetThread()' md-on-select='setType("others")' label='Others' ng-if='!team')
+          .row.disable-side-margin(ng-if='selectedIndex === rooms.length && type === "others"')
+            .content
+              .col-md-4
+                .threads-box
+                  conversation-list
+              .col-md-8
+                .messages-box(show-tail)
+                  messages-list(thread='selectedThread' type='"others"')
+                message-creator(thread='selectedThread' type='"others"')
+    div(ng-if='rooms.length === 0 && team')
+      h3 You don't belong to any room. You have to create new room or someone has to add you.

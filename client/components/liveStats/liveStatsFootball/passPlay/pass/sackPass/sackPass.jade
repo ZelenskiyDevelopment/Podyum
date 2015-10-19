@@ -1,0 +1,8 @@
+div YARDS
+  input(type="number", ng-model="event.data.gain")
+div(ng-repeat="otherAction in otherActions", class="btn-group", role="group")
+  button(type="button", class="btn", ng-click="chooseOtherAction($index)")
+    | {{otherAction}}
+.row
+  button(class="btn btn-success", ng-click="next()")
+    | NEXT

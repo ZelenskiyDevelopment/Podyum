@@ -1,0 +1,15 @@
+md-card
+  span
+    img.md-card-image.left-corner(alt='{{job.reward}}$')
+    icon.right-corner.fa.fa-lg.tile-toggler-icon.fa-chevron-up(ng-click="openJobModal()")
+    icon.md-card-image.fa.fa-times.fa-lg.right-corner.remove-job-icon(ng-if="job.employer === currentUser._id" ng-click="removeJob()")
+    icon.md-card-image.fa.fa-star.fa-lg.right-corner.favourite-job-star(ng-click="markJobAsUsersFavourite()" ng-class="{'is-favourite': job.isFavourite}")
+  md-card-content
+    div.col-xs-12.row
+      h2.md-title.col-xs-9 {{job.name}}
+      img.col-xs-3.media-object.miniature-image(ng-if="mainTile" ng-src="photos/{{job.employer.profilePhoto}}")
+    p {{job.description}}
+    i {{job.city}}
+    span.team
+      | team:
+      i {{job.team}}

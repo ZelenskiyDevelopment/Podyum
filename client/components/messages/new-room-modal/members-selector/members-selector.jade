@@ -1,0 +1,24 @@
+.members-selector(layout='column')
+  md-content(layout='column').md-padding.autocomplete
+    md-contact-chips(
+    ng-model="contacts"
+    md-contacts="querySearch($query)"
+    md-contact-name="name"
+    md-contact-image="image"
+    md-require-match
+    filter-selected="filterSelected"
+    placeholder="To")
+
+    md-list.fixedRows
+      md-subheader.md-no-sticky Contacts
+      md-list-item(
+      ng-repeat='(index, contact) in allContacts'
+      ng-if='contacts.indexOf(contact) < 0'
+      ng-click='addOnClick(index)').md-2-line.contact-item
+        img(ng-src='{{contact.image}}' alt='{{contact.name}}').md-avatar
+        .md-list-item-text.compact
+          h3 {{contact.name}}
+      md-list-item(ng-repeat='(index, contact) in contacts').md-2-line.contact-item.selected
+        img(ng-src='{{contact.image}}' alt='{{contact.name}}').md-avatar
+        .md-list-item-text.compact
+          h3 {{contact.name}}

@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class ="col-md-2">
+      <h5>{{game.team1.team.name}} </h5>
+      <div ng-repeat="player in roster1 track by $index">
+        <button class="btn button-roster1-{{roster1Bool[$index]}}" ng-click="fromBench(1,$index)" style="width:100%;">#{{player.player.number}} {{player.player.firstName}} {{player.player.lastName}}</button>
+      </div>
+
+    </div>
+    <div class ="col-md-8">
+      <div class = "row">
+        <div class = "col-md-6" style="text-align:center;">
+          <img src="photos/{{game.team1.profilePhoto}}" alt="s" class="img-rounded center-block" style="width:350px;height:250px;">
+          <input type="number" ng-model="game.data.score1" name="size"
+                 min="0" integer>
+        </div>
+        <div class = "col-md-6" style="text-align:center;">
+          <img src="photos/{{game.team2.profilePhoto}}" alt="s" class="img-rounded center-block" style="width:350px;height:250px;">
+          <input type="number" ng-model="game.data.score2" name="size"
+                 min="0" integer>
+        </div>
+      </div>
+    </div>
+    <div class ="col-md-2">
+      <h5>{{game.team2.team.name}}</h5>
+      <div ng-repeat="player in roster2">
+        <button class="btn button-roster2-{{roster2Bool[$index]}}" ng-click="fromBench(2,$index)" style="width:100%;">#{{player.player.number}} {{player.player.firstName}} {{player.player.lastName}}</button>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-success" ng-click="check()">Check</button>
+  <button class="btn btn-success" ng-click="save()">Save</button>
+  <button class="btn our-button" ng-click="finishGame()">Finish</button>
+  <div class="row" style="margin-top:30px;">
+    <div class="col-md-6" style="text-align:center;">
+      <h4>Game {{currentActiveType}} summary</h4>
+      <table class="table table-bordered panel">
+        <tr>
+          <th>Actions</th>
+          <th>{{game.team1.team.name}}</th>
+          <th>{{game.team2.team.name}}</th>
+        </tr>
+        <tr ng-repeat="event in statsNames[currentActiveType]">
+          <th>{{event}}</th>
+          <th>{{game.data.T1[currentActiveTypeInd].data[$index]}}</th>
+          <th>{{game.data.T2[currentActiveTypeInd].data[$index]}}</th>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-6" ng-if="currentPlayer" style="text-align:center;">
+      <span ng-repeat="statType in statTypes">
+        <button class="btn our-button" ng-click="changeStatType(statType,$index)">
+          {{statType}}
+        </button>
+      </span>
+      <h4>{{currentPlayer.player.firstName}} {{currentPlayer.player.lastName}} {{currentActiveType}} summary</h4>
+      <form name="playerForm" novalidate>
+        <div class="form-group" ng-repeat="event in statsNames[currentActiveType]">
+          <ng-form name="userFieldForm">
+            <label>{{ event }}</label>
+            <input type="number" ng-model="game.userData[currentPlayer._id][currentActiveTypeInd].data[$index]" name="size"
+                   min="0" integer>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+

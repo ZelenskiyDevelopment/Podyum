@@ -1,0 +1,17 @@
+md-dialog(aria-label='Send new message' flex='50')
+  form
+    md-toolbar
+      .md-toolbar-tools
+        h2 Send message to {{receiver[receiver.kind].name}}{{receiver[receiver.kind].firstName}} {{receiver[receiver.kind].lastName}}
+        span(flex)
+        md-button(ng-click='cancel()').md-icon-button
+          md-icon(md-svg-src='assets/images/ic_close_24px.svg' aria-label='Close dialog')
+    md-dialog-content
+      .md-padding
+        md-input-container(flex)
+          label Message
+          textarea(ng-model='conversation.message')
+    .md-actions(layout='row')
+      span(flex)
+      md-button(ng-disabled='_.isEmpty(conversation.message)' ng-click='answer(conversation)').md-primary Send!
+      md-button(ng-click='cancel()').md-primary Cancel

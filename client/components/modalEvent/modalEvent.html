@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <button ng-if="modal.dismissable" type="button" ng-click="$dismiss()" class="close">&times;</button>
+  <h4 ng-if="modal.title" ng-bind="modal.title" class="modal-title"></h4>
+</div>
+<div class="modal-body">
+  <div ng-show="modal.html ===''" ng-repeat="myEvent in myEvents" style="margin-top:10px;">
+    <div class="row">
+      <div class="col-md-3 col-sm-3 col-xs-3">
+        <p> Event:</p>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <input type="text" class="form-control" ng-model="myEvent.title">
+      </div>
+      <timepicker ng-model="myEvent.date" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
+      <div class="col-md-3 col-sm-3 col-xs-3">
+        <button ng-class="modal.buttons[3].classes" ng-click="modal.buttons[3].click($event, $index)" ng-bind="modal.buttons[3].text"> </button>
+      </div>
+    </div>
+  </div>
+</div>
+<button ng-class="modal.buttons[2].classes" ng-click="modal.buttons[2].click($event)" ng-bind="modal.buttons[2].text"> </button>
+<div class="modal-footer">
+  <!--<button class="btn btn-success" ng-click="submit($event)">Save</button>-->
+  <button ng-class="modal.buttons[0].classes" ng-click="modal.buttons[0].click($event)" ng-bind="modal.buttons[0].text" class="btn"></button>
+
+  <button ng-class="modal.buttons[1].classes" ng-click="modal.buttons[1].click($event)" ng-bind="modal.buttons[1].text" class="btn"></button>
+</div>

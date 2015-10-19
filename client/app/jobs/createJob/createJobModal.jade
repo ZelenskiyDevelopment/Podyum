@@ -1,0 +1,49 @@
+md-dialog.create-job-dialog
+  md-toolbar.create-job-title
+    .md-toolbar-tools
+      h2.col-xs-11 Create job opportunity
+      md-button.md-icon-button(ng-click='cancel()' style="float: right")
+        icon.fa.fa-times
+  md-dialog-content
+    md-content(layout-padding)
+      form(name='newJobForm')
+        md-input-container
+          label Job name
+          input(required, md-maxlength='50', name='name', ng-model='job.name')
+          div(ng-messages='job.name.$error')
+            div(ng-message='required') This is required.
+            div(ng-message='md-maxlength') The name has to be less than 30 characters long.
+        md-input-container
+          label Description
+          input(required, name='description', ng-model='job.description')
+          div(ng-messages='job.description.$error')
+            div(ng-message='required') This is required.
+        md-input-container
+          label Weekly Rate (USD)
+          input(required='', type='number', step='any', name='reward', ng-model='job.reward', min='0', max='99999')
+          div(ng-messages='job.reward.$error')
+            div(ng-message='required')
+              | You've got to charge something! You can't just
+        md-input-container
+          label City
+          input(required, name='city', ng-model='job.city')
+          div(ng-messages='job.city.$error')
+            div(ng-message='required') This is required.
+        md-input-container
+          label Offered by
+          input(name='employer' readonly=true  ng-model='job.employer.email' )
+        md-input-container
+          label Team
+          input(name='team' readonly=true ng-model='job.team.name')
+        md-input-container
+          span pay extra money to make your job highlighted as
+            i &nbsp Featured
+          md-radio-group(ng-model="job.featured")
+            md-radio-button(ng-value='true')
+              i featured
+            md-radio-button(ng-value='false' aria-checked)
+              i not featured
+  .md-actions(layout='row')
+    span(flex='')
+    md-button.btn-success(type="submit" ng-click="submitJob()" ng-disabled="newJobForm.$invalid" ) create job
+    md-button(ng-click="cancel()", ng-disabled='false' style='margin-right:20px;') Resign

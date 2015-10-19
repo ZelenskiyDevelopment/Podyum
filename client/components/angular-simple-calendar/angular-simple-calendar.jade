@@ -1,0 +1,14 @@
+.calendar
+  .current-month
+    .move-month.prev-month(ng-click='prevMonth()')
+      span(ng-show='allowedPrevMonth()') <
+    span {{ selectedMonth }}
+    span {{ selectedYear }}
+    .move-month.next-month(ng-click='nextMonth()')
+      span(ng-show='allowedNextMonth()') >
+  div
+    .weekday(ng-repeat='day in weekDays(options.dayNamesLength) track by $index') {{ day }}
+  div
+    .week(ng-repeat='week in weeks track by $index')
+      .day(ng-class='{default: isDefaultDate(date), event: date.events.length>0, disabled: date.disabled || !date}', ng-repeat='date in week track by $index', ng-click='onClick(date)')
+        .day-number {{ date.day || ' '}}

@@ -1,0 +1,33 @@
+<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ffffff; padding: 20px;">
+  <button class="btn" ng-show="showedit" ng-click="edit()"
+          style="position: absolute; top:0px; right:0px; background-color: Transparent;"><img src="assets/images/pen.png"/>
+  </button>
+  <div class="row">
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <a href="#" class="thumbnail" style="margin-top:40px;">
+        <img src="photos/{{user.profilePhoto}}" alt="s" class="img-rounded">
+      </a>
+
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-12">
+      <h1>{{user.team.name}} {{user.team.short}}</h1>
+
+      <div class="col-md-12 col-sm-12 col-xs-8">
+        <p>{{user.team.league}}</p>
+
+        <p>{{user.team.city}}</p>
+
+      </div>
+
+    </div>
+  </div>
+  <profile-buttons user="user" owner="owner"></profile-buttons>
+  <!--<div class="row" ng-show="user._id !== owner._id && user.completed">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <button class="btn-sm btn-default our-button round-corners" ng-click="onassign()" ng-show="(owner.kind==='player' || owner.kind==='coach' )">Assign!</button>
+      <button class="btn-sm btn-default our-button round-corners" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && owner['follows'].indexOf(user['_id']) === -1" ng-click="onclickfollow()">Follow!</button>
+      <button class="btn-sm btn-default our-button round-corners" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && owner['follows'].indexOf(user['_id']) !== -1" ng-click="onclickunfollow()">Unfollow</button>
+      <button class="btn-sm btn-default our-button round-corners">Send Message!</button>
+    </div>
+  </div>-->
+</div>

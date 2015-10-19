@@ -1,0 +1,53 @@
+<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ffffff; padding: 20px;">
+  <button class="btn" ng-show="showedit" ng-click="edit()"
+          style="position: absolute; top:0px; right:0px; background-color: Transparent;"><img src="assets/images/pen.png"/>
+  </button>
+  <a ui-sref="friends({id: user._id})" ng-if="!showedit" style="position: absolute; top:2px; right:0px;">Friends</a>
+  <div class="row">
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <a href="#" class="thumbnail" style="margin-top:40px;">
+        <img src="photos/{{user.profilePhoto}}" alt="s" class="img-rounded">
+      </a>
+
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-12">
+      <h1>{{user.coach.firstName}} {{user.coach.lastName}}</h1>
+      <h4><div ng-repeat="presentTeam in mypresentteams">{{presentTeam.user.team.name}}, {{presentTeam.position}}</div></h4>
+
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p>Age</p>
+
+        <p>Coaching exp</p>
+
+        <p>Specialty</p>
+
+        <p>Looking for team</p>
+
+        <p>Past teams</p>
+
+
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-6">
+        <p>{{user.coach.age}}</p>
+
+        <p>{{user.coach.experience}}</p>
+
+        <p>{{user.coach.specialty}}</p>
+
+        <p>{{user.coach.isLookingFor}}</p>
+
+        <p>{{user.coach.pastTeams}}</p>
+      </div>
+    </div>
+  </div>
+  <profile-buttons user="user" owner="owner"></profile-buttons>
+  <!--<div class="row" ng-show="user._id !== owner._id && user.completed">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <button class="btn-sm btn-default our-button round-corners" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && owner['follows'].indexOf(user['_id']) === -1" ng-click="onclickfollow()">Follow!</button>
+      <button class="btn-sm btn-default our-button round-corners" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && owner['follows'].indexOf(user['_id']) !== -1" ng-click="onclickunfollow()">Unfollow</button>
+      <button class="btn-sm btn-default our-button round-corners" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && (owner['invited'].indexOf(user['_id']) ===-1 && isNotInArray(owner.friends, user._id))" ng-click="onclickfriend()">Invite to friends!</button>
+      <button class="btn-sm btn-default our-button round-corners">Send Message!</button>
+
+    </div>
+  </div>-->
+</div>

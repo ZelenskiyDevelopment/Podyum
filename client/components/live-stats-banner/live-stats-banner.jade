@@ -1,0 +1,18 @@
+.live-stats-banner
+  .container-fluid
+    .league-selector(ng-if='isVisibleLeagueSelector')
+      ui-select(ng-model='league.selected' theme='bootstrap')
+        ui-select-match(placeholder='Select league') {{league.selected}}
+        ui-select-choices(repeat='league in leagues')
+          div(ng-bind-html='league')
+    ul(rn-carousel rn-carousel-controls rn-carousel-auto-slide)
+      li(ng-repeat="gamesGroup in gamesGroups track by $index")
+        .page
+          ul.list-inline
+            li(ng-repeat="game in gamesGroup track by $index")
+              live-stats-banner-item(game='game')
+
+    live-stats-banner-settings(settings='settings' ng-if='isVisibleSettings')
+      md-button(aria-label='Members').md-mini.style-edit-stats
+        //md-icon(md-svg-src='assets/svg/ic_build_24px.svg')
+        i(class="fa fa-wrench")

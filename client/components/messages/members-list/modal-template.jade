@@ -1,0 +1,21 @@
+md-dialog(aria-label='Members list' flex='30')
+  form
+    md-toolbar
+      .md-toolbar-tools
+        h2 Members
+        span(flex)
+        md-button(ng-click='cancel()').md-icon-button
+          md-icon(md-svg-src='assets/images/ic_close_24px.svg' aria-label='Close dialog')
+    md-dialog-content
+      .md-padding
+        md-list
+          md-subheader.md-no-sticky Members
+            span.pull-right Is admin?
+          md-list-item(ng-repeat='user in users')
+            img(ng-src='{{user.image}}').md-avatar
+            p {{user.name}}
+            md-switch(ng-model='user.isAdmin' ng-disabled='!isAdmin' aria-label='is Admin?' ng-true-value='true' ng-false-value='false').md-warn.md-secondary
+    .md-actions(layout='row')
+      span(flex)
+      md-button(ng-disabled='_.isEmpty(room.title) || _.isEmpty(room.members)' ng-click='answer(users)').md-primary Save!
+      md-button(ng-click='cancel()').md-primary Cancel

@@ -1,0 +1,47 @@
+<div class="container" style="margin-top:220px">
+  <browse-members-modal type="'statsAdmin'" change="myStatsAdmins" user="user">
+    <button class="btn our-button" ng-show="user.kind==='team' && user.role==='premium'">Grant Admin Privileges</button>
+  </browse-members-modal>
+
+  <button ng-if="user.kind === 'team' || user.kind === 'league'" class="btn our-button" ng-click="newGame()">New Game
+  </button>
+  <h2 ng-show="myManagedStats.length > 0">Teams I can manage</h2>
+  <div ng-repeat="managedTeam in myManagedStats">
+    <div class="media">
+      <div class="media-left">
+        <a ui-sref="profile.common-story({id: managedTeam._id})">
+          <img class="media-object" src="photos/{{managedTeam.profilePhoto}}" alt="" style="width:64px;height:64px;">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">  </h4>
+        {{managedTeam[managedTeam.kind].name}}
+        <button class="btn our-button" ng-click="chooseTeamToManage($index)">Manage</button>
+      </div>
+    </div>
+  </div>
+
+  <h2 ng-show="myStatsAdmins.length > 0">My stats admins:</h2>
+  <div ng-repeat="admin in myStatsAdmins">
+    <div class="media">
+      <div class="media-left">
+        <a ui-sref="profile.common-story({id: admin._id})">
+          <img class="media-object" src="photos/{{admin.profilePhoto}}" alt="" style="width:64px;height:64px;">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">  </h4>
+        {{admin[admin.kind].firstName}} {{admin[admin.kind].lastName}}
+        <button class="btn our-button" ng-click="revokeStatsAdmin(admin._id)">Revoke Admin</button>
+      </div>
+    </div>
+  </div>
+
+  <h2 ng-show="chosenTeam >= 0">Games for {{myManagedStats[chosenTeam].team.name}}:</h2>
+  <div ng-repeat="game in games">
+    <game id="game._id" sport="game.sport" team1="game.team1" team2="game.team2" league="game.league" date="game.date" data="game.data"/>
+  </div>
+
+</div>
+
+

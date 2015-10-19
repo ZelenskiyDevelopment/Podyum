@@ -1,0 +1,54 @@
+'use strict';
+
+angular.module('abroadathletesApp')
+  .directive('logNavbar', function () {
+    return {
+      templateUrl: 'app/main/logNavbar/logNavbar.html',
+      restrict: 'EA',
+      controller: function($scope, $http, $location, $mdToast, Auth, $localStorage) {
+
+        $scope.loginUser = {};
+        $scope.loginErrors = {};
+        if ($localStorage['remember']) {
+          $scope.loginUser['remember'] = true;
+        }
+        $scope.login = function (form) {
+          $scope.loginSubmitted = true;
+
+          if (form.$valid) {
+            Auth.login({
+              email: $scope.loginUser.email,
+              password: $scope.loginUser.password
+            })
+              .then(function () {
+                // Logged in, redirect to home
+                $location.path('/home');
+              })
+              .catch(function (err) {
+                $scope.loginErrors.other = err.message;
+              });
+          }
+          else {
+            showSimpleToast();
+          }
+          $scope.isFalse = $scope.loginForm.email.$error.required || $scope.loginForm.password.$error.required || $scope.loginSubmitted;
+        };
+
+        var showSimpleToast = function() {
+          $mdToast.show(
+            $mdToast.simple()
+              .content('Enter a valid email addres or password!')
+              .position('right top')
+              .hideDelay(2000)
+          );
+        };
+
+
+
+      },
+
+
+      link: function (scope, element, attrs) {
+      }
+    };
+  });

@@ -1,0 +1,13 @@
+| {{events}}
+div(ng-repeat="event in events track by $index")
+  div(ng-show="$last")
+    pass(ng-show="event.type==='pass'" event='event' events='events' status='status' submit='submit')
+    complete-pass(ng-show="event.type==='complete'" event='event' events='events' status='status' submit='submit')
+    incomplete-pass(ng-show="event.type==='incomplete'" event='event' events='events' status='status' submit='submit')
+    intercept-pass(ng-show="event.type==='intercept'" event='event' events='events' status='status' submit='submit')
+    sack-pass(ng-show="event.type==='sack'" event='event' events='events' status='status' submit='submit')
+    run(ng-show="event.type==='run'" event='event' events='events' status='status' submit='submit')
+    tackle(ng-show="event.type==='tackle'" event='event' events='events' status='status' submit='submit')
+    fumble(ng-show="event.type==='fumble'" event='event' events='events' status='status' submit='submit')
+    lateral(ng-show="event.type==='lateral'" event='event' events='events' status='status' submit='submit')
+    penalty(ng-show="event.type === 'penalty'")

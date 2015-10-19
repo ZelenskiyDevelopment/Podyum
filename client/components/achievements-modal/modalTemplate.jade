@@ -1,0 +1,35 @@
+md-dialog(aria-label='Choose position' flex='50')
+  form
+    md-toolbar
+      .md-toolbar-tools
+        h2 Add achievement
+        span(flex)
+        md-button(ng-click='cancel()').md-icon-button
+          md-icon(md-svg-src='assets/images/ic_close_24px.svg' aria-label='Close dialog')
+    md-dialog-content
+      table(ng-show='achievements.length>0').table
+        thead
+          tr
+            th Achievement
+            th Achievement level
+            th Remove
+        tbody
+          tr(ng-repeat='achievement in achievements track by $index')
+            td
+              md-input-container
+                label Achievement
+                input(ng-model="achievement.name")
+            td
+              md-input-container
+                label Level
+                input(ng-model="achievement.level")
+            td
+              button(ng-click='remove($index)') X
+
+      button(ng-click='addAchievement()')
+        span.glyphicon.glyphicon-plus.pull-right
+
+    .md-actions(layout='row')
+      span(flex)
+      md-button(ng-click='callFunction()').md-primary Save
+      md-button(ng-click='cancel()').md-primary Cancel

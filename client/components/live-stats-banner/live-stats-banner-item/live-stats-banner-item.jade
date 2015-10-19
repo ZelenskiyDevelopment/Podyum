@@ -1,0 +1,17 @@
+.live-stats-banner-item
+  h4 {{game.league.league.name}}
+    small {{ isFinished ? ' Finished' : ' Quart ' + game.data.quart; }}
+  .media
+    .media-left.media-middle
+      a
+        img(src='photos/{{game.team1.profilePhoto}}' alt='').media-object
+    .media-body
+      h5.team.media-heading.pull-left {{game.team1.team.name}}
+      h4.pull-right {{game.data.score1}}
+  .media
+    .media-left.media-middle
+      a
+        img(src='photos/{{game.team2.profilePhoto}}' alt='').media-object
+    .media-body
+      h5.team.media-heading.pull-left {{game.team2.team.name}}
+      h4.pull-right {{game.data.score2}}

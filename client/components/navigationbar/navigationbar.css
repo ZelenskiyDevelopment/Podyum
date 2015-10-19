@@ -1,0 +1,65 @@
+.transparent-btn{
+  background:transparent;
+  border:0px;
+
+}
+
+.header {
+  background: #222;
+  border-width:0;
+}
+
+.header .navbar-collapse {
+  background: #222;
+}
+
+.navbar-fixed-top {
+  top:230px;
+  z-index: 999999;
+}
+
+.logo-nav {
+  height: 80px;
+  border-top:2px solid #f8c637;
+  border-bottom:2px solid #f8c637;
+}
+.logo-nav .navbar-brand img {
+  margin-top: 0px;
+  padding: 0px;
+  height:50px;
+
+}
+.logout-icon {
+  background: url('../../assets/images/logout-icon.png') no-repeat;
+  height: 35px;
+  width: 32px;
+  display: inline-block;
+  margin-top: 12px;
+}
+.message-icon {
+  background: url('../../assets/images/message-icon.png') no-repeat;
+  height: 35px;
+  width: 32px;
+  display: inline-block;
+  margin-top: 15px;
+}
+.letter-icon {
+   background: url('../../assets/images/letter-icon.png') no-repeat;
+   height: 35px;
+   width: 32px;
+   display: inline-block;
+  margin-top: 16px;
+ }
+.user-icon {
+    background: url('../../assets/images/user-icon.png') no-repeat;
+    height: 35px;
+    width: 32px;
+    display: inline-block;
+  margin-top: 10px;
+  }
+.logo-nav .navbar-form {
+  margin-top: 24px;
+}
+.menu-nav {
+  margin-top: 80px;
+}

@@ -1,0 +1,17 @@
+md-dialog
+  md-toolbar
+    .md-toolbar-tools.col-xs-12
+      h2.col-xs-11 Profile tracker
+      md-button.md-icon-button(ng-click='cancel()' style="float: right")
+        icon.fa.fa-times
+  md-dialog-content
+    md-content(layout-padding)
+      .col-xs-12
+        p(ng-repeat="trackedBy in value")
+          span
+            i {{trackedBy.user.email}}
+          span &nbspin
+            i &nbsp{{trackedBy.date | dateToLocaleString}}
+        h3(ng-if="!value.length") no one tracked you
+    span(flex)
+    md-button.md-primary(ng-click='cancel()') close

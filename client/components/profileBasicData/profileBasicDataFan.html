@@ -1,0 +1,45 @@
+<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ffffff; padding: 20px;">
+  <button class="btn" ng-show="showedit" ng-click="edit()"
+          style="position: absolute; top:0px; right:0px; background-color: Transparent;"><img src="assets/images/pen.png"/>
+  </button>
+  <a ui-sref="friends({id: user._id})" ng-if="!showedit" style="position: absolute; top:2px; right:0px;">Friends</a>
+  <div class="row">
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <a href="#" class="thumbnail" style="margin-top:40px;">
+        <img src="photos/{{user.profilePhoto}}" alt="s" class="img-rounded">
+      </a>
+
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-12">
+      <h1>{{user.fan.firstName}} {{user.fan.lastName}}</h1>
+
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p>Hometown</p>
+
+        <p>Height</p>
+
+        <p>Weight</p>
+
+        <p>Age</p>
+
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-6">
+        <p>{{user.fan.hometown}}</p>
+
+        <p>{{user.fan.height}}</p>
+
+        <p>{{user.fan.weight}}</p>
+
+        <p>{{user.fan.age}}</p>
+      </div>
+    </div>
+  </div>
+  <profile-buttons user="user" owner="owner"></profile-buttons>
+  <!--<div class="row" ng-show="user._id !== owner._id && user.completed">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <button class="btn-sm btn-default our-button round-corners" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && (owner['invited'].indexOf(user['_id']) ===-1 && isNotInArray(owner.friends, user._id))" ng-click="onclickfriend()">Invite to friends!</button>
+      <button class="btn-sm btn-default our-button round-corners">Send Message!</button>
+
+    </div>
+  </div>-->
+</div>

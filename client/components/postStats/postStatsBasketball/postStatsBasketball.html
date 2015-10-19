@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="row">
+    <div class ="col-md-2">
+      <h5>{{game.team1.team.name}} </h5>
+      <div ng-repeat="player in roster1 track by $index">
+        <button class="btn button-roster1-{{roster1Bool[$index]}}" ng-click="fromBench(1,$index)" style="width:100%;">#{{player.player.number}} {{player.player.firstName}} {{player.player.lastName}}</button>
+      </div>
+
+    </div>
+    <div class ="col-md-8">
+      <div class = "row">
+        <div class = "col-md-6" style="text-align:center;">
+          <img src="photos/{{game.team1.profilePhoto}}" alt="s" class="img-rounded center-block" style="width:350px;height:250px;">
+          <h2>{{game.data.score1}}</h2>
+        </div>
+        <div class = "col-md-6" style="text-align:center;">
+          <img src="photos/{{game.team2.profilePhoto}}" alt="s" class="img-rounded center-block" style="width:350px;height:250px;">
+          <h2>{{game.data.score2}}</h2>
+        </div>
+      </div>
+    </div>
+    <div class ="col-md-2">
+      <h5>{{game.team2.team.name}}</h5>
+      <div ng-repeat="player in roster2">
+        <button class="btn button-roster2-{{roster2Bool[$index]}}" ng-click="fromBench(2,$index)" style="width:100%;">#{{player.player.number}} {{player.player.firstName}} {{player.player.lastName}}</button>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-success" ng-click="check()">Check</button>
+  <button class="btn btn-success" ng-show="isCorrect" ng-click="save()">Save</button>
+  <button class="btn our-button" ng-show="!game.data.isFinished" ng-click="finishGame()">Finish</button>
+  <div class="row" style="margin-top:30px;">
+    <div class="col-md-6" style="text-align:center;">
+      <h4>Game summary</h4>
+      <table class="table table-bordered panel">
+        <tr>
+          <th>Actions</th>
+          <th>{{game.team1.team.name}}</th>
+          <th>{{game.team2.team.name}}</th>
+        </tr>
+        <tr>
+          <th>Field Goals</th>
+          <th>{{game.data.T1[1]}}-{{game.data.T1[7] + game.data.T1[1]}}</th>
+          <th>{{game.data.T2[1]}}-{{game.data.T2[7] + game.data.T2[1]}}</th>
+        </tr>
+        <tr>
+          <th>3-pointers</th>
+          <th>{{game.data.T1[2]}}-{{game.data.T1[8] + game.data.T1[2]}}</th>
+          <th>{{game.data.T2[2]}}-{{game.data.T2[8] + game.data.T2[2]}}</th>
+        </tr>
+        <tr>
+          <th>Free Throws</th>
+          <th>{{game.data.T1[0]}}-{{game.data.T1[6] + game.data.T1[0]}}</th>
+          <th>{{game.data.T2[0]}}-{{game.data.T2[6] + game.data.T2[0]}}</th>
+        </tr>
+        <tr>
+          <th>Off Rebounds</th>
+          <th>{{game.data.T1[3]}}</th>
+          <th>{{game.data.T2[3]}}</th>
+        </tr>
+        <tr>
+          <th>Def Rebounds</th>
+          <th>{{game.data.T1[10]}}</th>
+          <th>{{game.data.T2[10]}}</th>
+        </tr>
+        <tr>
+          <th>Assists</th>
+          <th>{{game.data.T1[4]}}</th>
+          <th>{{game.data.T2[4]}}</th>
+        </tr>
+        <tr>
+          <th>Steals</th>
+          <th>{{game.data.T1[11]}}</th>
+          <th>{{game.data.T2[11]}}</th>
+        </tr>
+        <tr>
+          <th>Blocks</th>
+          <th>{{game.data.T1[12]}}</th>
+          <th>{{game.data.T2[12]}}</th>
+        </tr>
+        <tr>
+          <th>Turnovers</th>
+          <th>{{game.data.T1[5]}}</th>
+          <th>{{game.data.T2[5]}}</th>
+        </tr>
+        <tr>
+          <th>Fouls</th>
+          <th>{{game.data.T1[9]}}</th>
+          <th>{{game.data.T2[9]}}</th>
+        </tr>
+
+      </table>
+    </div>
+    <div class="col-md-6" ng-if="currentPlayer" style="text-align:center;">
+      <h4>{{currentPlayer.player.firstName}} {{currentPlayer.player.lastName}} summary</h4>
+      <form name="playerForm" novalidate>
+        <div class="form-group" ng-repeat="event in eventNames">
+          <ng-form name="userFieldForm">
+            <label>{{ event }}</label>
+            <input type="number" ng-model="game.userData[currentPlayer._id][$index]" name="size"
+                   min="0" integer>
+        </div>
+        <div>
+          <label>Minutes</label>
+          <input type="number" ng-model="game.userData[currentPlayer._id][13]" name="size"
+                 min="0" integer> </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+

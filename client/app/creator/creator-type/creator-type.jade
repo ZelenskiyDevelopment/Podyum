@@ -1,0 +1,45 @@
+.col-md-12.col-sm-12.col-sx-12
+  label
+   .big-q What's your type?
+
+
+.form-group
+  .radio
+    .col-md-12.col-sm-12.col-sx-12
+      md-radio-group(ng-model="formData.type")
+        .col-md-12.col-sm-12.col-sx-12
+          label
+            md-radio-button.md-primary(type="radio" ng-model="formData.type" value="player" checked) I'm player
+
+        .col-md-12.col-sm-12.col-sx-12
+          label
+            md-radio-button.md-primary(type="radio" ng-model="formData.type" value="coach" checked) I'm coach
+
+        .col-md-12.col-sm-12.col-sx-12
+          label
+           md-radio-button.md-primary(type="radio" ng-model="formData.type" value="team" checked) I'm team
+
+        .col-md-12.col-sm-12.col-sx-12
+          label
+            md-radio-button.md-primary(type="radio" ng-model="formData.type" value="league" checked) I'm league
+
+        .col-md-12.col-sm-12.col-sx-12
+          label
+            md-radio-button.md-primary(type="radio" ng-model="formData.type" value="fan" checked) I'm fan
+
+        .col-md-12.col-sm-12.col-sx-12
+          label
+           md-radio-button.md-primary(type="radio" ng-model="formData.type" value="media" checked) I'm media
+
+
+
+
+.form-group.row(ng-show="formData.type")
+  .col-xs-12.col-sm-12.col-md-12
+    .col-xs-2.col-sm-3.col-md-4
+    .col-xs-8.col-sm-6.col-md-4
+      a(ui-sref="creator.photo" ng-click="setType(formData.type)")
+        .md-button.create-button(style="margin-top:50px")
+         | Next step
+         //.span(class="glyphicon glyphicon-circle-arrow-right")
+    .col-xs-2.col-sm-3.col-md-4

@@ -1,0 +1,16 @@
+md-dialog(aria-label='Choose users' flex='50')
+  form
+    md-toolbar
+      .md-toolbar-tools
+        h2 Choose users
+        span(flex)
+        md-button(ng-click='cancel()').md-icon-button
+          md-icon(md-svg-src='assets/images/ic_close_24px.svg' aria-label='Close dialog')
+    md-dialog-content
+      users-selector(selected-users='users' collection="collection")
+    .md-actions(layout='row')
+      span(flex)
+      md-button(ng-disabled='_.isEmpty(users)' ng-click='callFunction(users)').md-primary Save
+      md-button(ng-click='cancel()').md-primary Cancel
+
+

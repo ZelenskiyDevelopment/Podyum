@@ -1,0 +1,27 @@
+.assign-selector
+  .row
+    table(ng-show='model.length>0').table
+      thead
+        tr
+          th Selected users
+          th(ng-hide='::kind === "team"') Date from
+          th(ng-hide='::kind === "team"') Date to
+          th(ng-hide='::kind === "team"') Is Present?
+          th(ng-show='::kind === "coach"') Achievements
+          th Remove
+      tbody
+        tr(ng-repeat='user in model track by $index')
+          td {{user | getName}}
+          td(ng-hide='::kind === "team"')
+            custom-datepicker(model='user.dateFrom')
+          td(ng-hide='::kind === "team"')
+            custom-datepicker(model='user.dateTo' is-disabled='user.isPresent')
+          td(ng-hide='::kind === "team"')
+            input(type='checkbox' ng-model='user.isPresent')
+          td
+            achievements-modal(ng-show='::kind==="coach"' model='user.achievements')
+              button.our-button Add achievements
+          td
+            button(ng-click='remove($index)') X
+  .row
+    one-user-selector(label='label' items='items' selected-item='selectedUser' reset='resetOneUserSelector')

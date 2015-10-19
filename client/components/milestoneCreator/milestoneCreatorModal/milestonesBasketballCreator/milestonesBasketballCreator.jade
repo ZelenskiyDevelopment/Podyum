@@ -1,0 +1,14 @@
+.row
+  .col-md-12.col-sm-12
+    .row.leftMarginedMilestoneCreator
+      .col-md-6
+        md-input-container
+          label Type of milestone
+          md-select(ng-model="milestone.kind")
+            md-option(
+              ng-repeat="kind in kinds"
+              value="{{kind}}") {{kind}}
+      .col-md-6.topMarginedMilestoneCreator
+        md-input-container
+          label My goal
+          input.form-control(type="number", ng-model="milestone.value")

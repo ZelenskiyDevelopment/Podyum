@@ -1,0 +1,8 @@
+.thread
+  a(href='#' ng-class='{active: thread.isActive}' ng-click='changeThread()').list-group-item
+    p {{thread.name}}
+      span
+        md-icon(md-svg-icon='assets/svg/ic_delete_24px.svg' ng-click='showConfirm($event, thread)').pull-right
+        star-checkbox(model='thread.isFavorite' ng-click='onStarClick()').pull-right
+
+

@@ -1,0 +1,123 @@
+navigationbar(user="me")
+
+.container(style="margin-top:220px;")
+  browse-members-modal(type="'rosterAdmin'" change="myRosterAdmins" user="user")
+    button(class="btn our-button" ng-show="user.kind === 'team' && user.role==='premium'")
+      | Grant Admin Privileges
+
+  h2(ng-show="myManagedRoster.length > 0")
+    | Teams I can manage
+  div(ng-repeat="managedTeam in myManagedRoster")
+    div(class="media")
+      div(class="media-left")
+        a(ui-sref="profile.common-story({id: managedTeam._id})")
+          img(class="media-object" src="photos/{{managedTeam.profilePhoto}}" alt="" style="width:64px;height:64px;")
+      div(class="media-body")
+        h4(class="media-heading")
+        | {{managedTeam[managedTeam.kind].name}}
+        button(class="btn our-button" ng-click="chooseTeamToManage($index)")
+          | Manage
+
+  h2(ng-show="chosenTeam >= 0")
+    | Roster for {{myManagedRoster[chosenTeam].team.name}}
+
+  h2(ng-show="myRosterAdmins.length > 0")
+    | My roster admins
+  div(ng-repeat="admin in myRosterAdmins")
+    div(class="media")
+      div(class="media-left")
+        a(ui-sref="profile.common-story({id: admin._id})")
+          img(class="media-object" src="photos/{{admin.profilePhoto}}" alt="" style="width:64px;height:64px;")
+      div(class="media-body")
+        h4(class="media-heading")
+        | {{admin[admin.kind].firstName}} {{admin[admin.kind].lastName}}
+        button(class="btn our-button" ng-click="revokeRosterAdmin(admin._id, $index)")
+          | Revoke Admin
+  div(ng-show="user.kind==='team' || chosenTeam >= 0")
+    .h1
+      | Manage roster
+    button(class="btn our-button" ng-click="changeSort('user.player.number')")
+      | Sort by number
+    button(class="btn our-button" ng-click="changeSort('user.player.lastName')")
+      | Sort by last name
+    table(class="table table-bordered panel" style="text-align:center;")
+      tr
+        td
+          | No.
+        td
+          | Name
+        td
+          | Position
+        td
+          | Experience
+        td
+          | Height
+        td
+          | Weight
+        td
+          | Hometown
+        td
+          | Send Message
+        td
+          | Remove from team
+      tr(ng-repeat="player in myPlayers | orderBy:sortChoice")
+        td
+          | {{player.user.player.number}}
+        td
+          | {{player.user.player.firstName}} {{player.user.player.lastName}}
+        td
+          | {{player.user.player.position}}
+        td
+          | {{player.user.player.experience}}
+        td
+          | {{player.user.player.height}}
+        td
+          | {{player.user.player.weight}}
+        td
+          | {{player.user.player.hometown}}
+        td
+          send-message-modal(receiver="player.user")
+            .button(class="btn our-button")
+              | Send Message
+        td
+          .button(class="btn our-button", ng-click="removeFromTeam($index, player.user._id)")
+            | Remove
+
+  browse-members-modal(type="'recruitMemberAsAdmin'" change="myPlayers" user="user" team="myManagedRoster[chosenTeam]")
+    button(class="btn our-button" ng-show="chosenTeam >= 0")
+      | Recruit new member
+
+  browse-members-modal(type="'recruitMember'" change="myPlayers" user="user")
+    button(class="btn our-button" ng-show="user.kind === 'team'")
+      | Recruit new member
+
+  h2(ng-show="presentRequests.length == 0 && pastRequests.length == 0")
+    | You have no pending requests.
+  h2(ng-show="presentRequests.length > 0")
+    | Present requests
+  div(ng-repeat="assignRequest in presentRequests")
+    div(class="media")
+      div(class="media-left")
+        a(ui-sref="profile.common-story({id: assignRequest._id})")
+          img(class="media-object" src="photos/{{assignRequest.profilePhoto}}" alt="" style="width:64px;height:64px;")
+      div(class="media-body")
+        h4(class="media-heading")
+        | {{assignRequest.firstName}} {{assignRequest.lastName}} claims he is a member of your team from {{assignRequest.dateFrom | date:'yyyy-MM'}}.
+        button(class="btn our-button" ng-click="acceptAssignRequests(assignRequest)")
+          | Accept
+        button(class="btn our-button" ng-click="rejectAssignRequests(assignRequest)")
+          | Reject
+  h2(ng-show="pastRequests.length > 0")
+    | Past requests
+  div(ng-repeat="assignRequest in pastRequests")
+    div(class="media")
+      div(class="media-left")
+        a(ui-sref="profile.common-story({id: assignRequest._id})")
+          img(class="media-object" src="photos/{{assignRequest.profilePhoto}}" alt="" style="width:64px;height:64px;")
+      div(class="media-body")
+        h4(class="media-heading")
+        | {{assignRequest.firstName}} {{assignRequest.lastName}} claims he was a member of your team from {{assignRequest.dateFrom | date:'yyyy-MM'}} to {{assignRequest.dateTo | date:'yyyy-MM'}}.
+        button(class="btn our-button" ng-click="acceptAssignRequests(assignRequest)")
+          | Accept
+        button(class="btn our-button" ng-click="rejectAssignRequests(assignRequest)")
+          | Reject

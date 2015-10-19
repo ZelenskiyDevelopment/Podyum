@@ -1,0 +1,15 @@
+<div>
+  <md-content>
+    <section layout="row">
+      <div flex="66" layout layout-xs="row">
+        <md-input-container flex>
+          <label>Write comment...</label>
+          <input ng-model="comment">
+        </md-input-container>
+      </div>
+      <div flex="33">
+        <md-button class="md-raised" ng-disabled="comment.length === 0" ng-click="addComment()">Add Comment!</md-button>
+      </div>
+    </section>
+  </md-content>
+</div>

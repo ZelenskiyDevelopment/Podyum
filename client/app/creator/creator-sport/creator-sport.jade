@@ -1,0 +1,51 @@
+div(ng-switch="formData.type")
+    div(ng-switch-when="player")
+      label
+        .big-q What sports do you play?
+      .col-md-12.col-sm-12.col-sx-12
+        .col-md-2.col-sm-2.col-sx-2
+          label
+            md-checkbox.create-checkbox(type="checkbox" ng-model="formData.sport.football" value="football" checked) Football
+        .col-md-2.col-sm-2.col-sx-2
+          label
+            md-checkbox.create-checkbox(type="checkbox" ng-model="formData.sport.basketball" value="basketball" checked) Basketball
+    div(ng-switch-when="coach")
+      label
+        | What sports do you specialise in?
+      label
+        input(type="checkbox" ng-model="formData.sport" value="football" checked)
+        | Football
+      label
+        input(type="checkbox" ng-model="formData.sport" value="basketball" checked)
+        | Basketball
+    div(ng-switch-when="team")
+        label
+            | What sport does your team play?
+        label
+            input(type="radio" ng-model="formData.sport" value="football" checked)
+            | Football
+        label
+            input(type="radio" ng-model="formData.sport" value="basketball" checked)
+            | Basketball
+    div(ng-switch-when="league")
+        label
+            | What sport does your league play?
+        label
+            input(type="radio" ng-model="formData.sport" value="football" checked)
+            | Football
+        label
+            input(type="radio" ng-model="formData.sport" value="basketball" checked)
+            | Basketball
+
+.form-group.row(ng-show="formData.type && formData.sport")
+  .col-xs-12.col-sm-12.col-md-12
+    .col-xs-4.col-sm-5.col-md-5
+      a(ui-sref="creator.type")
+        .md-button.create-button Back
+    .col-xs-4.col-sm-2.col-md-2
+      a(ui-sref="creator.photo")
+        .md-button.create-button Next step
+        // .span(class="glyphicon glyphicon-circle-arrow-right")
+    .col-xs-4.col-sm-5.col-md-5
+
+

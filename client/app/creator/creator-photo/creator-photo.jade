@@ -1,0 +1,23 @@
+.col-xs-12.col-sm-12.col-md-12
+  .big-q(style="text-align: center") Set your profile photo!
+  .col-md-1.col-sm-offset-0.col-xs-offset-0
+  .col-xs-12.col-sm-12.col-md-10(style="padding-left: auto; padding-right: auto;")
+    cropme(width="{{myWidth/2}}" height="{{myHeight/1.5}}" ratio="1" icon-class="" type="png" destination-width="300" id="cropme1" ok-label="Ok" src="{{formData.files[0]}}" cancel-label="Cancel")
+    br
+    img(ng-if="formData.photo" ngf-thumbnail="formData.photo" class="img-rounded" style="max-width: 200px !important;max-height: 200px !important;")
+  .col-md-1
+
+
+.col-xs-12.col-sm-12.col-md-12.row
+  .col-xs-2.col-sm-3.col-md-3
+  .col-xs-8.col-sm-6.col-md-6
+    .col-xs-12.col-sm-12.col-md-12.row
+      .col-xs-6.col-sm-6.col-md-6
+        a(ui-sref="creator.type").md-button.create-button(ng-click="changeProgress(20)")
+          .i(class="fa fa-arrow-left" style="font-size: 22px; margin: 0; padding: 0;")
+          | &#32; Back
+      .col-xs-6.col-sm-6.col-md-6
+        a(ui-sref="creator.{{formData.type}}").md-button.create-button(ng-click="changeProgress(50)" ng-show="formData.type && formData.photo")
+          | Next step &#32;
+          .i(class="fa fa-arrow-right" style="font-size: 22px; margin: 0; padding: 0;")
+  .col-xs-2.col-sm-3.col-md-3

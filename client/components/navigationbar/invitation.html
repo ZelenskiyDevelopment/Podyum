@@ -1,0 +1,52 @@
+<div focusable-popover="">
+  <div ng-repeat="invitation in invitations">
+    <div class="media">
+      <div class="media-left">
+        <a ui-sref="profile.common-story({id: invitation._id})">
+          <img class="media-object" src="photos/{{invitation.profilePhoto}}" alt="" style="width:64px;height:64px;">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{invitation.firstName}} {{invitation.lastName}}</h4>
+
+        <div class="form-group">
+          <button class="btn btn-success" ng-click="acceptInvitation(invitation._id)">Accept</button>
+          <button class="btn btn-danger" ng-click="rejectInvitation(invitation._id)">Reject</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-repeat="assignRequest in assignRequests">
+    <div class="media">
+      <div class="media-left">
+        <a ui-sref="profile.common-story({id: assignRequest._id})">
+          <img class="media-object" src="photos/{{assignRequest.profilePhoto}}" alt="" style="width:64px;height:64px;">
+        </a>
+      </div>
+      <div class="media-body">
+        <div ng-if="assignRequest.name">
+          <h4 class="media-heading">{{assignRequest.name}}</h4>
+          <div ng-if="assignRequest.isPresent">
+            Wants to recruit you!
+          </div>
+
+        </div>
+        <div ng-if="!assignRequest.name">
+          <h4 class="media-heading">{{assignRequest.firstName}} {{assignRequest.lastName}}</h4>
+          <div ng-if="!assignRequest.isPresent">
+           Ask for confirmation of being your member in the past from {{assignRequest.dateFrom | date : 'yyyy-MM'}} to {{assignRequest.dateTo | date : 'yyyy-MM'}}
+          </div>
+          <div ng-if="assignRequest.isPresent">
+            Ask for confirmation of being your member since {{assignRequest.dateFrom | date : 'yyyy-MM'}}
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success" ng-click="acceptAssignRequests(assignRequest)">Accept</button>
+          <button class="btn btn-danger" ng-click="rejectAssignRequests(assignRequest)">Reject</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div ng-hide="invitations.length + assignRequests.length">You have no upcoming invites.</div>
+</div>

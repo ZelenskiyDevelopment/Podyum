@@ -1,0 +1,15 @@
+.medalsListModal
+    .modal-header
+        h5.medalHeader Medals list
+    .modal-body(ng-controller='medalListModalCtrl')
+        .row
+            .commentsBox(scroll-glue='glued')
+                .row(ng-repeat="medal in medals")
+                    .medalListItem
+                        .col-md-2
+                        .col-md-10
+                            a(ui-sref='profile.common-story({id:medal._id})', ng-click='closeBothModals()')
+                                img.galleryModalProfilePhoto(ng-src='photos/{{medal.profilePhoto}}')
+                                b. {{medal[medal.kind].firstName}} {{medal[medal.kind].lastName}}
+                        .col-md-2
+    .modal-footer

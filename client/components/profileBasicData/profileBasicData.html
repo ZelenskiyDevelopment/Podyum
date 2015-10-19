@@ -1,0 +1,26 @@
+<div>
+
+  <div ng-switch="user.kind">
+
+    <div ng-switch-when="player">
+      <div ng-include="'components/profileBasicData/profileBasicDataPlayer.html'"></div>
+
+    </div>
+    <div ng-switch-when="team">
+      <div ng-include="'components/profileBasicData/profileBasicDataTeam.html'"></div>
+
+    </div>
+    <div ng-switch-when="coach">
+      <div ng-include="'components/profileBasicData/profileBasicDataCoach.html'"></div>
+
+    </div>
+    <div ng-switch-when="league">
+      <div ng-include="'components/profileBasicData/profileBasicDataLeague.html'"></div>
+
+    </div>
+    <div ng-switch-when="fan">
+      <div ng-include="'components/profileBasicData/profileBasicDataFan.html'"></div>
+    </div>
+
+  </div>
+</div>

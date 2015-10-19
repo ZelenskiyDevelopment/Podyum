@@ -1,0 +1,24 @@
+.col-md-6.col-sm-12.user
+  .row
+    .col-md-2.col-sm-1
+      img(ng-src="photos/{{user.profilePhoto}}")
+    .col-md-7.col-sm-8.user-data
+      a(ui-sref="profile.common-story({id: user._id})").name
+        | {{user[kind].firstName}} {{user[kind].lastName}}
+      p.position {{'#' + user[kind].number}} {{user[kind].position}}
+      p {{user[kind].team}}
+    .col-md-3.col-sm-3
+      .row
+        button.btn-sm.btn-default.our-button.round-corners(
+          ng-if="followActive"
+          ng-click="follow()")
+          | Follow!
+        button.btn-sm.btn-default.our-button.round-corners(
+          ng-if="!followActive"
+          ng-click="unFollow()")
+          | Unfollow!
+      .row
+        send-message-modal(receiver="user")
+          button.btn-sm.our-button.round-corners
+            | Send Message
+

@@ -1,0 +1,24 @@
+md-dialog.create-job-dialog
+  md-toolbar.create-job-title
+    .md-toolbar-tools.col-xs-12
+      h2.col-xs-11 Apply for job
+      md-button.md-icon-button(ng-click='cancel()' style="float: right")
+        icon.fa.fa-times
+  md-dialog-content
+    md-content(layout-padding)
+      h2.md-title {{job.name}}
+      p {{job.description}}
+      md-input-container
+        label message for employer:
+        input(ng-model="user.title")
+      md-list
+        md-list-item(class="md-3-line")
+          span dupa
+        md-list-item(class="md-3-line")
+          span dupa
+        md-list-item(class="md-3-line")
+          span dupa
+  .md-actions(layout='row')
+    span(flex)
+    md-button.md-primary(ng-click="sendApplicationToEmployer()") Send message
+    md-button.md-warn(ng-click="cancel()" style='margin-right:20px;') Cancel

@@ -1,0 +1,16 @@
+| {{events}}
+div(ng-repeat="specialAction in specialActions" ng-show="events.length == 0" class="btn-group", role="group")
+  button(type="button", class="btn", ng-click="chooseSpecialAction($index)")
+    | {{specialAction}}
+div(ng-repeat="event in events track by $index" ng-show="events.length > 0")
+  div(ng-show="$last")
+    kickoff(ng-show="event.type==='kickoff'" event='event' events='events' status='status' submit='submit')
+    punt(ng-show="event.type==='punt'" event='event' events='events' status='status' submit='submit')
+    recover(ng-show="event.type==='recover'" event='event' events='events' status='status' submit='submit')
+    return(ng-show="event.type==='return'" event='event' events='events' status='status' submit='submit')
+    field-goal(ng-show="event.type==='fieldgoal'" event='event' events='events' status='status' submit='submit')
+    point-after(ng-show="event.type==='pointafter'" event='event' events='events' status='status' submit='submit')
+    tackle(ng-show="event.type==='tackle'" event='event' events='events' status='status' submit='submit')
+    fumble(ng-show="event.type==='fumble'" event='event' events='events' status='status' submit='submit')
+    lateral(ng-show="event.type==='lateral'" event='event' events='events' status='status' submit='submit')
+    penalty(ng-show="event.type === 'penalty'")

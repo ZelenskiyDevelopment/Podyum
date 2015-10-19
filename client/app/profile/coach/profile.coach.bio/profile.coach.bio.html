@@ -1,0 +1,53 @@
+<div>
+  <h4 class="bio-headers">Short bio</h4>
+  <pre>{{user.player.bio}}</pre>
+  <h4 class="bio-headers">Team history</h4>
+
+  <table class="table table-bordered" style="margin-top:20px;">
+    <tr>
+      <th>Team</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Position</th>
+    </tr>
+    <tr ng-repeat="team in myPresentTeams track by $index">
+      <th><a ui-sref="profile.common-story({id: team.user._id})" style="color:#333;">{{team.user.team.name}}</a> <span
+        ng-if="owner._id === user._id"><button class="btn-xs btn-danger"
+                                               ng-click="leave($index, team.user._id, team.dateFrom, team.dateTo, team.position, team.isPresent)">
+        X
+      </button></span></th>
+      <th>{{team.dateFrom | date : 'yyyy-MM'}}</th>
+
+      <th>
+        <div ng-if="!team.isPresent">{{team.dateTo | date : 'yyyy-MM'}}</div>
+        <div ng-if="team.isPresent">Present</div>
+      </th>
+      <th>{{team.position}}</th>
+    </tr>
+    <tr ng-repeat="team in myPastTeams track by $index">
+      <th><a ui-sref="profile.common-story({id: team.user._id})" style="color:#333;">{{team.user.team.name}}</a> <span
+        ng-if="owner._id === user._id"><button class="btn-xs btn-danger"
+                                               ng-click="leave($index, team.user._id, team.dateFrom, team.dateTo, team.position, team.isPresent)">
+        X
+      </button></span></th>
+      <th>{{team.dateFrom | date : 'yyyy-MM'}}</th>
+
+      <th>
+        <div ng-if="!team.isPresent">{{team.dateTo | date : 'yyyy-MM'}}</div>
+        <div ng-if="team.isPresent">Present</div>
+      </th>
+      <th>{{team.position}}</th>
+    </tr>
+  </table>
+  <h4 class="bio-headers">Specific traits</h4>
+  <ul>
+    <li ng-repeat="trait in user.player.traits track by $index">
+      {{trait}}
+      <br>
+      (12345)<span ng-if="user._id === owner._id"><button class="btn-xs btn-danger"
+                                                          ng-click="deleteTrait($index, user.kind)">Delete
+    </button></span>
+      <span ng-if="user._id !== owner._id"><button class="btn-xs endorse-button">+</button></span>
+    </li>
+  </ul>
+</div>

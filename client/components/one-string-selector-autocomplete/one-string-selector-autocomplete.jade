@@ -1,0 +1,10 @@
+div
+  md-autocomplete(
+  ng-show='items.length>0'
+  md-selected-item="model"
+  md-search-text="searchText"
+  md-items="item in querySearch(searchText)"
+  md-item-text="item.name"
+  md-floating-label='{{::label}}')
+    md-item-template
+      span(md-highlight-text="searchText") {{item.name}}

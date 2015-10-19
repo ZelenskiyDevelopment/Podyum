@@ -1,0 +1,37 @@
+<div class="tile publisher" style="margin-bottom: 5px;">
+  <div class="row">
+    <button ngf-select ngf-multiple="true" ngf-change="upload($files)" type="button" class="btn btn-default">
+      <span class="glyphicon glyphicon-picture"></span>
+    </button>
+    <button type="button" class="btn btn-default" ng-click="showAdvanced($event)">
+      <span class="glyphicon glyphicon-film"></span>
+    </button>
+  </div>
+  <div class="row">
+
+    <md-input-container flex>
+      <label>Write something...</label>
+      <textarea ng-model="description"></textarea>
+    </md-input-container>
+  </div>
+  <div>
+    <md-content>
+      <md-chips class="custom-chips" ng-model="chips" placeholder="Content" readonly="true">
+        <md-chip-template>
+          <img class="md-avatar" style="max-height: 30px; max-width: 30px;" ng-src="photos/{{$chip}}">
+
+        </md-chip-template>
+        <button md-chip-remove ng-click="removePhoto($chip)" class="md-primary content-chip">
+          <md-icon md-svg-icon="md-close"></md-icon>
+        </button>
+      </md-chips>
+
+    </md-content>
+
+  </div>
+  <div class="row">
+    <button class="btn btn-default our-button" style="float:right;" ng-disabled="noOfFilesToUpload !== 0" ng-click="createEvent()">
+      Post!
+    </button>
+  </div>
+</div>

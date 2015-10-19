@@ -1,0 +1,31 @@
+md-dialog.create-job-dialog
+  md-toolbar.create-job-title
+    .md-toolbar-tools.col-xs-12
+      h2.col-xs-11 Job details
+      md-button.md-icon-button(ng-click='cancel()' style="float: right")
+        icon.fa.fa-times
+  md-dialog-content
+    md-content(layout-padding)
+      .col-xs-12
+        .col-xs-7
+          h1.md-title {{job.name}}
+          hr
+          p {{job.description}}
+          hr
+        img.col-xs-5.media-object(ng-src="photos/{{job.employer.profilePhoto}}")
+      span Posted:&nbsp
+        i {{prettyJobDate}}
+      hr
+      span payment:&nbsp
+        i.strong {{job.reward}}&nbsp$
+      hr
+      span.team
+        | team:&nbsp
+        i {{job.team}}
+      hr
+      span in:&nbsp
+        i {{job.city}}
+  .md-actions(layout='row')
+    span(flex='')
+    md-button.md-primary(ng-click="applyForJob()") Apply
+    md-button.md-warn(ng-click="cancel()" style='margin-right:20px;') Close

@@ -1,0 +1,99 @@
+<div class="tile" style="margin-bottom: 5px;" >
+  <div ng-if="event.isShared === true">
+    <div class="row">
+      <div class="col-xs-8">
+        <md-list-item>
+          <img ng-src="photos/{{event.author.profilePhoto}}" class="md-avatar" alt=""/>
+
+          <div class="md-list-item-text">
+            <h4><a ui-sref="profile.common-story({id: event.author._id})">{{event.author[event.author.kind].firstName}}
+              {{event.author[event.author.kind].lastName}} {{event.author[event.author.kind].name}}</a> {{sharedEventTitle}}
+            </h4>
+
+
+          </div>
+        </md-list-item>
+      </div>
+      <div class="col-xs-4">
+        <h4>
+          <small>{{targetEvent.date | date : 'hh:mm dd-MM-yyyy'}}</small>
+        </h4>
+      </div>
+    </div>
+    <md-divider></md-divider>
+  </div>
+  <div class="row">
+    <div class="col-xs-8">
+      <md-list-item>
+        <img ng-src="photos/{{targetEvent.author.profilePhoto}}" class="md-avatar" alt=""/>
+
+        <div class="md-list-item-text">
+          <h4><a ui-sref="profile.common-story({id: event.author._id})">{{targetEvent.author[targetEvent.author.kind].firstName}}
+            {{targetEvent.author[targetEvent.author.kind].lastName}} {{targetEvent.author[targetEvent.author.kind].name}}</a> {{targetEvent.title}}
+          </h4>
+
+
+        </div>
+      </md-list-item>
+    </div>
+    <div class="col-xs-4">
+      <h4>
+        <small>{{targetEvent.date | date : 'hh:mm dd-MM-yyyy'}}</small>
+      </h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <md-content>
+        <h4>{{targetEvent.description}}</h4>
+      </md-content>
+
+    </div>
+  </div>
+  <md-divider ng-if="targetEvent.photos.length>0"></md-divider>
+  <div class="row">
+    <div class="col-xs-12">
+      <div ng-repeat="photo in targetEvent.photos">
+        <a href="#" class="thumbnail" ng-click="openGallery(targetEvent.photos, $index)">
+          <img src="/photos/{{photo.photo || photo}}" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
+  <md-divider ng-if="targetEvent.video"></md-divider>
+  <div class="row" ng-if="targetEvent.video">
+    <div class="col-xs-12">
+      <youtube-video video-url="event.video" player-width="'100%'"></youtube-video>
+    </div>
+  </div>
+  <md-divider></md-divider>
+  <div class="row" layout-align="center center">
+    <section layout="row" layout-sm="column" layout-align="center center">
+      <md-button ng-click="sendCongrats()" ng-show="!isLiked && !isMine">Award medal</md-button>
+      <md-button ng-click="share()" ng-show="!isMine">Share</md-button>
+      </section>
+  </div>
+  <md-divider></md-divider>
+  <div ng-show="targetEvent.medals.length>0" class="row" layout-align="center center">
+    <section layout="row" layout-sm="column" layout-align="center center">
+      <img ng-show="targetEvent.medals.length>4" ng-src="assets/images/gold.jpg" style="height:100px;">
+      <img ng-show="targetEvent.medals.length>2 && targetEvent.medals.length<5" ng-src="assets/images/silver.jpg" style="height:100px;">
+      <img ng-show="targetEvent.medals.length<3" ng-src="assets/images/bronze.jpg" style="height:100px;">
+    </section>
+  </div>
+  <md-divider></md-divider>
+  <div class="row" layout-align="center center">
+    <section layout="row" layout-sm="column" layout-align="center center">
+      <div class="col-md-4" ng-show="targetEvent.medals.length>0"><img ng-src="assets/images/medal.png" style="height:40px;"> {{targetEvent.medals.length}} medal<span ng-show="targetEvent.medals.length>1">s</span> awarded</div>
+      <span ng-show="targetEvent.comments.length>0">{{targetEvent.comments.length}} comment<span ng-show="targetEvent.comments.length>1">s</span></span>
+    </section>
+  </div>
+  <md-divider></md-divider>
+  <div class="row">
+    <div class="col-xs-12">
+      <event-comments comments="targetEvent.comments">
+        <event-publisher event-id="targetEvent._id"></event-publisher>
+      </event-comments>
+    </div>
+  </div>
+</div>

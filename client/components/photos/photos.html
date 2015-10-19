@@ -1,0 +1,17 @@
+
+  <div class="row">
+    <div class="row smallerRow">
+      <button ngf-select ngf-multiple="true" ngf-change="upload($files)" type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-picture"></span>
+      </button>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-md-3 galleryPhoto" ng-repeat="photo in photosArray">
+        <div style="margin:15px;">
+          <a href="#" class="thumbnail" ng-click="openGallery($index)">
+            <img src="/photos/{{photo.photo || photo}}" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
