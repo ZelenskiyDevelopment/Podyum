@@ -15,13 +15,14 @@
 
 .navbar-fixed-top {
   top:230px;
-  z-index: 999999;
+
 }
 
 .logo-nav {
   height: 80px;
   border-top:2px solid #f8c637;
   border-bottom:2px solid #f8c637;
+    background: #122429;
 }
 .logo-nav .navbar-brand img {
   margin-top: 0px;
@@ -29,12 +30,18 @@
   height:50px;
 
 }
+.header .navbar-collapse {
+    background: #122429;
+}
 .logout-icon {
   background: url('../../assets/images/logout-icon.png') no-repeat;
   height: 35px;
   width: 32px;
   display: inline-block;
   margin-top: 12px;
+}
+.logout-icon:hover {
+    background: url('../../assets/images/logout-icon-hover.png') no-repeat;
 }
 .message-icon {
   background: url('../../assets/images/message-icon.png') no-repeat;
@@ -59,6 +66,12 @@
   }
 .logo-nav .navbar-form {
   margin-top: 24px;
+    margin-left: 50px;
+}
+.logo-nav .navbar-form input {
+
+    font-family: latothin;
+
 }
 .menu-nav {
   margin-top: 80px;

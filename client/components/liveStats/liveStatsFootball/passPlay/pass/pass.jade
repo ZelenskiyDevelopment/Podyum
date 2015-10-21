@@ -1,7 +1,7 @@
-div PASSER:
-  input(type="number", ng-model="event.data.player")
+div(class="text_play_type")  PASSER:
+  input(type="number", ng-model="event.data.player" class="form-control")
 div(ng-repeat="passAction in passActions" class="btn-group", role="group")
-  button(type="button", class="btn", ng-click="choosePassAction($index)")
+  button(type="button", class="btn btn-warning", ng-click="choosePassAction($index)")
     | {{passAction}}
 .row
   button(class="btn btn-success", ng-show="pass >= 0 && event.data.player > 0", ng-click="next()")

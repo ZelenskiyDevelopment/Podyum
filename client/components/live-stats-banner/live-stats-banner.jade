@@ -6,10 +6,10 @@
         ui-select-choices(repeat='league in leagues')
           div(ng-bind-html='league')
     ul(rn-carousel rn-carousel-controls rn-carousel-auto-slide)
-      li(ng-repeat="gamesGroup in gamesGroups track by $index")
+      li(ng-repeat="gamesGroup in gamesGroups track by $index" )
         .page
           ul.list-inline
-            li(ng-repeat="game in gamesGroup track by $index")
+            li(ng-repeat="game in gamesGroup track by $index" class="col-lg-3")
               live-stats-banner-item(game='game')
 
     live-stats-banner-settings(settings='settings' ng-if='isVisibleSettings')

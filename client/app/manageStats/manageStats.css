@@ -1,0 +1,120 @@
+.manage-section h3, .manage-section h4 {
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-top: 5px;
+    color: #152e34;
+}
+.manage-section h3 {
+    font-family: latoblack;
+}
+.manage-section h4 {
+    font-family: latosemibold;
+}
+.manage-section .command-name {
+    margin-top: 50px;
+}
+.manage-section .rows-section-manage p {
+    text-align: center;
+    color:white;
+    font-family: latomedium;
+    font-size: 18px;
+    padding: 12px 0px 5px 0px;
+}
+.manage-section .rows-section-manage .cols {
+    background:#122429 ;
+    border-left-style: solid;
+    border-left-color: #464f52;
+    border-left-width: 1px;
+    border-top: 2px solid #152e34;
+}
+
+.manage-section .rows-section-manage-text p {
+    text-align: center;
+    color:#122429;
+    font-family: latomedium;
+    font-size: 18px;
+    padding: 12px 0px 5px 0px;
+}
+
+
+.manage-section .rows-section-manage-text .cols {
+
+    border-left-style: solid;
+    border-left-color: #464f52;
+    border-left-width: 1px;
+
+    border-bottom: 1px solid #464f52;
+}
+.manage-section .rows-section-manage-text .cols:first-child {
+    border-left-width: 2px;
+}
+.top-section {
+    border-left-style: solid;
+    border-left-color: #464f52;
+    height: 60px;
+    border-left-width: 2px;
+    border-top: 2px solid #464f52;
+    border-right: 2px solid #464f52;
+}
+.right-section {
+    border-top: 2px solid #464f52;
+    border-right: 2px solid #464f52;
+    border-bottom: 2px solid #464f52;
+    width: 108px;
+    float: left;
+    height: 60px;
+}
+.right-section p {
+    padding: 20px 12px 20px 11px;
+      background-color: #152e34;
+      color:white;
+}
+.manage-section .rows-section-manage-text .cols:last-child {
+    border-right-style: solid;
+    border-right-color: #464f52;
+    border-right-width: 2px;
+    padding: 0px;
+}
+.top-section h3 {
+    font-size: 18px;
+    display: inline-block;
+}
+.top-section h4 {
+
+    display: inline-block;
+}
+.manage-section {
+    padding-bottom: 100px;
+}
+.text-section {
+    height: 26px;
+margin: 15px auto;
+width: 430px;
+}
+.manage-section .button {
+    height: 52px;
+    padding: 16px 0px 0px 24px;
+}
+.manage-section .button p {
+    color: white;
+}
+.manage-section .button {
+    padding:0px;
+    background-color: #152e34;
+}
+.manage-section .button:first-child {
+    border-right-style: solid;
+    border-right-color: #464f52;
+    border-right-width: 1px;
+}
+
+.manage-section .button:hover {
+    cursor: pointer;
+    background-color: #f8c637;
+}
+
+.manage-section   .time-col  ,.manage-section   .logo-col{
+    width: 85px;
+}

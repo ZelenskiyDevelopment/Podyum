@@ -21,7 +21,9 @@ angular.module('abroadathletesApp', [
   'perfect_scrollbar',
   'luegg.directives',
   'cropme',
-  'colorpicker.module'
+  'colorpicker.module',
+   'cgNotify'
+
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider, $mdIconProvider) {
 

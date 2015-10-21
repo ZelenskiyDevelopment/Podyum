@@ -3,24 +3,63 @@
   padding-left:10px;
   padding-right:10px;
   display: inline-block;
-  height: 100px;
-  width:200px;
+  .h4 {
+    font-family: latoregular;
+    font-size: 20px;
+    color:white;
+    text-align: center;
+    padding-top: 20px;
+  }
   h4 {
     margin-top:0;
     margin-bottom:-5px;
     padding-bottom:0;
+    font-family: latoregular;
   }
 
   .team {
     margin-top:0;
     margin-bottom: -7px;
   }
+  .dash {
+    display: inline-block;
+    width: 11px;
+    float: left;
+    position: absolute;
+    margin-top: 50px;
+    color: white;
+    left: 48%;
+    font-size: 28px;
+  }
+  .tooltip-inner {
+    background-color: #1c2529;
+  }
+ .tooltip {
+   &.top {
+    .tooltip-arrow {
+      border-top-color: #1c2529;
+    }
+   }
+ }
+
+
 
   .media {
+
+    .media-body {
+      overflow: visible;
+      padding-top: 15px;
+      color:white;
+    }
     .media-left {
+
       .media-object {
-        width:25px;
-        height:25px;
+        margin: 0px auto;
+        width: 60px;
+        height: 60px;
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }

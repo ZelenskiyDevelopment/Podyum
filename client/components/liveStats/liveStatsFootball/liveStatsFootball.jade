@@ -15,6 +15,8 @@
         | X
   .row
     .col-md-2
+      button(ng-click="show_team()"  class="btn")
+       | test
       div(ng-repeat="player in roster1 track by $index")
         button(class="btn button-roster1-{{roster1Bool[$index]}}", ng-click="fromBench(1,$index)", style="width:100%;")
           | \#{{player.player.number}} {{player.player.firstName}} {{player.player.lastName}}
@@ -26,7 +28,7 @@
             | {{game.data.score1}}
         .col-md-4
            div(class="score")
-            .h1
+            .h1(ng-model="counter")
               | {{counter | timerDisplay}}
         .col-md-4
           div(class="score")
@@ -90,19 +92,20 @@
          div(ng-repeat="play in plays", class="btn-group", role="group")
            button(type="button", class="btn btn-warning" ng-click="choosePlayType($index)")
              | {{play}}
+
   .row
     div(class="col-md-offset-3 col-md-6" style="text-align:center")
       p(class="text play_type")
        | Runner
-
-
 
       run-play(ng-show="playtype === 0" events='events' game='game' submit='submit' swap='swapPossession' team='team' status='status')
       pass-play(ng-show="playtype === 1" events='events' game='game' submit='submit' swap='swapPossession' team='team' status='status')
       special-teams(ng-show="playtype === 2" events='events' game='game' submit='submit' swap='swapPossession' team='team' status='status')
       penalty(ng-show="playtype === 3")
 
-div(ng-repeat="playDesc in playbyplay")
-  | Play \#{{$index+1}}
-  div(ng-repeat="event in playDesc")
-    | {{event | footballDescription}}
+    div(ng-repeat="playDesc in playbyplay")
+      | Play \#{{$index+1}}
+      div(ng-repeat="event in playDesc")
+        | {{event | footballDescription}}
+
+

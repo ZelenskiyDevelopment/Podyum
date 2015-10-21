@@ -1,10 +1,18 @@
-span RUNNER:
-  input(type="number", ng-model="event.data.player")
-span YARDS:
-  input(type="number", ng-model="event.data.gain")
-div(ng-repeat="otherAction in otherActions", class="btn-group", role="group")
-  button(type="button", class="btn", ng-click="chooseOtherAction($index)")
-    | {{otherAction}}
+span(class="text_play_type") TEAM:
+    select(class="form-control" ng-model="event.data.team")
+      option( value="1")
+        | Team 1
+      option(value="2")
+        | Team 2
+span(class="text_play_type") RUNNER:
+  input(type="number", ng-model="event.data.player" class="form-control")
+span(class="text_play_type") YARDS:
+  input(type="number", ng-model="event.data.gain" class="form-control")
+div(class="padding-bottom")
+    span(class="text_play_type") Other Actions
+    div(ng-repeat="otherAction in otherActions", class="btn-group", role="group")
+      button(type="button", class="btn btn-warning", ng-click="chooseOtherAction($index)")
+        | {{otherAction}}
 .row
   button(class="btn btn-success", ng-show="event.data.player > 0", ng-click="next()")
     | NEXT

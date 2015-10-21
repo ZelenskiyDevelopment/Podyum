@@ -11,7 +11,7 @@ angular.module('abroadathletesApp')
         roster1: '=',
         roster2: '='
       },
-      controller: function($scope, $interval, $timeout, User, Game) {
+      controller: function($scope, $interval, $timeout,$filter, User, Game, GameMessage,notify) {
         $scope.active1 = [];
         $scope.active2 = [];
 
@@ -81,7 +81,7 @@ angular.module('abroadathletesApp')
         };
 
         $scope.playbyplay = [];
-
+        var message =  [];
 
          $scope.teamScore = function(team) {
 
@@ -101,7 +101,27 @@ angular.module('abroadathletesApp')
           console.log("submit");
           console.log($scope.events);
           $scope.playbyplay.push($scope.events);
-          console.log($scope.playbyplay);
+
+
+            angular.forEach($scope.events, function(value){
+
+                if ($filter('footballDescription')(value).length > 0){
+                    notify({message:$filter('footballDescription')(value),classes:'alert-success',position:'right'});
+
+                }
+
+
+                GameMessage.AddMessage({message:$filter('footballDescription')(value), id_game: $scope.game._id}).$promise.then(function () {
+                    console.log('yes');
+                });
+
+
+            });
+
+
+
+
+
           if ($scope.events[$scope.events.length - 1].type === "touchdown") {
             if ($scope.events[$scope.events.length - 1].team === 0) {
               $scope.game.data.score1 += 6;
@@ -211,7 +231,7 @@ angular.module('abroadathletesApp')
 
             console.log(Object.size($scope.active1) );
             console.log(Object.size($scope.active2) );
-          if(Object.size($scope.active1) === 5 && Object.size($scope.active2) === 5) {
+         // if(Object.size($scope.active1) === 5 && Object.size($scope.active2) === 5) {
             if (angular.isDefined(stop)) {
               $scope.stopCount();
             }
@@ -226,10 +246,10 @@ angular.module('abroadathletesApp')
                 }
               }, 1000);
             }
-          }
-          else {
-            alert("Not enough players");
-          }
+//          }
+//          else {
+//            alert("Not enough players");
+//          }
         };
 
         $scope.stopCount = function() {
@@ -258,8 +278,12 @@ angular.module('abroadathletesApp')
 
               }
           };
+
+          $scope.show_team = function() {
+              console.log($filter('timerDisplay')($scope.counter));
+          }
           var substitute = function(playerIn, playerOut) {
-              var currentTime = angular.copy($scope.counter + 1200 * (4 - $scope.quart));
+              var currentTime = angular.copy($scope.counter + 900 * (4 - $scope.quart));
               if (playerIn) {
                   $scope.game.lastIn[playerIn._id] = currentTime;
                   console.log($scope.game.lastIn[playerIn._id])
@@ -272,7 +296,7 @@ angular.module('abroadathletesApp')
               Game.postUserData({id: $scope.game._id, data: $scope.game.userData});
           };
         $scope.resetCount = function() {
-          $scope.counter = 1200;
+          $scope.counter = 900;
           if($scope.status.quart !== 4) {
             $scope.status.quart += 1;
           }

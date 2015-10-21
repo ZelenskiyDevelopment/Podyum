@@ -57,6 +57,7 @@ angular.module('abroadathletesApp')
               $scope.events.push({team:$scope.event.team, type:"penalty", data:{player:$scope.event.data.player}});
               $scope.penalty = false;
             }
+
             if($scope.touchdown) {
               $scope.events.push({team:$scope.event.team, type:"touchdown", data:{player:$scope.event.data.player}})
               $scope.submit();
@@ -81,6 +82,7 @@ angular.module('abroadathletesApp')
               $scope.events.push({team:1-$scope.event.team, type:"tackle", data:{}});
             }
           }
+          console.log($scope.events);
         };
       },
       link: function (scope, element, attrs) {
