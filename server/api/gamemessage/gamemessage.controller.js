@@ -6,8 +6,6 @@ var GameMessage = require('./gamemessage.model');
 
 exports.show = function (req, res) {
 
-    console.log();
-
     var data = req.body;
 
     var NewGameMessage = GameMessage({

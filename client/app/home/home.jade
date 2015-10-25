@@ -38,6 +38,7 @@
         a.btn.btn-default(ui-sref='manageStats') Manage Stats
         button.btn.btn-default(type='button') Fan
         button.btn.btn-default(type='button', ng-click='changeMembership()') Change membership
+        a.btn.btn-default(ui-sref='manageSubscription') Change Subscription
         div(ng-show="user.role === 'free'") You are free user
         div(ng-show="user.role === 'premium'") You are premium user
     .col-md-9(ui-view='')
