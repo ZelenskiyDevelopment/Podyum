@@ -1,0 +1,31 @@
+.button-roster1-false {
+  background: #ff8000;
+  border-color: #e27100;
+  color: #fff;
+}
+
+.button-roster1-true {
+  background: #f2e0cd;
+  border-color: #e27100;
+}
+
+.button-roster2-false {
+  background: #0080ff;
+  border-color: #006bd6;
+  color: #fff;
+}
+
+.button-roster2-true {
+  background: #cde0f2;
+  border-color: #006bd6;
+}
+
+.button-action-true {
+  background: #FFF;
+  border-color: #000;
+}
+
+.button-action-false {
+  background: #e6e6e6;
+  border-color: #000;
+}

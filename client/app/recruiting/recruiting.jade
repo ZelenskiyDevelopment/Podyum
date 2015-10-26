@@ -1,0 +1,42 @@
+navigationbar(user="user")
+.recruiting.col-md-10.col-md-offset-1
+  .row.md-whiteframe-z1 
+    .col-md-6.col-sm-12
+      md-input-container
+        label Type of user  
+        md-select(ng-model="filtering.kind")
+          md-option(
+            ng-repeat="kind in kinds" 
+            value="{{kind}}") {{kind}}
+    .col-md-6.col-sm-12
+      md-input-container
+        label Select sport
+        md-select(
+          ng-model="filtering.sport" 
+          ng-disabled="!filtering.kind || filtering.kind === 'Coach'") 
+          md-option(
+            ng-repeat="sport in sports" 
+            value="{{sport}}") {{sport}}
+  br
+  .row.md-whiteframe-z1 
+    .col-md-3.col-sm-12 
+      recruiting-filtering(
+        experiences="experiences" 
+        positions="positions"
+        filtering="filtering")
+    .col-md-9.col-sm-12
+      recruiting-result(people="result")
+      .alert.alert-danger(
+        role="alert" 
+        ng-if="!loading && filtering.kind && result.length === 0") 
+          | Sorry, there are no matching users
+      div(
+        ng-if="loading"
+        layout="row" 
+        layout-sm="column" 
+        layout-align="space-around")
+        md-progress-circular(md-mode="indeterminate")
+      .row.load-more(
+        ng-if="!loading && more"
+        ng-click="loadMore()")
+        md-button.md-primary() Load more

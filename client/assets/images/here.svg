@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="500"
+   height="100"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="Rysunek1.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.3220442"
+     inkscape:cx="261.82218"
+     inkscape:cy="57.414509"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     borderlayer="true"
+     inkscape:snap-global="true"
+     inkscape:snap-bbox="false"
+     inkscape:snap-to-guides="false"
+     inkscape:snap-grids="false"
+     inkscape:snap-nodes="false"
+     inkscape:window-width="1855"
+     inkscape:window-height="1056"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-952.36218)">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2993"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#a0a0a0;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="matrix(0.85563669,0,0,0.57291912,-20.030407,424.08571)"><flowRegion
+         id="flowRegion2995"><rect
+           id="rect2997"
+           width="894.28571"
+           height="151.42857"
+           x="-1771.4286"
+           y="-396.20926"
+           style="fill:#a0a0a0;fill-opacity:1;stroke:none" /></flowRegion><flowPara
+         id="flowPara2999" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3106"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#a0a0a0;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="matrix(0.85563669,0,0,0.57291912,-20.030407,424.08571)"><flowRegion
+         id="flowRegion3108"><rect
+           id="rect3110"
+           width="631.42859"
+           height="471.42856"
+           x="-331.42856"
+           y="-227.63782"
+           style="fill:#a0a0a0;fill-opacity:1;stroke:none" /></flowRegion><flowPara
+         id="flowPara3112" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3122"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:tb-rl;fill:#a0a0a0;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="matrix(0.85563669,0,0,0.57291912,-20.030407,424.08571)"><flowRegion
+         id="flowRegion3124"><rect
+           id="rect3126"
+           width="22.857143"
+           height="74.285713"
+           x="734.28571"
+           y="1029.505"
+           style="writing-mode:tb-rl;fill:#a0a0a0;fill-opacity:1;stroke:none" /></flowRegion><flowPara
+         id="flowPara3128" /></flowRoot>    <text
+       xml:space="preserve"
+       style="font-size:9.05304909px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#a0a0a0;fill-opacity:1;stroke:none;font-family:Sans"
+       x="251.92491"
+       y="996.3205"
+       id="text3137"
+       sodipodi:linespacing="125%"
+       transform="scale(0.99329162,1.0067537)"><tspan
+         sodipodi:role="line"
+         x="251.92491"
+         y="996.3205"
+         id="tspan3141">Drop your photo here!</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3145"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#a0a0a0;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="matrix(0.93433948,0,0,0.87224,12.96989,128.76744)"><flowRegion
+         id="flowRegion3147"><rect
+           id="rect3149"
+           width="672"
+           height="199"
+           x="-190"
+           y="-205"
+           style="fill:#a0a0a0;fill-opacity:1;stroke:none" /></flowRegion><flowPara
+         id="flowPara3151" /></flowRoot>  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Warstwa"
+     transform="translate(0,-952.36218)" />
+</svg>

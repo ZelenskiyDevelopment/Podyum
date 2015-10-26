@@ -1,0 +1,309 @@
+<div>
+  <div class="modal-header">
+    <button ng-if="modal.dismissable" type="button" ng-click="$dismiss()" class="close">&times;</button>
+    <h4 ng-if="modal.title" ng-bind="modal.title" class="modal-title"></h4>
+  </div>
+  <div class="modal-body">
+    <div ng-switch="user.kind">
+      <div ng-switch-when="league">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Name:</p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.league.name">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> City: </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.league.city">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-switch-when="team">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Name:</p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.team.name">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Short:</p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.team.short">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> City: </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.team.city">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-switch-when="fan">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Name:</p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.fan.firstName">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> City: </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.fan.lastName">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Hometown:</p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.fan.hometown">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Height </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.fan.height">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Weight </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.fan.weight">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Age </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.fan.age">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-switch-when="player">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> First name:</p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.player.firstName">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Last name:</p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.player.lastName">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Position:</p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.player.position">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Hometown:</p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.player.hometown">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Height </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.player.height">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Weight </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.player.weight">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Age </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.player.age">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Experience </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.player.experience">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> College </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.player.college">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Player number </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.player.number">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Short bio </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <textarea class="form-control" ng-model="user.player.bio" style="width:100%; height:100px;"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Traits </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <div ng-repeat="trait in user.player.traits track by $index">
+                <input type="text" class="form-control" ng-model="user.player.traits[$index]">
+              </div>
+              <button class="btn" ng-click="addTrait()">New trait</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-switch-when="coach">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> First name:</p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.coach.firstName">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Last name: </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.coach.lastName">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Coach type: </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.coach.position">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Specialty: </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.coach.specialty">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Experience: </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.coach.experience">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Past teams: </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.coach.pastTeams">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Looking for team: </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <input type="text" class="form-control" ng-model="user.coach.isLookingFor">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Short bio </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <textarea class="form-control" ng-model="user.coach.bio" style="width:100%; height:100px;"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+              <p> Traits </p>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-9">
+              <div ng-repeat="trait in user.coach.traits track by $index">
+                <input type="text" class="form-control" ng-model="user.coach.traits[$index]">
+              </div>
+              <button class="btn" ng-click="addTrait()">New trait</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8 col-xs-12"
+         style="padding: 20px; margin-top:20px; background-image:url(assets/images/here.svg); background-position: center center; background-size:cover; border-width:thin; border-style: dashed; border-color:green">
+      <div ngf-drop ng-model="files" class="drop-box" style="min-height: 100px; text-align: center"
+           ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
+           ngf-accept="'.jpg,.png'"></div>
+    </div>
+    <div class="col-sm-4 col-xs-12" style="margin-top:17px; margin-bottom:10px;">
+      <img ng-if="files[0]" ngf-thumbnail="files[0]" class="img-rounded"
+           style="width: 100px !important;height: 100px !important;">
+      <img ng-if="!files[0]" src="photos/{{user.profilePhoto}}" class="img-rounded"
+           style="width: 100px !important;height: 100px !important;">
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-default our-button" ng-click="submit($event)">Save</button>
+  <button ng-class="modal.buttons[1].classes" ng-click="modal.buttons[1].click($event)" ng-bind="modal.buttons[1].text"
+          class="btn"></button>
+</div>

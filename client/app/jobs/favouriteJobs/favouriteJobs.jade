@@ -1,0 +1,5 @@
+md-grid-tile-header
+  header-with-toggle(label="Favourite jobs" is-expanded='isFavouriteOpen' on-toggle='onFavouriteChange')
+span(ng-if="!favouriteJobs.length") Not quite ready to apply for a position? Favourite jobs appears here
+.jobs-list.favourite-jobs-list(ng-if="favouriteJobs.length")
+  job(ng-repeat='job in favouriteJobs')

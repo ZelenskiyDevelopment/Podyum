@@ -1,0 +1,10 @@
+<div focusable-popover="">
+  <div ng-repeat="notification in newNotifications">
+    <notification type="notification.kind" data="notification.data"/>
+  </div>
+  <div ng-repeat="notification in notifications">
+    <notification type="notification.kind" data="notification.data"/>
+  </div>
+  <div ng-hide="newNotifications.length + notifications.length">You have no notifications.</div>
+</div>
+

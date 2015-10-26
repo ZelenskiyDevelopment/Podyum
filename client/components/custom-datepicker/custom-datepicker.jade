@@ -1,0 +1,6 @@
+.custom-datepicker
+  p.input-group
+    input.form-control(ng-disabled='isDisabled' type='month' datepicker-popup='' ng-model='model' is-open='opened' min-date='minDate' max-date='maxDate' datepicker-options='dateOptions' date-disabled='disabled(date, mode)' ng-required='true' close-text='OK' current-text='Today')
+    span.input-group-btn
+      button.btn.btn-default(type='button' ng-click='open($event)' ng-disabled='isDisabled')
+        i.glyphicon.glyphicon-calendar

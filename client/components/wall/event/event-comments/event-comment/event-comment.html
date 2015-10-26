@@ -1,0 +1,7 @@
+<md-list-item class="md-2-line">
+  <img ng-src="photos/{{comment.author.profilePhoto}}" class="md-avatar" alt="" />
+  <div class="md-list-item-text">
+    <h3><a ui-sref="profile.common-story({id: comment.author._id})">{{comment.author[comment.author.kind].firstName}} {{comment.author[comment.author.kind].lastName}} {{comment.author[comment.author.kind].name}}</a> <small>{{comment.date | date : 'hh:mm dd-MM-yyyy'}}</small></h3>
+    <p>{{comment.comment}}</p>
+  </div>
+</md-list-item>

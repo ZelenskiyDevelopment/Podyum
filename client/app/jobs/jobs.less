@@ -1,0 +1,57 @@
+@tileHeaderHeight: 60px;
+
+md-grid-list {
+  margin: 8px;
+  md-grid-tile-header>figcaption{
+    width: 100%;
+    .tile-toggler-icon{
+      float: right;
+      padding-right: 2em;
+    }
+    span {
+      padding-left: 2em;
+      color: white !important;
+    }
+  }
+  md-grid-tile-header ~ *{
+    margin-top: @tileHeaderHeight;
+  }
+  md-grid-tile-header {
+    z-index: 1;
+  }
+  md-grid-tile {
+    transition: all 400ms ease-out 50ms;
+    overflow: auto;
+    span {
+      color: grey;
+    }
+    create-job{
+      button{
+        margin-top: @tileHeaderHeight;
+      }
+    }
+
+    jobs-searcher{
+      width: 80%;
+      margin-top: @tileHeaderHeight;
+    }
+
+    .jobs-list {
+      padding: 3em;
+      width: 100%;
+    }
+  }
+
+}
+.gray {
+  background: #f5f5f5; }
+.green {
+  background: #b9f6ca; }
+.yellow {
+  background: #ffff8d; }
+.blue {
+  background: #84ffff; }
+.purple {
+  background: #b388ff; }
+.red {
+  background: #ff8a80; }

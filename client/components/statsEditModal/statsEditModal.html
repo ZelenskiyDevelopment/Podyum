@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <button ng-if="modal.dismissable" type="button" ng-click="$dismiss()" class="close">&times;</button>
+  <h4 ng-if="modal.title" ng-bind="modal.title" class="modal-title"></h4>
+</div>
+<div class="modal-body">
+  <div ng-controller="StatsEditModalCtrl">
+    <div ng-switch="data.sport">
+      <div ng-switch-when="football">
+        <div ng-include="'components/statsEditModal/statsEditModalFootball.html'"></div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <!--<button class="btn btn-success" ng-click="submit($event)">Save</button>-->
+    <button ng-class="modal.buttons[0].classes" ng-click="modal.buttons[0].click($event, statsData)"
+            ng-bind="modal.buttons[0].text" class="btn"></button>
+
+    <button ng-class="modal.buttons[1].classes" ng-click="modal.buttons[1].click($event)"
+            ng-bind="modal.buttons[1].text" class="btn"></button>
+  </div>
+</div>

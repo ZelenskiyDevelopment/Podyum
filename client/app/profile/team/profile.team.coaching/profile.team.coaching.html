@@ -1,0 +1,21 @@
+<div>
+  <table class="table table-bordered">
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Specialty</th>
+      <th>Experience</th>
+      <th>Past teams</th>
+    </tr>
+    <tr ng-repeat="member in coaches">
+      <th>
+        <a ui-sref="profile.common-story({id: member.user._id})" style="color:#333;">{{member.user.coach.firstName}}
+          {{member.user.coach.lastName}}</a>
+      </th>
+      <th>{{member.user.coach.position}}</th>
+      <th>{{member.user.coach.specialty}}</th>
+      <th>{{member.user.coach.experience}}</th>
+      <th>{{member.user.coach.pastTeams}}</th>
+    </tr>
+  </table>
+</div>

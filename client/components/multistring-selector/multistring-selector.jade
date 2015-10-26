@@ -1,0 +1,10 @@
+.div(layout='column')
+  md-content(layout='column').md-padding.autocomplete
+    md-chips(ng-model='model' md-require-match='true')
+      md-autocomplete(
+      md-search-text='searchText'
+      md-items='item in querySearch(searchText)'
+      md-item-text='item.name'
+      placeholder='{{::label}}')
+        span(md-highlight-text='searchText') {{item.name}}
+      md-chip-template {{$chip.name}}

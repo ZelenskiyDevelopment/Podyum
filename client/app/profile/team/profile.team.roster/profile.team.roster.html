@@ -1,0 +1,25 @@
+<div ng-repeat="member in players">
+</div>
+<div>
+  <table class="table table-bordered">
+    <tr>
+      <th>No.</th>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Experience</th>
+      <th>Height</th>
+      <th>Weight</th>
+      <th>Hometown</th>
+    </tr>
+    <tr ng-repeat="member in players">
+      <th>{{member.user.player.number}}</th>
+      <th><a ui-sref="profile.common-story({id: member.user._id})" style="color:#333;">{{member.user.player.firstName}}
+        {{member.user.player.lastName}}</a></th>
+      <th>{{member.user.player.position}}</th>
+      <th>{{member.user.player.experience}}</th>
+      <th>{{member.user.player.height}}</th>
+      <th>{{member.user.player.weight}}</th>
+      <th>{{member.user.player.hometown}}</th>
+    </tr>
+  </table>
+</div>

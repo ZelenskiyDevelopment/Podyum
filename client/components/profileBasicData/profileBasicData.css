@@ -1,0 +1,126 @@
+.player-logo {
+	background: url(../img/logo-bg.png) no-repeat top center;
+	margin: 45px 0 25px;
+	text-align: center;
+}
+
+.player-logo {
+	background: url(../img/logo-bg.png) no-repeat top center;
+	margin: 45px 0 25px;
+	text-align: center;
+}
+
+.player-data, .plater-facts {
+	margin-left: 30%;
+}
+
+.player-data .left-col {
+	font-weight: 700;
+}
+
+.player-data p {
+	margin: 0;
+}
+
+.player-links {
+	text-align: center;
+}
+
+	.player-links button {
+		width: 147px;
+		padding: 13px 0;
+		background: #fac553;
+		font-family: 'aileronregular';
+		font-size: 15px;
+		text-transform: uppercase;
+		color: #85641c;
+		margin-bottom: 25px;
+		border: 0;
+		border-radius: 3px;
+	}
+
+	.player-links button:hover {
+		background: #f39c12;
+		color: #ffffff;
+	}
+
+	.player-links .send-message-modal {
+		display: inline;
+	}
+
+	.player-links button:first-child {
+		margin-left: -10px;
+		margin-right: 15px;
+	}
+
+.player-data {
+	margin-top: 10px;
+}
+
+.player-position {
+	margin: 17px 0 30px;
+}
+
+	.player-position img {
+		float: left;
+		margin-left: 20px;
+	}
+
+	.player-position p {
+		font-family: 'aileronheavy';
+		margin-left: 80px;
+		line-height: 0.5;
+	}
+
+	.player-position .position {
+		font-size: 20px;
+	}
+
+	.player-position .team {
+		font-size: 15px;
+	}
+
+.player-data h2 {
+	font-family: 'aileronheavy';
+	font-size: 30px;
+}
+
+.player-facts {
+	font-family: 'aileronlight';
+	font-size: 14px;
+	margin-bottom: 15px;
+}
+
+	.player-facts td:nth-child(odd) {
+		font-family: 'aileronregular';
+		width: 48%;
+	}
+
+.fans,
+.friends {
+	font-family: 'montserratregular';
+	font-size: 14px;
+	padding: 10px 25px;
+	border-radius: 10%/50%;
+}
+
+.fans span,
+.friends span {
+	font-family: 'montserratbold';
+	font-size: 18px;
+	color: #fac553;
+}
+
+.fans {
+	background: #f8f8f8 url(../img/fans.png) no-repeat 10% center;
+	width: 45%;
+	float: left;
+	padding-left: 75px;
+	margin: 0 10px 0 35px; 
+}
+
+.friends {
+	background: #f8f8f8 url(../img/fans.png) no-repeat 90% center;
+	width: 45%;
+	float: left;
+}

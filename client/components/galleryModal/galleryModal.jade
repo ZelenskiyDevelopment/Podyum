@@ -1,0 +1,43 @@
+.galleryModal
+    .modal-header
+        h5 Photo preview
+    .modal-body(ng-controller='galleryModal')
+        .row
+            .col-md-8.galleryModalLowMargin
+                .row.slider
+                    // enumerate all photos
+                    img.slide(ng-repeat='photo in photos', ng-swipe-right='showPrev()', ng-swipe-left='showNext()', ng-show='isActive($index)', ng-src='photos/{{photo.photo || photo}}')
+                    // prev / next controls
+                    a.arrow.prev(href='#', ng-click='showPrev()')
+                    a.arrow.next(href='#', ng-click='showNext()')
+                .row
+                    .col-md-1
+                    .col-md-11
+                        .row
+                            button.btn.btn-default(ng-click='awardWithMedal()', ng-show='canAddMedal()')
+                                | Award with medal
+                            button.btn.btn-default(ng-click='showPeopleWhoAwarded()')
+                                | Show people who awarded this photo
+                            //.row(ng-show='photos[_Index].medals.length>0')
+                            img(ng-show='photos[_Index].medals.length>4', ng-src='assets/images/gold.jpg', style='height:80px;')
+                            img(ng-show='photos[_Index].medals.length>2 && photos[_Index].medals.length<5', ng-src='assets/images/silver.jpg', style='height:80px;')
+                            img(ng-show='photos[_Index].medals.length<3', ng-src='assets/images/bronze.jpg', style='height:80px;')
+                            |{{photos[_Index].medals.length}} medals
+            .col-md-4
+                    .row
+                        .commentsBox(scroll-glue='glued')
+                            .row(ng-repeat='comment in photos[_Index].comments')
+                                a(ui-sref='profile.common-story({id:comment.author})', ng-click='$dismiss()')
+                                    img.galleryModalProfilePhoto(ng-src='photos/{{comment.author.profilePhoto}}')
+                                    b.galleryComment
+                                        | {{comment.author[comment.author.kind].firstName}} {{comment.author[comment.author.kind].lastName}}
+                                        | {{comment.date|date:'yyyy-MM-dd HH:mm'}}:
+                                .row
+                                    .col-md-1
+                                    .col-md-11.galleryModalTextLeftMargin
+                                        p {{comment.comment}} <span ng-click="deleteComment(comment)" ng-show="comment.author._id == currentUser._id" class="glyphicon glyphicon-remove"></span>
+
+                            | {{photos[_Index].comments.length}} comments
+                    .row
+                        gallery-publisher(current-photo='photos[_Index]', comment-author='currentUser')
+    .modal-footer

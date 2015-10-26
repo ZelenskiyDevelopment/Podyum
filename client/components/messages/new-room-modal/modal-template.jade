@@ -1,0 +1,18 @@
+md-dialog(aria-label='Share video' flex='50')
+  form
+    md-toolbar
+      .md-toolbar-tools
+        h2 Add new room
+        span(flex)
+        md-button(ng-click='cancel()').md-icon-button
+          md-icon(md-svg-src='assets/images/ic_close_24px.svg' aria-label='Close dialog')
+    md-dialog-content
+      .md-padding
+        md-input-container(flex)
+          label Title
+          input(ng-model='room.title')
+      members-selector(selected-users='room.members')
+    .md-actions(layout='row')
+      span(flex)
+      md-button(ng-disabled='_.isEmpty(room.title) || _.isEmpty(room.members)' ng-click='answer(room)').md-primary Save
+      md-button(ng-click='cancel()').md-primary Cancel

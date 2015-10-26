@@ -1,0 +1,28 @@
+md-dialog(aria-label='Members list' flex='30')
+  form
+    md-toolbar
+      .md-toolbar-tools
+        h2 Live stats banner settings
+        span(flex)
+        md-button(ng-click='cancel()').md-icon-button
+          md-icon(md-svg-src='assets/images/ic_close_24px.svg' aria-label='Close dialog')
+    md-dialog-content
+      .md-padding
+        md-list
+          md-subheader.md-no-sticky Me
+            span.pull-right Is visible?
+          md-list-item
+            p Only my games
+            md-switch(ng-model='settings.myGames' aria-label='Only my games?' ng-true-value='true' ng-false-value='false').md-warn.md-secondary
+          md-subheader.md-no-sticky My friends
+          md-list-item
+            p My friends games
+            md-switch(ng-disabled='settings.myGames' ng-model='settings.myFriendsGames' aria-label='My friends games?' ng-true-value='true' ng-false-value='false').md-warn.md-secondary
+          md-subheader.md-no-sticky My follows
+          md-list-item
+            p My follows games
+            md-switch(ng-disabled='settings.myGames' ng-model='settings.myFollowsGames' aria-label='My follows games?' ng-true-value='true' ng-false-value='false').md-warn.md-secondary
+    .md-actions(layout='row')
+      span(flex)
+      md-button(ng-click='answer(settings)').md-primary Save!
+      md-button(ng-click='cancel()').md-primary Cancel

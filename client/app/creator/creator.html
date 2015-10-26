@@ -1,0 +1,242 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+
+<div class="row" style="margin-top: 50px;">
+  <div class="col-md-2 col-sm-1"></div>
+  <div class="col-md-8 col-sm-10 col-xs-12 creator-background">
+    <div id="form-container">
+      <div class="page-header text-center">
+
+        <md-progress-linear md-mode="determinate" value="{{progressValue}}"></md-progress-linear>
+        <h1 ng-show="beginCreating()" style="margin-bottom: 30px; font-size: 40px; font-family: 'Oswald', sans-serif;">Welcome to Podyum!</h1>
+        <div class="form-group row">
+          <div class="col-md-4 col-sm-3 col-xs-2"></div>
+          <div class="col-md-4 col-sm-6 col-xs-8" ng-show="beginCreating()">
+            <a ui-sref="creator.type"><md-button class="create-button" ng-click="changeProgress(20)">
+              Create your profile<!--<span class="glyphicon glyphicon-circle-arrow-right"></span> --> </md-button>
+            </a>
+          </div>
+          <div class="col-md-4 col-sm-3 col-xs-2"></div>
+        </div>
+      </div>
+
+      <form id="signup-form" ng-submit="processForm()">
+        <div id="form-views" ui-view></div>
+      </form>
+    </div>
+
+    <pre>
+      {{ formData }}
+    </pre>
+  </div>
+  <div class="col-md-2 col-sm-1"></div>
+</div>
+</div>
+
+
+
+<!--<div class="container" style="margin-top:220px">
+  <div class="col-md-12 col-xs-12" style="background-color: #FFFFFF; padding:20px;">
+    <div class="row" style="text-align: center;">
+      <h1>Welcome to Abroad Athletes!</h1>
+
+      <h2>This creator will help you complete your profile.</h2>
+    </div>
+    <div class="row" style="text-align: center">
+      <h3>Select the type of your profile:</h3>
+      <label class="radio-inline"><input type="radio" name="optradio" ng-model="user.kind" value="player"
+                                         ng-change="changeKind('player')">Player</label>
+      <label class="radio-inline"><input type="radio" name="optradio" ng-model="user.kind" value="coach"
+                                         ng-change="changeKind('coach')">Coach</label>
+      <label class="radio-inline"><input type="radio" name="optradio" ng-model="user.kind" value="team"
+                                         ng-change="changeKind('team')">Team</label>
+      <label class="radio-inline"><input type="radio" name="optradio" ng-model="user.kind" value="league"
+                                         ng-change="changeKind('league')">League</label>
+      <label class="radio-inline"><input type="radio" name="optradio" ng-model="user.kind" value="fan"
+                                         ng-change="changeKind('fan')">Fan</label>
+    </div>
+    <div class="col-sm-4 col-xs-12" style="margin-top:20px;">
+      <button ngf-select ngf-multiple="true" ng-model="files" type="button" class="btn btn-success">Browse</button>
+    </div>
+    <div class="row">
+    <div class="col-sm-8 col-xs-12" style="padding: 20px; margin-top:20px; background-image:url(assets/images/here.svg); background-position: center center; background-size:cover; border-width:thin; border-style: dashed; border-color:green">
+      <div ngf-drop ng-model="files" class="drop-box" style="min-height: 100px; text-align: center"
+           ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
+           ngf-accept="'.jpg,.png'"></div>
+    </div>
+
+    <div class="col-sm-4 col-xs-12" style="margin-top:20px;"><img ng-if="files[0]" ngf-thumbnail="files[0]" class="img-rounded" style="max-width: 200px !important;max-height: 200px !important;"></div>
+    </div>
+
+    <div class="row" style="text-align: center;">
+      <div ng-if="kind === 'player' || kind === 'coach' || kind === 'fan'" class="animate-if">
+        <div class="form-group">
+          <h3>Put your first and last name:</h3>
+          <input type="text" class="form-inline" id="firstName" ng-model="user[kind].firstName"
+                 placeholder="first name"/>
+          <input type="text" class="form-inline" id="lastName" ng-model="user[kind].lastName" placeholder="last name"/>
+        </div>
+      </div>
+
+      <div ng-if="kind === 'team' || kind === 'league'" class="animate-if">
+        <div class="form-group" style="text-align: center;">
+          <h3>Put name of {{kind}}:</h3>
+          <input type="text" class="form-inline" id="name" ng-model="user[kind].name" placeholder="name of {{kind}}"/>
+        </div>
+        <div class="form-group" ng-if="user[kind].name.length>0">
+          <label for="sel1">Select sport:</label>
+          <select class="form-control" id="sel1" ng-model="user.sport">
+            <option ng-repeat="sport in sports" value="{{sport}}">{{sport}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row animate-if" ng-if="user[kind].firstName && user[kind].lastName && kind === 'player'">
+      <div class="form-group" style="text-align: center; padding: 5px;">
+        <h3>Put specific data for {{kind}} profile:</h3>
+
+        <div class="col-sm-6 col-xs-12">
+          <input type="text" class="form-control" id="pheight" ng-model="user[kind].height" placeholder="height"/>
+          <input type="text" class="form-control" id="pweight" ng-model="user[kind].weight" placeholder="weight"/>
+        </div>
+        <div class="col-sm-6 col-xs-12">
+          <input type="text" class="form-control" id="pcity" ng-model="user[kind].hometown" placeholder="hometown"/>
+          <input type="date" class="form-control" id="pbirth" ng-model="user[kind].birth" placeholder="date of birth (yyyy-MM-dd)"/>
+        </div>
+        <div class="col-sm-6 col-sm-offset-3 col-xs-12" style="margin-top:15px;">
+          <label>Experience level</label>
+          <select class="form-control" id="exp" ng-model="user[kind].experience" placeholder="experience">
+            <option ng-repeat="experience in experiences" value="{{experience}}">{{experience}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row animate-if" ng-if="user[kind].firstName && user[kind].lastName && kind === 'coach'">
+      <div class="form-group" style="text-align: center; padding: 5px;">
+        <h3>Put specific data for {{kind}} profile:</h3>
+
+        <div class="col-sm-6 col-xs-12">
+          <input type="text" class="form-control" id="cbirth" ng-model="user[kind].age" placeholder="age"/>
+          <input type="text" class="form-control" id="cspecialty" ng-model="user[kind].specialty" placeholder="specialty"/>
+
+        </div>
+        <div class="col-sm-6 col-xs-12">
+          <input type="text" class="form-control" id="cexp" ng-model="user[kind].experience" placeholder="experience"/>
+          <input type="text" class="form-control" id="cislookingfor" ng-model="user[kind].isLookingFor" placeholder="looking for team?"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row animate-if" ng-if="check()">
+      <div class="form-group" style="text-align: center; padding: 5px;">
+        <button class="btn btn-success" ng-click="submit()">Get started!</button>
+      </div>
+    </div>
+  </div>
+</div>  -->
+
+
+
+
+<!--<div class="container" style="margin-top:220px">
+  <div class="col-md-12 col-xs-12" style="background-color: #FFFFFF; padding:20px;">
+    <div class="row" style="text-align: center;">
+      <h1>Welcome to Abroad Athletes!</h1>
+
+      <h2>This creator will help you complete your profile.</h2>
+    </div>
+    <div class="row" style="text-align: center">
+      <h3>Select the type of your profile:</h3>
+      <label class="radio-inline"><input type="radio" name="optradio" ng-model="user.kind" value="player"
+                                         ng-change="changeKind('player')">Player</label>
+      <label class="radio-inline"><input type="radio" name="optradio" ng-model="user.kind" value="coach"
+                                         ng-change="changeKind('coach')">Coach</label>
+      <label class="radio-inline"><input type="radio" name="optradio" ng-model="user.kind" value="team"
+                                         ng-change="changeKind('team')">Team</label>
+      <label class="radio-inline"><input type="radio" name="optradio" ng-model="user.kind" value="league"
+                                         ng-change="changeKind('league')">League</label>
+      <label class="radio-inline"><input type="radio" name="optradio" ng-model="user.kind" value="fan"
+                                         ng-change="changeKind('fan')">Fan</label>
+    </div>
+    <div class="col-sm-4 col-xs-12" style="margin-top:20px;">
+      <button ngf-select ngf-multiple="true" ng-model="files" type="button" class="btn btn-success">Browse</button>
+    </div>
+    <div class="row">
+    <div class="col-sm-8 col-xs-12" style="padding: 20px; margin-top:20px; background-image:url(assets/images/here.svg); background-position: center center; background-size:cover; border-width:thin; border-style: dashed; border-color:green">
+      <div ngf-drop ng-model="files" class="drop-box" style="min-height: 100px; text-align: center"
+           ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
+           ngf-accept="'.jpg,.png'"></div>
+    </div>
+
+    <div class="col-sm-4 col-xs-12" style="margin-top:20px;"><img ng-if="files[0]" ngf-thumbnail="files[0]" class="img-rounded" style="max-width: 200px !important;max-height: 200px !important;"></div>
+    </div>
+
+    <div class="row" style="text-align: center;">
+      <div ng-if="kind === 'player' || kind === 'coach' || kind === 'fan'" class="animate-if">
+        <div class="form-group">
+          <h3>Put your first and last name:</h3>
+          <input type="text" class="form-inline" id="firstName" ng-model="user[kind].firstName"
+                 placeholder="first name"/>
+          <input type="text" class="form-inline" id="lastName" ng-model="user[kind].lastName" placeholder="last name"/>
+        </div>
+      </div>
+
+      <div ng-if="kind === 'team' || kind === 'league'" class="animate-if">
+        <div class="form-group" style="text-align: center;">
+          <h3>Put name of {{kind}}:</h3>
+          <input type="text" class="form-inline" id="name" ng-model="user[kind].name" placeholder="name of {{kind}}"/>
+        </div>
+        <div class="form-group" ng-if="user[kind].name.length>0">
+          <label for="sel1">Select sport:</label>
+          <select class="form-control" id="sel1" ng-model="user.sport">
+            <option ng-repeat="sport in sports" value="{{sport}}">{{sport}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row animate-if" ng-if="user[kind].firstName && user[kind].lastName && kind === 'player'">
+      <div class="form-group" style="text-align: center; padding: 5px;">
+        <h3>Put specific data for {{kind}} profile:</h3>
+
+        <div class="col-sm-6 col-xs-12">
+          <input type="text" class="form-control" id="pheight" ng-model="user[kind].height" placeholder="height"/>
+          <input type="text" class="form-control" id="pweight" ng-model="user[kind].weight" placeholder="weight"/>
+        </div>
+        <div class="col-sm-6 col-xs-12">
+          <input type="text" class="form-control" id="pcity" ng-model="user[kind].hometown" placeholder="hometown"/>
+          <input type="date" class="form-control" id="pbirth" ng-model="user[kind].birth" placeholder="date of birth (yyyy-MM-dd)"/>
+        </div>
+        <div class="col-sm-6 col-sm-offset-3 col-xs-12" style="margin-top:15px;">
+          <label>Experience level</label>
+          <select class="form-control" id="exp" ng-model="user[kind].experience" placeholder="experience">
+            <option ng-repeat="experience in experiences" value="{{experience}}">{{experience}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row animate-if" ng-if="user[kind].firstName && user[kind].lastName && kind === 'coach'">
+      <div class="form-group" style="text-align: center; padding: 5px;">
+        <h3>Put specific data for {{kind}} profile:</h3>
+
+        <div class="col-sm-6 col-xs-12">
+          <input type="text" class="form-control" id="cbirth" ng-model="user[kind].age" placeholder="age"/>
+          <input type="text" class="form-control" id="cspecialty" ng-model="user[kind].specialty" placeholder="specialty"/>
+
+        </div>
+        <div class="col-sm-6 col-xs-12">
+          <input type="text" class="form-control" id="cexp" ng-model="user[kind].experience" placeholder="experience"/>
+          <input type="text" class="form-control" id="cislookingfor" ng-model="user[kind].isLookingFor" placeholder="looking for team?"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row animate-if" ng-if="check()">
+      <div class="form-group" style="text-align: center; padding: 5px;">
+        <button class="btn btn-success" ng-click="submit()">Get started!</button>
+      </div>
+    </div>
+  </div>
+</div>  -->

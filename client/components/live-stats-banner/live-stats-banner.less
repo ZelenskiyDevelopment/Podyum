@@ -1,0 +1,95 @@
+.live-stats-banner {
+  z-index: 47;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  height: 81px;
+
+  .container-fluid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 47;
+
+      ul {
+
+        color: #444;
+        max-height: 100px;
+        margin-right: 40px;
+        z-index: 47;
+        overflow: visible;
+      }
+
+      .style-edit-stats {
+        margin-top: 25px;
+        font-size: 3em;
+        color: #222;
+      }
+      .style-edit-stats:hover, .style-edit-stats:active, .style-edit-stats:focus {
+        font-size: 3em;
+        color: #f8c637;
+        background-color: transparent;
+      }
+
+      .rn-carousel-control {
+        color: #000;
+        margin: 42px 0 0 0;
+        z-index: 48;
+        
+        padding: 20px 15px 20px 15px;
+        font-size: 3em;
+
+      }
+      .page {
+        height: 80px;
+        width:100%;
+        overflow:hidden;
+        padding-left: 200px;
+        padding-right: 100px;
+      }
+
+    .league-selector {
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 49;
+      width: 150px;
+      font-size: 12px;
+    }
+
+    live-stats-banner-settings {
+
+      position:absolute;
+      top:0;
+      right:0;
+      z-index:49;
+    }
+  }
+
+  .rn-carousel-control.rn-carousel-control-prev {
+
+    background:url(../../assets/images/arrow-left.png) no-repeat;
+    left: 0.5em;
+
+  }
+  .rn-carousel-control.rn-carousel-control-prev:before {
+
+    content: "";
+
+  }
+  .rn-carousel-control.rn-carousel-control-next {
+
+    background:url(../../assets/images/arrow-right.png) no-repeat;
+    right: 0.5em;
+
+  }
+  .rn-carousel-control.rn-carousel-control-next:before {
+
+    content: "";
+
+  }
+}

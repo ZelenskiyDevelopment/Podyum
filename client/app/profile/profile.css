@@ -1,0 +1,18 @@
+.endorse-button {
+  background: #f8c637;
+  color:white;
+  border:0px;
+}
+
+.bio-headers {
+  margin-top:20px;
+  text-align:center;
+  background-color:#F5F5F5;
+  padding-top:10px;
+}
+
+pre {
+  border:0px;
+  background-color:#fff;
+  font: 14px Roboto,arial,sans-serif;
+}

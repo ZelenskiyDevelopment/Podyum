@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="row">
+        <form ng-submit="addPost(postContent, 'photo'); postContent=null">
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="postContent">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-success" type="submit">Comment</button>
+            </div>
+        </form>
+        <div class="col-md-3"/>
+    </div>
+    <div class="row">
+        <div class="row" ng-repeat="post in posts track by $index">
+            {{post}}
+        </div>
+    </div>
+</div>

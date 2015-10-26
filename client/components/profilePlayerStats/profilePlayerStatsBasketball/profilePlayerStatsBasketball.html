@@ -1,0 +1,152 @@
+<div>
+  <div ng-if="games.length!==0 && user.player.stats && user.player.stats['basketball']">
+    <h2>Average stats</h2>
+
+    <div class="row">
+      <div class="col-xs-2">
+        <stat-box header="Games" content="{{games.length}}"></stat-box>
+      </div>
+      <div class="col-xs-2">
+        <stat-box header="Points"
+                  content="{{(myStats[0] + 2*myStats[1] + 3*myStats[2])/games.length}}"></stat-box>
+      </div>
+      <div class="col-xs-2">
+        <stat-box header="FT%"
+                  content="{{myStats[0]/(myStats[6]+myStats[0]) | percentageDisplay}}"></stat-box>
+      </div>
+      <div class="col-xs-2">
+        <stat-box header="FG%"
+                  content="{{(myStats[1]+myStats[2])/(myStats[7]+myStats[1] + myStats[2] + myStats[8]) | percentageDisplay}}"></stat-box>
+      </div>
+      <div class="col-xs-2">
+        <stat-box header="3P%"
+                  content="{{myStats[2]/(myStats[8]+myStats[2]) | percentageDisplay}}"></stat-box>
+      </div>
+      <div class="col-xs-2">
+        <stat-box header="Assists" content="{{myStats[4]/games.length}}"></stat-box>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2">
+        <stat-box header="Fouls" content="{{myStats[9]/games.length}}"></stat-box>
+      </div>
+      <div class="col-xs-2">
+        <stat-box header="T/O" content="{{myStats[5]/games.length}}"></stat-box>
+      </div>
+      <div class="col-xs-2">
+        <stat-box header="Steals" content="{{myStats[12]/games.length}}"></stat-box>
+      </div>
+      <div class="col-xs-2">
+        <stat-box header="Rebounds"
+                  content="{{(myStats[3]+myStats[10])/games.length}}"></stat-box>
+      </div>
+      <div class="col-xs-2">
+        <stat-box header="Blocks" content="{{myStats[11]/games.length}}"></stat-box>
+      </div>
+    </div>
+
+    <h2>Stats per match</h2>
+
+    <table class="table table-bordered"
+           style="margin-top:20px; font-size:9px; text-align:center;vertical-align:middle;">
+      <tr>
+        <th>Date</th>
+        <th>Home</th>
+        <th>Away</th>
+        <th>Min</th>
+        <th>FGM/A</th>
+        <th>FG%</th>
+        <th>3PM/A</th>
+        <th>3P%</th>
+        <th>FTM/A</th>
+        <th>FT%</th>
+        <th>OReb</th>
+        <th>DReb</th>
+        <th>Tot Reb</th>
+        <th>PF</th>
+        <th>AST</th>
+        <th>T/O</th>
+        <th>BLK</th>
+        <th>STL</th>
+        <th>PTS</th>
+      </tr>
+      <tr ng-repeat="thisGame in games" style="text-align:center;">
+        <td>{{thisGame.date | date: 'yyyy-MM-dd'}}</td>
+        <td>{{thisGame.team1.team.short}}</td>
+        <td>{{thisGame.team2.team.short}}</td>
+        <td>{{thisGame.userData[user._id][13]/60 | number:0}}</td>
+        <td>
+          {{thisGame.userData[user._id][1]+thisGame.userData[user._id][2]}}/{{thisGame.userData[user._id][7]+thisGame.userData[user._id][1]+thisGame.userData[user._id][2]+thisGame.userData[user._id][8]}}
+        </td>
+        <td>{{(thisGame.userData[user._id][1]+thisGame.userData[user._id][2])/(thisGame.userData[user._id][7]+thisGame.userData[user._id][1]++thisGame.userData[user._id][2]++thisGame.userData[user._id][8])
+          | percentageDisplay}}
+        </td>
+        <td>
+          {{thisGame.userData[user._id][2]}}/{{thisGame.userData[user._id][8]+thisGame.userData[user._id][2]}}
+        </td>
+        <td>{{thisGame.userData[user._id][2]/(thisGame.userData[user._id][8]+thisGame.userData[user._id][2])
+          | percentageDisplay}}
+        </td>
+        <td>
+          {{thisGame.userData[user._id][0]}}/{{thisGame.userData[user._id][6]+thisGame.userData[user._id][0]}}
+        </td>
+        <td>{{thisGame.userData[user._id][0]/(thisGame.userData[user._id][6]+thisGame.userData[user._id][0])
+          | percentageDisplay}}
+        </td>
+        <td>{{thisGame.userData[user._id][3]}}</td>
+        <td>{{thisGame.userData[user._id][10]}}</td>
+        <td>{{thisGame.userData[user._id][3]+thisGame.userData[user._id][10]}}</td>
+        <td>{{thisGame.userData[user._id][9]}}</td>
+        <td>{{thisGame.userData[user._id][4]}}</td>
+        <td>{{thisGame.userData[user._id][5]}}</td>
+        <td>{{thisGame.userData[user._id][12]}}</td>
+        <td>{{thisGame.userData[user._id][11]}}</td>
+        <td>{{thisGame.userData[user._id][0] + 2*thisGame.userData[user._id][1] +
+          3*thisGame.userData[user._id][2]}}
+        </td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td>{{myStats[13]/60 | number:0}} </td>
+        <td>
+          {{myStats[1]+myStats[2]}}/{{myStats[7]+myStats[1]+myStats[2]+myStats[8]}}
+        </td>
+        <td>
+          {{(myStats[1]+myStats[2])/(myStats[7]+myStats[1]+myStats[2]+myStats[8])
+          | percentageDisplay}}
+        </td>
+        <td>
+          {{myStats[2]}}/{{myStats[8]+myStats[2]}}
+        </td>
+        <td>
+          {{myStats[2]/(myStats[8]+myStats[2])
+          | percentageDisplay}}
+        </td>
+        <td>
+          {{myStats[0]}}/{{myStats[6]+myStats[0]}}
+        </td>
+        <td>
+          {{myStats[0]/(myStats[6]+myStats[0])
+          | percentageDisplay}}
+        </td>
+        <td>{{myStats[3]}}</td>
+        <td>{{myStats[10]}}</td>
+        <td>{{myStats[3]+myStats[10]}}</td>
+        <td>{{myStats[9]}}</td>
+        <td>{{myStats[4]}}</td>
+        <td>{{myStats[5]}}</td>
+        <td>{{myStats[12]}}</td>
+        <td>{{myStats[11]}}</td>
+        <td>{{myStats[0] + 2*myStats[1] +
+          3*myStats[2]}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div ng-if="games.length ===0 || !user.player.stats || !myStats">
+    <h2>This player has not got any stats this season.</h2>
+  </div>
+
+</div>

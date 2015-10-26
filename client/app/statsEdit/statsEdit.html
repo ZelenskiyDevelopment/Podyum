@@ -1,0 +1,8 @@
+<div class="container" style="margin-top:220px">
+  <div ng-if="isLive==='liveResults'">
+    <live-stats user="user" game="thisGame" roster1="roster1" roster2="roster2"></live-stats>
+  </div>
+  <div ng-if="isLive==='postResults'">
+    <post-stats user="user" game="thisGame" roster1="roster1" roster2="roster2"></post-stats>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<div class="modal-header">
+  <button ng-if="modal.dismissable" type="button" ng-click="$dismiss()" class="close">&times;</button>
+  <h4 ng-if="modal.title" ng-bind="modal.title" class="modal-title"></h4>
+</div>
+<div class="modal-body">
+  <div>
+    <p>Select when you were a member of this {{data.kind}}. If you are still a member of this {{data.kind}}, use the 'Present' checkbox.</p>
+  </div>
+  <div ng-controller="AssignModal">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <p>From:</p>
+        </div>
+        <div class="col-md-6">
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <p class="input-group">
+
+            <input type="month" class="form-control" datepicker-popup ng-model="data.dtFrom" is-open="openedFrom"
+                   min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"
+                   date-disabled="disabled(date, mode)" ng-required="true" close-text="OK" current-text="Today"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openFrom($event)"><i
+                  class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+          </p>
+        </div>
+
+        <div class="col-md-6">
+          <p class="input-group">
+            <input type="checkbox" ng-model="data.isPresent"/> Present
+          </p>
+        </div>
+      </div>
+    </div>
+    <div ng-show="!data.isPresent">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <p>To:</p>
+        </div>
+        <div class="col-md-6">
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <p class="input-group">
+            <input type="month" class="form-control" datepicker-popup ng-model="data.dtTo" is-open="openedTo"
+                   min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"
+                   date-disabled="disabled(date, mode)" ng-required="true" close-text="OK" current-text="Today"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openTo($event)"><i
+                  class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+          </p>
+        </div>
+
+
+      </div>
+    </div>
+    </div>
+    <div class="col-md-12 col-md-offset-3" ng-if="data.kind === 'team'">
+      <div class="row">
+        <p>Position:</p>
+      </div>
+      <div class="row" style="padding-bottom:20px;">
+        <input type="text" ng-model="data.position"/>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <!--<button class="btn btn-success" ng-click="submit($event)">Save</button>-->
+    <button ng-class="modal.buttons[0].classes" ng-click="modal.buttons[0].click($event, data)"
+            ng-bind="modal.buttons[0].text" class="btn"></button>
+
+    <button ng-class="modal.buttons[1].classes" ng-click="modal.buttons[1].click($event)"
+            ng-bind="modal.buttons[1].text" class="btn"></button>
+  </div>
+</div>

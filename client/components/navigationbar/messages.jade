@@ -1,0 +1,13 @@
+div(focusable-popover).row
+
+  md-content
+    md-subheader
+      new-conversation-modal
+        a New message
+    md-list
+      md-list-item(ng-repeat='message in messages' ng-click='goToConversation(message.room, message.thread)').md-2-line
+        img(ng-src='photos/{{message.sender.profilePhoto}}').md-avatar
+        .md-list-item-text
+          h4 {{message.sender[message.sender.kind].firstName}} {{message.sender[message.sender.kind].lastName}} {{message.sender[message.sender.kind].name}}
+          p {{message.messagePrefix}}
+  div(ng-hide="messages.length") You have no messages.

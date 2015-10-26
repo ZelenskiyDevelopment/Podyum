@@ -1,0 +1,23 @@
+<div class="container" style="margin-top:220px">
+
+  <div ng-repeat="friend in friends">
+    <div class="col-md-3 col-sm-3 col-xs-5 panel" style="margin-left:10px;">
+      <div class="media" style="padding:10px;">
+        <div class="media-left">
+          <a ui-sref="profile.common-story({id: friend._id})">
+            <img class="media-object" ng-src="photos/{{friend.profilePhoto}}" alt="" style="width:64px;height:64px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading" style="margin-top:20px">
+            <a ui-sref="profile.common-story({id: friend._id})">
+             {{friend[friend.kind].firstName}} {{friend[friend.kind].lastName}} {{friend[friend.kind].name}}
+            </a>
+            <button class="btn-sm btn-default our-button round-corners" ng-if='userId === ownerId' ng-click='unFriend(friend._id)'>Unfriend</button>
+          </h4>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

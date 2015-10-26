@@ -1,0 +1,24 @@
+md-grid-tile-header
+  header-with-toggle(label="Jobs & internships" is-expanded='isAdvancedOpen' on-toggle='onAdvancedChange')
+.filtering-fields
+  md-input-container.col-md-6.col-xs-12
+    label Name
+    input(type='text', ng-model='searcher.name')
+  md-input-container.col-md-6.col-xs-12
+    label City
+    input(type='text', ng-model='searcher.city')
+  .advanced-filtering(ng-if="isAdvancedOpen")
+    md-input-container.col-md-6.col-xs-12
+      label Description
+      input(type='text', ng-model='searcher.description')
+    md-input-container.col-md-6.col-xs-12
+      label Team
+      input(type='text', ng-model='searcher.team')
+    md-input-container.col-md-3.col-xs-6
+      label Reward from
+      input(type='number', ng-model='searcher.rewardFrom')
+    md-input-container.col-md-3.col-xs-6
+      label Reward to
+      input(type='number', ng-model='searcher.rewardTo')
+    md-datepicker.col-md-3.col-xs-6(ng-model='searcher.dateFrom' md-placeholder="Posted from")
+    md-datepicker.col-md-3.col-xs-6(ng-model='searcher.dateTo' md-placeholder="Posted to")

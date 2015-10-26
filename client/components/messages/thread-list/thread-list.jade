@@ -1,0 +1,8 @@
+.thread-list
+  md-input-container(flex='55')
+    label search
+    input(ng-model='searchThread')
+  md-subheader Threads list:
+  .list-grop
+    thread(ng-repeat='thread in threads | filter: searchThread | orderBy: "-isFavorite"' thread='thread' room-id='roomId')
+

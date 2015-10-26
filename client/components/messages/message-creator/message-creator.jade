@@ -1,0 +1,6 @@
+.message-creator(ng-if='thread')
+  md-input-container(flex)
+    label Write your message here...
+    textarea(ng-model='$parent.message' ng-keypress='onKey($event)')
+  .row
+    md-button(ng-disabled='message.length === 0' ng-click='createMessage()').send-button Send!

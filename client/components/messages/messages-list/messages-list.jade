@@ -1,0 +1,6 @@
+div
+  md-content(ng-if='thread')
+    md-list(ng-repeat='message in messages track by $index')
+      message(message='message')
+  div(ng-if='!thread')
+    p This room doesn't have any threads :(

@@ -1,0 +1,15 @@
+.col-xs-12.col-sm-12.col-md-12
+  .big-q(style="text-align: center;") Thank you for creating your profile, we are excited to have you with us!
+
+.col-xs-12.col-sm-12.col-md-12.row
+  .col-xs-2.col-sm-3.col-md-3
+  .col-xs-8.col-sm-6.col-md-6
+    .col-xs-12.col-sm-12.col-md-12.row
+      .col-xs-6.col-sm-6.col-md-6
+        a(ui-sref="creator.{{formData.type}}").md-button.create-button(ng-click="changeProgress(20)")
+          .i(class="fa fa-arrow-left" style="font-size: 22px; margin: 0; padding: 0;")
+          | &#32; Back
+      .col-xs-6.col-sm-6.col-md-6
+        a(ui-sref="creator.finish").md-button.create-button(type="submit" ng-click="processForm()")
+          | Submit!
+  .col-xs-2.col-sm-3.col-md-3

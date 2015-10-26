@@ -1,0 +1,200 @@
+#home.container
+        .row
+          .col-sm-9.col-md-9.col-lg-9
+            .row
+              .col-sm-5.col-md-5.col-lg-5
+          
+                .info-card(style='text-align:center;')
+                  .main-picture
+                    img.img-rounded(ng-src='photos/{{user.profilePhoto}}', alt='', style='width:100%;')
+                  .kind-user(ng-switch='user.kind')
+                    div(ng-switch-when='player')
+                      h3
+                        | {{user.player.firstName}} {{user.player.lastName}}
+                    div(ng-switch-when='coach')
+                      h3 {{user.coach.firstName}} {{user.coach.lastName}}
+                    div(ng-switch-when='team')
+                      h3 {{user.team.name}}
+                    div(ng-switch-when='league')
+                      h3 {{user.league.name}}
+                    div(ng-switch-when='fan')
+                      h3 {{user.fan.firstName}} {{user.fan.lastName}}
+                  .follower-user
+                    p
+                      span.total  {{followersNumber}} 
+                      span Loyal Fans
+                  //
+                    <div>
+                    <p>Friends : {{friendsNumber}}</p>
+                    </div>
+              .col-md-7.col-sm-7.col-xs-7
+                .upcoming-schedule
+                  .table-header
+                    h3 Upcomming Schedule
+                  table.table.table-striped
+                    tr
+                      th Date
+                      th Time
+                      th Location
+                      th Event
+                    tr
+                      td Live Now
+                      td 7:15 pm
+                      td
+                        img(src='img/logo_eagles.png', alt='')
+                        | @Gdynia
+                      td 4th quartet 56-21
+                    tr
+                      td Sun 11/15
+                      td 11:30 am
+                      td
+                        img(src='img/logo_eagles.png', alt='')
+                        | @Rynek
+                      td Football in square
+                    tr
+                      td Mon 11/26
+                      td 6:00 pm
+                      td
+                        img(src='img/logo_eagles.png', alt='')
+                        | Vs. Byalistok
+                      td.text-center
+                        a(href='')
+                          img(src='img/play-btn.png', alt='')
+                        a(href='')
+                          img(src='img/stat-btn.png', alt='')
+                    tr
+                      td Thur 11/29
+                      td 7:00 pm
+                      td
+                        img(src='img/logo_eagles.png', alt='')
+                        | Vs. Warsaw Eagles
+                      td.text-center
+                        a(href='')
+                          img(src='img/play-btn.png', alt='')
+                        a(href='')
+                          img(src='img/stat-btn.png', alt='')
+             .tab-navigation
+              ul
+                li
+                  a.active(href='') Update status
+                li
+                  a(href='') Share Photo/Video with Fans
+                li
+                  a(href='') Manage Team             
+            .tab-content
+              #tab1
+                .tab1-menu
+                  ul
+                    li
+                      a(href='#') Update fans
+                    li
+                      a.active(href='#') Update fans
+                    li
+                      a(href='#') Event
+                    li
+                      a(href='#') Milestone
+                .ask-form-block
+                  .row
+                    .col-sm-12.col-md-12.col-lg-12
+                      .question-block
+                        strong
+                          | What color uniforms should we wear this upcoming game?
+                      .answer-block
+                        form
+                          .choose-answer
+                            .form-group.radio-form
+                              input#first.radio(name='answer', type='radio', checked='checked')
+                              label(for='first') Blue Pants, Black Jersey
+                            .form-group.radio-form
+                              input#second.radio(name='answer', type='radio')
+                              label(for='second') White Pants, Blue Jersey
+                            .form-group.radio-form
+                              input#third.radio(name='answer', type='radio')
+                              label(for='third') All Black
+                          .form-group.submit-form
+                            select#home-select(name='select')
+                              option(value='1')
+                            input.btn-submit(type='submit', value='Update', placeholder='Update')  
+          .col-sm-3.col-md-3.col-lg-3
+            #right_sidebar
+              #goals
+                img(src='assets/images/logo.png', alt='')
+                h2 Goals
+                ul
+                  li 2 touchdowns away from top off in league
+                  li 1 win from 1st place
+                  li 223 yds from 1000 yard receiver
+                  li 3 TDs away from highest scoring team leaque history
+              #instagram_feed
+                h2 Instagram Feed
+                img(src='', alt='')
+                img(src='', alt='')
+                img(src='', alt='')
+                img(src='', alt='')
+                img(src='', alt='')
+                img(src='', alt='')
+              #twitter_feed
+                h2 Twitter Feed
+                .twit.clearfix
+                  img.twitter_img(src='img/twitter-img1.png', alt='')
+                  .twit_content
+                    h3
+                      | Luke Wroblewski 
+                      span @ DE
+                    p Bring on the self-driving cars. They use turn signals.
+                    img(src='img/twitter-icon.png', alt='')
+                .twit.clearfix
+                  img.twitter_img(src='img/twitter-img2.png', alt='')
+                  .twit_content
+                    h3
+                      | Luke Wroblewski 
+                      span @ DE
+                    p Bring on the self-driving cars. They use turn signals.
+                    img(src='img/twitter-icon.png', alt='')
+                .twitter_footer.clearfix
+                  p
+                    a(href='#') Follow us on Podium
+                    |  for the latest news
+        .row
+          .col-md-3.col-sm-3.col-xs-3.panel(style='background-color: #fff; height:264px;')
+            .row(style='text-align:center;')
+              div(ng-switch='user.kind')
+                div(ng-switch-when='player')
+                  h1(style='margin-left:10px;') {{user.player.firstName}} {{user.player.lastName}}
+                div(ng-switch-when='coach')
+                  h3 {{user.coach.firstName}} {{user.coach.lastName}}
+                div(ng-switch-when='team')
+                  h3 {{user.team.name}}
+                div(ng-switch-when='league')
+                  h3 {{user.league.name}}
+                div(ng-switch-when='fan')
+                  h3 {{user.fan.firstName}} {{user.fan.lastName}}
+            .row(style=' margin-top:2px;')
+              .col-md-8
+                img.img-rounded(ng-src='photos/{{user.profilePhoto}}', alt='', style='width:100%;')
+              .col-md-4.col-sm-6.col-xs-6(style='text-align:left; margin-top:2px;')
+                .row
+                  div
+                    h4 Fans : {{followersNumber}}
+                  div
+                    h4 Friends : {{friendsNumber}}
+          .col-md-9.col-sm-9.col-xs-9.panel
+            .row(style='background-color: #fff;')
+              .col-md-8
+                h4 Milestones
+                milestones(user-promise='userPromise')
+              .col-md-4
+                img(src='assets/images/graph.png', width='100%', height='200px;')
+        .row
+          .col-md-3(style='padding-left:0px; padding-right:0px;')
+            .btn-group-vertical(role='group', aria-label='...', style='width:100%;')
+              a.btn.btn-default(ui-sref='home.newsfeed') News Feed
+              a.btn.btn-default(ui-sref='home.messages') Messages
+              a.btn.btn-default(ui-sref='manageRoster') Manage Roster
+              a.btn.btn-default(ui-sref='manageStats') Manage Stats
+              button.btn.btn-default(type='button') Fan
+              button.btn.btn-default(type='button', ng-click='changeMembership()') Change membership
+              div(ng-show="user.role === 'free'") You are free user
+              div(ng-show="user.role === 'premium'") You are premium user
+          .col-md-9(ui-view='')
+          .col-md-3

@@ -1,0 +1,11 @@
+md-content
+  md-toolbar
+    .md-toolbar-tools
+      h2
+        span Messages
+      span(flex)
+      input(type='text' placeholder='search' ng-model='search')
+      new-room-modal(team='team')
+        button.btn.btn-default Add room!
+      new-conversation-modal
+        button.btn.btn-default New private message!

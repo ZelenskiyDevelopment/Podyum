@@ -1,0 +1,25 @@
+div(ng-repeat="type in types", class="btn-group", role="group")
+  button(type="button", class="btn", ng-click="chooseOtherType($index)")
+    | {{type}}
+div(ng-show="type == 0")
+  DIV KICKER:
+    input(type="number", ng-model="event.data.player")
+div(ng-show="type == 1")
+  DIV RUNNER:
+    input(type="number", ng-model="event.data.player")
+div(ng-show="type == 2")
+  DIV PASSER:
+    input(type="number", ng-model="event.data.player")
+  DIV RECEIVER:
+    input(type="number", ng-model="receiver")
+button(type="button", class="btn", ng-click="good = true")
+  | Good
+button(type="button", class="btn", ng-click="good = false")
+  | No Good
+button(type="button", class="btn", ng-click="penalty = !penalty")
+  | Penalty
+button(type="button", class="btn",ng-show = "type==0" ng-click="blocked = !blocked;")
+  | Kick Blocked
+.row
+  button(class="btn btn-success", ng-show="event.data.player > 0 && (type == 0 || type == 1 || (type==2 && ((good && receiver > 0) || !good)))", ng-click="next()")
+    | SUBMIT

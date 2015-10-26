@@ -1,0 +1,18 @@
+span CAUSED:
+  input(type="number", ng-model="event.data.caused")
+div WHICH TEAM RECOVERED
+  button(type="button", class="btn", ng-click="event.data.teamRecovered = 0")
+    | HOME
+  button(type="button", class="btn", ng-click="event.data.teamRecovered = 1")
+    | AWAY
+div(ng-show="event.data.teamRecovered == 0 || event.data.teamRecovered == 1")
+  span RECOVERED:
+    input(type="number", ng-model="event.data.recovered")
+  div YARDS
+    input(type="number", ng-model="event.data.gain")
+  div(ng-repeat="otherAction in otherActions", class="btn-group", role="group")
+    button(type="button", class="btn", ng-click="chooseOtherAction($index)")
+      | {{otherAction}}
+.row
+  button(class="btn btn-success", ng-show="!((event.data.teamRecovered == 0 || event.data.teamRecovered == 1) && !(event.data.recovered > 0))" ng-click="next()")
+    | NEXT

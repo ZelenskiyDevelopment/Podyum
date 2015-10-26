@@ -1,0 +1,4 @@
+md-grid-tile-header
+  header-with-toggle(label="Featured jobs" is-expanded='isFeaturedOpen' on-toggle='onFeaturedChange')
+.jobs-list
+  job(ng-repeat='job in featuredJobs | limitTo: featuredLimit')

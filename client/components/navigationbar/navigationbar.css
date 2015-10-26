@@ -1,0 +1,158 @@
+.transparent-btn{
+  background:transparent;
+  border:0px;
+
+}
+
+.header {
+  border-width:0;
+}
+
+.navbar-fixed-top {
+  top:81px;
+  height: 50px
+}
+
+.navbar-inverse {
+  background: #444 none repeat scroll 0% 0%;
+}
+
+.navbar-inverse .navbar-form {
+    width: 60%;
+}
+
+.navbar-inverse form input:after {
+    content: '';
+    position: absolute;
+    background: url("../img/btn-search.png");
+    width: 10px;
+    height: 10px;
+    display: block;
+}
+
+.social-links {
+  margin: 0;
+}
+
+.social-links li {
+    margin: 0 0 0 50px; 
+}
+
+.social-links li:last-child {
+    margin: 0;
+}
+
+
+.logo-nav {
+}
+
+.logo-nav .navbar-brand img {
+  margin-top: 0px;
+  padding: 0px;
+  height:50px;
+}
+
+.navbar-brand {
+  padding: 0;
+}
+
+.logout-icon {
+  background: url('../../assets/images/otherIcon.png') no-repeat;
+  height: 10px;
+  width: 32px;
+  display: inline-block;
+  margin-top: 12px;
+}
+
+.message-icon {
+  background: url('../../assets/images/message-icon.png') no-repeat;
+  height: 22px;
+  width: 20px;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.letter-icon {
+  background: url('../../assets/images/letter-icon.png') no-repeat;
+  height: 18px;
+  width: 20px;
+  display: inline-block;
+  margin-top: 16px;
+ }
+
+.user-icon {
+    background: url('../../assets/images/user-icon.png') no-repeat;
+    display: inline-block;
+    width: 27px;
+    height: 19px;
+
+  }
+.logo-nav .navbar-form {
+}
+
+.menu-nav {
+  margin-top: 50px;
+  background: #fff;
+  font-weight: bold;
+}
+
+.navbar {
+  min-height: 30px;
+}
+
+#subnav {
+  height: 42px;
+  text-align: center;
+  float: none;
+  z-index: 1;
+}
+
+#subnav .navbar-nav {
+  float: none;
+}
+
+#subnav .navbar-nav li {
+  float: none;
+  display: inline-block;
+}
+
+.menu-nav .nav > li > a {
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    color: #777;
+}
+
+.navbar-default {
+    background: #fff;
+    border: none;
+    box-shadow: none;
+}
+
+.navbar-default .navbar-nav > .active > a {
+    text-decoration: none;
+    color: #fcd98e;
+    border-bottom: 2px solid #fcd98e;
+    background: #fff;
+    outline: none;
+}
+
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  background: #fff;
+  color: #fcd98e;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    text-decoration: none;
+    color: #fcd98e;
+    border-bottom: 2px solid #fcd98e;
+    background: #fff;
+    outline: none;
+}
+
+
+
+

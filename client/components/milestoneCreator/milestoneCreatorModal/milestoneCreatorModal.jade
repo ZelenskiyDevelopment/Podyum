@@ -1,0 +1,13 @@
+.milestoneCreatorModal
+  .modal-header
+    .row
+      .h4.milestoneHeader Create a new milestone
+  .modal-body
+    .row
+      milestones-football-creator(milestone="milestone")
+      //milestones-basketball-creator(milestone="milestone")
+  .modal-footer
+    .row
+      md-button.md-primary(ng-click="createMilestone(milestoneContent)") Create!
+      md-button.md-warn(ng-click="dismissModal()") Cancel
+

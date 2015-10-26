@@ -1,0 +1,9 @@
+.teams
+  .container
+    md-input-container
+      label Team
+      md-select(ng-model='selectedTeam')
+        md-option(ng-repeat="team in teams" value='{{team._id}}') {{team.team.name}}
+    .row
+      h3(ng-hide='selectedTeam') You have to be assigned to team and select a team from list.
+      messages(ng-repeat='team in teams' team='team' ng-if='team._id === selectedTeam')

@@ -1,0 +1,173 @@
+<div class="container">
+  <div class="row">
+    <div class ="col-md-2">
+      <h5>{{game.team1.team.name}}</h5>
+      <div ng-repeat="player in roster1 track by $index">
+        <button class="btn button-roster1-{{roster1Bool[$index]}}" ng-click="fromBench(1,$index)" style="width:100%;">#{{player.player.number}} {{player.player.firstName}} {{player.player.lastName}}</button>
+      </div>
+
+    </div>
+    <div class ="col-md-8">
+      <div class = "row">
+        <div class = "col-md-6" style="text-align:center;">
+           <img src="photos/{{game.team1.profilePhoto}}" alt="s" class="img-rounded center-block" style="width:350px;height:250px;">
+            <h2>{{game.data.score1}}</h2>
+        </div>
+        <div class = "col-md-6" style="text-align:center;">
+          <img src="photos/{{game.team2.profilePhoto}}" alt="s" class="img-rounded center-block" style="width:350px;height:250px;">
+          <h2>{{game.data.score2}}</h2>
+        </div>
+      </div>
+      <div class = "row">
+        <button class="btn btn-success btn-lg center-block" ng-if="isRunning" ng-click="startCount()">{{counter | timerDisplay}} Q{{quart}}</button>
+        <button class="btn btn-danger btn-lg center-block" ng-if="!isRunning" ng-click="startCount()">{{counter | timerDisplay}} Q{{quart}}</button>
+      </div>
+    </div>
+    <div class ="col-md-2">
+      <h5>{{game.team2.team.name}}</h5>
+      <div ng-repeat="player in roster2">
+        <button class="btn button-roster2-{{roster2Bool[$index]}}" ng-click="fromBench(2,$index)" style="width:100%;">#{{player.player.number}} {{player.player.firstName}} {{player.player.lastName}}</button>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top:10px;">
+    <div class="col-md-offset-1 col-md-5">
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn button-roster1-{{active1Bool[0]}}" ng-click="fromActive(1,0)"><span ng-show="!active1[0]" style="color:inherit;">EMPTY</span><span ng-hide="!active1[0]" style="color:inherit;">{{active1[0].player.lastName}}</span></button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn button-roster1-{{active1Bool[1]}}" ng-click="fromActive(1,1)"><span ng-show="!active1[1]" style="color:inherit;">EMPTY</span><span ng-hide="!active1[1]" style="color:inherit;">{{active1[1].player.lastName}}</span></button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn button-roster1-{{active1Bool[2]}}" ng-click="fromActive(1,2)"><span ng-show="!active1[2]" style="color:inherit;">EMPTY</span><span ng-hide="!active1[2]" style="color:inherit;">{{active1[2].player.lastName}}</span></button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn button-roster1-{{active1Bool[3]}}" ng-click="fromActive(1,3)"><span ng-show="!active1[3]" style="color:inherit;">EMPTY</span><span ng-hide="!active1[3]" style="color:inherit;">{{active1[3].player.lastName}}</span></button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn button-roster1-{{active1Bool[4]}}" ng-click="fromActive(1,4)"><span ng-show="!active1[4]" style="color:inherit;">EMPTY</span><span ng-hide="!active1[4]" style="color:inherit;">{{active1[4].player.lastName}}</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn button-roster2-{{active2Bool[0]}}" ng-click="fromActive(2,0)"><span ng-show="!active2[0]" style="color:inherit;">EMPTY</span><span ng-hide="!active2[0]" style="color:inherit;">{{active2[0].player.lastName}}</span></button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn button-roster2-{{active2Bool[1]}}" ng-click="fromActive(2,1)"><span ng-show="!active2[1]" style="color:inherit;">EMPTY</span><span ng-hide="!active2[1]" style="color:inherit;">{{active2[1].player.lastName}}</span></button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn button-roster2-{{active2Bool[2]}}" ng-click="fromActive(2,2)"><span ng-show="!active2[2]" style="color:inherit;">EMPTY</span><span ng-hide="!active2[2]" style="color:inherit;">{{active2[2].player.lastName}}</span></button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn button-roster2-{{active2Bool[3]}}" ng-click="fromActive(2,3)"><span ng-show="!active2[3] " style="color:inherit;">EMPTY</span><span ng-hide="!active2[3]" style="color:inherit;">{{active2[3].player.lastName}}</span></button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn button-roster2-{{active2Bool[4]}}" ng-click="fromActive(2,4)"><span ng-show="!active2[4]" style="color:inherit;">EMPTY</span><span ng-hide="!active2[4]" style="color:inherit;">{{active2[4].player.lastName}}</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top:20px;">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div ng-repeat="event in eventNames | limitTo: 6" class="btn-group" role="group">
+          <button type="button" class="btn button-action-{{actionBool[$index]}}" ng-click="fromAction($index)">{{event}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top:20px;">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div ng-repeat="event in eventNames | limitTo: 9 | limitTo: -3" class="btn-group" role="group">
+          <button type="button" class="btn button-action-{{actionBool[$index+6]}}" ng-click="fromAction($index+6)">{{event}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top:20px;">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div ng-repeat="event in eventNames | limitTo: -4" class="btn-group" role="group">
+          <button type="button" class="btn button-action-{{actionBool[$index+9]}}" ng-click="fromAction($index+9)">{{event}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top:30px;">
+    <div class="col-md-6" style="text-align:center;">
+      <h4>Recent actions</h4>
+      <div ng-repeat="event in events | liveEventFilter |limitTo: 5">
+        Q{{event.quart}}, {{event.time | timerDisplay}}, {{event.kind}} by {{event.name.player.lastName}}
+      </div>
+    </div>
+    <div class="col-md-6" style="text-align:center;">
+      <h4>Game summary</h4>
+      <table class="table table-bordered panel">
+        <tr>
+          <th>Actions</th>
+          <th>{{game.team1.team.name}}</th>
+          <th>{{game.team2.team.name}}</th>
+        </tr>
+        <tr>
+          <th>Field Goals</th>
+          <th>{{game.data.T1[1] + game.data.T1[2]}}-{{game.data.T1[7] + game.data.T1[1] + game.data.T1[8] + game.data.T1[2]}}</th>
+          <th>{{game.data.T2[1] + game.data.T2[2]}}-{{game.data.T2[7] + game.data.T2[1] + game.data.T2[8] + game.data.T2[2]}}</th>
+        </tr>
+        <tr>
+          <th>3-pointers</th>
+          <th>{{game.data.T1[2]}}-{{game.data.T1[8] + game.data.T1[2]}}</th>
+          <th>{{game.data.T2[2]}}-{{game.data.T2[8] + game.data.T2[2]}}</th>
+        </tr>
+        <tr>
+          <th>Free Throws</th>
+          <th>{{game.data.T1[0]}}-{{game.data.T1[6] + game.data.T1[0]}}</th>
+          <th>{{game.data.T2[0]}}-{{game.data.T2[6] + game.data.T2[0]}}</th>
+        </tr>
+        <tr>
+          <th>Off Rebounds</th>
+          <th>{{game.data.T1[3]}}</th>
+          <th>{{game.data.T2[3]}}</th>
+        </tr>
+        <tr>
+          <th>Def Rebounds</th>
+          <th>{{game.data.T1[10]}}</th>
+          <th>{{game.data.T2[10]}}</th>
+        </tr>
+        <tr>
+          <th>Assists</th>
+          <th>{{game.data.T1[4]}}</th>
+          <th>{{game.data.T2[4]}}</th>
+        </tr>
+        <tr>
+          <th>Steals</th>
+          <th>{{game.data.T1[11]}}</th>
+          <th>{{game.data.T2[11]}}</th>
+        </tr>
+        <tr>
+          <th>Blocks</th>
+          <th>{{game.data.T1[12]}}</th>
+          <th>{{game.data.T2[12]}}</th>
+        </tr>
+        <tr>
+          <th>Turnovers</th>
+          <th>{{game.data.T1[5]}}</th>
+          <th>{{game.data.T2[5]}}</th>
+        </tr>
+        <tr>
+          <th>Fouls</th>
+          <th>{{game.data.T1[9]}}</th>
+          <th>{{game.data.T2[9]}}</th>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,79 @@
+<div class="modal-header">
+  <button ng-if="modal.dismissable" type="button" ng-click="$dismiss()" class="close">&times;</button>
+  <h4 ng-if="modal.title" ng-bind="modal.title" class="modal-title"></h4>
+</div>
+<div class="modal-body" ng-controller="newGameModal">
+  <div>
+    <p>Put details of new game.</p>
+  </div>
+  <div >
+    <div class="row" ng-if="newGameData.ownerKind==='team'">
+      <div class="col-md-6 col-md-offset-3" style="text-align: center;">
+        League:
+        <select class="form-control" ng-model="game.league" ng-change="onChange(game.league)">
+          <option ng-repeat="league in leagues"
+                  value="{{league._id}}">
+            {{league.name}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <p>Home:</p>
+        </div>
+        <div class="col-md-6">
+          <p>Guests:</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col-md-12">
+        <div class="col-md-6" ng-if="newGameData.ownerKind === 'league'">
+          <select class="form-control" ng-model="game.team1">
+            <option ng-repeat="team in teams"
+                    value="{{team._id}}">
+              {{team.name}}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-6" ng-if="newGameData.ownerKind === 'team'">
+          <p>{{ownerName}}</p>
+        </div>
+        <div class="col-md-6">
+          <select class="form-control" ng-model="game.team2">
+            <option ng-repeat="team in teams"
+                    value="{{team._id}}">
+              {{team.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3" style="text-align: center;">
+        Date
+        <p class="input-group">
+          <input type="day" class="form-control" datepicker-popup ng-model="game.date" is-open="opened"
+                 min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"
+                 date-disabled="disabled(date, mode)" ng-required="true" close-text="OK" current-text="Today"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                  class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+        </p>
+        <timepicker ng-model="game.date" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <!--<button class="btn btn-success" ng-click="submit($event)">Save</button>-->
+    <button ng-class="modal.buttons[0].classes" ng-click="modal.buttons[0].click($event, game)"
+            ng-bind="modal.buttons[0].text" class="btn"></button>
+
+    <button ng-class="modal.buttons[1].classes" ng-click="modal.buttons[1].click($event)"
+            ng-bind="modal.buttons[1].text" class="btn"></button>
+  </div>
+</div>

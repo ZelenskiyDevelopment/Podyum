@@ -1,0 +1,7 @@
+div(ng-if="people.length > 0")
+  .row
+    md-input-container
+      label Who are you looking for?
+      input(type="text" ng-model="search")
+  .row
+    user(ng-repeat="person in people | filter:search" user="::person")

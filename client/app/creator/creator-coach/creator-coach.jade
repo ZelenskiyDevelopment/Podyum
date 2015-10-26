@@ -1,0 +1,99 @@
+.col-md-12.col-sm-12.col-xs-12(style="font-size: 18px; font-family: 'Verdana', sans-serif; font-weight: 100")
+  .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12
+    .col-md-12.col-sm-12.col-xs-12
+      .col-md-6.col-sm-6.col-xs-6
+        .div(class="creator-q") What's your first name?
+      .col-md-6.col-sm-6.col-xs-6
+        label
+          input(type="text" class="form-inline" id="firstName" ng-model="formData.firstName")
+    .col-md-12.col-sm-12.col-xs-12
+      .col-md-6.col-sm-6.col-xs-6
+        .div(class="creator-q") What's your last name?
+      .col-md-6.col-sm-6.col-xs-6
+        label
+          input(type="text" class="form-inline" id="lastName" ng-model="formData.lastName")
+    .col-md-12.col-sm-12.col-xs-12
+      .col-md-6.col-sm-6.col-xs-6
+        .div(class="creator-q")  What's your date of birth?
+      .col-md-6.col-sm-6.col-xs-6
+        label
+          input(type="date" class="form-inline" id="birth" ng-model="formData.personalData.birthday" placeholder="yyyy-MM-dd")
+    .col-md-12.col-sm-12.col-xs-12
+      .col-md-6.col-sm-6.col-xs-6
+        .div(class="creator-q")  What's your hometown?
+      .col-md-6.col-sm-6.col-xs-6
+        label
+          input(type="text" class="form-inline" id="hometown" ng-model="formData.personalData.hometown")
+    .col-md-12.col-sm-12.col-xs-12
+      .col-md-6.col-sm-6.col-xs-6
+        .div(class="creator-q")  Are you male of female?
+      .col-md-6.col-sm-6.col-xs-6
+        md-radio-group(ng-model="formData.personalData.sex")
+          label
+            md-radio-button.md-primary(type="radio" value="male" checked) Male
+          label
+            md-radio-button.md-primary(type="radio" value="female" checked) Female
+  .col-md-2.col-sm-1
+
+.col-md-12.col-sm-12.col-xs-12
+  .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12
+    .big-q Short biography
+    .col-md-12.col-sm-12.col-xs-12
+      textarea(ng-model="formData.personalData.bio" value="bio" style="height: 100px; width: 100%")
+  .col-md-2.col-sm-1
+
+.col-md-12.col-sm-12.col-xs-12
+  .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12
+    md-content(layout="column")
+      .big-q Citizenships
+        md-chips(ng-model="formData.personalData.citizenship" readonly="false")
+        md-chip-template
+        | {{$chip}}
+  .col-md-2.col-sm-1
+
+.col-md-12.col-sm-12.col-xs-12
+  .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12
+    br
+    country-select.creator-country-select(ng-model="formData.personalData.country")
+  .col-md-2.col-sm-1
+
+
+.col-md-2.col-sm-1
+.col-md-12.col-sm-12.col-xs-12
+  .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12
+    .big-q Title
+    md-select(ng-model='formData.sportData[0].data.title')
+      md-option(ng-repeat='title in titles', value='{{title}}')
+        | {{title}}
+  .col-md-2.col-sm-1
+
+.col-md-12.col-sm-12.col-xs-12
+  .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12
+    .creator-q.select-text(style="border: 0px")
+      assign-selector(kind='"coach"' model='formData.sportData[0].data.myTeams' items='allTeams' label='"Select teams"')
+  .col-md-2.col-sm-1
+
+.col-xs-12.col-sm-12.col-md-12.row
+  .col-xs-2.col-sm-3.col-md-3
+  .col-xs-8.col-sm-6.col-md-6
+    .col-xs-12.col-sm-12.col-md-12.row
+      .col-xs-6.col-sm-6.col-md-6
+        a(ui-sref="creator.photo").md-button.create-button(ng-click="changeProgress(20)")
+          .i(class="fa fa-arrow-left" style="font-size: 22px; margin: 0; padding: 0;")
+          | &#32; Back
+      .col-xs-6.col-sm-6.col-md-6
+        a(ui-sref="creator.finish").md-button.create-button(ng-click="changeProgress(100)" ng-show="formData.type && formData.photo")
+          | Next step &#32;
+          .i(class="fa fa-arrow-right" style="font-size: 22px; margin: 0; padding: 0;")
+  .col-xs-2.col-sm-3.col-md-3
+
+
+
+
+

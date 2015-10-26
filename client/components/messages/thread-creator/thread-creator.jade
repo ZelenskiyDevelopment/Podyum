@@ -1,0 +1,6 @@
+.thread-creator
+  md-content(layout-padding layout='row')
+    md-input-container(flex='55')
+      label Name
+      input(ng-model='thread.name' ng-keypress='onKey($event)')
+    md-button(md-no-ink ng-disabled='thread.name.length === 0' ng-click='create()').md-primary Add

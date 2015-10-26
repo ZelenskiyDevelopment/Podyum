@@ -1,0 +1,17 @@
+md-list
+  div(ng-if="experiences || positions")
+    md-subheader.md-no-sticky Age
+    age-selector(age="selectedOptions.age")
+    md-divider
+  div(ng-if="positions.length > 0")
+    md-subheader.md-no-sticky Position
+    md-list-item(ng-repeat="position in positions") 
+      p {{position}}
+      md-checkbox.md-secondary(ng-model="selectedOptions.position[position]")
+    md-divider
+  div(ng-if="experiences")
+    md-subheader.md-no-sticky Experience Level
+    md-list-item(ng-repeat="experience in experiences")
+      p {{experience}}
+      md-checkbox.md-secondary(ng-model="selectedOptions.experience[experience]")
+    md-divider

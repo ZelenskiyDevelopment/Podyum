@@ -1,0 +1,33 @@
+
+.profile-navbar {
+	background:#fac553;
+	table-layout: auto;
+}
+
+.profile-navbar .btn-group {
+	padding: 10px 0;
+}
+
+.profile-navbar .profile-navbar-btn,
+.profile-navbar .our-button
+ {
+  border: none;
+  color: #85641c;
+  text-transform: uppercase;
+  font-size: 18px;
+  box-shadow: none;
+  background:#fac553;
+}
+
+.profile-navbar .profile-navbar-btn:hover,
+.profile-navbar .profile-navbar-btn:focus {
+  border: none;
+  color: #85641c;
+  text-transform: uppercase;
+  font-size: 18px;
+  box-shadow: none;
+  background:#fac553;
+  outline: none;
+}
+
+

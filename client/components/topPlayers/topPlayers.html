@@ -1,0 +1,17 @@
+<div class="panel" style="max-width:250px;">
+  <div class="panel-heading our-color" style="text-align:center;">{{header}}</div>
+  <div class="panel-body"  style="text-align:center;">
+    <div class="media">
+      <div class="media-left">
+        <a href="#">
+          <img class="media-object" ng-src="photos/{{players[0].user.profilePhoto}}" style="width:50px;">
+        </a>
+      </div>
+      <div class="media-body">
+        <div ng-repeat="player in players track by $index" style="text-align:left;">
+          {{$index+1}}. {{player.user.player.firstName}} {{player.user.player.lastName}}  {{values[$index]}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

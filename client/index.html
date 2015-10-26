@@ -1,0 +1,421 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <base href="/">
+  <title>Podyum</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(client) app/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/angular-carousel/dist/angular-carousel.css" />
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+  <link rel="stylesheet" href="bower_components/nanoscroller/bin/css/nanoscroller.css" />
+  <link rel="stylesheet" href="bower_components/perfect-scrollbar/src/perfect-scrollbar.css" />
+  <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="bower_components/angular-cropme/cropme.css" />
+  <link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css({.tmp,client}) app/app.css -->
+  <link rel="stylesheet" href="app/app.css">
+  <!-- injector:css -->
+  <link rel="stylesheet" href="app/friends/friends.css">
+  <link rel="stylesheet" href="app/home/home.css">
+  <link rel="stylesheet" href="app/home/home.messages/home.messages.css">
+  <link rel="stylesheet" href="app/home/home.newsfeed/home.newsfeed.css">
+  <link rel="stylesheet" href="app/home/home.wall/home.wall.css">
+  <link rel="stylesheet" href="app/main/main.css">
+  <link rel="stylesheet" href="app/manageStats/manageStats.css">
+  <link rel="stylesheet" href="app/profile/coach/profile.coach.bio/profile.coach.bio.css">
+  <link rel="stylesheet" href="app/profile/coach/profile.coach.career/profile.coach.career.css">
+  <link rel="stylesheet" href="app/profile/coach/profile.coach.galery/profile.coach.galery.css">
+  <link rel="stylesheet" href="app/profile/coach/profile.coach.highs/profile.coach.highs.css">
+  <link rel="stylesheet" href="app/profile/coach/profile.coach.stats/profile.coach.stats.css">
+  <link rel="stylesheet" href="app/profile/common/profile.common.story/profile.common.story.css">
+  <link rel="stylesheet" href="app/profile/league/profile.league.contact/profile.league.contact.css">
+  <link rel="stylesheet" href="app/profile/league/profile.league.stats/profile.league.stats.css">
+  <link rel="stylesheet" href="app/profile/league/profile.league.store/profile.league.store.css">
+  <link rel="stylesheet" href="app/profile/league/profile.league.videos/profile.league.videos.css">
+  <link rel="stylesheet" href="app/profile/player/profile.player.bio/profile.player.bio.css">
+  <link rel="stylesheet" href="app/profile/player/profile.player.career/profile.player.career.css">
+  <link rel="stylesheet" href="app/profile/player/profile.player.galery/profile.player.galery.css">
+  <link rel="stylesheet" href="app/profile/player/profile.player.highs/profile.player.highs.css">
+  <link rel="stylesheet" href="app/profile/player/profile.player.stats/profile.player.stats.css">
+  <link rel="stylesheet" href="app/profile/profile.css">
+  <link rel="stylesheet" href="app/profile/team/profile.team.coaching/profile.team.coaching.css">
+  <link rel="stylesheet" href="app/profile/team/profile.team.recruiting/profile.team.recruiting.css">
+  <link rel="stylesheet" href="app/profile/team/profile.team.roster/profile.team.roster.css">
+  <link rel="stylesheet" href="app/profile/team/profile.team.stats/profile.team.stats.css">
+  <link rel="stylesheet" href="app/search/search.css">
+  <link rel="stylesheet" href="app/statsEdit/statsEdit.css">
+  <link rel="stylesheet" href="app/users/users.css">
+  <link rel="stylesheet" href="components/assignModal/assignModal.css">
+  <link rel="stylesheet" href="components/galleryPublisher/galleryPublisher.css">
+  <link rel="stylesheet" href="components/game/game.css">
+  <link rel="stylesheet" href="components/liveStats/liveStats.css">
+  <link rel="stylesheet" href="components/modal/modal.css">
+  <link rel="stylesheet" href="components/modalEvent/modalEvent.css">
+  <link rel="stylesheet" href="components/navigationbar/navigationbar.css">
+  <link rel="stylesheet" href="components/newGameModal/newGameModal.css">
+  <link rel="stylesheet" href="components/notification/notification.css">
+  <link rel="stylesheet" href="components/photos/photos.css">
+  <link rel="stylesheet" href="components/postStats/postStats.css">
+  <link rel="stylesheet" href="components/profileBasicData/profileBasicData.css">
+  <link rel="stylesheet" href="components/profileNavbar/profileNavbar.css">
+  <link rel="stylesheet" href="components/search/search.css">
+  <link rel="stylesheet" href="components/statBox/statBox.css">
+  <link rel="stylesheet" href="components/statsEditModal/statsEditModal.css">
+  <link rel="stylesheet" href="components/team-stats/team-stats.css">
+  <link rel="stylesheet" href="components/topPlayers/topPlayers.css">
+  <link rel="stylesheet" href="components/userStatsEditModal/userStatsEditModal.css">
+  <link rel="stylesheet" href="components/wall/event/event-comments/event-comment/event-comment.css">
+  <link rel="stylesheet" href="components/wall/event/event-comments/event-comments.css">
+  <link rel="stylesheet" href="components/wall/event/event-comments/event-publisher/event-publisher.css">
+  <link rel="stylesheet" href="components/wall/event/event.css">
+  <link rel="stylesheet" href="components/wall/publisher/publisher.css">
+  <link rel="stylesheet" href="components/wall/wall.css">
+  <!-- endinjector -->
+  <!-- endbuild -->
+</head>
+<body ng-app="abroadathletesApp">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div ng-controller='AppCtrl'>
+
+  <div class="main-container">
+    <div
+      ng-if='excludedStates.indexOf($state.current.name.toString().split(".")[0]) === -1'>grunt karma
+      <live-stats-banner></live-stats-banner>
+      <navigationbar></navigationbar>
+    </div>
+
+
+    <div ui-view=""></div>
+  </div>
+
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+  </script>
+
+
+  <!--[if lt IE 9]>
+
+
+  <script src="bower_components/es5-shim/es5-shim.js"></script>
+  <script src="bower_components/json3/lib/json3.min.js"></script>
+  <![endif]-->
+  <!-- build:js({client,node_modules}) app/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/angular-carousel/dist/angular-carousel.js"></script>
+  <script src="bower_components/angular-confirm-modal/angular-confirm.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.js"></script>
+  <script src="bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.js"></script>
+  <script src="bower_components/angular-nanoscroller/scrollable.js"></script>
+  <script src="bower_components/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+  <script src="bower_components/angular-perfect-scrollbar/src/angular-perfect-scrollbar.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-scroll-glue/src/scrollglue.js"></script>
+  <script src="bower_components/angular-socket-io/socket.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-ui-select/dist/select.js"></script>
+  <script src="bower_components/angular-youtube-mb/src/angular-youtube-embed.js"></script>
+  <script src="bower_components/lodash/lodash.js"></script>
+  <script src="bower_components/ng-backstretch/dist/ng-backstretch.min.js"></script>
+  <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+  <script src="bower_components/ngstorage/ngStorage.js"></script>
+  <script src="bower_components/angular-superswipe/superswipe.js"></script>
+  <script src="bower_components/angular-cropme/cropme.js"></script>
+  <script src="bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
+  <!-- endbower -->
+  <script src="socket.io-client/socket.io.js"></script>
+  <!-- endbuild -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <!-- build:js({.tmp,client}) app/app.js -->
+  <script src="app/app.js"></script>
+  <!-- injector:js -->
+  <script src="app/app.controller.js"></script>
+  <script src="app/creator/creator-coach/creator-coach.js"></script>
+  <script src="app/creator/creator-fan/creator-fan.js"></script>
+  <script src="app/creator/creator-finish/creator-finish.js"></script>
+  <script src="app/creator/creator-league/creator-league.js"></script>
+  <script src="app/creator/creator-media/creator-media.js"></script>
+  <script src="app/creator/creator-photo/creator-photo.js"></script>
+  <script src="app/creator/creator-player/creator-player.controller.js"></script>
+  <script src="app/creator/creator-player/creator-player.js"></script>
+  <script src="app/creator/creator-sport/creator-sport.js"></script>
+  <script src="app/creator/creator-team/creator-team.controller.js"></script>
+  <script src="app/creator/creator-team/creator-team.js"></script>
+  <script src="app/creator/creator-type/creator-type.js"></script>
+  <script src="app/creator/creator.controller.js"></script>
+  <script src="app/creator/creator.js"></script>
+  <script src="app/friends/friends.controller.js"></script>
+  <script src="app/friends/friends.js"></script>
+  <script src="app/home/home.controller.js"></script>
+  <script src="app/home/home.js"></script>
+  <script src="app/home/home.messages/home.messages.controller.js"></script>
+  <script src="app/home/home.messages/home.messages.js"></script>
+  <script src="app/home/home.newsfeed/home.newsfeed.controller.js"></script>
+  <script src="app/home/home.newsfeed/home.newsfeed.js"></script>
+  <script src="app/home/home.wall/home.wall.controller.js"></script>
+  <script src="app/home/home.wall/home.wall.js"></script>
+  <script src="app/jobs/createJob/createJob.directive.js"></script>
+  <script src="app/jobs/favouriteJobs/favouriteJobs.directive.js"></script>
+  <script src="app/jobs/featuredJobs/featuredJobs.directive.js"></script>
+  <script src="app/jobs/job/job.directive.js"></script>
+  <script src="app/jobs/jobAlerts/jobAlerts.directive.js"></script>
+  <script src="app/jobs/jobTilesSettlement/jobTilesSettlement.service.js"></script>
+  <script src="app/jobs/jobs.controller.js"></script>
+  <script src="app/jobs/jobs.js"></script>
+  <script src="app/jobs/jobs.service.js"></script>
+  <script src="app/jobs/jobsFiltering/jobsFiltering.directive.js"></script>
+  <script src="app/jobs/jobsList/jobsList.directive.js"></script>
+  <script src="app/jobs/jobsSearcher/jobsSearcher.directive.js"></script>
+  <script src="app/main/basketball/basketball.controller.js"></script>
+  <script src="app/main/basketball/basketball.js"></script>
+  <script src="app/main/football/football.controller.js"></script>
+  <script src="app/main/football/football.js"></script>
+  <script src="app/main/logNavbar/logNavbar.directive.js"></script>
+  <script src="app/main/main.controller.js"></script>
+  <script src="app/main/main.js"></script>
+  <script src="app/main/signUp/signUp.directive.js"></script>
+  <script src="app/manageRoster/manageRoster.controller.js"></script>
+  <script src="app/manageRoster/manageRoster.js"></script>
+  <script src="app/manageStats/manageStats.controller.js"></script>
+  <script src="app/manageStats/manageStats.js"></script>
+  <script src="app/profile/coach/profile.coach.bio/profile.coach.bio.controller.js"></script>
+  <script src="app/profile/coach/profile.coach.bio/profile.coach.bio.js"></script>
+  <script src="app/profile/coach/profile.coach.career/profile.coach.career.controller.js"></script>
+  <script src="app/profile/coach/profile.coach.career/profile.coach.career.js"></script>
+  <script src="app/profile/coach/profile.coach.galery/profile.coach.galery.controller.js"></script>
+  <script src="app/profile/coach/profile.coach.galery/profile.coach.galery.js"></script>
+  <script src="app/profile/coach/profile.coach.highs/profile.coach.highs.controller.js"></script>
+  <script src="app/profile/coach/profile.coach.highs/profile.coach.highs.js"></script>
+  <script src="app/profile/coach/profile.coach.stats/profile.coach.stats.controller.js"></script>
+  <script src="app/profile/coach/profile.coach.stats/profile.coach.stats.js"></script>
+  <script src="app/profile/common/profile.common.story/profile.common.story.controller.js"></script>
+  <script src="app/profile/common/profile.common.story/profile.common.story.js"></script>
+  <script src="app/profile/league/profile.league.contact/profile.league.contact.controller.js"></script>
+  <script src="app/profile/league/profile.league.contact/profile.league.contact.js"></script>
+  <script src="app/profile/league/profile.league.stats/profile.league.stats.controller.js"></script>
+  <script src="app/profile/league/profile.league.stats/profile.league.stats.js"></script>
+  <script src="app/profile/league/profile.league.store/profile.league.store.controller.js"></script>
+  <script src="app/profile/league/profile.league.store/profile.league.store.js"></script>
+  <script src="app/profile/league/profile.league.videos/profile.league.videos.controller.js"></script>
+  <script src="app/profile/league/profile.league.videos/profile.league.videos.js"></script>
+  <script src="app/profile/player/profile.player.bio/profile.player.bio.controller.js"></script>
+  <script src="app/profile/player/profile.player.bio/profile.player.bio.js"></script>
+  <script src="app/profile/player/profile.player.career/profile.player.career.controller.js"></script>
+  <script src="app/profile/player/profile.player.career/profile.player.career.js"></script>
+  <script src="app/profile/player/profile.player.galery/profile.player.galery.controller.js"></script>
+  <script src="app/profile/player/profile.player.galery/profile.player.galery.js"></script>
+  <script src="app/profile/player/profile.player.highs/profile.player.highs.controller.js"></script>
+  <script src="app/profile/player/profile.player.highs/profile.player.highs.js"></script>
+  <script src="app/profile/player/profile.player.stats/profile.player.stats.controller.js"></script>
+  <script src="app/profile/player/profile.player.stats/profile.player.stats.js"></script>
+  <script src="app/profile/profile.controller.js"></script>
+  <script src="app/profile/profile.js"></script>
+  <script src="app/profile/team/profile.team.coaching/profile.team.coaching.controller.js"></script>
+  <script src="app/profile/team/profile.team.coaching/profile.team.coaching.js"></script>
+  <script src="app/profile/team/profile.team.recruiting/profile.team.recruiting.controller.js"></script>
+  <script src="app/profile/team/profile.team.recruiting/profile.team.recruiting.js"></script>
+  <script src="app/profile/team/profile.team.roster/profile.team.roster.controller.js"></script>
+  <script src="app/profile/team/profile.team.roster/profile.team.roster.js"></script>
+  <script src="app/profile/team/profile.team.stats/profile.team.stats.controller.js"></script>
+  <script src="app/profile/team/profile.team.stats/profile.team.stats.js"></script>
+  <script src="app/recruiting/recruiting.controller.js"></script>
+  <script src="app/recruiting/recruiting.js"></script>
+  <script src="app/search/search.controller.js"></script>
+  <script src="app/search/search.js"></script>
+  <script src="app/statsEdit/statsEdit.controller.js"></script>
+  <script src="app/statsEdit/statsEdit.js"></script>
+  <script src="app/teams/teams.controller.js"></script>
+  <script src="app/teams/teams.js"></script>
+  <script src="app/users/users.controller.js"></script>
+  <script src="app/users/users.js"></script>
+  <script src="components/achievements-modal/achievements-modal.directive.js"></script>
+  <script src="components/ageSelector/ageSelector.directive.js"></script>
+  <script src="components/angular-simple-calendar/angular-simple-calendar.js"></script>
+  <script src="components/angular-simple-calendar/calendarEvent.controller.js"></script>
+  <script src="components/assign-selector/assign-selector.directive.js"></script>
+  <script src="components/assignModal/assignModal.controler.js"></script>
+  <script src="components/assignModal/assignModal.js"></script>
+  <script src="components/auth/auth.service.js"></script>
+  <script src="components/auth/user.service.js"></script>
+  <script src="components/browseMembersModal/browseMembersModal.directive.js"></script>
+  <script src="components/browseMembersModal/teamMembersSelector/teamMembersSelector.directive.js"></script>
+  <script src="components/browseUsersModal/browseUsersModal.directive.js"></script>
+  <script src="components/browseUsersModal/usersSelector/usersSelector.directive.js"></script>
+  <script src="components/countrySelect/countrySelect.directive.js"></script>
+  <script src="components/custom-datepicker/custom-datepicker.directive.js"></script>
+  <script src="components/dataLoader/dataLoader.service.js"></script>
+  <script src="components/easyModal/easyModal.controller.js"></script>
+  <script src="components/filters/capitalize/capitalize.filter.js"></script>
+  <script src="components/filters/dateToLocaleString/dateToLocaleString.filter.js"></script>
+  <script src="components/filters/getName/getName.filter.js"></script>
+  <script src="components/galleryModal/galleryModal.controler.js"></script>
+  <script src="components/galleryModal/galleryModal.js"></script>
+  <script src="components/galleryPublisher/galleryPublisher.directive.js"></script>
+  <script src="components/game/game.directive.js"></script>
+  <script src="components/headerWithToggle/headerWithToggle.directive.js"></script>
+  <script src="components/live-stats-banner/live-stats-banner-item/live-stats-banner-item.directive.js"></script>
+  <script src="components/live-stats-banner/live-stats-banner-settings/live-stats-banner-settings.directive.js"></script>
+  <script src="components/live-stats-banner/live-stats-banner.directive.js"></script>
+  <script src="components/liveEventFilter/liveEventFilter.filter.js"></script>
+  <script src="components/liveStats/liveStats.directive.js"></script>
+  <script src="components/liveStats/liveStatsBasketball/liveStatsBasketball.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/footballDescription/footballDescription.filter.js"></script>
+  <script src="components/liveStats/liveStatsFootball/fumble/fumble.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/lateral/lateral.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/liveStatsFootball.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/passPlay/pass/completePass/completePass.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/passPlay/pass/incompletePass/incompletePass.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/passPlay/pass/interceptPass/interceptPass.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/passPlay/pass/pass.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/passPlay/pass/sackPass/sackPass.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/passPlay/passPlay.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/penalty/penalty.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/runPlay/run/run.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/runPlay/runPlay.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/specialTeams/fieldGoal/fieldGoal.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/specialTeams/kickoff/kickoff.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/specialTeams/pointAfter/pointAfter.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/specialTeams/punt/punt.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/specialTeams/recover/recover.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/specialTeams/return/return.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/specialTeams/specialTeams.directive.js"></script>
+  <script src="components/liveStats/liveStatsFootball/tackle/tackle.directive.js"></script>
+  <script src="components/medalsListModal/medalsListModal.controller.js"></script>
+  <script src="components/medalsListModal/medalsListModal.js"></script>
+  <script src="components/messages/conversation-list/conversation-list.directive.js"></script>
+  <script src="components/messages/conversation-list/conversation/conversation.directive.js"></script>
+  <script src="components/messages/members-list/members-list.directive.js"></script>
+  <script src="components/messages/message-creator/message-creator.directive.js"></script>
+  <script src="components/messages/messages-header/messages-header.directive.js"></script>
+  <script src="components/messages/messages-list/message/message.directive.js"></script>
+  <script src="components/messages/messages-list/messages-list.directive.js"></script>
+  <script src="components/messages/messages.directive.js"></script>
+  <script src="components/messages/new-conversation-modal/new-conversation-modal.directive.js"></script>
+  <script src="components/messages/new-conversation-modal/receivers-selector/receivers-selector.directive.js"></script>
+  <script src="components/messages/new-room-modal/members-selector/members-selector.directive.js"></script>
+  <script src="components/messages/new-room-modal/new-room-modal.directive.js"></script>
+  <script src="components/messages/room-selector/room-selector.directive.js"></script>
+  <script src="components/messages/thread-creator/thread-creator.directive.js"></script>
+  <script src="components/messages/thread-list/thread-list.directive.js"></script>
+  <script src="components/messages/thread-list/thread/thread.directive.js"></script>
+  <script src="components/milestoneCreator/milestoneCreator.directive.js"></script>
+  <script src="components/milestoneCreator/milestoneCreatorModal/milestoneCreatorModal.controller.js"></script>
+  <script src="components/milestoneCreator/milestoneCreatorModal/milestoneCreatorModal.service.js"></script>
+  <script src="components/milestoneCreator/milestoneCreatorModal/milestonesBasketballCreator/milestonesBasketballCreator.directive.js"></script>
+  <script src="components/milestoneCreator/milestoneCreatorModal/milestonesFootballCreator/milestonesFootballCreator.directive.js"></script>
+  <script src="components/milestones/milestones.directive.js"></script>
+  <script src="components/modal/modal.controller.js"></script>
+  <script src="components/modal/modal.service.js"></script>
+  <script src="components/modalEvent/modalEvent.service.js"></script>
+  <script src="components/mongoose-error/mongoose-error.directive.js"></script>
+  <script src="components/multistring-selector/multistring-selector.directive.js"></script>
+  <script src="components/navigationbar/focusablePopover.js"></script>
+  <script src="components/navigationbar/navigationbar.controller.js"></script>
+  <script src="components/navigationbar/navigationbar.directive.js"></script>
+  <script src="components/newGameModal/newGameModal.controler.js"></script>
+  <script src="components/newGameModal/newGameModal.js"></script>
+  <script src="components/notification/notification.directive.js"></script>
+  <script src="components/one-string-selector-autocomplete/one-string-selector-autocomplete.directive.js"></script>
+  <script src="components/one-user-selector/one-user-selector.directive.js"></script>
+  <script src="components/percentageDisplay/percentageDisplay.filter.js"></script>
+  <script src="components/photos/photos.directive.js"></script>
+  <script src="components/postStats/postStats.directive.js"></script>
+  <script src="components/postStats/postStatsBasketball/postStatsBasketball.directive.js"></script>
+  <script src="components/postStats/postStatsFootball/postStatsFootball.directive.js"></script>
+  <script src="components/profileBasicData/profileBasicData.directive.js"></script>
+  <script src="components/profileButtons/profileButtons.directive.js"></script>
+  <script src="components/profileNavbar/profileNavbar.controller.js"></script>
+  <script src="components/profileNavbar/profileNavbar.directive.js"></script>
+  <script src="components/profilePlayerStats/profilePlayerStats.directive.js"></script>
+  <script src="components/profilePlayerStats/profilePlayerStatsBasketball/profilePlayerStatsBasketball.directive.js"></script>
+  <script src="components/profilePlayerStats/profilePlayerStatsFootball/profilePlayerStatsFootball.directive.js"></script>
+  <script src="components/recruitingFiltering/recruitingFiltering.directive.js"></script>
+  <script src="components/recruitingResult/recruitingResult.directive.js"></script>
+  <script src="components/search/search.directive.js"></script>
+  <script src="components/sendMessageModal/sendMessageModal.controller.js"></script>
+  <script src="components/sendMessageModal/sendMessageModal.directive.js"></script>
+  <script src="components/services/Cache/Cache.service.js"></script>
+  <script src="components/services/Comment/Comment.service.js"></script>
+  <script src="components/services/Event/Event.service.js"></script>
+  <script src="components/services/Photo/photo.service.js"></script>
+  <script src="components/services/Team/Team.service.js"></script>
+  <script src="components/services/data/conversation/Conversation-Resource/Conversation-Resource.service.js"></script>
+  <script src="components/services/data/conversation/Conversation/Conversation.service.js"></script>
+  <script src="components/services/data/room/Room-Resource/Room-Resource.service.js"></script>
+  <script src="components/services/data/room/Room/Room.service.js"></script>
+  <script src="components/services/data/user/live-stats-banner-settings/live-stats-banner-settings.js"></script>
+  <script src="components/services/event-titles/event-titles.service.js"></script>
+  <script src="components/services/footballStatNames/footballStatNames.service.js"></script>
+  <script src="components/services/game/Game/Game.service.js"></script>
+  <script src="components/services/gamePositions/gamePositions.service.js"></script>
+  <script src="components/services/milestone/milestone.service.js"></script>
+  <script src="components/services/play-levels/play-levels.service.js"></script>
+  <script src="components/services/recruiting/recruiting.service.js"></script>
+  <script src="components/services/sports/sports.service.js"></script>
+  <script src="components/show-tail/show-tail.directive.js"></script>
+  <script src="components/socket/socket.service.js"></script>
+  <script src="components/star-checkbox/star-checkbox.directive.js"></script>
+  <script src="components/statBox/statBox.directive.js"></script>
+  <script src="components/statsEditModal/statsEditModal.controller.js"></script>
+  <script src="components/statsEditModal/statsEditModal.js"></script>
+  <script src="components/team-stats/team-stats.directive.js"></script>
+  <script src="components/timerDisplay/timerDisplay.filter.js"></script>
+  <script src="components/topPlayers/topPlayers.directive.js"></script>
+  <script src="components/user/user.directive.js"></script>
+  <script src="components/userStatsEditModal/userStatsEditModal.controller.js"></script>
+  <script src="components/userStatsEditModal/userStatsEditModal.js"></script>
+  <script src="components/wall/event/event-comments/event-comment/event-comment.directive.js"></script>
+  <script src="components/wall/event/event-comments/event-comments.directive.js"></script>
+  <script src="components/wall/event/event-comments/event-publisher/event-publisher.directive.js"></script>
+  <script src="components/wall/event/event.directive.js"></script>
+  <script src="components/wall/publisher/publisher.directive.js"></script>
+  <script src="components/wall/wall.directive.js"></script>
+  <!-- endinjector -->
+  <!-- endbuild -->
+  </div>
+</body>
+</html>
