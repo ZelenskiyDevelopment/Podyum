@@ -5,7 +5,12 @@ angular.module('abroadathletesApp')
 
     $scope.registerUser = {};
     $scope.registerErrors = {};
-
+    $scope.news = {};
+    $scope.news_page_two = {};
+    $scope.news_page_three = {};
+    $scope.news_nfl = 'http://www.nfl.com/ajax/news?partnerId=around-the-league&maxResults=10&batchNum=0';
+    $scope.news_nfl_page_two = 'http://www.nfl.com/ajax/news?partnerId=around-the-league&maxResults=10&batchNum=10';
+    $scope.news_nfl_page_three = 'http://www.nfl.com/ajax/news?partnerId=around-the-league&maxResults=10&batchNum=20';
     $scope.register = function(form) {
       $scope.registerSubmitted = true;
       $scope.passwordConfirmed = false;
@@ -37,6 +42,29 @@ angular.module('abroadathletesApp')
 
     };
 
+
+        $http({method:'GET', url:$scope.news_nfl}).then(function(response){
+
+            $scope.news = response.data;
+
+        },function(response){
+
+        });
+        $http({method:'GET', url:$scope.news_nfl_page_two}).then(function(response){
+
+            $scope.news_page_two = response.data;
+
+        },function(response){
+
+        });
+
+        $http({method:'GET', url:$scope.news_nfl_page_three}).then(function(response){
+
+            $scope.news_page_three = response.data;
+
+        },function(response){
+
+        });
 
   });
 
