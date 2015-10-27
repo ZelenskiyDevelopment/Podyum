@@ -5,17 +5,18 @@
 }
 
 .header {
-  background: #222;
   border-width:0;
 }
 
-.header .navbar-collapse {
-  background: #222;
+.navbar-fixed-top {
+  top:81px;
+  height: 50px
 }
 
-.navbar-fixed-top {
-  top:230px;
+.navbar-inverse {
+  background: #444 none repeat scroll 0% 0%;
 }
+
 .navbar-inverse .navbar-form {
     width: 60%;
 }
@@ -34,7 +35,7 @@
 }
 
 .social-links li {
-    margin: 0 0 0 50px;
+    margin: 0 0 0 50px; 
 }
 
 .social-links li:last-child {
@@ -43,10 +44,6 @@
 
 
 .logo-nav {
-  height: 80px;
-  border-top:2px solid #f8c637;
-  border-bottom:2px solid #f8c637;
-    background: #122429;
 }
 
 .logo-nav .navbar-brand img {
@@ -58,55 +55,56 @@
 .navbar-brand {
   padding: 0;
 }
-.header .navbar-collapse {
-    background: #122429;
-}
+
 .logout-icon {
-  background: url('../../assets/images/logout-icon.png') no-repeat;
-  height: 35px;
+  background: url('../../assets/images/otherIcon.png') no-repeat;
+  height: 10px;
   width: 32px;
   display: inline-block;
   margin-top: 12px;
 }
-.logout-icon:hover {
-    background: url('../../assets/images/logout-icon-hover.png') no-repeat;
-}
+
 .message-icon {
   background: url('../../assets/images/message-icon.png') no-repeat;
-  height: 35px;
-  width: 32px;
+  height: 22px;
+  width: 20px;
   display: inline-block;
   margin-top: 15px;
 }
 
 .letter-icon {
-   background: url('../../assets/images/letter-icon.png') no-repeat;
-   height: 35px;
-   width: 32px;
-   display: inline-block;
+  background: url('../../assets/images/letter-icon.png') no-repeat;
+  height: 18px;
+  width: 20px;
+  display: inline-block;
   margin-top: 16px;
  }
 
 .user-icon {
     background: url('../../assets/images/user-icon.png') no-repeat;
-    height: 35px;
-    width: 32px;
     display: inline-block;
-  margin-top: 10px;
+    width: 27px;
+    height: 19px;
+
   }
 .logo-nav .navbar-form {
-  margin-top: 24px;
-    margin-left: 50px;
 }
-.logo-nav .navbar-form input {
 
-    font-family: latothin;
+.menu-nav {
+  margin-top: 50px;
+  background: #fff;
+  font-weight: bold;
 }
+
 .navbar {
   min-height: 30px;
 }
-.menu-nav {
-  margin-top: 80px;
+
+#subnav {
+  height: 42px;
+  text-align: center;
+  float: none;
+  z-index: 1;
 }
 
 #subnav .navbar-nav {

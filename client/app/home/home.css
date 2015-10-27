@@ -1,7 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400);
-html {
-  overflow:hidden;
-}
+
 
 @font-face {
     font-family: 'aileronlight';
@@ -13,7 +11,6 @@ html {
     url('../../assets/fonts/aileron-light-webfont.svg#aileronlight') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
@@ -79,7 +76,6 @@ html {
   url('../../assets/fonts/lato-bold-webfont.svg#latobold') format('svg');
   font-weight: normal;
   font-style: normal;
-
 }
 body {
   background: #f8f8f8;
@@ -87,32 +83,9 @@ body {
   font-family: 'aileronlight';
 }
 
-@media (max-width:1301px) {
-
-}
-
-.navbar-default .navbar-nav > li > a {
-    color: white;
-    font-size: 18px;
-    font-family: 'latobold';
-    padding-left: 0px;
-    padding-right: 0px;
-    text-transform: uppercase;
-    margin-left: 28px;
-}
 .navbar-default .navbar-nav > li:first-child a {
   margin-left: 0px;
 }
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: #fff;
-  background: none;
-}
-
-
-.navbar-default {background-color:#edece9;margin-top:50px;border-width:0;z-index:5;}
-.navbar-default .navbar-nav > .active > a,.navbar-default .navbar-nav > li:hover > a {border:0 solid #f8c637;border-bottom-width:3px;background-color:transparent; color: #eee}
-
-
 
 .btn,.form-control,.panel,.list-group,.well {border-radius:1px;box-shadow:0 0 0; background-color:#ededed}
 .form-control {border-color:#d7d7d7;}
@@ -183,8 +156,6 @@ h3,h4,h5 {
 #subnav {
   position:fixed;
   width:100%;
-  background: #152e34;
-  height: 53px;
 }
 
 @media (max-width: 768px) {
@@ -193,9 +164,7 @@ h3,h4,h5 {
   }
 }
 
-
-.navbar-center
-{
+.navbar-center {
   position: absolute;
   width: 100%;
   left: 0;
@@ -314,30 +283,30 @@ h3,h4,h5 {
 
 .upcoming-schedule table {
     width: 100%;
-  height: 38px;
-  padding: 0px 0px;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  border-bottom: 2px solid #f6b62b;
-
-
-  border-top-color: transparent;
-  border-right-color-value: none;
-  border-bottom-color: #f6b62b;
-  border-left-color-value: none;
-  border-left-color-ltr-source: physical;
-  border-left-color-rtl-source: physical;
-  border-right-color-ltr-source: physical;
-  border-right-color-rtl-source: physical;
-  outline: 0px none;
-  outline-width: 0px;
-  outline-style: none;
-  outline-color: -moz-use-text-color;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.0) inset, 0px 6px 6px rgba(246, 182, 43, 0.0);
+    height: 213px;
 }
-.popover.bottom > .arrow {
-    top: 24px;
+
+.upcoming-schedule .table-header,
+.upcoming-schedule .table-striped>tbody>tr {
+    background: #fff;
+}
+
+.upcoming-schedule .table-striped>tbody>tr>td {
+    padding: 7px 15px;
+    font-size: 13px;
+}
+
+.upcoming-schedule .table-striped>tbody>tr>.text-center {
+    text-align: center;
+}
+
+.upcoming-schedule .table-striped>tbody>tr>.text-center>a:first-child {
+    margin: 0 4px 0 0;
+}
+
+.upcoming-schedule>.table-header {
+    border-bottom: 1px solid #efefef;
+    padding: 7px 24px;
 }
 
 .upcoming-schedule h3 {
@@ -532,7 +501,7 @@ h3,h4,h5 {
     margin: 0 auto;
     font-family: 'aileronregular';
     color: #616161;
-
+    
 }
 
 #right_sidebar h2 {
@@ -598,7 +567,7 @@ h3,h4,h5 {
 }
 
 #twitter_feed {
-  background: #fff;
+  background: #fff; 
 }
 
 #twitter_feed div {
