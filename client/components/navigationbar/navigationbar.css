@@ -15,8 +15,32 @@
 
 .navbar-fixed-top {
   top:230px;
-
 }
+.navbar-inverse .navbar-form {
+    width: 60%;
+}
+
+.navbar-inverse form input:after {
+    content: '';
+    position: absolute;
+    background: url("../img/btn-search.png");
+    width: 10px;
+    height: 10px;
+    display: block;
+}
+
+.social-links {
+  margin: 0;
+}
+
+.social-links li {
+    margin: 0 0 0 50px;
+}
+
+.social-links li:last-child {
+    margin: 0;
+}
+
 
 .logo-nav {
   height: 80px;
@@ -24,11 +48,15 @@
   border-bottom:2px solid #f8c637;
     background: #122429;
 }
+
 .logo-nav .navbar-brand img {
   margin-top: 0px;
   padding: 0px;
   height:50px;
+}
 
+.navbar-brand {
+  padding: 0;
 }
 .header .navbar-collapse {
     background: #122429;
@@ -50,6 +78,7 @@
   display: inline-block;
   margin-top: 15px;
 }
+
 .letter-icon {
    background: url('../../assets/images/letter-icon.png') no-repeat;
    height: 35px;
@@ -57,6 +86,7 @@
    display: inline-block;
   margin-top: 16px;
  }
+
 .user-icon {
     background: url('../../assets/images/user-icon.png') no-repeat;
     height: 35px;
@@ -71,8 +101,60 @@
 .logo-nav .navbar-form input {
 
     font-family: latothin;
-
+}
+.navbar {
+  min-height: 30px;
 }
 .menu-nav {
   margin-top: 80px;
 }
+
+#subnav .navbar-nav {
+  float: none;
+}
+
+#subnav .navbar-nav li {
+  float: none;
+  display: inline-block;
+}
+
+.menu-nav .nav > li > a {
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    color: #777;
+}
+
+.navbar-default {
+    background: #fff;
+    border: none;
+    box-shadow: none;
+}
+
+.navbar-default .navbar-nav > .active > a {
+    text-decoration: none;
+    color: #fcd98e;
+    border-bottom: 2px solid #fcd98e;
+    background: #fff;
+    outline: none;
+}
+
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  background: #fff;
+  color: #fcd98e;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    text-decoration: none;
+    color: #fcd98e;
+    border-bottom: 2px solid #fcd98e;
+    background: #fff;
+    outline: none;
+}
+
+
+
+

@@ -33,8 +33,8 @@ angular.module('abroadathletesApp')
         $scope.canEdit = $scope.owner._id === $scope.user._id;
         if(!$scope.canEdit) {
           User.trackUser({
-            trackedUser: $scope.user,
-            trackingUser: $scope.owner
+            trackedUser: $scope.owner,
+            trackingUser: $scope.user
           });
         }
         var me = $scope.owner;

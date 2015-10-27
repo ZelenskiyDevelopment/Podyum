@@ -4,6 +4,59 @@ html {
 }
 
 @font-face {
+    font-family: 'aileronlight';
+    src: url('../../assets/fonts/aileron-light-webfont.eot');
+    src: url('../../assets/fonts/aileron-light-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../../assets/fonts/aileron-light-webfont.woff2') format('woff2'),
+    url('../../assets/fonts/aileron-light-webfont.woff') format('woff'),
+    url('../../assets/fonts/aileron-light-webfont.ttf') format('truetype'),
+    url('../../assets/fonts/aileron-light-webfont.svg#aileronlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'aileronlight';
+    src: url('../../assets/fonts/aileron-light-webfont.eot');
+    src: url('../../assets/fonts/aileron-light-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../../assets/fonts/aileron-light-webfont.woff2') format('woff2'),
+    url('../../assets/fonts/aileron-light-webfont.woff') format('woff'),
+    url('../../assets/fonts/aileron-light-webfont.ttf') format('truetype'),
+    url('../../assets/fonts/aileron-light-webfont.svg#aileronlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'aileronregular';
+    src: url('../../assets/fonts/aileron-regular-webfont.eot');
+    src: url('../../assets/fonts/aileron-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../../assets/fonts/aileron-regular-webfont.woff2') format('woff2'),
+    url('../../assets/fonts/aileron-regular-webfont.woff') format('woff'),
+    url('../../assets/fonts/aileron-regular-webfont.ttf') format('truetype'),
+    url('../../assets/fonts/aileron-regular-webfont.svg#aileronregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'aileronsemibold';
+    src: url('../../assets/fonts/aileron-semibold-webfont.eot');
+    src: url('../../assets/fonts/aileron-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../../assets/fonts/aileron-semibold-webfont.woff2') format('woff2'),
+    url('../../assets/fonts/aileron-semibold-webfont.woff') format('woff'),
+    url('../../assets/fonts/aileron-semibold-webfont.ttf') format('truetype'),
+    url('../../assets/fonts/aileron-semibold-webfont.svg#aileronsemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
   font-family: 'latothin';
   src: url('../../assets/fonts/lato-thin-webfont.eot');
   src: url('../../assets/fonts/lato-thin-webfont.eot?#iefix') format('embedded-opentype'),
@@ -28,61 +81,10 @@ html {
   font-style: normal;
 
 }
-
-@font-face {
-    font-family: 'latoregular';
-    src: url('../../assets/fonts/lato-regular-webfont.eot');
-    src: url('../../assets/fonts/lato-regular-webfont.eot?#iefix') format('embedded-opentype'),
-    url('../../assets/fonts/lato-regular-webfont.woff2') format('woff2'),
-    url('../../assets/fonts/lato-regular-webfont.woff') format('woff'),
-    url('../../assets/fonts/lato-regular-webfont.ttf') format('truetype'),
-    url('../../assets/fonts/lato-regular-webfont.svg#latoregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latoblack';
-    src: url('../../assets/fonts/lato-black-webfont.eot');
-    src: url('../../assets/fonts/lato-black-webfont.eot?#iefix') format('embedded-opentype'),
-    url('../../assets/fonts/lato-black-webfont.woff2') format('woff2'),
-    url('../../assets/fonts/lato-black-webfont.woff') format('woff'),
-    url('../../assets/fonts/lato-black-webfont.ttf') format('truetype'),
-    url('../../assets/fonts/lato-black-webfont.svg#latoblack') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'latosemibold';
-    src: url('../../assets/fonts/lato-semibold-webfont.eot');
-    src: url('../../assets/fonts/lato-semibold-webfont.eot?#iefix') format('embedded-opentype'),
-    url('../../assets/fonts/lato-semibold-webfont.woff2') format('woff2'),
-    url('../../assets/fonts/lato-semibold-webfont.woff') format('woff'),
-    url('../../assets/fonts/lato-semibold-webfont.ttf') format('truetype'),
-    url('../../assets/fonts/lato-semibold-webfont.svg#latosemibold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'latomedium';
-    src: url('../../assets/fonts/lato-medium-webfont.eot');
-    src: url('../../assets/fonts/lato-medium-webfont.eot?#iefix') format('embedded-opentype'),
-    url('../../assets/fonts/lato-medium-webfont.woff2') format('woff2'),
-    url('../../assets/fonts/lato-medium-webfont.woff') format('woff'),
-    url('../../assets/fonts/lato-medium-webfont.ttf') format('truetype'),
-    url('../../assets/fonts/lato-medium-webfont.svg#latomedium') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
 body {
-/*  background-color:#5d5d5d;*/
-  background: #edece9; /* Old browsers */
-  -webkit-font-smoothing: antialiased;
-  font: normal 14px Roboto,arial,sans-serif;
+  background: #f8f8f8;
+  font-weight: normal;
+  font-family: 'aileronlight';
 }
 
 @media (max-width:1301px) {
@@ -202,23 +204,116 @@ h3,h4,h5 {
   margin-right: auto;
 }
 
+.navbar-form .input-group {
+  display: block;
+}
+
 .round-corners {
+  background: #6b6b6b;
+  border: none;
+  outline: none;
+  height: 32px;
+  margin: 0 0 0 120px;
+  display: block;
+  width: 83%;
+  padding: 0 15px;
+  color: #fff;
+  border-radius: 25px !important;
   font-size: 12px;
-  background-color: transparent;
-  width: 100%;
-  height: 38px;
-  padding: 0px 0px;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  border-bottom: 1px solid #f6b62b;
+  box-shadow: none !important;
 }
 
 .round-corners:focus, .round-corners:hover, .round-corners:active {
   font-size: 12px;
   color: #fff;
-  background-color: rgba(100, 100, 100, 0);
-  width: 100%;
+  background: #6b6b6b;
+  width: 83%;
+  height: 32px;
+  border-radius: 25px !important;
+  box-shadow: none !important;
+}
+
+.popover.bottom > .arrow {
+  top: 24px;
+}
+
+
+#home {
+  font-weight: normal;
+  font-family: 'aileronlight';
+  padding: 180px 0 0 0;
+}
+
+.info-card {
+    text-align: center;
+    background: #fff;
+    padding: 20px 0;
+    height: 250px;
+}
+
+.info-card .main-picture {
+    margin: -20px 0 0 0;
+}
+
+.info-card .kind-user {
+    margin: -25px 0 0 0;
+    padding: 0;
+    font-size: 14px;
+    color: #827f79;
+}
+
+.info-card .kind-user>h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.info-card>.league-type {
+    color: #16a4cc;
+    text-decoration: none;
+}
+
+.info-card .kind-user h3>a {
+    color: #333;
+    text-decoration: none;
+}
+
+.info-card>.follower-user {
+    background: #f8f8f8;
+    height: 50px;
+    width: 210px;
+    margin: 20px auto;
+    border-radius: 25px;
+
+}
+
+.info-card>.follower-user p {
+    padding: 0;
+    margin: 0;
+    line-height: 50px;
+    font-size: 20px;
+}
+
+.info-card>.follower-user p>span {
+    line-height: 50px;
+    font-size: 14px;
+}
+
+.info-card>.follower-user p>.total {
+    font-size: 20px;
+    color: #fac553;
+}
+
+.upcoming-schedule {
+    height: 250px;
+}
+
+.upcoming-schedule img {
+    width: 40px;
+    height: 30px;
+}
+
+.upcoming-schedule table {
+    width: 100%;
   height: 38px;
   padding: 0px 0px;
   border-top: 0px;
@@ -243,4 +338,313 @@ h3,h4,h5 {
 }
 .popover.bottom > .arrow {
     top: 24px;
+}
+
+.upcoming-schedule h3 {
+    margin: 0;
+    padding: 0;
+    color: #827f79;
+    font-size: 20px;
+}
+
+.upcoming-schedule .table-striped>tbody>tr>th {
+    font-size: 14px;
+    padding: 10px 24px;
+    color: #a4a4a4;
+    font-weight: normal;
+}
+
+.upcoming-schedule .table-striped>tbody>tr:nth-of-type(even) {
+    background: #f8f8f8;
+}
+
+.tab-navigation {
+    background: #fac553;
+    margin: 30px 0 0 0;
+}
+
+.tab-navigation>ul {
+    margin: 0;
+    padding: 0 24px;
+    list-style: none;
+    text-align: center;
+}
+
+.tab-navigation>ul>li {
+    display: inline-block;
+    padding: 20px 0;
+}
+
+.tab-navigation>ul>li>a {
+    text-decoration: none;
+    position: relative;
+    text-transform: uppercase;
+    display: block;
+    font-size: 18px;
+    padding: 0 47px;
+    color: #85641c;
+}
+
+
+
+.tab-navigation>ul>li>.active:before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: absolute;
+    left: 45%;
+    bottom: -30px;
+    border-top: 10px solid #fac553;
+
+}
+
+
+.tab-navigation>ul>li:nth-child(2) {
+
+}
+
+.tab-navigation>ul>li:nth-child(2)>a {
+    border-right: 1px solid #fcd98e;
+    border-left: 1px solid #fcd98e;
+    padding: 0 50px;
+}
+
+.tab-content .tab1-menu {
+    padding: 0 35px 0 35px;
+}
+
+.tab-content .tab1-menu>ul>li>a {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #8e8e8e;
+    display: block;
+    padding: 20px 15px;
+}
+
+.tab-content .tab1-menu>ul>li>a:hover,
+.tab-content .tab1-menu>ul>li>.active{
+    text-decoration: none;
+    color: #fcd98e;
+    border-bottom: 2px solid #fcd98e;
+}
+
+.tab-content .tab1-menu>ul {
+    padding: 0;
+    margin: 0;
+}
+
+.tab-content .tab1-menu ul>li {
+    display: inline-block;
+    margin: 0 0 0 45px;
+}
+
+.ask-form-block {
+    background: #eaeaea;
+}
+
+.ask-form-block .question-block {
+    border-top: 1px solid #fff;
+    padding: 35px 0 18px 0;
+    font-size: 22px;
+    color: #333;
+}
+
+.ask-form-block .question-block strong {
+    font-weight: 500;
+}
+
+.ask-form-block .choose-answer {
+    border-bottom: 1px solid #fff
+
+}
+
+.ask-form-block strong, .ask-form-block .choose-answer>.form-group {
+    padding: 0 0 0 35px;
+}
+
+.ask-form-block .choose-answer>.form-group input[type="radio"] {
+    display: none;
+}
+
+.ask-form-block .submit-form {
+    text-align: right;
+    padding: 15px 0;
+}
+
+.ask-form-block .submit-form select{
+    width: 310px;
+    height: 45px;
+    outline: none;
+    border: none;
+    margin: 0 20px 0 0;
+    border-radius: 5px;
+}
+
+.ask-form-block .submit-form>.btn-submit {
+    width: 130px;
+    height: 45px;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: #fac553;
+    font-size: 15px;
+    margin: 0 20px 0 0;
+}
+
+/*Styling radio button*/
+.radio-form label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 50px;
+    margin-right: 15px;
+    font-size: 14px;
+    color: #827f79;
+
+}
+
+.radio-form label:before {
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.radio-form input[type=radio]:checked + label:before {
+    content: "\2022";
+    color: #fac553;
+    font-size: 70px;
+    text-align: center;
+    line-height: 27px;
+}
+
+#right_sidebar {
+    width: 290px;
+    margin: 0 auto;
+    font-family: 'aileronregular';
+    color: #616161;
+
+}
+
+#right_sidebar h2 {
+    font-family: 'aileronlight';
+    font-size: 20px;
+    color: #827f79;
+}
+
+#goals, #instagram_feed, #twitter_feed {
+    border: 1px solid #f1f1f1;
+}
+
+#goals h2, #instagram_feed h2, #twitter_feed h2 {
+    padding-left: 16px;
+    letter-spacing: 1px;
+}
+
+#goals {
+    margin-bottom: 18px;
+    text-align: center;
+    font-size: 14px;
+    background: #fff;
+}
+
+#goals h2 {
+    font-size: 23px;
+    line-height: 70px;
+    text-align: left;
+    letter-spacing: 2px;
+}
+
+
+#goals ul li {
+    padding: 21px 0 20px 54px;
+    border-top: 1px solid #f2f2f2;
+    text-align: left;
+    background: url(../../assets/images/marker.png) no-repeat 16px 22px;
+}
+
+#goals ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+
+
+#instagram_feed {
+    line-height: 0;
+    margin-bottom: 25px;
+    background: #fff;
+}
+
+#instagram_feed img {
+    margin-right: -4px;
+    text-align: center;
+}
+
+#instagram_feed h2, #twitter_feed h2 {
+    line-height: 50px;
+    background: url(../../assets/images/pointer.png) no-repeat;
+    background-position: 244px center;
+}
+
+#twitter_feed {
+  background: #fff;
+}
+
+#twitter_feed div {
+    border-top: 1px solid #e5e6e8;
+}
+
+.twitter_footer {
+    font-family: 'aileronsemibold';
+    font-size: 13px;
+    color: #919191;
+    line-height: 80px;
+    text-align: center;
+}
+
+#twitter_feed .twit_content {
+    border: 0;
+    padding-left: 82px;
+}
+
+.twit {
+    padding: 20px 0 15px 0;
+    line-height: 20px;
+}
+
+.twit h3 {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #616161;
+    padding-bottom: 15px;
+}
+
+.twit p {
+    font-size: 13px;
+    padding-bottom: 10px;
+}
+
+.twit h3 span {
+    color: #919191;
+}
+
+.twitter_img {
+    float: left;
+    padding: 6px 0 0 16px;
+}
+
+.twitter_footer a {
+    color: #fac553;
+    text-decoration: none;
 }

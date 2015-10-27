@@ -9,8 +9,8 @@
 
     </div>
     <div collapse="isCollapsedTop" class="collapse navbar-collapse" id="navbar-collapse1">
-      <form class="navbar-form pull-left" >
-        <div class="input-group" style="max-width:470px;">
+      <form class="navbar-form navbar-left" >
+        <div class="input-group">
           <search></search>
         </div>
       </form>
@@ -23,19 +23,19 @@
 
 
 
-        <li  class="googleplus pull-right"><a href="#" style="margin-left: 5px" ng-click="logout()" confirm="Are you sure you want to logout?"
+        <li  class="googleplus pull-right"><a href="#" ng-click="logout()" confirm="Are you sure you want to logout?"
                                    confirm-title="Logout confirmation"><span class="logout-icon"></span></a></li>
 
-        <li class="googleplus pull-right"><a href="#" style="margin-left: 5px" popover-template="'components/navigationbar/notification.html'"
+        <li class="googleplus pull-right"><a href="#"  popover-template="'components/navigationbar/notification.html'"
                                              ng-click="updateNotifications()" popover-placement="bottom" popover-title="Notification"><span class="message-icon">
         </span></a></li>
 
 
-        <li class="googleplus pull-right"><a href="#" style="margin-left: 5px"  popover-template="'components/navigationbar/messages.html'" popover-placement="bottom"
+        <li class="googleplus pull-right"><a href="#"   popover-template="'components/navigationbar/messages.html'" popover-placement="bottom"
                                              popover-title="Messages"><span class="letter-icon"></span>
 
 
-        <li class="googleplus pull-right"><a href="#" popover-template="'components/navigationbar/invitation.html'" popover-placement="bottom" style="margin-left: 20px"><i class="user-icon"></i></a></li>
+        <li class="googleplus pull-right"><a href="#" popover-template="'components/navigationbar/invitation.html'" popover-placement="bottom"><i class="user-icon"></i></a></li>
 
         </a></li>
 
@@ -62,7 +62,7 @@
 <!-- navigation bar 2 (bottom) --------------- -->
 <div class="navbar navbar-default navbar-fixed-top menu-nav" id="subnav">
   <div class="container" ng-controller="NavbarCtrl" >
-    <div class="navbar-header" >
+    <div class="navbar-header">
 
 
 
@@ -75,7 +75,7 @@
 
     </div>
     <div collapse="isCollapsedBottom" class="collapse navbar-collapse" id="navbar-collapse2">
-      <ul class="nav navbar-nav navbar-left">
+      <ul class="nav navbar-nav">
         <li ng-class="{active: isActive('/home')}"><a ui-sref="home.wall">Home</a></li>
         <li ng-class="{active: isActive('/profile')}"><a ui-sref="profile.common-story({id:null})" role="button" data-toggle="modal">Profile</a></li>
         <li ng-class="{active: isActive('/teams')}"><a ui-sref="teams" role="button" data-toggle="modal">My Teams</a></li>
