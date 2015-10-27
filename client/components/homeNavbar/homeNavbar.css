@@ -1,0 +1,43 @@
+.home-navbar {
+    background:#fac553;
+    table-layout: auto;
+    margin: 30px 0 0 0;
+}
+
+.home-navbar .btn-group {
+    padding: 10px 0;
+}
+
+.home-navbar .profile-navbar-btn,
+.home-navbar .our-button
+{
+    border: none;
+    color: #85641c;
+    text-transform: uppercase;
+    font-size: 18px;
+    box-shadow: none;
+    background:#fac553;
+}
+
+.home-navbar .profile-navbar-btn:hover,
+.home-navbar .profile-navbar-btn:focus {
+    border: none;
+    color: #85641c;
+    text-transform: uppercase;
+    font-size: 18px;
+    box-shadow: none;
+    background:#fac553;
+    outline: none;
+}
+
+.home-navbar .active:before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: absolute;
+    left: 45%;
+    bottom: -10px;
+    border-top: 10px solid #fac553;
+}
