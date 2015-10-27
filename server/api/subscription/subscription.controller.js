@@ -15,6 +15,7 @@ paypal.configure(config.api);
 
 exports.success = function(req,res) {
 
+    console.log(res);
 
 }
 exports.cancel = function(req,res) {
