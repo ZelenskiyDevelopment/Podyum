@@ -23,14 +23,18 @@ angular.module('abroadathletesApp')
 
 
 
-
     $scope.steps = ['type','sport','photo','data','finish'];
     $scope.formData = {};
-    $scope.formData.personalData = {};
+
+    User.get().$promise.then(function (me) {
+        $scope.formData.id = me._id;
+    });
+    //$scope.formData.personalData = {};
     $scope.formData.sportData = [];
     $scope.formData.sportData[0] = {name:'football', data:{}};
     $scope.formData.sport = {};
     $scope.formData.sport.football = true;
+    $scope.formData.sport_type = 'football';
     $scope.formData.myTeams = [];
     $scope.positions = [];
     $scope.myTeams = [];
@@ -42,22 +46,89 @@ angular.module('abroadathletesApp')
     };
 
     $scope.processForm = function() {
-      if($scope.formData.type === 'player') {
+
         $scope.finalData = {};
         $scope.finalData.type = $scope.formData.type;
-        console.log("player")
-        console.log($scope.formData)
-      }
+        console.log("player");
+
+          var assignto = [];
+          var UserUpdate = {};
+          var position = $scope.formData.sportData[0].data.positions[0];
+          angular.forEach($scope.formData.sportData[0].data.myTeams,function(value,key) {
+              assignto.push({
+                  user: value._id,
+                  dateFrom: value.dateFrom,
+                  dateTo: value.dateTo,
+                  isPresent: value.isPresent,
+                  position: position.name
+              });
+          });
+
+        if($scope.formData.type === 'player') {
+
+             UserUpdate = {
+
+                player: {
+                    firstName: $scope.formData.firstName,
+                    lastName: $scope.formData.lastName,
+                    birthday: $scope.formData.birthday,
+                    position: position.name,
+                    bio: $scope.formData.bio,
+                    number: $scope.formData.number
+                },
+                kind: $scope.formData.type,
+                sport: $scope.formData.sport_type,
+                sex: $scope.formData.sex,
+                country:  $scope.formData.country,
+                assignedTo: assignto,
+                completed: true
+            };
+
+
+        }
+
+        if($scope.formData.type === 'team') {
+
+
+            UserUpdate = {
+                team: {
+                    name: $scope.formData.name,
+                    bio: $scope.formData.bio,
+                    fans:[],
+                    color: $scope.formData.color,
+                    link: $scope.formData.link,
+                    mascot: $scope.formData.mascot
+                },
+                kind: $scope.formData.type,
+                sport: $scope.formData.sport_type,
+                founded: $scope.formData.founded,
+                completed: true,
+                stadium: $scope.formData.stadium,
+                address: $scope.formData.address,
+                country: $scope.formData.country
+            }
+
+
+        }
+
+
+
+        User.updateProfile({id:$scope.formData.id,data:UserUpdate}).$promise.then(function (response){
+            if (response == 'OK') {
+                $location.path('/home');
+            }
+        });
+
 
     };
     $scope.setType = function(type) {
       $scope.progressValue = 20;
       if(type==='player' || type==='coach' || type==='fan') {
-        $scope.formData.personalData.citizenship = [];
+        $scope.formData.citizenship = [];
       }
       if(type==='media') {
-        $scope.formData.personalData.writers = [];
-        $scope.formData.personalData.tags = [];
+        $scope.formData.writers = [];
+        $scope.formData.tags = [];
       }
       User.get().$promise.then(function (me) {
         if (type === 'player' || type==='coach' || type==='fan') {

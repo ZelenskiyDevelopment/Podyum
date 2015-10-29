@@ -12,19 +12,19 @@
         .div(class="creator-q") What year was your league founded?
       .col-md-6.col-sm-6.col-xs-6
         label
-          input(type="number" class="form-inline" id="founded" ng-model="formData.personalData.founded")
+          input(type="number" class="form-inline" id="founded" ng-model="formData.founded")
     .col-md-12.col-sm-12.col-xs-12
       .col-md-6.col-sm-6.col-xs-6
         .div(class="creator-q")  What's your address?
       .col-md-6.col-sm-6.col-xs-6
         label
-          input(type="text" class="form-inline" id="address" ng-model="formData.personalData.address")
+          input(type="text" class="form-inline" id="address" ng-model="formData.address")
     .col-md-12.col-sm-12.col-xs-12
       .col-md-6.col-sm-6.col-xs-6
         .div(class="creator-q")  What's the link to your page?
       .col-md-6.col-sm-6.col-xs-6
         label
-          input(type="text" class="form-inline" id="link" ng-model="formData.personalData.link")
+          input(type="text" class="form-inline" id="link" ng-model="formData.link")
 
   .col-md-2.col-sm-1
   .col-md-12.col-sm-12.col-xs-12
@@ -32,19 +32,19 @@
     .col-md-8.col-sm-10.col-xs-12
       .big-q Short biography
       .col-md-12.col-sm-12.col-xs-12
-        textarea(ng-model="formData.personalData.bio" value="bio" style="height: 100px; width: 100%")
+        textarea(ng-model="formData.bio" value="bio" style="height: 100px; width: 100%")
     .col-md-2.col-sm-1
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
   .col-md-8.col-sm-10.col-xs-12
     br
-    country-select.creator-country-select(ng-model="formData.personalData.country")
+    country-select.creator-country-select(ng-model="formData.country")
   .col-md-2.col-sm-1
 
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
   .col-md-8.col-sm-10.col-xs-12
-    one-user-selector(label='"Executive"' items='allHumanUsers' selected-item='formData.personalData.executive')
+    one-user-selector(label='"Executive"' items='allHumanUsers' selected-item='formData.executive')
   .col-md-2.col-sm-1
 
 .col-xs-12.col-sm-12.col-md-12.row

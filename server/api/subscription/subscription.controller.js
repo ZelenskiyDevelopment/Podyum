@@ -15,7 +15,24 @@ paypal.configure(config.api);
 
 exports.success = function(req,res) {
 
-    console.log(res);
+    var data  = req.body;
+
+    var NewPay = new SubscriptionModel({
+        type:data.item_name,
+        amount:data.mc_gross,
+        id_user:data.option_name1,
+        pay:true,
+        subscr_status: data.subscr_status
+    });
+
+
+    NewPay.save(function(err) {
+        if (err) throw err;
+
+
+
+    });
+
 
 }
 exports.cancel = function(req,res) {
@@ -30,7 +47,7 @@ exports.pay = function(req,res) {
     var NewPay = new SubscriptionModel({
         type:data.type,
         amount:data.amount,
-        id_user:data.id_user,
+        id_user:data.option_name1,
         pay:false
     });
 
@@ -64,31 +81,31 @@ exports.pay = function(req,res) {
     });
 
 
-    var payment = {
-        "intent": "sale",
-        "payer": {
-            "payment_method": "paypal"
-        },
-        "redirect_urls": {
-            "return_url": "http:localhost:9000/api/subscription/success",
-            "cancel_url": "http:localhost:9000/api/subscription/cancel"
-        },
-        "transactions": [{
-            "amount": {
-                "currency": "USD",
-                "total":parseInt(data.amount)
-            },
-            "description": "This is the payment description."
-        }]
-    };
-    paypal.payment.create(payment, config, function (err, res) {
-        if (err) {
-            throw err;
-        }
-
-        if (res) {
-            console.log("Create Payment Response");
-            console.log(res);
-        }
-    });
+//    var payment = {
+//        "intent": "sale",
+//        "payer": {
+//            "payment_method": "paypal"
+//        },
+//        "redirect_urls": {
+//            "return_url": "http:localhost:9000/api/subscription/success",
+//            "cancel_url": "http:localhost:9000/api/subscription/cancel"
+//        },
+//        "transactions": [{
+//            "amount": {
+//                "currency": "USD",
+//                "total":parseInt(data.amount)
+//            },
+//            "description": "This is the payment description."
+//        }]
+//    };
+//    paypal.payment.create(payment, config, function (err, res) {
+//        if (err) {
+//            throw err;
+//        }
+//
+//        if (res) {
+//            console.log("Create Payment Response");
+//            console.log(res);
+//        }
+//    });
 }

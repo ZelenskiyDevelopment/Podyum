@@ -266,6 +266,12 @@ angular.module('abroadathletesApp')
           controller: 'updateStats'
         }
       },
+      updateProfile: {
+        method: 'POST',
+        params: {
+          controller: 'updateProfile'
+        }
+      },
       trackUser: {
         method: 'POST',
         params: {
