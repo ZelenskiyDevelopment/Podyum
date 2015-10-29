@@ -11,7 +11,16 @@ angular.module('abroadathletesApp')
         events: '='
       },
       link: function (scope, element, attrs) {
+        scope.events = [];
+        Event.getAllEvents().$promise.then(function(results){
+          scope.events = results;
+        });
 
+        scope.refreshEventAfterModalDismiss = function(){
+          Event.getAllEvents().$promise.then(function(results){
+            scope.events = results;
+          });
+        }
       },
       controller: function ($scope) {
         this.addEvent = function (event) {

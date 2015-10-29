@@ -19,7 +19,7 @@
                                 h3 {{user.fan.firstName}} {{user.fan.lastName}}
                         .follower-user
                             p
-                                span.total  {{followersNumber}}
+                                span.total  {{followersNumber}}&nbsp;
                                 span Loyal Fans
                         //
                           <div>
@@ -58,7 +58,7 @@
                                 td.text-center
                                     a(href='')
                                         img(src='assets/images/play-btn.png', alt='')
-                                    a(href='')
+                                    a(ui-sref='manageStats')
                                         img(src='assets/images/stat-btn.png', alt='')
                             tr
                                 td Thur 11/29
@@ -69,46 +69,49 @@
                                 td.text-center
                                     a(href='')
                                         img(src='assets/images/play-btn.png', alt='')
-                                    a(href='')
+                                    a(ui-sref='manageStats')
                                         img(src='assets/images/stat-btn.png', alt='')
             home-navbar
             .tab-content
-                #tab1
-                    .tab1-menu
-                        ul
-                            li
-                                a(href='#') Update fans
-                            li
-                                a.active(href='#') Update fans
-                            li
-                                a(href='#') Event
-                            li
-                                a(href='#') Milestone
-                    .ask-form-block
-                        .row
-                            .col-sm-12.col-md-12.col-lg-12
-                                .question-block
-                                    strong What color uniforms should we wear this upcoming game?
-                                .answer-block
-                                    form
-                                        .choose-answer
-                                            .form-group.radio-form
-                                                input#first.radio(name='answer', type='radio', checked='checked')
-                                                label(for='first') Blue Pants, Black Jersey
-                                            .form-group.radio-form
-                                                input#second.radio(name='answer', type='radio')
-                                                label(for='second') White Pants, Blue Jersey
-                                            .form-group.radio-form
-                                                input#third.radio(name='answer', type='radio')
-                                                label(for='third') All Black
-                                        .form-group.submit-form
-                                            select#home-select(name='select')
-                                                option(value='1')
-                                            input.btn-submit(type='submit', value='Update', placeholder='Update')
+                div(ui-view='')
+            //.tab-content
+            //    #tab1
+            //        .tab1-menu
+            //            ul
+            //                li
+            //                    a(href='#') Update fans
+            //                li
+            //                    a.active(href='#') Update fans
+            //                li
+            //                    a(href='#') Event
+            //                li
+            //                    a(href='#') Milestone
+            //        .ask-form-block
+            //            .row
+            //                .col-sm-12.col-md-12.col-lg-12
+            //                    .question-block
+            //                        strong What color uniforms should we wear this upcoming game?
+            //                    .answer-block
+            //                        form
+            //                            .choose-answer
+            //                                .form-group.radio-form
+            //                                    input#first.radio(name='answer', type='radio', checked='checked')
+            //                                    label(for='first') Blue Pants, Black Jersey
+            //                                .form-group.radio-form
+            //                                    input#second.radio(name='answer', type='radio')
+            //                                    label(for='second') White Pants, Blue Jersey
+            //                                .form-group.radio-form
+            //                                    input#third.radio(name='answer', type='radio')
+            //                                    label(for='third') All Black
+            //                            .form-group.submit-form
+            //                                select#home-select(name='select')
+            //                                    option(value='1')
+            //                                input.btn-submit(type='submit', value='Update', placeholder='Update')
         .col-sm-3.col-md-3.col-lg-3
             #right_sidebar
                 #goals
-                    img(src='assets/images/logo.png', alt='')
+                    a(href='')
+                        img(src='assets/images/logo.png', alt='')
                     h2 Goals
                     ul
                         li 2 touchdowns away from top off in league
@@ -181,10 +184,12 @@
                 a.btn.btn-default(ui-sref='home.newsfeed') News Feed
                 a.btn.btn-default(ui-sref='home.messages') Messages
                 a.btn.btn-default(ui-sref='manageRoster') Manage Roster
-                a.btn.btn-default(ui-sref='manageStats') Manage Stats
                 button.btn.btn-default(type='button') Fan
                 button.btn.btn-default(type='button', ng-click='changeMembership()') Change membership
                 div(ng-show="user.role === 'free'") You are free user
                 div(ng-show="user.role === 'premium'") You are premium user
-        .col-md-9(ui-view='')
+        .col-md-9
+            div
+                wall(events='events')
+                    publisher
         .col-md-3
