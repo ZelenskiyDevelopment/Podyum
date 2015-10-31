@@ -260,7 +260,7 @@ angular.module('abroadathletesApp')
                 $scope.formData.citizenship = [];
             }
 
-            if (type==='player') {
+            if (type === 'player') {
                 $scope.formData.otherAwards = null;
                 $scope.formData.otherCategories = null;
                 $scope.formData.categoriesLevel = [];
@@ -268,6 +268,12 @@ angular.module('abroadathletesApp')
                 $scope.formData.headCoach  = [];
                 $scope.formData.executive = [];
                 $scope.formData.president = [];
+            }
+
+            if (type === 'league') {
+
+                $scope.formData.executive = [];
+
             }
             if(type==='media') {
                 $scope.formData.writers = [];
