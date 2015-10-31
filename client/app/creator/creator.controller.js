@@ -154,7 +154,7 @@ angular.module('abroadathletesApp')
                     sex: $scope.formData.sex,
                     country:  $scope.formData.country,
                     assignedTo: assignto,
-                    completed: false
+                    completed: true
                 };
 
                 break
