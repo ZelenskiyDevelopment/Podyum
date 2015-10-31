@@ -264,6 +264,10 @@ angular.module('abroadathletesApp')
                 $scope.formData.otherAwards = null;
                 $scope.formData.otherCategories = null;
                 $scope.formData.categoriesLevel = [];
+                $scope.formData.athleticDirector = [];
+                $scope.formData.headCoach  = [];
+                $scope.formData.executive = [];
+                $scope.formData.president = [];
             }
             if(type==='media') {
                 $scope.formData.writers = [];
