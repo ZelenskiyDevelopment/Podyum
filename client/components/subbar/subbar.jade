@@ -1,10 +1,8 @@
-.btn-group.btn-group-justified.subbar(role='group', aria-label='...')
-   .btn-group(ui-sref-active='active', role='group')
-      a.btn.btn-default.our-button.pull-left.profile-navbar-btn(ui-sref='home.update-status.update-fans') Update fans
-   .btn-group(ui-sref-active='active', role='group')
-      a.btn.btn-default.our-button.pull-left.profile-navbar-btn(ui-sref='home.update-status.update-fans') Share photo/video with fans
-   .btn-group(ui-sref-active='active', role='group')
-      a.btn.btn-default.our-button.pull-left.profile-navbar-btn(ui-sref='home.update-status.events') Events
-   .btn-group(ui-sref-active='active', role='group')
-      a.btn.btn-default.our-button.pull-left.profile-navbar-btn(ui-sref='home.update-status.milistone') Milistone
-
+.subbar
+   ul
+      li(ui-sref-active='active')
+         a(ui-sref='home.update-status.update-fans') Update fans
+      li(ui-sref-active='active')
+         a(ui-sref='home.update-status.event') Event
+      li(ui-sref-active='active')
+         a(ui-sref='home.update-status.milestone') Milestone

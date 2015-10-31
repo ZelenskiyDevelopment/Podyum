@@ -1,14 +1,15 @@
 .player-links(ng-show="user._id !== owner._id && user.completed")
-  button(class="btn-sm btn-default our-button" ng-click="recruit()" ng-show="(owner.kind==='team')")
+  button(class="player-links" ng-click="recruit()" ng-show="(owner.kind==='team')")
     | Recruit!
-  button(class="btn-sm btn-default our-button" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && owner['follows'].indexOf(user['_id']) === -1" ng-click="follow()")
+  button(class="player-links" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && owner['follows'].indexOf(user['_id']) === -1" ng-click="follow()")
     | Follow!
-  button(class="btn-sm btn-default our-button" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && owner['follows'].indexOf(user['_id']) !== -1" ng-click="unfollow()")
+  button(class="player-links" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && owner['follows'].indexOf(user['_id']) !== -1" ng-click="unfollow()")
     | Unfollow
-  button(class="btn-sm btn-default our-button" ng-click="assign()" ng-show="(user.kind ==='team' && (owner.kind==='coach' || owner.kind==='player')) || (user.kind==='league' && owner.kind==='team')")
+  button(class="player-links" ng-click="assign()" ng-show="(user.kind ==='team' && (owner.kind==='coach' || owner.kind==='player')) || (user.kind==='league' && owner.kind==='team')")
     | Assign!
-  button(class="btn-sm btn-default our-button" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && (owner['invited'].indexOf(user['_id']) ===-1 && isNotInArray(owner.friends, user._id))" ng-click="friend()")
+  button(class="player-links" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && (owner['invited'].indexOf(user['_id']) ===-1 && isNotInArray(owner.friends, user._id))" ng-click="friend()")
     | Invite to friends!
   send-message-modal(receiver="user")
-    button(class="btn-sm btn-default our-button")
+    button(class="player-links")
       | Send Message
+div
