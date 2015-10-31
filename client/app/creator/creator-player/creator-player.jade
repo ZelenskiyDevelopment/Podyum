@@ -75,6 +75,30 @@
 
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12
+    .big-q Awards / Achievements
+
+.col-md-12.col-sm-12.col-xs-12
+  .col-md-2.col-sm-1
+  .row(ng-repeat='awrs in ::selectedAwards')
+    multistring-selector(items='::awards[awrs]' model='formData.awards' label='"Select awards"')
+
+.col-md-12.col-sm-12.col-xs-12
+  .col-md-2.col-sm-1
+  .row
+    md-input-container(flex)
+     label Other awards, enter a comma
+     input(ng-model="formData.otherAwards")
+
+.col-md-12.col-sm-12.col-xs-12
+  .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12
+    .big-q Football positions
+
+.col-md-12.col-sm-12.col-xs-12
+  div(class="alert alert-warning" ng-if="formData.sportData[0].data.positions.length > 3")
+    | Select only three football positions
+  .col-md-2.col-sm-1
   .row(ng-repeat='sport in ::selectedSports')
     multistring-selector(items='::positions[sport]' model='formData.sportData[0].data.positions' label='"Select "+sport+" positions"')
   .col-md-2.col-sm-1
@@ -82,6 +106,47 @@
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
   .col-md-8.col-sm-10.col-xs-12
+    .big-q Experience level:
+
+.col-md-12.col-sm-12.col-xs-12
+  .col-md-2.col-sm-1
+  .row
+    md-input-container(flex)
+     label  Years of experience
+     input(ng-model="formData.experience" type="number" step="any")
+
+.col-md-12.col-sm-12.col-xs-12
+  .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12
+    .big-q Categories
+
+.col-md-12.col-sm-12.col-xs-12
+  .col-md-2.col-sm-1
+  .row(ng-repeat='level in ::selectedLevels')
+    multistring-selector(items='::categoriesLevels[level]' model='formData.categoriesLevel' label='"Select categories"')
+
+.col-md-12.col-sm-12.col-xs-12(ng-show = "check(formData.categoriesLevel, 'College')")
+  .col-md-2.col-sm-1
+  .row(ng-repeat='level in ::selectedCollegeLevels')
+    multistring-selector(items='::collegeLevels[level]' model='formData.collegeLevels' label='"Select college levels"')
+
+
+.col-md-12.col-sm-12.col-xs-12
+  .col-md-2.col-sm-1
+  .row
+    md-input-container(flex)
+     label Other categories, enter a comma
+     input(ng-model="formData.otherCategories")
+
+.col-md-12.col-sm-12.col-xs-12
+  .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12
+    .big-q Team
+
+.col-md-12.col-sm-12.col-xs-12
+  .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12
+    .row
     assign-selector(kind='"player"' model='formData.sportData[0].data.myTeams' items='allTeams' label='"Select teams"')
   .col-md-2.col-sm-1
 

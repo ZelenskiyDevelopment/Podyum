@@ -2,6 +2,7 @@
 var User = require('../user/user.model');
 var Photo = require('../photo/photo.model');
 var _ = require('lodash');
+var mime = require('mime');
 var multiparty = require('multiparty'),
   util = require('util'),
   randomstring = require('randomstring'),
@@ -9,6 +10,7 @@ var multiparty = require('multiparty'),
 var Q = require('q');
 
 var PHOTO_DIR = __dirname + '/../../../client/photos/';
+
 var readFile = Q.nbind(fs.readFile, fs);
 
 var writeFile = function (path, data) {
@@ -48,6 +50,8 @@ exports.uploadProfilePhoto = function (req, res) {
   }).catch(function (err) {
     return handleError(res, err)
   });
+
+    console.log(PHOTO_DIR);
 };
 
 exports.upload = function(req, res) {
@@ -62,9 +66,9 @@ function uploadPhoto(req) {
   var userId = req.user._id;
 
   return parse(req).then(function(files) {
-    var newName = randomstring.generate() + files.file[0].originalFilename;
+    var newName = randomstring.generate()+".png";
     var img = files.file[0];
-
+    console.log(mime.lookup(img.path));
     var photo = {photo: newName, owner: userId, medals: [], comments: []};
     return readFile(img.path).then(function (data) {
       return writeFile(PHOTO_DIR + newName, data);
