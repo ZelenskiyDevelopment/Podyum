@@ -36,7 +36,19 @@ var UserSchema = new Schema({
       },
       _id: false
   }],
+  executive: [{
+     user: {
+         type: mongoose.Schema.Types.ObjectId, ref: 'User'
+     },
+      _id: false
+  }],
   athleticDirector: [{
+      user: {
+          type: mongoose.Schema.Types.ObjectId, ref: 'User'
+      },
+      _id: false
+  }],
+  myLeagues: [{
       user: {
           type: mongoose.Schema.Types.ObjectId, ref: 'User'
       },
