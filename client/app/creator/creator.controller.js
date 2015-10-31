@@ -218,11 +218,11 @@ angular.module('abroadathletesApp')
 
         }
 
- User.updateProfile({id:$scope.formData.id,data:UserUpdate}).$promise.then(function (response){
+         User.updateProfile({id:$scope.formData.id,data:UserUpdate}).$promise.then(function (response){
 
-         //       $location.path('/home');
+            $location.path('/home');
 
-   });
+         });
     };
     $scope.setType = function(type) {
       $scope.progressValue = 20;
