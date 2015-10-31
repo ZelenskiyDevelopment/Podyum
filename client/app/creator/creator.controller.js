@@ -264,9 +264,11 @@ angular.module('abroadathletesApp')
                 $scope.formData.otherAwards = null;
                 $scope.formData.otherCategories = null;
                 $scope.formData.categoriesLevel = [];
+            }
+
+            if (type === 'team') {
                 $scope.formData.athleticDirector = [];
                 $scope.formData.headCoach  = [];
-                $scope.formData.executive = [];
                 $scope.formData.president = [];
             }
 
