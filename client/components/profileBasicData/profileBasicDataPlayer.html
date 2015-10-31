@@ -2,53 +2,61 @@
   <button class="btn" ng-show="showedit" ng-click="edit()"
           style="position: absolute; top:0px; right:0px; background-color: Transparent;"><img src="assets/images/pen.png"/>
   </button>
-  <a ui-sref="friends({id: user._id})" ng-if="!showedit" style="position: absolute; top:2px; right:0px;">Friends</a>
   <div class="row">
-    <div class="col-md-3 col-sm-4 col-xs-12">
-      <a href="#" class="thumbnail" style="margin-top:30px;">
-        <img src="photos/{{user.profilePhoto}}" alt="" class="img-rounded" style="width:100%; height:200%">
+    <div class="col-md-5 col-sm-5 col-xs-12">
+      <a href="#" style="margin-top:30px;">
+        <img src="photos/{{user.profilePhoto}}" alt=""  style="width:100%; height:200%">
       </a>
+      <profile-buttons user="user" owner="owner"></profile-buttons>
 
     </div>
-    <div class="col-md-9 col-sm-8 col-xs-12">
-      <h1><span ng-if="user.player.number" style="border-style:solid; border-color:#CCC;">{{user.player.number}}</span>
-        {{user.player.firstName}} {{user.player.lastName}}</h1>
-      <h4><div ng-repeat="presentTeam in mypresentteams">{{presentTeam.user.team.name}}, {{presentTeam.position}}</div></h4>
+    <div class="col-md-7 col-sm-7 col-xs-12">
+      <div class="player-data">
+        <h1><span ng-if="user.player.number">#{{user.player.number}}</span>
+          {{user.player.firstName}} {{user.player.lastName}}</h1>
+        <div class="main-data">
+          <h4><div ng-repeat="presentTeam in mypresentteams">{{presentTeam.user.team.name}}, {{presentTeam.position}}</div></h4>
+          <p class="user-position" ng-if="user.player.position">{{user.player.position}}</p>
+        </div>
+        <div class="player-facts">
+          <div class="col-md-6 col-sm-6 col-xs-6 left-col">
 
-      <div class="col-md-4 col-sm-4 col-xs-6">
-        <p ng-if="user.player.position">Position</p>
+            <p ng-if="user.player.birth"> Date of birth </p>
 
-        <p ng-if="user.player.birth"> Date of birth </p>
+            <p ng-if="user.player.experience">Experience Level</p>
 
-        <p ng-if="user.player.experience">Experience Level</p>
+            <p ng-if="user.player.height">Height</p>
 
-        <p ng-if="user.player.height">Height</p>
+            <p ng-if="user.player.weight">Weight</p>
 
-        <p ng-if="user.player.weight">Weight</p>
+            <p ng-if="user.player.college">College</p>
 
-        <p ng-if="user.player.college">College</p>
+            <p ng-if="user.player.hometown">Hometown</p>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-6">
+            <p ng-if="user.player.position"></p>
 
-        <p ng-if="user.player.hometown">Hometown</p>
-      </div>
-      <div class="col-md-8 col-sm-8 col-xs-6">
-        <p ng-if="user.player.position">{{user.player.position}}</p>
+            <p ng-if="user.player.birth"> {{user.player.birth | date: 'yyyy-MM-dd'}}  </p>
 
-        <p ng-if="user.player.birth"> {{user.player.birth | date: 'yyyy-MM-dd'}}  </p>
+            <p ng-if="user.player.experience">{{user.player.experience}}</p>
 
-        <p ng-if="user.player.experience">{{user.player.experience}}</p>
+            <p ng-if="user.player.height">{{user.player.height}}</p>
 
-        <p ng-if="user.player.height">{{user.player.height}}</p>
+            <p ng-if="user.player.weight">{{user.player.weight}}</p>
 
-        <p ng-if="user.player.weight">{{user.player.weight}}</p>
+            <p ng-if="user.player.college">{{user.player.college}}</p>
 
-        <p ng-if="user.player.college">{{user.player.college}}</p>
-
-        <p ng-if="user.player.hometown">{{user.player.hometown}}</p>
+            <p ng-if="user.player.hometown">{{user.player.hometown}}</p>
+            <div class="friends">
+              Friends&nbsp;&nbsp;<a ui-sref="friends({id: user._id})" ng-if="!showedit">{{user.friends.length}}</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <profile-buttons user="user" owner="owner"></profile-buttons>
-  <!--<div class="row" ng-show="user._id !== owner._id && user.completed">
+
+ <!-- <div class="row" ng-show="user._id !== owner._id && user.completed">
     <profile-buttons user="user" owner="owner"></profile-buttons>
     <div class="col-md-12 col-sm-12 col-xs-12">
       <button class="btn-sm btn-default our-button round-corners" ng-click="onrecruit()" ng-show="(owner.kind==='team')">Recruit!</button>

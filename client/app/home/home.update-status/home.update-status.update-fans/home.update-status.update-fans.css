@@ -1,0 +1,85 @@
+.ask-form-block {
+    background: #eaeaea;
+}
+
+.ask-form-block .choose-answer {
+    border-bottom: 1px solid #fff;
+}
+
+.ask-form-block .question-block {
+    padding: 35px 0 18px 0;
+    font-size: 22px;
+    color: #333;
+}
+
+.ask-form-block .question-block strong {
+    font-weight: 500;
+}
+
+
+.ask-form-block strong, .ask-form-block .choose-answer>.form-group {
+    padding: 0 0 0 35px;
+}
+
+.ask-form-block .choose-answer>.form-group input[type="radio"] {
+    display: none;
+}
+
+.ask-form-block .submit-form {
+    text-align: right;
+    padding: 15px 0;
+}
+
+.ask-form-block .submit-form select{
+    width: 310px;
+    height: 45px;
+    outline: none;
+    border: none;
+    margin: 0 20px 0 0;
+    border-radius: 5px;
+}
+
+.ask-form-block .submit-form>.btn-submit {
+    width: 130px;
+    height: 45px;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: #fac553;
+    font-size: 15px;
+    margin: 0 20px 0 0;
+}
+
+/*Styling radio button*/
+.radio-form label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 50px;
+    margin-right: 15px;
+    font-size: 14px;
+    color: #827f79;
+
+}
+
+.radio-form label:before {
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.radio-form input[type=radio]:checked + label:before {
+    content: "\2022";
+    color: #fac553;
+    font-size: 70px;
+    text-align: center;
+    line-height: 27px;
+}

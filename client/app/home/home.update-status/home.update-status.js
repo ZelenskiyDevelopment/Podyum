@@ -5,6 +5,6 @@ angular.module('abroadathletesApp')
         $stateProvider
             .state('home.update-status', {
                 url: '',
-                templateUrl: 'app/home/home.update-status/home.update-status.jade',
+                templateUrl: 'app/home/home.update-status/home.update-status.html',
             });
     });
