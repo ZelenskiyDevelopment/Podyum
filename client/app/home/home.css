@@ -221,19 +221,25 @@ h3,h4,h5 {
 }
 
 .info-card .main-picture {
-    margin: -20px 0 0 0;
+    margin:0;
+}
+
+.info-card .main-picture>img {
+  width: 120px;
+  height: 120px;
 }
 
 .info-card .kind-user {
-    margin: -25px 0 0 0;
+    margin: 0 0 0 0;
     padding: 0;
     font-size: 14px;
     color: #827f79;
 }
 
-.info-card .kind-user>h3 {
-    margin: 0;
+.info-card .kind-user h3 {
+    margin: 10px 0;
     padding: 0;
+    color: #333;
 }
 
 .info-card>.league-type {
@@ -250,7 +256,7 @@ h3,h4,h5 {
     background: #f8f8f8;
     height: 50px;
     width: 210px;
-    margin: 20px auto;
+    margin: 0px auto;
     border-radius: 25px;
 
 }
@@ -286,6 +292,10 @@ h3,h4,h5 {
     height: 213px;
 }
 
+.upcoming-schedule .table-header {
+  color: #fac553;
+}
+
 .upcoming-schedule .table-header,
 .upcoming-schedule .table-striped>tbody>tr {
     background: #fff;
@@ -312,8 +322,8 @@ h3,h4,h5 {
 .upcoming-schedule h3 {
     margin: 0;
     padding: 0;
-    color: #827f79;
     font-size: 20px;
+    color: #fac553;
 }
 
 .upcoming-schedule .table-striped>tbody>tr>th {
@@ -385,6 +395,10 @@ h3,h4,h5 {
     background: #eaeaea;
 }
 
+.home-wall {
+  margin: 120px -15px 0 -15px;
+}
+
 
 
 #right_sidebar {
@@ -392,7 +406,7 @@ h3,h4,h5 {
     margin: 0 auto;
     font-family: 'aileronregular';
     color: #616161;
-    
+
 }
 
 #right_sidebar h2 {
@@ -458,7 +472,7 @@ h3,h4,h5 {
 }
 
 #twitter_feed {
-  background: #fff; 
+  background: #fff;
 }
 
 #twitter_feed div {

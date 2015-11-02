@@ -84,10 +84,10 @@
 }
 
 .fans {
-	background: #f8f8f8 url(../img/fans.png) no-repeat 10% center;
-	float: left;
-	padding-left: 75px;
-	margin: 0 10px 0 35px;
+  background: #f8f8f8 url(../img/fans.png) no-repeat 90% center;
+  float: left;
+  font-weight: bold;
+  margin: 10px 0 0 0;
 }
 
 .friends {
@@ -97,6 +97,6 @@
 	margin: 10px 0 0 0;
 }
 
-.friends a {
+.friends a, .fans a {
 	color: #fac553;
 }
