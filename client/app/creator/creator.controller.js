@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-    .controller('CreatorCtrl', function ($scope, $timeout, User, $window, Upload, $location, sports, $state) {
+    .controller('CreatorCtrl', function ($scope, $timeout, User, $window, Upload, $location, sports, $state, $http) {
 
         $scope.progressValue = 10;
 
@@ -43,6 +43,8 @@ angular.module('abroadathletesApp')
         $scope.beginCreating = function() {
             return $location.path()==='/creator';
         };
+
+
 
         $scope.processForm = function() {
 
