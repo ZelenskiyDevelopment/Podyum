@@ -22,14 +22,14 @@ angular.module('abroadathletesApp', [
   'luegg.directives',
   'cropme',
   'colorpicker.module',
-   'cgNotify',
-    'ngImgCrop'
+  'cgNotify',
+  'ngImgCrop'
 
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider, $mdIconProvider) {
 
 
-      $mdIconProvider.iconSet("avatar", 'icons/avatar-icons.svg', 128);
+    $mdIconProvider.iconSet("avatar", 'icons/avatar-icons.svg', 128);
 
     $urlRouterProvider
       .otherwise('/');

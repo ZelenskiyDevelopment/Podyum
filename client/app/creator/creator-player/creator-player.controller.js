@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .controller('CreatorPlayerCtrl', function ($scope, GamePositions, AwardsPlayer, CategoriesLevel, LevelsCollege) {
+  .controller('CreatorPlayerCtrl', function ($scope, GamePositions, AwardsPlayer, CategoriesLevel, LevelsCollege, CitizenShips) {
 
         $scope.selectedSports = _.keys($scope.formData.sport);
         $scope.positions = {};
@@ -10,12 +10,16 @@ angular.module('abroadathletesApp')
           $scope.positions[sport] = GamePositions.getPositionsForSport(sport);
         });
 
-        $scope.selectedAwards = _.keys($scope.formData.sport);
-        $scope.awards = {};
+        $scope.awards = [];
 
-        _.each($scope.selectedAwards, function(awards){
-            $scope.awards[awards] = AwardsPlayer.getAwards(awards);
-            console.log($scope.awards[awards]);
+
+        var awards_array = ['Team captain','All-American','All-Conference (1st team) (2nd team) (Honorable Mention)'];
+
+
+        angular.forEach(awards_array,function(value){
+            $scope.awards.push({
+                name: value
+            })
         });
 
         $scope.selectedLevels = _.keys($scope.formData.sport);
@@ -27,26 +31,38 @@ angular.module('abroadathletesApp')
             console.log($scope.categoriesLevels[level]);
         });
 
-        $scope.selectedCollegeLevels = _.keys($scope.formData.sport);
-        $scope.collegeLevels =  {};
+        $scope.collegeLevels =  [];
 
-        _.each($scope.selectedCollegeLevels, function(level){
-            $scope.collegeLevels[level] = LevelsCollege.getLevel(level);
-            console.log($scope.collegeLevels[level]);
+
+       var collegeLevel  = ['Youth','High school','College-NAIA', 'College-Division 1', 'College-Division 2', 'College-Division 3', 'Semi-pro', 'International', 'Professional']
+
+        angular.forEach(collegeLevel,function(value){
+            $scope.collegeLevels.push({
+                name: value
+            })
+        });
+
+
+
+        $scope.selectedCitizenShips =  _.keys($scope.formData.sport);
+        $scope.CitizenShips = {};
+
+        _.each($scope.selectedCitizenShips, function(value){
+            $scope.CitizenShips[value] = CitizenShips.getCitizenShips(value);
+            console.log($scope.CitizenShips[value]);
         })
-
 
 
         $scope.experience = [];
         $scope.experienceTable = [];
 
-        angular.forEach(('College Semi-Pro International Professional Other').split(' '),function(value){
-
+        angular.forEach(('College Semi-Pro International Professional').split(' '),function(value){
             $scope.experience.push({
                 name: value
             })
-
         });
+
+
 
         $scope.addExperience  = function() {
             $scope.experienceTable.push({
@@ -55,5 +71,9 @@ angular.module('abroadathletesApp')
             })
         }
 
+        $scope.remove = function (index) {
+            $scope.formData.categoriesLevel.splice(index, 1);
+            $scope.formData.years.splice(index, 1);
+        };
 
     });
