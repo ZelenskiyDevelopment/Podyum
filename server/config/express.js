@@ -39,7 +39,7 @@ module.exports = function(app) {
     resave: true,
     cookie: { maxAge: Date.now() + 3600000 },
     saveUninitialized: true,
-    store: new RedisStore(config.redis)
+      store: new RedisStore(config.redis)
   }));
 
   if ('production' === env) {
