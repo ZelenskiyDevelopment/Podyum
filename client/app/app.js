@@ -22,7 +22,8 @@ angular.module('abroadathletesApp', [
   'luegg.directives',
   'cropme',
   'colorpicker.module',
-   'cgNotify'
+   'cgNotify',
+    'ngImgCrop'
 
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider, $mdIconProvider) {

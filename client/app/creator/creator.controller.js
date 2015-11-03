@@ -34,6 +34,7 @@ angular.module('abroadathletesApp')
         $scope.formData.sport.football = true;
         $scope.formData.sport_type = 'football';
         $scope.formData.myTeams = [];
+        $scope.formData.photo = [];
         $scope.positions = [];
         $scope.myTeams = [];
         $scope.myLeagues = [];
@@ -42,6 +43,8 @@ angular.module('abroadathletesApp')
         $scope.beginCreating = function() {
             return $location.path()==='/creator';
         };
+
+
 
 
         $scope.processForm = function() {
@@ -300,21 +303,5 @@ angular.module('abroadathletesApp')
             $state.go('creator')
         }
 
-        $scope.upload = function (file) {
-            console.log(file);
-            if (file) {
-                Upload.upload({
-                    url: '/api/uploads',
-                    fields: {
-                        type: file.type.split('/')[1]
-                    },
-                    file: file
-                }).progress(function (evt) {
-                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                    //console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
-                }).success(function (data, status, headers, config) {
-                    console.log(data.photo);
-                });
-            }
-        };
+
     });

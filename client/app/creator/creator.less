@@ -76,6 +76,46 @@ md-progress-linear .md-container {
 }
 
 
+
+
+.upload {
+  position: relative;
+  background: #FA9632;
+  border: 1px solid #FA9632;
+  font-size: 30px;
+  line-height: 1;
+  text-align: center;
+  padding: 20px;
+  color: #FFF;
+  display: block;
+  width: 100px;
+  margin: 0px auto;
+}
+
+.upload input[type=file] {
+  position: absolute;
+  top: 0; right: 0;
+  font-size: 200px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+
+.preview-img {
+  img {
+    width: 200px !important;
+    height: 200px !important;
+    display: block;
+    margin: 0px auto;
+    margin-bottom: 30px;
+  }
+
+  .md-title {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+}
+
 .create-button {
   width: 100%;
   box-sizing: border-box;
