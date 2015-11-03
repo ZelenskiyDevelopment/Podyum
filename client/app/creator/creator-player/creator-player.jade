@@ -106,26 +106,30 @@
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
   .col-md-8.col-sm-10.col-xs-12
-    .big-q Experience level:
+    .big-q Experience
 
 .col-md-12.col-sm-12.col-xs-12
-  .col-md-2.col-sm-1
+.col-lg-8.col-lg-offset-3
   .row
-    md-input-container(flex)
-     label  Years of experience
-     input(ng-model="formData.experience" type="number" step="any")
+   md-input-container
+      label Experience
+   md-select(ng-model='formData.categoriesLevel' multiple ng-change='addExperience()')
+      md-option(ng-repeat="expr in experience" value="{{ expr.name }}")
+        {{ expr.name }}
 
 .col-md-12.col-sm-12.col-xs-12
-  .col-md-2.col-sm-1
-  .col-md-8.col-sm-10.col-xs-12
-    .big-q Categories
+.col-lg-8.col-lg-offset-3
+    .row
+     table.table
+      tr
+        th Name
+        th Years
+      tr(ng-repeat = 'level in formData.categoriesLevel')
+        th {{ level }}
+        th
+         input(type='number' ng-model='formData.categoriesLevel.years[$index]')
 
-.col-md-12.col-sm-12.col-xs-12
-  .col-md-2.col-sm-1
-  .row(ng-repeat='level in ::selectedLevels')
-    multistring-selector(items='::categoriesLevels[level]' model='formData.categoriesLevel' label='"Select categories"')
-
-.col-md-12.col-sm-12.col-xs-12(ng-show = "check(formData.categoriesLevel, 'College')")
+.col-md-12.col-sm-12.col-xs-12(ng-show = 'formData.categoriesLevel.indexOf("College") != -1')
   .col-md-2.col-sm-1
   .row(ng-repeat='level in ::selectedCollegeLevels')
     multistring-selector(items='::collegeLevels[level]' model='formData.collegeLevels' label='"Select college levels"')
@@ -135,7 +139,7 @@
   .col-md-2.col-sm-1
   .row
     md-input-container(flex)
-     label Other categories, enter a comma
+     label Other experience, enter a comma
      input(ng-model="formData.otherCategories")
 
 .col-md-12.col-sm-12.col-xs-12
