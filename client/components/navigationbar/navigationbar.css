@@ -4,6 +4,7 @@
 
 }
 
+
 .header {
   border-width:0;
 }
@@ -34,8 +35,12 @@
   margin: 0;
 }
 
+.social-links .new-conversation-modal a {
+  color: #f8c637;
+}
+
 .social-links li {
-    margin: 0 0 0 50px; 
+    margin: 0 0 0 50px;
 }
 
 .social-links li:last-child {

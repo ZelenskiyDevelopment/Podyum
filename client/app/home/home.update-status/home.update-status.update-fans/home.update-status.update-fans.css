@@ -74,6 +74,7 @@
     bottom: 0px;
     background-color: #fff;
     border-radius: 50%;
+    border: 1px solid #fac553;
 }
 
 .radio-form input[type=radio]:checked + label:before {
@@ -81,5 +82,5 @@
     color: #fac553;
     font-size: 70px;
     text-align: center;
-    line-height: 27px;
+    line-height: 24px;
 }
