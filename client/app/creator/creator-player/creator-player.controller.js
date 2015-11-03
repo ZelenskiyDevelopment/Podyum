@@ -35,4 +35,25 @@ angular.module('abroadathletesApp')
             console.log($scope.collegeLevels[level]);
         })
 
+
+
+        $scope.experience = [];
+        $scope.experienceTable = [];
+
+        angular.forEach(('College Semi-Pro International Professional Other').split(' '),function(value){
+
+            $scope.experience.push({
+                name: value
+            })
+
+        });
+
+        $scope.addExperience  = function() {
+            $scope.experienceTable.push({
+                name:$scope.formData.categoriesLevel,
+                years:0
+            })
+        }
+
+
     });

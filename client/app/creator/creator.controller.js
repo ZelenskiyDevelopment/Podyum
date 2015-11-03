@@ -44,20 +44,6 @@ angular.module('abroadathletesApp')
         };
 
 
-
-        $scope.check = function(array,find) {
-
-            if  (angular.isArray(array)) {
-                if (array.length > 0) {
-                    if (array[0].hasOwnProperty('name')) {
-                        if (array[0].name == find) {
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
-
         $scope.processForm = function() {
 
             $scope.finalData = {};
@@ -90,7 +76,8 @@ angular.module('abroadathletesApp')
                     if ($scope.formData.otherAwards  != null) {
                         angular.forEach($scope.formData.otherAwards.split(','), function(value,key){
                             $scope.formData.awards.push({
-                                name:value
+                                name:value,
+                                year:''
                             });
                         });
                     }
