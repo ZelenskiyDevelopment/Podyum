@@ -161,7 +161,7 @@ angular.module('abroadathletesApp')
                         sex: $scope.formData.sex,
                         country:  $scope.formData.country,
                         assignedTo: assignto,
-                        completed: false
+                        completed: true
                     };
 
                     break
@@ -252,9 +252,9 @@ angular.module('abroadathletesApp')
 
         User.updateProfile({id:$scope.formData.id,data:UserUpdate}).$promise.then(function (response){
 
-               // $location.path('/home');
+            $location.path('/home');
 
-           });
+        });
         };
         $scope.setType = function(type) {
             $scope.progressValue = 20;
