@@ -204,7 +204,8 @@ angular.module('abroadathletesApp')
                             fans:[],
                             color: $scope.formData.color,
                             link: $scope.formData.link,
-                            mascot: $scope.formData.mascot
+                            mascot: $scope.formData.mascot,
+                            phone: $scope.formData.phone
                         },
                         kind: $scope.formData.type,
                         sport: $scope.formData.sport_type,
