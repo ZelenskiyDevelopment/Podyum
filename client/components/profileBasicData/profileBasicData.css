@@ -11,6 +11,11 @@
 	font-weight: 700;
 }
 
+.profile-main-photo {
+  width: 100%;
+  height: auto;
+}
+
 .main-data {
 	font-weight: 700;
 	margin: 20px 0 20px 15px;

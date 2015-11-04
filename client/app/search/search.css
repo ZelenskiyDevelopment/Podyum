@@ -1,0 +1,13 @@
+.media-heading a {
+  color: #fac553;
+}
+
+.search-result {
+  margin-top: 200px;
+}
+
+.search-result .panel {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}

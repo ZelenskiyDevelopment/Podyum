@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-5 col-sm-5 col-xs-12">
       <a href="#"  style="margin-top:40px;">
-        <img src="photos/{{user.profilePhoto}}" alt="s" class="img-rounded">
+        <img class="profile-main-photo" src="photos/{{user.profilePhoto}}" alt="s" >
       </a>
 
     </div>
@@ -14,7 +14,14 @@
         <h1>#{{user.team.name}} {{user.team.short}}</h1>
         <div class="main-data">
           <p>{{user.team.league}}</p>
-          <p>{{user.team.city}}</p>
+        </div>
+        <div class="player-facts">
+          <div class="col-md-6 left-col">
+            <p ng-if="user.team.city">City:</p>
+          </div>
+          <div class="col-md-6">
+            <p ng-if="user.team.city">{{user.team.city}}</p>
+          </div>
         </div>
       </div>
 
