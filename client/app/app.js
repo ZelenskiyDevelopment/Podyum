@@ -23,6 +23,7 @@ angular.module('abroadathletesApp', [
   'cropme',
   'colorpicker.module',
   'cgNotify',
+    'internationalPhoneNumber',
   'ngImgCrop'
 
 ])
