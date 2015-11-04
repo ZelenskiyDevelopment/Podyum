@@ -60,23 +60,35 @@
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
   .col-md-8.col-sm-10.col-xs-12
-    md-content(layout="column")
-      .big-q Citizenships
-        md-chips(ng-model="formData.citizenship" readonly="false")
-        md-chip-template
-        | {{$chip}}
+    .big-q Citizenships
+
+.col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
+  .row(ng-repeat='value in ::selectedCitizenShips')
+    multistring-selector(items='::CitizenShips[value]' model='formData.citizenship' label='"Select Citizenship"')
+  .col-md-2.col-sm-1
+
 
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
   .col-md-8.col-sm-10.col-xs-12
-    country-select.creator-country-select(ng-model="formData.country")
+    .big-q Country
+  country-select.creator-country-select(ng-model="formData.country")
   .col-md-2.col-sm-1
 
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
   .col-md-8.col-sm-10.col-xs-12
     .big-q Awards / Achievements
+
+
+.col-md-12.col-sm-12.col-xs-12
+.col-lg-8.col-lg-offset-3
+  .row
+   md-input-container
+   md-select(ng-model='formData.awards' multiple placeholder='Awards')
+      md-option(ng-repeat="award in awards" value="{{ award.name }}")
+        {{ award.name }}
 
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
@@ -112,27 +124,33 @@
 .col-lg-8.col-lg-offset-3
   .row
    md-input-container
-      label Experience
-   md-select(ng-model='formData.categoriesLevel' multiple ng-change='addExperience()')
+   md-select(ng-model='formData.categoriesLevel' multiple ng-change='addExperience()' placeholder='Experience')
       md-option(ng-repeat="expr in experience" value="{{ expr.name }}")
         {{ expr.name }}
 
 .col-md-12.col-sm-12.col-xs-12
-.col-lg-8.col-lg-offset-3
+.col-lg-8.col-lg-offset-3(ng-show = 'formData.categoriesLevel.length > 0')
     .row
      table.table
       tr
         th Name
         th Years
+        th Remove
       tr(ng-repeat = 'level in formData.categoriesLevel')
         th {{ level }}
         th
-         input(type='number' ng-model='formData.categoriesLevel.years[$index]')
+         input(type='number' ng-model='formData.years[$index]' class = 'form-control')
+        th
+         md-button(ng-click='remove($index)' class='md-raised') x
 
-.col-md-12.col-sm-12.col-xs-12(ng-show = 'formData.categoriesLevel.indexOf("College") != -1')
-  .col-md-2.col-sm-1
-  .row(ng-repeat='level in ::selectedCollegeLevels')
-    multistring-selector(items='::collegeLevels[level]' model='formData.collegeLevels' label='"Select college levels"')
+
+.col-md-12.col-sm-12.col-xs-12
+.col-lg-8.col-lg-offset-3(ng-show = 'formData.categoriesLevel.indexOf("College") != -1')
+  .row
+   md-input-container
+       md-select(ng-model='formData.collegeLevels'  placeholder='Select college levels')
+          md-option(ng-repeat="level in collegeLevels" value="{{ level.name }}")
+            {{ level.name }}
 
 
 .col-md-12.col-sm-12.col-xs-12

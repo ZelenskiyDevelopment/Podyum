@@ -4,11 +4,15 @@ angular.module('abroadathletesApp')
     .factory('CategoriesLevel', function () {
         var level_array = {
             'level football': [
-                'College',
-                'Semi-Pro',
+                'Youth',
+                'High school',
+                'College-NAIA',
+                'College-Division 1',
+                'College-Division 2',
+                'College-Division 3',
+                'Semi-pro',
                 'International',
-                'Professional',
-                'Other']
+                'Professional']
         };
 
         level_array.football = level_array['level football']; //temporary hack for creator football name
