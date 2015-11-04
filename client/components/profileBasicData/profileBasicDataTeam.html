@@ -18,9 +18,15 @@
         <div class="player-facts">
           <div class="col-md-6 left-col">
             <p ng-if="user.team.city">City:</p>
+            <p ng-if="user.team.phone">Phone:</p>
+            <p ng-if="user.team.link">Team website:</p>
+            <p ng-if="user.team.address">Address:</p>
           </div>
           <div class="col-md-6">
             <p ng-if="user.team.city">{{user.team.city}}</p>
+            <p ng-if="user.team.phone">{{user.team.phone}}}</p>
+            <p ng-if="user.team.link"><a href="{{user.team.link}}">{{user.team.link}}</a></p>
+            <p ng-if="user.team.address">{{user.team.address}}</p>
           </div>
         </div>
       </div>
