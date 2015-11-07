@@ -1,7 +1,7 @@
 | {{events}}
 div(ng-repeat="event in events track by $index")
   div(ng-show="$last")
-    run(ng-show="event.type==='run'" event='event' events='events' status='status' submit='submit')
+    run(ng-show="event.type==='run'" event='event' events='events' status='status' submit='submit', runner='runner')
     tackle(ng-show="event.type==='tackle'" event='event' events='events' status='status' submit='submit')
     fumble(ng-show="event.type==='fumble'" event='event' events='events' status='status' submit='submit')
     lateral(ng-show="event.type==='lateral'" event='event' events='events' status='status' submit='submit')

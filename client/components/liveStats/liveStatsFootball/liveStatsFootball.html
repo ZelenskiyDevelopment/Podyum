@@ -1,0 +1,161 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <div ng-repeat="player in roster1 track by $index" class="ng-scope">
+        <button ng-click="fromBench(1,$index)" style="width: 100%;" class="btn button-roster1-false">
+          #{{player.player.number}} {{player.player.firstName}} {{player.player.lastName}}
+        </button>
+      </div>
+      </div>
+    <div style="text-align:center" class="col-md-8">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="score">
+            <div ng-click="teamScore(1)" class="h1 ng-binding" role="button" tabindex="0">{{game.data.score1}}</div>
+          </div>
+          <button class="offence" ng-click="swapPossession()" ng-show="status.offense===0"></button>
+          <button class="deffence" ng-click="swapPossession()" ng-show="status.offense===1"></button>
+
+
+          <div>
+            <span class="timeout-icon" ng-show="status.timeouts[0] > 0"></span>
+            <span class="timeout-icon" ng-show="status.timeouts[0] > 1"></span>
+            <span class="timeout-icon" ng-show="status.timeouts[0] > 2"></span>
+            <span class="timeout-icon-used" ng-show="status.timeouts[0] < 3"></span>
+            <span class="timeout-icon-used" ng-show="status.timeouts[0] < 2"></span>
+            <span class="timeout-icon-used" ng-show="status.timeouts[0] < 1"></span>
+          </div>
+
+        </div>
+        <div class="col-md-4">
+          <div class="score">
+
+            <input ng-model="counterText" ng-change="manuallyChangeTimer()"/>
+
+            <div ng-model="counter" class="input-lg ng-pristine ng-untouched ng-valid" aria-invalid="false">{{counter | timerDisplay}}</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="score">
+            <div ng-click="teamScore(2)" class="h1 ng-binding" role="button" tabindex="0">{{game.data.score2}}</div>
+          </div>
+          <div>
+            <button class="offence" ng-click="swapPossession()" ng-show="status.offense===1"></button>
+            <button class="deffence" ng-click="swapPossession()" ng-show="status.offense===0"></button>
+          </div>
+          <div>
+            <span class="timeout-icon" ng-show="status.timeouts[1] > 0"></span>
+            <span class="timeout-icon" ng-show="status.timeouts[1] > 1"></span>
+            <span class="timeout-icon" ng-show="status.timeouts[1] > 2"></span>
+            <span class="timeout-icon-used" ng-show="status.timeouts[1] < 3"></span>
+            <span class="timeout-icon-used" ng-show="status.timeouts[1] < 2"></span>
+            <span class="timeout-icon-used" ng-show="status.timeouts[1] < 1"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div ng-repeat="player in roster2 track by $index" class="ng-scope">
+        <button ng-click="fromBench(2,$index)" style="width: 100%;" class="btn button-roster2-false">
+          #{{player.player.number}} {{player.player.firstName}} {{player.player.lastName}}
+        </button>
+      </div>
+</div>
+  </div>
+  <div class="row">
+    <div style="text-align:center" class="col-md-offset-3 col-md-6 result-section">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="h3">DOWN</div>
+        </div>
+        <div class="col-md-3">
+          <div class="h3">TO GO</div>
+        </div>
+        <div class="col-md-3">
+          <div class="h3">BALL ON</div>
+        </div>
+        <div class="col-md-3">
+          <div class="h3">QTR</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="h3 ng-binding">{{status.down}}</div>
+        </div>
+        <div class="col-md-3">
+          <div class="h3 ng-binding">{{status.togo}}</div>
+        </div>
+        <div class="col-md-3">
+          <div class="h3 ng-binding">{{status.ballon}}</div>
+        </div>
+        <div class="col-md-3">
+          <div class="h3 ng-binding" ng-show="status.quart < 5">{{status.quart}}</div>
+          <div class="h3 ng-binding" ng-show="status.quart == 5">Ended</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div style="text-align:center" class="col-md-offset-3 col-md-6 function-section">
+      <div class="row">
+        <div class="col-md-4">
+          <button ng-click="TimeOut()" style="width:100%;" class="btn btn-success btn-lg">Time out</button>
+        </div>
+        <div class="col-md-4">
+          <button ng-click="startCount()" style="width:100%;" class="btn btn-success btn-lg">Start/Stop</button>
+        </div>
+        <div class="col-md-4">
+          <button ng-click="EndQuarter()" style="width:100%;" class="btn btn-success btn-lg ng-binding">{{getQuarterString()}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div style="text-align:center" class="col-md-offset-3 col-md-6"><p class="text play_type">Play Type</p>
+
+      <div role="group" aria-label="..." class="btn-group btn-group-justified"><!-- ngRepeat: play in plays -->
+        <div ng-repeat="play in plays" role="group" class="btn-group ng-scope">
+          <button type="button" ng-click="choosePlayType($index)" class="btn btn-warning ng-binding">{{play}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div style="text-align:center" class="col-md-offset-3 col-md-6">
+      <run-play ng-show="playtype === 0" events="events" game="game" submit="submit" swap="swapPossession" team="team"
+                status="status" class="ng-binding ng-isolate-scope ng-hide" aria-hidden="true" runner="runner">[]
+        <!-- ngRepeat: event in events track by $index --></run-play>
+      <pass-play ng-show="playtype === 1" events="events" game="game" submit="submit" swap="swapPossession" team="team"
+                 status="status" class="ng-binding ng-isolate-scope ng-hide" aria-hidden="true">[]
+        <!-- ngRepeat: event in events track by $index --></pass-play>
+      <special-teams ng-show="playtype === 2" events="events" game="game" submit="submit" swap="swapPossession"
+                     team="team" status="status" class="ng-binding ng-isolate-scope ng-hide" aria-hidden="true">[]
+        <!-- ngRepeat: specialAction in specialActions -->
+        <div ng-repeat="specialAction in specialActions" ng-show="events.length == 0" role="group"
+             class="btn-group ng-scope" aria-hidden="false">
+          <button type="button" ng-click="chooseSpecialAction($index)" class="btn ng-binding">Kickoff</button>
+        </div>
+        <!-- end ngRepeat: specialAction in specialActions -->
+        <div ng-repeat="specialAction in specialActions" ng-show="events.length == 0" role="group"
+             class="btn-group ng-scope" aria-hidden="false">
+          <button type="button" ng-click="chooseSpecialAction($index)" class="btn ng-binding">Punt</button>
+        </div>
+        <!-- end ngRepeat: specialAction in specialActions -->
+        <div ng-repeat="specialAction in specialActions" ng-show="events.length == 0" role="group"
+             class="btn-group ng-scope" aria-hidden="false">
+          <button type="button" ng-click="chooseSpecialAction($index)" class="btn ng-binding">Field Goal</button>
+        </div>
+        <!-- end ngRepeat: specialAction in specialActions -->
+        <div ng-repeat="specialAction in specialActions" ng-show="events.length == 0" role="group"
+             class="btn-group ng-scope" aria-hidden="false">
+          <button type="button" ng-click="chooseSpecialAction($index)" class="btn ng-binding">Point After</button>
+        </div>
+        <!-- end ngRepeat: specialAction in specialActions --><!-- ngRepeat: event in events track by $index -->
+      </special-teams>
+      <penalty ng-show="playtype === 3" aria-hidden="true" class="ng-hide">
+        <div>this is the penalty directive</div>
+      </penalty>
+    </div>
+    <!-- ngRepeat: playDesc in playbyplay --></div>
+</div>

@@ -11,7 +11,8 @@ angular.module('abroadathletesApp')
         game: '=',
         team: '=',
         events: '=',
-        submit: '='
+        submit: '=',
+        runner: '='
       },
       link: function (scope, element, attrs) {
       }
