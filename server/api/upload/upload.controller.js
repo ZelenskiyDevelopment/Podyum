@@ -2,7 +2,6 @@
 var User = require('../user/user.model');
 var Photo = require('../photo/photo.model');
 var _ = require('lodash');
-var mime = require('mime');
 var multiparty = require('multiparty'),
   util = require('util'),
   randomstring = require('randomstring'),
@@ -68,7 +67,6 @@ function uploadPhoto(req) {
   return parse(req).then(function(files) {
     var newName = randomstring.generate()+".png";
     var img = files.file[0];
-    console.log(mime.lookup(img.path));
     var photo = {photo: newName, owner: userId, medals: [], comments: []};
     return readFile(img.path).then(function (data) {
       return writeFile(PHOTO_DIR + newName, data);
