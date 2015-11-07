@@ -3,8 +3,8 @@
 angular.module('abroadathletesApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('manageRoster', {
-        url: '/manageRoster',
+      .state('teams.manageRoster', {
+        url: '/manage-roster',
         templateUrl: 'app/manageRoster/manageRoster.html',
         controller: 'ManageRosterCtrl'
       });

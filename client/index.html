@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="bower_components/angular-notify/dist/angular-notify.css" />
   <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css" />
   <link rel="stylesheet" href="bower_components/intl-tel-input/build/css/intlTelInput.css" />
+  <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css({.tmp,client}) app/app.css -->
@@ -180,6 +181,9 @@
   <script src="bower_components/intl-tel-input/build/js/intlTelInput.min.js"></script>
   <script src="bower_components/intl-tel-input/lib/libphonenumber/build/utils.js"></script>
   <script src="bower_components/international-phone-number/releases/international-phone-number.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
+  <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
   <!-- endbower -->
   <script src="socket.io-client/socket.io.js"></script>
   <!-- endbuild -->
@@ -291,6 +295,10 @@
   <script src="app/statsEdit/statsEdit.js"></script>
   <script src="app/teams/teams.controller.js"></script>
   <script src="app/teams/teams.js"></script>
+  <script src="app/teams/teams.taskManager/addEvent/eventModal.controller.js"></script>
+  <script src="app/teams/teams.taskManager/addTask/taskModal.controller.js"></script>
+  <script src="app/teams/teams.taskManager/teams.taskManager.controller.js"></script>
+  <script src="app/teams/teams.taskManager/teams.taskManager.js"></script>
   <script src="app/users/users.controller.js"></script>
   <script src="app/users/users.js"></script>
   <script src="components/achievements-modal/achievements-modal.directive.js"></script>
@@ -424,6 +432,7 @@
   <script src="components/services/play-levels/play-levels.service.js"></script>
   <script src="components/services/recruiting/recruiting.service.js"></script>
   <script src="components/services/sports/sports.service.js"></script>
+  <script src="components/services/taskManager/taskManager.service.js"></script>
   <script src="components/show-tail/show-tail.directive.js"></script>
   <script src="components/socket/socket.service.js"></script>
   <script src="components/star-checkbox/star-checkbox.directive.js"></script>
