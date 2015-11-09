@@ -2,9 +2,7 @@
     <h4> {{ alertMessage }}</h4>
 </div>
 <div class="btn-group col-lg-offset-2">
-<button type="button" ui-sref="teams.taskList" class="btn btn-primary" ng-click="addTask()">
-    List task
-</button>
+    <a ui-sref="teams.taskList" class="btn btn-default our-button">List Task</a>
 </div>
 <div class="btn-group calTools col-lg-offset-2">
     <button type="button" class="btn btn-primary" ng-click="addTask()">
@@ -14,7 +12,6 @@
         Add Event
     </button>
 </div>
-
 
 <div ui-calendar="uiConfig.calendar" class="padding-top" ng-model="eventSources"></div>
 

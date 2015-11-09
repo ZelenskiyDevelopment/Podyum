@@ -10,7 +10,11 @@ var TasksTeams = new Schema({
     description: String,
     name: String,
     dueDate: Date,
-    shareWith: String
+    shareWith: String,
+    isComplete: {
+        type: Boolean,
+        default: false
+    }
 });
 
 
