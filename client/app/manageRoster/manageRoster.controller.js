@@ -2,6 +2,8 @@
 
 angular.module('abroadathletesApp')
   .controller('ManageRosterCtrl', function ($scope, User) {
+
+        console.log('init');
     User.get().$promise.then(function (me) {
       $scope.user = me;
       $scope.myPlayers = $scope.user.assigned.filter(function (assignedUser) {

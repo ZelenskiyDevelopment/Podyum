@@ -16,3 +16,52 @@ pre {
   background-color:#fff;
   font: 14px Roboto,arial,sans-serif;
 }
+
+#right_sidebar {
+  width: 290px;
+  margin: 0 auto;
+  font-family: 'aileronregular';
+  color: #616161;
+
+}
+
+#right_sidebar h2 {
+  font-family: 'aileronlight';
+  font-size: 20px;
+  color: #827f79;
+  line-height: 50px;
+  padding-left: 15px;
+
+}
+
+.team-profile-side {
+  background: #fff;
+  border: 1px solid #f1f1f1;
+  margin-bottom: 18px;
+}
+
+.team-profile-side .thumbnail {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.team-profile-side h2 {
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.team-profile-side a {
+  color: #fac553;
+}
+
+.team-profile-side .table {
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.team-profile-side .table > tbody > tr > th {
+  border: none;
+}
+
+.team-profile-side .table > tbody > tr > td {
+  border-top: 1px solid #f1f1f1;
+}

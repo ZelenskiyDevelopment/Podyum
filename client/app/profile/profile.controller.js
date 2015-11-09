@@ -257,6 +257,8 @@ angular.module('abroadathletesApp')
         var ID = $stateParams.id;
         User.inviteToFriends({id: ID});
         $scope.owner.invited.push(ID);
+        //$scope.friendsNumber = $scope.user.friends.length;
+        console.log($scope.friendsNumber = $scope.user.friends.length);
       };
 
       $scope.assign = function () {

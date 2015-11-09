@@ -28,6 +28,9 @@
   <link rel="stylesheet" href="bower_components/angular-cropme/cropme.css" />
   <link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css" />
   <link rel="stylesheet" href="bower_components/angular-notify/dist/angular-notify.css" />
+  <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css" />
+  <link rel="stylesheet" href="bower_components/intl-tel-input/build/css/intlTelInput.css" />
+  <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css({.tmp,client}) app/app.css -->
@@ -35,11 +38,14 @@
   <!-- injector:css -->
   <link rel="stylesheet" href="app/friends/friends.css">
   <link rel="stylesheet" href="app/home/home.css">
+  <link rel="stylesheet" href="app/home/home.galery/home.galery.css">
   <link rel="stylesheet" href="app/home/home.messages/home.messages.css">
   <link rel="stylesheet" href="app/home/home.newsfeed/home.newsfeed.css">
-  <link rel="stylesheet" href="app/home/home.update-fans/home.update-fans.css">
+  <link rel="stylesheet" href="app/home/home.recruiting/home.recruiting.css">
   <link rel="stylesheet" href="app/home/home.update-status/home.update-status.css">
-  <link rel="stylesheet" href="app/home/home.wall/home.wall.css">
+  <link rel="stylesheet" href="app/home/home.update-status/home.update-status.event/home.update-status.event.css">
+  <link rel="stylesheet" href="app/home/home.update-status/home.update-status.milestone/home.update-status.milestone.css">
+  <link rel="stylesheet" href="app/home/home.update-status/home.update-status.update-fans/home.update-status.update-fans.css">
   <link rel="stylesheet" href="app/main/main.css">
   <link rel="stylesheet" href="app/manageStats/manageStats.css">
   <link rel="stylesheet" href="app/profile/coach/profile.coach.bio/profile.coach.bio.css">
@@ -59,7 +65,6 @@
   <link rel="stylesheet" href="app/profile/player/profile.player.stats/profile.player.stats.css">
   <link rel="stylesheet" href="app/profile/profile.css">
   <link rel="stylesheet" href="app/profile/team/profile.team.coaching/profile.team.coaching.css">
-  <link rel="stylesheet" href="app/profile/team/profile.team.recruiting/profile.team.recruiting.css">
   <link rel="stylesheet" href="app/profile/team/profile.team.roster/profile.team.roster.css">
   <link rel="stylesheet" href="app/profile/team/profile.team.stats/profile.team.stats.css">
   <link rel="stylesheet" href="app/search/search.css">
@@ -82,6 +87,7 @@
   <link rel="stylesheet" href="components/search/search.css">
   <link rel="stylesheet" href="components/statBox/statBox.css">
   <link rel="stylesheet" href="components/statsEditModal/statsEditModal.css">
+  <link rel="stylesheet" href="components/subbar/subbar.css">
   <link rel="stylesheet" href="components/team-stats/team-stats.css">
   <link rel="stylesheet" href="components/topPlayers/topPlayers.css">
   <link rel="stylesheet" href="components/userStatsEditModal/userStatsEditModal.css">
@@ -171,6 +177,13 @@
   <script src="bower_components/angular-cropme/cropme.js"></script>
   <script src="bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
   <script src="bower_components/angular-notify/dist/angular-notify.js"></script>
+  <script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js"></script>
+  <script src="bower_components/intl-tel-input/build/js/intlTelInput.min.js"></script>
+  <script src="bower_components/intl-tel-input/lib/libphonenumber/build/utils.js"></script>
+  <script src="bower_components/international-phone-number/releases/international-phone-number.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
+  <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
   <!-- endbower -->
   <script src="socket.io-client/socket.io.js"></script>
   <!-- endbuild -->
@@ -184,6 +197,7 @@
   <script src="app/creator/creator-finish/creator-finish.js"></script>
   <script src="app/creator/creator-league/creator-league.js"></script>
   <script src="app/creator/creator-media/creator-media.js"></script>
+  <script src="app/creator/creator-photo/creator-photo.controller.js"></script>
   <script src="app/creator/creator-photo/creator-photo.js"></script>
   <script src="app/creator/creator-player/creator-player.controller.js"></script>
   <script src="app/creator/creator-player/creator-player.js"></script>
@@ -196,14 +210,19 @@
   <script src="app/friends/friends.controller.js"></script>
   <script src="app/friends/friends.js"></script>
   <script src="app/home/home.controller.js"></script>
+  <script src="app/home/home.galery/home.galery.controller.js"></script>
+  <script src="app/home/home.galery/home.galery.js"></script>
   <script src="app/home/home.js"></script>
   <script src="app/home/home.messages/home.messages.controller.js"></script>
   <script src="app/home/home.messages/home.messages.js"></script>
   <script src="app/home/home.newsfeed/home.newsfeed.controller.js"></script>
   <script src="app/home/home.newsfeed/home.newsfeed.js"></script>
+  <script src="app/home/home.recruiting/home.recruiting.controller.js"></script>
+  <script src="app/home/home.recruiting/home.recruiting.js"></script>
+  <script src="app/home/home.update-status/home.update-status.event/home.update-status.event.js"></script>
   <script src="app/home/home.update-status/home.update-status.js"></script>
-  <script src="app/home/home.wall/home.wall.controller.js"></script>
-  <script src="app/home/home.wall/home.wall.js"></script>
+  <script src="app/home/home.update-status/home.update-status.milestone/home.update-status.milestone.js"></script>
+  <script src="app/home/home.update-status/home.update-status.update-fans/home.update-status.update-fans.js"></script>
   <script src="app/jobs/createJob/createJob.directive.js"></script>
   <script src="app/jobs/favouriteJobs/favouriteJobs.directive.js"></script>
   <script src="app/jobs/featuredJobs/featuredJobs.directive.js"></script>
@@ -264,8 +283,6 @@
   <script src="app/profile/profile.js"></script>
   <script src="app/profile/team/profile.team.coaching/profile.team.coaching.controller.js"></script>
   <script src="app/profile/team/profile.team.coaching/profile.team.coaching.js"></script>
-  <script src="app/profile/team/profile.team.recruiting/profile.team.recruiting.controller.js"></script>
-  <script src="app/profile/team/profile.team.recruiting/profile.team.recruiting.js"></script>
   <script src="app/profile/team/profile.team.roster/profile.team.roster.controller.js"></script>
   <script src="app/profile/team/profile.team.roster/profile.team.roster.js"></script>
   <script src="app/profile/team/profile.team.stats/profile.team.stats.controller.js"></script>
@@ -278,6 +295,14 @@
   <script src="app/statsEdit/statsEdit.js"></script>
   <script src="app/teams/teams.controller.js"></script>
   <script src="app/teams/teams.js"></script>
+  <script src="app/teams/teams.taskManager/addEvent/eventModal.controller.js"></script>
+  <script src="app/teams/teams.taskManager/addTask/taskModal.controller.js"></script>
+  <script src="app/teams/teams.taskManager/listTasks/listTasks.controller.js"></script>
+  <script src="app/teams/teams.taskManager/listTasks/listTasks.js"></script>
+  <script src="app/teams/teams.taskManager/listTasks/taskView/taskView.controller.js"></script>
+  <script src="app/teams/teams.taskManager/listTasks/taskView/taskView.js"></script>
+  <script src="app/teams/teams.taskManager/teams.taskManager.controller.js"></script>
+  <script src="app/teams/teams.taskManager/teams.taskManager.js"></script>
   <script src="app/users/users.controller.js"></script>
   <script src="app/users/users.js"></script>
   <script src="components/achievements-modal/achievements-modal.directive.js"></script>
@@ -388,11 +413,14 @@
   <script src="components/sendMessageModal/sendMessageModal.controller.js"></script>
   <script src="components/sendMessageModal/sendMessageModal.directive.js"></script>
   <script src="components/services/Cache/Cache.service.js"></script>
+  <script src="components/services/Citizenships/Citizenships.service.js"></script>
   <script src="components/services/Comment/Comment.service.js"></script>
   <script src="components/services/Event/Event.service.js"></script>
   <script src="components/services/Photo/photo.service.js"></script>
   <script src="components/services/Subscription/Subscription.service.js"></script>
   <script src="components/services/Team/Team.service.js"></script>
+  <script src="components/services/awardsPlayer/awardsPlayer.service.js"></script>
+  <script src="components/services/categoriesLevel/categoriesLevel.service.js"></script>
   <script src="components/services/data/conversation/Conversation-Resource/Conversation-Resource.service.js"></script>
   <script src="components/services/data/conversation/Conversation/Conversation.service.js"></script>
   <script src="components/services/data/room/Room-Resource/Room-Resource.service.js"></script>
@@ -403,16 +431,19 @@
   <script src="components/services/game/Game/Game.service.js"></script>
   <script src="components/services/gameMessage/GameMessage.service.js"></script>
   <script src="components/services/gamePositions/gamePositions.service.js"></script>
+  <script src="components/services/levelsCollege/levelsCollege.service.js"></script>
   <script src="components/services/milestone/milestone.service.js"></script>
   <script src="components/services/play-levels/play-levels.service.js"></script>
   <script src="components/services/recruiting/recruiting.service.js"></script>
   <script src="components/services/sports/sports.service.js"></script>
+  <script src="components/services/taskManager/taskManager.service.js"></script>
   <script src="components/show-tail/show-tail.directive.js"></script>
   <script src="components/socket/socket.service.js"></script>
   <script src="components/star-checkbox/star-checkbox.directive.js"></script>
   <script src="components/statBox/statBox.directive.js"></script>
   <script src="components/statsEditModal/statsEditModal.controller.js"></script>
   <script src="components/statsEditModal/statsEditModal.js"></script>
+  <script src="components/subbar/subbar.directive.js"></script>
   <script src="components/team-stats/team-stats.directive.js"></script>
   <script src="components/timerDisplay/timerDisplay.filter.js"></script>
   <script src="components/topPlayers/topPlayers.directive.js"></script>

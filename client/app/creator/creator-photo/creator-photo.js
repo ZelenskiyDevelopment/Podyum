@@ -5,6 +5,7 @@ angular.module('abroadathletesApp')
     $stateProvider
       .state('creator.photo', {
         url: '/photo',
-        templateUrl: 'app/creator/creator-photo/creator-photo.html'
+        templateUrl: 'app/creator/creator-photo/creator-photo.html',
+        controller: 'CreatorPhotoCtrl'
       });
   });

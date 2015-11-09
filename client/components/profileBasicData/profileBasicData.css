@@ -1,11 +1,4 @@
 .player-logo {
-	background: url(../img/logo-bg.png) no-repeat top center;
-	margin: 45px 0 25px;
-	text-align: center;
-}
-
-.player-logo {
-	background: url(../img/logo-bg.png) no-repeat top center;
 	margin: 45px 0 25px;
 	text-align: center;
 }
@@ -18,44 +11,28 @@
 	font-weight: 700;
 }
 
+.profile-main-photo {
+  width: 100%;
+  height: auto;
+}
+
+.main-data {
+	font-weight: 700;
+	margin: 20px 0 20px 15px;
+}
+
+.main-data h4,
+.main-data p {
+	margin: 0;
+	padding: 0;
+	font-weight: 700;
+	font-size: 16px;
+}
+
 .player-data p {
 	margin: 0;
 }
 
-.player-links {
-	text-align: center;
-}
-
-	.player-links button {
-		width: 147px;
-		padding: 13px 0;
-		background: #fac553;
-		font-family: 'aileronregular';
-		font-size: 15px;
-		text-transform: uppercase;
-		color: #85641c;
-		margin-bottom: 25px;
-		border: 0;
-		border-radius: 3px;
-	}
-
-	.player-links button:hover {
-		background: #f39c12;
-		color: #ffffff;
-	}
-
-	.player-links .send-message-modal {
-		display: inline;
-	}
-
-	.player-links button:first-child {
-		margin-left: -10px;
-		margin-right: 15px;
-	}
-
-.player-data {
-	margin-top: 10px;
-}
 
 .player-position {
 	margin: 17px 0 30px;
@@ -80,9 +57,10 @@
 		font-size: 15px;
 	}
 
-.player-data h2 {
+.player-data h1 {
 	font-family: 'aileronheavy';
 	font-size: 30px;
+	margin: 0 0 0 15px;
 }
 
 .player-facts {
@@ -108,19 +86,22 @@
 .friends span {
 	font-family: 'montserratbold';
 	font-size: 18px;
-	color: #fac553;
 }
 
 .fans {
-	background: #f8f8f8 url(../img/fans.png) no-repeat 10% center;
-	width: 45%;
-	float: left;
-	padding-left: 75px;
-	margin: 0 10px 0 35px;
+  background: #f8f8f8 url(../img/fans.png) no-repeat 90% center;
+  float: left;
+  font-weight: bold;
+  margin: 10px 0 0 0;
 }
 
 .friends {
 	background: #f8f8f8 url(../img/fans.png) no-repeat 90% center;
-	width: 45%;
 	float: left;
+	font-weight: bold;
+	margin: 10px 0 0 0;
+}
+
+.friends a, .fans a {
+	color: #fac553;
 }

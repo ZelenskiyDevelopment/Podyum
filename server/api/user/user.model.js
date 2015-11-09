@@ -16,16 +16,50 @@ var UserSchema = new Schema({
   hashedPassword: String,
   provider: String,
   salt: String,
+  birthday: Date,
   facebook: {},
   twitter: {},
   google: {},
   github: {},
   completed: Boolean,
   kind: String,
+  hometown: String,
   player:{},
   coach:{},
   team:{},
+  founded: Date,
+  stadium: String,
   league:{},
+  headCoach: [{
+      user: {
+          type: mongoose.Schema.Types.ObjectId, ref: 'User'
+      },
+      _id: false
+  }],
+  executive: [{
+     user: {
+         type: mongoose.Schema.Types.ObjectId, ref: 'User'
+     },
+      _id: false
+  }],
+  athleticDirector: [{
+      user: {
+          type: mongoose.Schema.Types.ObjectId, ref: 'User'
+      },
+      _id: false
+  }],
+  myLeagues: [{
+      user: {
+          type: mongoose.Schema.Types.ObjectId, ref: 'User'
+      },
+      _id: false
+  }],
+  president: [{
+      user: {
+          type: mongoose.Schema.Types.ObjectId, ref: 'User'
+      },
+      _id: false
+  }],
   fan:{},
   profilePhoto: {
     type: String,
@@ -58,6 +92,9 @@ var UserSchema = new Schema({
     date: { type: Date, default: Date.now}
   }],
   sport: String,
+  sex: String,
+  country: String,
+  bio:  String,
   trackedBy: [{user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}, date: Date}],
   statsAdmins: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   rosterAdmins: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],

@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: HomeWallCtrl', function () {
+describe('Controller: ProfilePhotosvideosCtrl', function () {
 
   // load the controller's module
   beforeEach(module('abroadathletesApp'));
   beforeEach(module('socketMock'));
 
-  var HomeWallCtrl, scope;
+  var ProfilePlayerGaleryCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    HomeWallCtrl = $controller('HomeWallCtrl', {
+    ProfilePlayerGaleryCtrl = $controller('ProfilePlayerGaleryCtrl', {
       $scope: scope
     });
   }));

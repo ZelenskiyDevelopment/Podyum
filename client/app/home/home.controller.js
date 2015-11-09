@@ -1,7 +1,11 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .controller('HomeCtrl', function ($scope, User, $location, socket, $mdDialog, Milestone) {
+  .controller('HomeCtrl', function ($scope, $state, User, $location, socket, $mdDialog, Milestone) {
+      if ($state.is('home.update-status')) {
+        $state.go('home.update-status.update-fans', {}, {reload: false});
+      }
+
     $scope.userPromise = User.get().$promise;
     $scope.userPromise.then(function (me) {
       if (!me.completed) {

@@ -23,6 +23,7 @@ angular.module('abroadathletesApp')
           var results = query ?
             scope.items.filter(createFilterFor(query)) : [];
           return results;
+            console.log(results);
         };
         scope.reset = function () {
           scope.searchText = '';

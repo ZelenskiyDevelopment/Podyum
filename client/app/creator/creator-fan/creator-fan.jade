@@ -19,18 +19,18 @@
         .div(class="creator-q")  What's your date of birth?
       .col-md-6.col-sm-6.col-xs-6
         label
-          input(type="date" class="form-inline" id="birth" ng-model="formData.personalData.birthday" placeholder="yyyy-MM-dd")
+          input(type="date" class="form-inline" id="birth" ng-model="formData.birthday" placeholder="yyyy-MM-dd")
     .col-md-12.col-sm-12.col-xs-12
       .col-md-6.col-sm-6.col-xs-6
         .div(class="creator-q")  What's your hometown?
       .col-md-6.col-sm-6.col-xs-6
         label
-          input(type="text" class="form-inline" id="hometown" ng-model="formData.personalData.hometown")
+          input(type="text" class="form-inline" id="hometown" ng-model="formData.hometown")
     .col-md-12.col-sm-12.col-xs-12
       .col-md-6.col-sm-6.col-xs-6
         .div(class="creator-q")  Are you male of female?
       .col-md-6.col-sm-6.col-xs-6
-        md-radio-group(ng-model="formData.personalData.sex")
+        md-radio-group(ng-model="formData.sex")
           label
             md-radio-button.md-primary(type="radio" value="male" checked) Male
           label
@@ -41,14 +41,14 @@
   .col-md-8.col-sm-10.col-xs-12
     md-content(layout="column")
       .big-q Citizenships
-        md-chips(ng-model="formData.personalData.citizenship" readonly="false")
+        md-chips(ng-model="formData.citizenship" readonly="false")
         md-chip-template
         | {{$chip}}
   .col-md-2.col-sm-1
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
   .col-md-8.col-sm-10.col-xs-12
-    country-select.creator-country-select(ng-model="formData.personalData.country")
+    country-select.creator-country-select(ng-model="formData.country")
   .col-md-2.col-sm-1
 
 

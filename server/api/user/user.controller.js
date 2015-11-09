@@ -156,6 +156,16 @@ exports.completeData = function (req, res, next) {
   });
 };
 
+exports.updateProfile = function(req,res) {
+
+    var id = req.body.id;
+     var data = req.body.data;
+    User.update({_id: id}, {$set:data}, {}, function (err) {
+       if (err) return validationError(res, err);
+       res.send(200);
+    });
+}
+
 exports.updateStats = function (req, res, next) {
   var userData = req.body.stats;
   var userId = req.body.id;

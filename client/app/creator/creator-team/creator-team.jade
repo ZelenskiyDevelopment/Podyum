@@ -14,41 +14,51 @@
         .div(class="creator-q") When was your team founded?
       .col-md-6.col-sm-6.col-xs-6
         label
-          input(type="date" class="form-inline" id="founded" ng-model="formData.personalData.founded" placeholder="yyyy-MM-dd")
+          input(type="date" class="form-inline" id="founded" ng-model="formData.founded" placeholder="yyyy-MM-dd")
 
     .col-md-12.col-sm-12.col-xs-12
       .col-md-6.col-sm-6.col-xs-6
         .div(class="creator-q")  What's your address?
       .col-md-6.col-sm-6.col-xs-6
         label
-          input(type="text" class="form-inline" id="address" ng-model="formData.personalData.address")
+          input(type="text" class="form-inline" id="address" ng-model="formData.address")
 
     .col-md-12.col-sm-12.col-xs-12
       .col-md-6.col-sm-6.col-xs-6
         .div(class="creator-q")  What's the link to your page?
       .col-md-6.col-sm-6.col-xs-6
         label
-          input(type="text" class="form-inline" id="link" ng-model="formData.personalData.link")
+          input(type="text" class="form-inline" id="link" ng-model="formData.link")
+
+
+
+    .col-md-12.col-sm-12.col-xs-12
+      .col-md-6.col-sm-6.col-xs-6
+        .div(class="creator-q")  What's the your phone?
+      .col-md-6.col-sm-6.col-xs-6
+        label
+          input(type="text" class="form-inline" international-phone-number id="phone" ng-model="formData.phone")
+
 
     .col-md-12.col-sm-12.col-xs-12
       .col-md-6.col-sm-6.col-xs-6
         .div(class="creator-q")  What's your mascot?
       .col-md-6.col-sm-6.col-xs-6
         label
-          input(type="text" class="form-inline" id="hometown" ng-model="formData.personalData.mascot")
+          input(type="text" class="form-inline" id="hometown" ng-model="formData.mascot")
 
     .col-md-12.col-sm-12.col-xs-12
       .col-md-6.col-sm-6.col-xs-6
         .div(class="creator-q")  What are your team colors?
       .col-md-6.col-sm-6.col-xs-6
         label
-          input(colorpicker='rgb' type='text' ng-model='formData.personalData.color')
+          input(colorpicker='rgb' type='text' ng-model='formData.color')
     .col-md-12.col-sm-12.col-xs-12
       .col-md-6.col-sm-6.col-xs-6
         .div(class="creator-q")  What's your home stadium/arena?
       .col-md-6.col-sm-6.col-xs-6
         label
-          input(type="text" class="form-inline" id="stadium" ng-model="formData.personalData.stadium")
+          input(type="text" class="form-inline" id="stadium" ng-model="formData.stadium")
 
   .col-md-2.col-sm-1
 
@@ -57,31 +67,31 @@
     .col-md-8.col-sm-10.col-xs-12
       .big-q Short biography
       .col-md-12.col-sm-12.col-xs-12
-        textarea(ng-model="formData.personalData.bio" value="bio" style="height: 100px; width: 100%")
+        textarea(ng-model="formData.bio" value="bio" style="height: 100px; width: 100%")
     .col-md-2.col-sm-1
 
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
   .col-md-8.col-sm-10.col-xs-12
     br
-    country-select.creator-country-select(ng-model="formData.personalData.country")
+    country-select.creator-country-select(ng-model="formData.country")
   .col-md-2.col-sm-1
 
   .col-md-12.col-sm-12.col-xs-12
     .col-md-2.col-sm-1
     .col-md-8.col-sm-10.col-xs-12
-      one-user-selector(label='"President/owner"' items='allHumanUsers' selected-item='formData.personalData.president')
+      one-user-selector(label='"President/owner"' items='allHumanUsers' selected-item='formData.president')
     .col-md-2.col-sm-1
 
   .col-md-12.col-sm-12.col-xs-12
     .col-md-2.col-sm-1
     .col-md-8.col-sm-10.col-xs-12
-      one-user-selector(label='"Athletic director"' items='allHumanUsers' selected-item='formData.personalData.athleticDirector')
+      one-user-selector(label='"Athletic director"' items='allHumanUsers' selected-item='formData.athleticDirector')
     .col-md-2.col-sm-1
   .col-md-12.col-sm-12.col-xs-12
     .col-md-2.col-sm-1
     .col-md-8.col-sm-10.col-xs-12
-      one-user-selector(label='"Head coach"' items='allCoaches' selected-item='formData.personalData.headCoach')
+      one-user-selector(label='"Head coach"' items='allCoaches' selected-item='formData.headCoach')
     .col-md-2.col-sm-1
 
   .col-md-12.col-sm-12.col-xs-12

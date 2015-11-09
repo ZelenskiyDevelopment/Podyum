@@ -1,6 +1,6 @@
 navigationbar(user="me")
 
-.container(style="margin-top:220px;")
+.container(style="margin-top:50px;")
   browse-members-modal(type="'rosterAdmin'" change="myRosterAdmins" user="user")
     button(class="btn our-button" ng-show="user.kind === 'team' && user.role==='premium'")
       | Grant Admin Privileges
@@ -36,9 +36,9 @@ navigationbar(user="me")
   div(ng-show="user.kind==='team' || chosenTeam >= 0")
     .h1
       | Manage roster
-    button(class="btn our-button" ng-click="changeSort('user.player.number')")
+    button(class="btn our-button margin-bottom" ng-click="changeSort('user.player.number')")
       | Sort by number
-    button(class="btn our-button" ng-click="changeSort('user.player.lastName')")
+    button(class="btn our-button margin-bottom" ng-click="changeSort('user.player.lastName')")
       | Sort by last name
     table(class="table table-bordered panel" style="text-align:center;")
       tr

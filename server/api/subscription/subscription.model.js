@@ -8,6 +8,7 @@ var mongoose = require('mongoose'),
 var SubscriptionSchema =  new Schema({
     id_user:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     type: String,
+    subscr_status: String,
     date: Date,
     pay: Boolean,
     amount: Number

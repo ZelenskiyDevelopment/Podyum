@@ -3,9 +3,9 @@
 angular.module('abroadathletesApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('profile.team-recruiting', {
-        url: '/recruiting',
-        templateUrl: 'app/profile/team/profile.team.recruiting/profile.team.recruiting.html',
+      .state('home.recruiting', {
+        url: '/home-recruiting',
+        templateUrl: 'app/home/home.recruiting/home.recruiting.html',
         controller: 'ProfileTeamRecruitingCtrl'
       });
   });

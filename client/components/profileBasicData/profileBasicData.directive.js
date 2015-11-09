@@ -26,6 +26,7 @@ angular.module('abroadathletesApp')
           });
           return _.isEmpty(element);
         }
+
       }
     };
   });
