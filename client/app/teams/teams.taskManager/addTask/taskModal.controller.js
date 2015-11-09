@@ -31,4 +31,8 @@ angular.module('abroadathletesApp')
 
      };
 
+        $scope.cancel = function() {
+            $uibModalInstance.dismiss('close');
+        }
+
 });

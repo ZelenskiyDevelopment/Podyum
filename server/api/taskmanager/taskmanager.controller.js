@@ -6,6 +6,7 @@
 
 var TeamsEvents = require('./eventsteams.model');
 var TasksTeams = require('./tasksteams.model');
+var mongo = require('mongodb');
 
 exports.addEvent = function(req, res) {
 
@@ -61,7 +62,7 @@ exports.addTask = function(req, res) {
 
         res.send(200);
     });
-}
+};
 
 exports.getAllEventsByUser = function(req, res) {
     var userId = req.params.id;
@@ -72,5 +73,29 @@ exports.getAllEventsByUser = function(req, res) {
     }).catch(function (err) {
         return handleError(res, err);
     });
-}
+};
 
+
+exports.getAllTaskByUser = function(req, res) {
+    var userId = req.params.id;
+    TasksTeams.find({
+        id_user: userId
+    }).execQ().then(function (tasks) {
+        return res.json(200, tasks);
+    }).catch(function (err) {
+        return handleError(res, err);
+    })
+};
+
+
+exports.getTaskById  = function(req, res) {
+    var idTask = req.params.id;
+    var findId = new mongo.ObjectID(idTask);
+    TasksTeams.find({
+        _id: findId
+    }).execQ().then(function(task) {
+        return res.json(200, task);
+    }).catch(function (err) {
+        return handleError(res, err);
+    });
+};

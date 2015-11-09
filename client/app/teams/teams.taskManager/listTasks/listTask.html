@@ -1,0 +1,81 @@
+<div class="row">
+
+    <div class="col-lg-5 col-lg-offset-1 current-task">
+
+        <div class="">
+
+            <span class="md-display-1">Current Task</span>
+
+            <div class="current-task-list col-lg-offset-1">
+
+                <div class="task col-lg-12" ng-repeat="task in tasks">
+                    <div class="col-lg-1">
+                        <md-checkbox ng-model="task.isComplete" aria-label="{{ task.name }}">
+                        </md-checkbox>
+                    </div>
+                    <div class="col-lg-2"><span class="task-name"><a href="#" class="md-headline"
+                                                                     ng-click="viewTask(task._id)">{{ task.name
+                        }}</a></span></div>
+                </div>
+
+            </div>
+        </div>
+        <pre>{{ tasks }}</pre>
+    </div>
+
+    <div class="col-lg-5 col-lg-offset-1 view-task" id="viewTask" ng-show="task[0]">
+        <form class="form-horizontal">
+            <div class="row">
+
+                <div class="col-lg-4">
+                    <input type="text" required="" ng-model="task[0].taskFor" class="form-control"
+                           placeholder="Task for">
+                </div>
+
+                <div class="col-lg-5">
+                    <md-datepicker ng-required="true" ng-model="task[0].dueDate"
+                                   md-placeholder="Due Date"></md-datepicker>
+                </div>
+
+                <div class="col-lg-2">
+                    <button class="btn btn-defaultour-button" ng-click="addSubTask(task[0]._id)">Sub Task</button>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-lg-offset-1 view-task-section">
+                    <div class="col-lg-2">
+                        <md-checkbox ng-model="task[0].isComplete" aria-label="{{ task[0].name }}">
+                        </md-checkbox>
+                    </div>
+
+                    <div class="col-lg-10"><span class="task-name"><textarea id="task-name" ng-model="task[0].name"></textarea></span></div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="col-sm-3 control-label">Description</label>
+
+                    <div class="col-sm-8">
+                        <textarea class="task-description" required="" ng-model="task[0].description" rows="10"
+                                  col="100"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-12 sub-tasks">
+                        <h3 class="md-headline">Subtask</h3>
+                </div>
+
+            </div>
+
+
+        </form>
+
+        <pre>{{ task[0] }}</pre>
+
+    </div>
+
+
+</div>

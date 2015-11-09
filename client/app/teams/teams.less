@@ -8,6 +8,113 @@
 .padding-top {
   padding-top: 40px;
 }
+.md-label span {
+  color:#000000;
+  font-size: 1.6rem;
+}
+.current-task {
+  border: 2px solid #d7d7d7;
+  height: 100%;
+  padding: 17px;
+  border-radius: 5px;
+  min-height: 500px;
+  margin-bottom: 30px;
+}
+.current-task-list {
+  padding-top: 30px;
+  .task-name {
+    margin-top: 2px;
+    display: block;
+    a {
+      text-decoration: none;
+      color: black;
+      &:hover {
+        color:#fac553;
+        text-decoration: none;
+      }
+    }
+  }
+  md-checkbox .md-icon {
+    border-radius: 11px;
+  }
+}
+.view-task {
+  border: 2px solid #d7d7d7;
+  height: 100%;
+  padding: 17px;
+  border-radius: 5px;
+  min-height: 500px;
+  margin-bottom: 30px;
+
+  md-datepicker.md-default-theme, md-datepicker {
+    background: none;
+  }
+
+  .md-button.md-icon-button {
+    margin: -14px -8px 13px;
+    height: 53px;
+    min-width: 0;
+    line-height: 48px;
+    padding-left: 0;
+    padding-right: 0;
+    width: 48px;
+    border-radius: 50%;
+  }
+  md-checkbox .md-icon {
+    border-radius: 30px;
+    width: 40px;
+    height: 40px;
+  }
+  md-checkbox .md-container .md-ripple-container {
+    display: none;
+  }
+  .task-name {
+    margin-top: -4px;
+    display: block;
+  }
+  #task-name {
+    font-family: "amasis", "Helvetica Neue", Arial, sans-serif;
+    line-height: 10px;
+    font-size: 24px;
+    background: transparent;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    display: block;
+    padding: 5px;
+    padding-left: 13px;
+    width: 100%;
+    padding-top: 10px;
+    margin-top: 13px;
+    &:hover {
+      border-color: #CDCFD2;
+      -webkit-transition: border-color 150ms;
+      -moz-transition: border-color 150ms;
+      transition: border-color 150ms;
+    }
+  }
+}
+.view-task-section {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 60px;
+}
+md-checkbox.md-default-theme.md-checked, md-checkbox.md-checked .md-icon:after {
+  border-color: rgb(238,238,238);
+  border: none;
+}
+.task-name  {
+
+  a {
+    color:black;
+    &:hover {
+      color: #fac553;
+      text-decoration: none;
+    }
+  }
+
+}
 md-calendar {
   font-size: 13px;
   -webkit-user-select: none;

@@ -33,6 +33,16 @@ angular.module('abroadathletesApp')
                 }).then(function(result) {
                     return result;
                 })
+            },
+            getAllTasksUser: function(id_user) {
+                return $http.get('/api/taskmanager/'+id_user+'/getAllTasksUser').then(function(result) {
+                    return result;
+                })
+            },
+            getTaskById: function(id) {
+                return $http.get('/api/taskmanager/'+id+'/getTaskById').then(function(result) {
+                    return result;
+                });
             }
         };
     });
