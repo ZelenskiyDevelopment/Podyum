@@ -28,8 +28,19 @@
             <div class="row">
 
                 <div class="col-lg-4">
-                    <input type="text" required="" ng-model="task[0].taskFor" class="form-control"
-                           placeholder="Task for">
+                    <md-autocomplete
+                            ng-disabled="isDisabled"
+                            md-selected-item="selectedItem"
+                            md-search-text-change="searchTextChange(searchText)"
+                            md-search-text="searchText"
+                            md-selected-item-change="selectedItemChange(item)"
+                            md-items="item in querySearch(searchText)"
+                            md-item-text="item.display"
+                            md-min-length="0"
+                            placeholder="For task">
+                        <md-item-template>
+                            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
+                        </md-item-template>
                 </div>
 
                 <div class="col-lg-5">
@@ -102,19 +113,7 @@
         <!--<pre>{{ taskFor }}</pre>-->
         <!--<pre>{{ forTask }}</pre>-->
 
-        <!--<md-autocomplete-->
-                <!--ng-disabled="isDisabled"-->
-                <!--md-selected-item="selectedItem"-->
-                <!--md-search-text-change="searchTextChange(searchText)"-->
-                <!--md-search-text="searchText"-->
-                <!--md-selected-item-change="selectedItemChange(item)"-->
-                <!--md-items="item in querySearch(searchText)"-->
-                <!--md-item-text="item.display"-->
-                <!--md-min-length="0"-->
-                <!--placeholder="For task">-->
-            <!--<md-item-template>-->
-                <!--<span md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>-->
-            <!--</md-item-template>-->
+
     </div>
 
 

@@ -31,7 +31,35 @@ angular.module('abroadathletesApp')
 
             TaskManager.getAllTasksUser(me._id).then(function (tasks) {
                 $scope.tasks = tasks.data;
-            })
+
+
+
+
+            });
+
+//            $scope.$watch("tasks", function (newValue, oldValue) {
+//                if (angular.isObject(newValue)) {
+//                    angular.forEach(newValue, function (value, key) {
+//
+//                        TaskManager.updateTask(value).then(function (response) {
+//
+//                            if (angular.isObject($scope.task)) {
+//
+//                                var tasks = response.data;
+//                                angular.forEach(tasks, function (value, key) {
+//
+//                                    value.dueDate = new Date(value.dueDate);
+//
+//                                });
+//
+//                                $scope.task = tasks;
+//                            }
+//
+//                        });
+//
+//                    });
+//                }
+//            }, true);
             $scope.myPlayers = $scope.user.assigned.filter(function (assignedUser) {
                 return assignedUser.user.kind === 'player' && assignedUser.isPresent;
             });
