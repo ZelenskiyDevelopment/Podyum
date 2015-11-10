@@ -54,7 +54,7 @@ angular.module('abroadathletesApp')
         scope.recruit = function() {
           var data = {id: scope.user._id, dtFrom: new Date()};
           User.addToTeam({data: data});
-          console.log("recruit")
+          element.find('.recruiter').hide();
         };
       }
     };
