@@ -34,19 +34,25 @@ pre {
 
 }
 
-.team-profile-side {
+.team-profile-side, .user-profile-side {
   background: #fff;
   border: 1px solid #f1f1f1;
   margin-bottom: 18px;
 }
+
+
 
 .team-profile-side .thumbnail {
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.team-profile-side h2 {
+.team-profile-side h2, .user-profile-side h2 {
   border-bottom: 1px solid #f1f1f1;
+}
+
+.user-profile-side .milestoneButton {
+  margin: 0 0 0 30px;
 }
 
 .team-profile-side a {

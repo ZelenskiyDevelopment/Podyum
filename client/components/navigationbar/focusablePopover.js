@@ -9,7 +9,7 @@ angular.module('abroadathletesApp')
             _.forEach(popovers, function( popover ){
               angular.element(popover).scope().$parent.isOpen = false;
               angular.element(popover).scope().$parent.$apply();
-              angular.element( popover ).remove();
+              angular.element(popover).remove();
             });
           };
 

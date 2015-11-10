@@ -1,6 +1,6 @@
 .player-links(ng-show="user._id !== owner._id && user.completed")
-  button(class="player-links" ng-click="recruit()" ng-show="(owner.kind==='team')")
-    | Recruit!
+  button(class="player-links recruiter" ng-click="recruit()" ng-show="(owner.kind==='team')")
+    | Add to Roster!
   button(class="player-links" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && owner['follows'].indexOf(user['_id']) === -1" ng-click="follow()")
     | Follow!
   button(class="player-links" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && owner['follows'].indexOf(user['_id']) !== -1" ng-click="unfollow()")
