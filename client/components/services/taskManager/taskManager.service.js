@@ -59,6 +59,11 @@ angular.module('abroadathletesApp')
                 }).then(function(result){
                     return result;
                 });
+            },
+            getSubTasks: function(id) {
+                return $http.get('/api/taskmanager/'+id+'/getSubTasks').then(function(result) {
+                   return result;
+                });
             }
         };
     });

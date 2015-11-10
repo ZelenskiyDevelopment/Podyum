@@ -50,7 +50,7 @@
                         </md-checkbox>
                     </div>
 
-                    <div class="col-lg-10"><span class="task-name"><textarea id="task-name"
+                    <div class="col-lg-10"><span class="task-name"><textarea resize-textarea class="task-name-textarea"
                                                                              ng-model="task[0].name"></textarea></span>
                     </div>
                 </div>
@@ -75,13 +75,21 @@
                             <md-checkbox ng-model="subtask.isComplete" aria-label="{{ subtask.name }}">
                             </md-checkbox>
                         </div>
-                        <div class="col-lg-6"><span class="task-name"><textarea id="task-name"
+                        <div class="col-lg-5"><span class="task-name"><textarea resize-textarea
+                                                                                class="task-name-textarea"
                                                                                 ng-model="subtask.name"></textarea></span>
                         </div>
-
+                        <div class="col-lg-2">
+                            <span class="task-date">{{ subtask.dueDate | date: "MMM dd"  }}</span>
+                        </div>
                         <div class="col-lg-2">
                             <md-datepicker ng-required="true" ng-model="subtask.dueDate"
                                            md-placeholder="Due Date"></md-datepicker>
+                        </div>
+                        <div class="col-lg-2">
+                            <md-button class="md-fab md-mini assign-user" aria-label="Eat cake">
+                                <md-icon md-svg-src="assets/svg/ic_assignment_ind_white_24px.svg"></md-icon>
+                            </md-button>
                         </div>
                     </div>
 
@@ -91,7 +99,22 @@
         </form>
         <!--<pre>{{ task[0].subtask  }}</pre>-->
         <!--<pre>{{ task[0] }}</pre>-->
+        <!--<pre>{{ taskFor }}</pre>-->
+        <!--<pre>{{ forTask }}</pre>-->
 
+        <!--<md-autocomplete-->
+                <!--ng-disabled="isDisabled"-->
+                <!--md-selected-item="selectedItem"-->
+                <!--md-search-text-change="searchTextChange(searchText)"-->
+                <!--md-search-text="searchText"-->
+                <!--md-selected-item-change="selectedItemChange(item)"-->
+                <!--md-items="item in querySearch(searchText)"-->
+                <!--md-item-text="item.display"-->
+                <!--md-min-length="0"-->
+                <!--placeholder="For task">-->
+            <!--<md-item-template>-->
+                <!--<span md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>-->
+            <!--</md-item-template>-->
     </div>
 
 

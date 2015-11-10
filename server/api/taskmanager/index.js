@@ -17,5 +17,6 @@ router.post('/addSubTask', controller.addSubTask);
 router.get('/:id/getAllEventsUser', controller.getAllEventsByUser);
 router.get('/:id/getAllTasksUser', controller.getAllTaskByUser);
 router.get('/:id/getTaskById', controller.getTaskById);
+router.get('/:id/getSubTasks', controller.getSubTasks);
 
 module.exports = router;

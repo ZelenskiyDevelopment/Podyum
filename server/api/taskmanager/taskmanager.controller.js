@@ -87,6 +87,17 @@ exports.getAllTaskByUser = function(req, res) {
     })
 };
 
+exports.getSubTasks = function(req, res) {
+    var taskId = req.params.id;
+
+    TasksTeams.find({
+        parentTask: taskId
+    }).execQ().then(function (tasks) {
+        return res.json(200, tasks);
+    }).catch(function (err) {
+        return handleError(res, err);
+    })
+}
 
 exports.getTaskById  = function(req, res) {
     var idTask = req.params.id;
@@ -106,11 +117,11 @@ exports.updateTask = function(req, res) {
     var id = data._id;
     delete data._id;
     delete data.__v;
-
+    delete data.subtask;
     TasksTeams.update({_id: id},  {$set:data}, {}, function (err) {
         if (err) return validationError(res, err);
         TasksTeams.find({
-            _id: id
+            id_user: data.id_user
         }).execQ().then(function(task) {
             return res.json(200, task);
         }).catch(function (err) {
@@ -128,7 +139,14 @@ exports.addSubTask = function(req, res) {
     newTask.save(function(err){
         if (err) throw err;
 
-        res.send(200);
+        TasksTeams.find({
+            parentTask: data.parentTask
+        }).execQ().then(function (tasks) {
+            return res.json(200, tasks);
+        }).catch(function (err) {
+            return handleError(res, err);
+        })
+
     });
 }
 

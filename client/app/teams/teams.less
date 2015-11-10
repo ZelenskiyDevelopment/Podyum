@@ -61,8 +61,8 @@
   }
 
   .md-button.md-icon-button {
-    margin: -14px -8px 13px;
-    height: 53px;
+    margin: -6px 4px 13px;
+    height: 46px;
     min-width: 0;
     line-height: 48px;
     padding-left: 0;
@@ -81,9 +81,11 @@
       width: 18px;
       height: 18px;
     }
-  #task-name {
+  .task-name-textarea {
     margin-top: 4px;
     font-size: 14px;
+    line-height: 18px;
+    height: 40px;
   }
     .md-datepicker-input {
       position: absolute;
@@ -96,13 +98,22 @@
   md-checkbox .md-container .md-ripple-container {
     display: none;
   }
+  .task-date {
+    margin-top: 10px;
+    display: block;
+  }
+  .assign-user {
+    margin-top: -5px;
+  }
   .task-name {
     margin-top: -4px;
     display: block;
   }
-  #task-name {
+  .task-name-textarea {
+    resize: none;
+    line-height: 18px;
+    height: 40px;
     font-family: "amasis", "Helvetica Neue", Arial, sans-serif;
-    line-height: 10px;
     font-size: 24px;
     background: transparent;
     border: 1px solid transparent;
@@ -127,6 +138,13 @@
   margin-top: 15px;
   margin-bottom: 15px;
   height: 60px;
+  .task-name {
+    padding-bottom: 30px;
+  }
+
+}
+.task-description {
+  padding: 5px;
 }
 md-checkbox.md-default-theme.md-checked, md-checkbox.md-checked .md-icon:after {
   border-color: rgb(238,238,238);
