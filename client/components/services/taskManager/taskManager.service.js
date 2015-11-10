@@ -43,6 +43,22 @@ angular.module('abroadathletesApp')
                 return $http.get('/api/taskmanager/'+id+'/getTaskById').then(function(result) {
                     return result;
                 });
+            },
+            updateTask: function(dataTask) {
+                if (angular.isObject(dataTask)) {
+                    return $http.post('/api/taskmanager/updateTask',{
+                        data:dataTask
+                    }).then(function(result){
+                        return result;
+                    });
+                }
+            },
+            addSubTask: function(subTask) {
+                return $http.post('/api/taskmanager/addSubTask',{
+                    data:subTask
+                }).then(function(result){
+                    return result;
+                });
             }
         };
     });

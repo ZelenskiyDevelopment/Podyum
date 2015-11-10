@@ -32,6 +32,13 @@
 
     .col-md-12.col-sm-12.col-xs-12
       .col-md-6.col-sm-6.col-xs-6
+        .div(class="creator-q")  What's your country?
+      .col-md-6.col-sm-6.col-xs-6
+        label
+           country-select.creator-country-select(ng-model="formData.country")
+
+    .col-md-12.col-sm-12.col-xs-12
+      .col-md-6.col-sm-6.col-xs-6
         .div(class="creator-q")  What's your hometown?
       .col-md-6.col-sm-6.col-xs-6
         label
@@ -73,7 +80,7 @@
   .col-md-2.col-sm-1
   .col-md-8.col-sm-10.col-xs-12
     .big-q Country
-  country-select.creator-country-select(ng-model="formData.country")
+
   .col-md-2.col-sm-1
 
 .col-md-12.col-sm-12.col-xs-12

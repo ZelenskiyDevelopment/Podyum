@@ -99,3 +99,39 @@ exports.getTaskById  = function(req, res) {
         return handleError(res, err);
     });
 };
+
+exports.updateTask = function(req, res) {
+
+    var data = req.body.data;
+    var id = data._id;
+    delete data._id;
+    delete data.__v;
+
+    TasksTeams.update({_id: id},  {$set:data}, {}, function (err) {
+        if (err) return validationError(res, err);
+        TasksTeams.find({
+            _id: id
+        }).execQ().then(function(task) {
+            return res.json(200, task);
+        }).catch(function (err) {
+            return handleError(res, err);
+        });
+    });
+}
+
+exports.addSubTask = function(req, res) {
+
+    var data = req.body.data;
+
+    var newTask = new TasksTeams(data);
+
+    newTask.save(function(err){
+        if (err) throw err;
+
+        res.send(200);
+    });
+}
+
+function validationError(res, err) {
+    return res.json(422, err);
+}

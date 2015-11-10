@@ -11,6 +11,8 @@ var router = express.Router();
 
 router.post('/addNewEvent', controller.addEvent);
 router.post('/addNewTask', controller.addTask);
+router.post('/updateTask', controller.updateTask);
+router.post('/addSubTask', controller.addSubTask);
 
 router.get('/:id/getAllEventsUser', controller.getAllEventsByUser);
 router.get('/:id/getAllTasksUser', controller.getAllTaskByUser);
