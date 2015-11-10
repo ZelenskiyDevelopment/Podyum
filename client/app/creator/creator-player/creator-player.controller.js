@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .controller('CreatorPlayerCtrl', function ($scope, GamePositions, AwardsPlayer, CategoriesLevel, LevelsCollege, CitizenShips) {
+  .controller('CreatorPlayerCtrl', function ($scope, GamePositions, AwardsPlayer, CategoriesLevel, LevelsCollege, CitizenShips, $window) {
+
+        window.scrollTo(0, 0);
 
         $scope.selectedSports = _.keys($scope.formData.sport);
         $scope.positions = {};
@@ -13,7 +15,7 @@ angular.module('abroadathletesApp')
         $scope.awards = [];
 
 
-        var awards_array = ['Team captain','All-American','All-Conference (1st team) (2nd team) (Honorable Mention)'];
+        var awards_array = ['Team captain','All-American','All-Conference (1st team)','All-Conference (2nd team)','All-Conference (Honorable Mention)'];
 
 
         angular.forEach(awards_array,function(value){

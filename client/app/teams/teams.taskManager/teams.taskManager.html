@@ -2,10 +2,10 @@
     <h4> {{ alertMessage }}</h4>
 </div>
 <div class="btn-group col-lg-offset-2">
-    <a ui-sref="teams.taskList" class="btn btn-default our-button">List Task</a>
+    <a ui-sref="teams.taskList" class="btn btn-default our-button">Task List</a>
 </div>
 <div class="btn-group calTools col-lg-offset-2">
-    <button type="button" class="btn btn-primary" ng-click="addTask()">
+    <button type="button" class="btn btn-primary" ng-click="addTask(task[0].id)">
         Add Task
     </button>
     <button type="button" class="btn btn-primary" ng-click="open()">

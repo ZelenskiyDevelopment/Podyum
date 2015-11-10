@@ -14,7 +14,8 @@ var TasksTeams = new Schema({
     isComplete: {
         type: Boolean,
         default: false
-    }
+    },
+    parentTask:{type: mongoose.Schema.Types.ObjectId, ref: 'TasksTeams'}
 });
 
 

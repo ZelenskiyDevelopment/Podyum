@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-    .controller('CreatorPhotoCtrl', function ($scope, Upload) {
+    .controller('CreatorPhotoCtrl', function ($scope, Upload, $rootScope) {
 
         $scope.myImage = null;
         $scope.myCroppedImage = null;
@@ -59,12 +59,14 @@ angular.module('abroadathletesApp')
                     var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                     //console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
                 }).success(function (data, status, headers, config) {
+
                     console.log(data.photo);
                 });
                 $scope.formData.photo.push({
                     file: file.size,
                     type: file.type
                 });
+                $rootScope.progressValue = 50;
             }
         };
 

@@ -9,21 +9,20 @@
   div.preview-img(ng-show="myImage")
     div.md-title Preview:
     img(ng-src="{{myCroppedImage}}")
-  .col-md-3(style="margin-left: 26%;" data-test="{{ myCroppedImage.length }}")
-    a(ng-click='savePhoto()' type='button' class='md-button create-button' ng-show='myImage')  Save Photo
-  .col-md-3(style="margin-left: 0%;")
-    a(ng-click='cancelPhoto()' type='button' class='md-button create-button' ng-show='myImage')  Cancel
-
-.col-xs-12.col-sm-12.col-md-12.row
+.col-xs-12.col-sm-12.col-md-12
   .col-xs-2.col-sm-3.col-md-3
-  .col-xs-8.col-sm-6.col-md-6
-    .col-xs-12.col-sm-12.col-md-12.row
-      .col-xs-6.col-sm-6.col-md-6
+  .col-xs-8.col-sm-6.col-md-12
+    .col-xs-12.col-sm-12.col-md-12
+      .col-xs-6.col-sm-6.col-md-4
         a(ui-sref="creator.type").md-button.create-button(ng-click="changeProgress(20)")
           .i(class="fa fa-arrow-left" style="font-size: 22px; margin: 0; padding: 0;")
           | &#32; Back
-      .col-xs-6.col-sm-6.col-md-6
-        a(ui-sref="creator.{{formData.type}}").md-button.create-button(ng-click="changeProgress(50)" ng-show="formData.type && formData.photo.length > 0")
+      .col-xs-6.col-sm-6.col-md-5
+        a(ui-sref="creator.{{formData.type}}").md-button.create-button(ng-click="changeProgress(50)")
+          | Skip adding a picture &#32;
+          .i(class="fa fa-arrow-right" style="font-size: 22px; margin: 0; padding: 0;")
+      .col-xs-6.col-sm-6.col-md-3
+        a(ui-sref="creator.{{formData.type}}").md-button.create-button(ng-click="savePhoto(); changeProgress(50)" ng-show="formData.type && myImage")
           | Next step &#32;
           .i(class="fa fa-arrow-right" style="font-size: 22px; margin: 0; padding: 0;")
   .col-xs-2.col-sm-3.col-md-3

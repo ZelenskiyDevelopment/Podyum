@@ -28,7 +28,7 @@ angular.module('abroadathletesApp', [
   'ui.calendar'
 
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider, $mdIconProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $provide, $mdThemingProvider, $mdIconProvider) {
 
 
     $mdIconProvider.iconSet("avatar", 'icons/avatar-icons.svg', 128);
@@ -38,6 +38,7 @@ angular.module('abroadathletesApp', [
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
+
 
     $mdThemingProvider.definePalette('amazingPaletteName', {
       '50': 'fffde7',
@@ -63,7 +64,6 @@ angular.module('abroadathletesApp', [
 
     $mdThemingProvider.theme('default')
       .accentPalette('amazingPaletteName');
-
 
 
   })
@@ -110,6 +110,14 @@ angular.module('abroadathletesApp', [
         }
       });
     });
+        $rootScope.$on('$viewContentLoaded', function () {
+
+            setTimeout(function(){
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
+
+            },1);
+
+        });
     Auth.isLoggedInAsync(function (loggedIn) {
       if (loggedIn) {
         if($location.$$path === '/'){
