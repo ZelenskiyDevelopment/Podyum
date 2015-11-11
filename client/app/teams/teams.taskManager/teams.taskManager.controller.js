@@ -7,6 +7,7 @@ angular.module('abroadathletesApp')
         $scope.user = [];
         $scope.eventsUser = [];
         $scope.events = [];
+        $scope.taskUser  = [];
         User.get().$promise.then(function (me) {
             $scope.user = me;
         });
@@ -30,6 +31,11 @@ angular.module('abroadathletesApp')
 
             });
 
+            TaskManager.getAllTasksUser($scope.user._id).then(function (tasks) {
+                $scope.taskUser = tasks.data;
+
+            });
+
         },2000);
 
         $timeout(function(){
@@ -41,6 +47,19 @@ angular.module('abroadathletesApp')
                     title: value.Title,
                     start: new Date(value.startDate),
                     end: new Date (value.endDate)
+                });
+
+            });
+
+            angular.forEach($scope.taskUser, function(value, key){
+
+                $scope.events.push({
+                    id: value._id,
+                    title: 'Task  - ' + value.name,
+                    start: new Date (value.dueDate),
+                    end: new Date (value.dueDate),
+                    backgroundColor:'#f4b400',
+                    borderColor:'#f4b400'
                 });
 
             });
@@ -71,6 +90,11 @@ angular.module('abroadathletesApp')
 
             });
 
+            TaskManager.getAllTasksUser($scope.user._id).then(function (tasks) {
+                $scope.taskUser = tasks.data;
+
+            });
+
             angular.forEach($scope.eventsUser, function(value, key){
                 $scope.events.push({
                     title: value.Title,
@@ -80,6 +104,18 @@ angular.module('abroadathletesApp')
 
             });
 
+            angular.forEach($scope.taskUser, function(value, key){
+
+                $scope.events.push({
+                    id: value._id,
+                    title: 'Task  - ' + value.name,
+                    start: new Date (value.dueDate),
+                    end: new Date (value.dueDate),
+                    backgroundColor:'#f4b400',
+                    borderColor:'#f4b400'
+                });
+
+            });
         };
 
         $scope.calEventsExt = {
@@ -141,6 +177,10 @@ angular.module('abroadathletesApp')
                 'tooltip-append-to-body': true});
             $compile(element)($scope);
         };
+
+        $scope.dayClick = function(date) {
+            console.log(date);
+        }
         /* config object */
         $scope.uiConfig = {
             calendar:{
@@ -155,7 +195,8 @@ angular.module('abroadathletesApp')
                 eventClick: $scope.alertOnEventClick,
                 eventDrop: $scope.alertOnDrop,
                 eventResize: $scope.alertOnResize,
-                eventRender: $scope.eventRender
+                eventRender: $scope.eventRender,
+                dayClick: $scope.dayClick
             }
         };
 

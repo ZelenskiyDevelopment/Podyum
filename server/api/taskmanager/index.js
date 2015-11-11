@@ -19,4 +19,6 @@ router.get('/:id/getAllTasksUser', controller.getAllTaskByUser);
 router.get('/:id/getTaskById', controller.getTaskById);
 router.get('/:id/getSubTasks', controller.getSubTasks);
 
+router.delete('/:id/deleteTask', controller.deleteTask);
+
 module.exports = router;

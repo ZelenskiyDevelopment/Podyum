@@ -8,6 +8,7 @@ var _ = require('lodash'),
   PopulateUtils = require('../../components/utils/PopulateUtils'),
   RoomCtrl = require('../room/room.controller');
 
+var mongo = require('mongodb');
 
 /**
  * Get list of users
@@ -88,6 +89,22 @@ exports.changePassword = function (req, res, next) {
     }
   });
 };
+
+/**
+ * Get user by Id
+ */
+
+exports.getUserById = function (req, res) {
+
+    User.findOne({
+        _id: req.params.id
+    }, '-salt -hashedPassword')
+        .exec(function (err, user) { // don't ever give out the password or salt
+            if (err) return next(err);
+            if (!user) return res.json(401);
+            res.json(user);
+        });
+}
 
 /**
  * Get my info

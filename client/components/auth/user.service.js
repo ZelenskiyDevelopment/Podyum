@@ -223,6 +223,13 @@ angular.module('abroadathletesApp')
           controller: 'getAssignRequestsAsAdmin'
         }
       },
+      getUserById: {
+        method: 'GET',
+        isArray:false,
+          params: {
+              controller:'getUserById'
+          }
+      },
       acceptAssignRequests: {
         method: 'POST',
         params: {

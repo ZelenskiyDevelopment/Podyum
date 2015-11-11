@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 
 var TasksTeams = new Schema({
     id_user:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-    taskFor: String,
+    taskFor: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     description: String,
     name: String,
     dueDate: Date,

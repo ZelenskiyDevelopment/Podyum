@@ -34,10 +34,9 @@ module.exports = function(orientDatabase) {
   router.post('/updateNotifications', auth.isAuthenticated(), relationController.updateNotifications);
 
   router.post('/updateStats', auth.isAuthenticated(), controller.updateStats);
-    router.post('/updateProfile', auth.isAuthenticated(), controller.updateProfile);
+  router.post('/updateProfile', auth.isAuthenticated(), controller.updateProfile);
 
-
-
+  router.get('/:id/getUserById', auth.isAuthenticated(), controller.getUserById);
 
   router.delete('/:id', auth.hasRole('admin'), controller.destroy);
   router.get('/me', auth.isAuthenticated(), controller.me);

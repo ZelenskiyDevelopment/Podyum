@@ -150,6 +150,23 @@ exports.addSubTask = function(req, res) {
     });
 }
 
+exports.deleteTask = function(req, res) {
+    TasksTeams.findById(req.params.id, function (err, task) {
+        if (err) {
+            return handleError(res, err);
+        }
+        if (!task) {
+            return res.status(404).send('Not Found');
+        }
+        task.remove(function (err) {
+            if (err) {
+                return handleError(res, err);
+            }
+            return res.status(204).send('No Content');
+        });
+    });
+}
+
 function validationError(res, err) {
     return res.json(422, err);
 }

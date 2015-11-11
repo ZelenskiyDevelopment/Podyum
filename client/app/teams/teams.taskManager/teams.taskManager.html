@@ -61,13 +61,24 @@
         <h3 class="modal-title">Add New Task</h3>
     </div>
     <div class="modal-body">
+    <form class="form-horizontal">
 
-        <form class="form-horizontal">
             <div class="form-group">
                 <label for="title" class="col-sm-3 control-label">Task for</label>
                 <div class="col-sm-8">
-                    <input type="text" required="" class="form-control" id="title" placeholder="Task for" ng-model="task.task_for">
-                </div>
+
+                    <md-autocomplete
+                            ng-disabled="isDisabled"
+                            md-selected-item="selectedItem"
+                            md-search-text="searchText"
+                            md-selected-item-change="selectedItemChange(item)"
+                            md-items="item in querySearch(searchText)"
+                            md-item-text="item.display"
+                            md-min-length="0"
+                            placeholder="For task">
+                        <md-item-template>
+                            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
+                        </md-item-template>   </div>
             </div>
             <div class="form-group">
                 <label for="title" class="col-sm-3 control-label">Task Name</label>
@@ -87,12 +98,12 @@
                     <md-datepicker ng-required="true" ng-model="task.due_date" md-placeholder="Due Date"></md-datepicker>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="title" class="col-sm-3 control-label">Share With</label>
-                <div class="col-sm-8">
-                    <input type="text" required="" class="form-control" id="title" placeholder="Task share with" ng-model="task.share_with">
-                </div>
-            </div>
+            <!--<div class="form-group">-->
+                <!--<label for="title" class="col-sm-3 control-label">Share With</label>-->
+                <!--<div class="col-sm-8">-->
+                    <!--<input type="text" required="" class="form-control" id="title" placeholder="Task share with" ng-model="task.share_with">-->
+                <!--</div>-->
+            <!--</div>-->
         </form>
 
     </div>

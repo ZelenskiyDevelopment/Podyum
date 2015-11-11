@@ -58,7 +58,10 @@
     border-radius: 11px;
   }
 }
-
+.hide-assign {
+  width: 100px;
+  margin: 0px auto;
+}
 .view-task {
   border: 2px solid #d7d7d7;
   height: 100%;
@@ -70,7 +73,9 @@
   md-datepicker.md-default-theme, md-datepicker {
     background: none;
   }
-
+  .deleteTask {
+    margin-top: -5px;
+  }
   .md-button.md-icon-button {
     margin: -6px 4px 13px;
     height: 46px;
@@ -145,7 +150,14 @@
     }
   }
 }
+.md-virtual-repeat-container.md-autocomplete-suggestions-container {
+  z-index: 99999999999999999999999999;
+}
+.deleteTask {
+  margin-top: -3px;
+}
 .view-task-section {
+
   margin-top: 15px;
   margin-bottom: 15px;
   height: 60px;

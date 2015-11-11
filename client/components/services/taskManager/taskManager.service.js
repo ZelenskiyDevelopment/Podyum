@@ -64,6 +64,11 @@ angular.module('abroadathletesApp')
                 return $http.get('/api/taskmanager/'+id+'/getSubTasks').then(function(result) {
                    return result;
                 });
+            },
+            deleteTask: function(id) {
+                return $http.delete('/api/taskmanager/'+id+'/deleteTask').then(function(result) {
+                    return result;
+                })
             }
         };
     });
