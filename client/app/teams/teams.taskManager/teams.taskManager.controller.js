@@ -53,9 +53,9 @@ angular.module('abroadathletesApp')
 
             angular.forEach($scope.taskUser, function(value, key){
 
-               $scope.events.push({
+                $scope.events.push({
                     id: value._id,
-                    title:(value.isComplete) ? 'Task  - ' + value.name+' (Completed)' : 'Task  - ' + value.name ,
+                    title:(value.isComplete) ? 'Task  - ' + value.name+' (Completed)' : 'Task  - ' + value.name +' (In progress) ' ,
                     start: new Date (value.dueDate),
                     end: new Date (value.dueDate),
                     backgroundColor: (value.isComplete) ? '#5cb85c' :'#f4b400',
