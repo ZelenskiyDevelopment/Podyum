@@ -53,13 +53,13 @@ angular.module('abroadathletesApp')
 
             angular.forEach($scope.taskUser, function(value, key){
 
-                $scope.events.push({
+               $scope.events.push({
                     id: value._id,
-                    title: 'Task  - ' + value.name,
+                    title:(value.isComplete) ? 'Task  - ' + value.name+' (Completed)' : 'Task  - ' + value.name ,
                     start: new Date (value.dueDate),
                     end: new Date (value.dueDate),
-                    backgroundColor:'#f4b400',
-                    borderColor:'#f4b400'
+                    backgroundColor: (value.isComplete) ? '#5cb85c' :'#f4b400',
+                    borderColor:(value.isComplete) ? '#5cb85c' :'#f4b400'
                 });
 
             });
@@ -108,11 +108,11 @@ angular.module('abroadathletesApp')
 
                 $scope.events.push({
                     id: value._id,
-                    title: 'Task  - ' + value.name,
+                    title:(value.isComplete) ? 'Task  - ' + value.name+' (Completed)' : 'Task  - ' + value.name ,
                     start: new Date (value.dueDate),
                     end: new Date (value.dueDate),
-                    backgroundColor:'#f4b400',
-                    borderColor:'#f4b400'
+                    backgroundColor: (value.isComplete) ? '#5cb85c' :'#f4b400',
+                    borderColor:(value.isComplete) ? '#5cb85c' :'#f4b400'
                 });
 
             });
