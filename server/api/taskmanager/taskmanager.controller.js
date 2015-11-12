@@ -120,13 +120,17 @@ exports.updateTask = function(req, res) {
     delete data.subtask;
     TasksTeams.update({_id: id},  {$set:data}, {}, function (err) {
         if (err) return validationError(res, err);
-        TasksTeams.find({
-            id_user: data.id_user
-        }).execQ().then(function(task) {
-            return res.json(200, task);
-        }).catch(function (err) {
-            return handleError(res, err);
-        });
+
+        if (id === data.id_user) {
+            TasksTeams.find({
+                id_user: data.id_user
+            }).execQ().then(function(task) {
+                return res.json(200, task);
+            }).catch(function (err) {
+                return handleError(res, err);
+            });
+        }
+
     });
 }
 
@@ -165,6 +169,19 @@ exports.deleteTask = function(req, res) {
             return res.status(204).send('No Content');
         });
     });
+}
+
+exports.getMyTask = function(req, res) {
+
+   var userId = req.params.id;
+
+    TasksTeams.find({
+        taskFor: userId
+    }).execQ().then(function (tasks) {
+        return res.json(200, tasks);
+    }).catch(function (err) {
+        return handleError(res, err);
+    })
 }
 
 function validationError(res, err) {

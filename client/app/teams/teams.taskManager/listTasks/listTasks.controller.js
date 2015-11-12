@@ -10,6 +10,7 @@ angular.module('abroadathletesApp')
         $scope.tasks = [];
         $scope.user = [];
         $scope.task = [];
+        $scope.MyTasks = [];
         $rootScope.task = [];
         $scope.simulateQuery = false;
         $scope.isDisabled = false;
@@ -27,6 +28,12 @@ angular.module('abroadathletesApp')
 
             TaskManager.getAllTasksUser(me._id).then(function (tasks) {
                 $scope.tasks = tasks.data;
+
+            });
+
+            TaskManager.getMyTask(me._id).then(function (tasks){
+
+                $scope.MyTasks = tasks.data;
 
             });
 
@@ -144,7 +151,7 @@ angular.module('abroadathletesApp')
                             if (value.dueDate == null) {
                                 value.dueDate = null;
                             }
-                              TaskManager.updateTask(value).then(function (response) {
+                            TaskManager.updateTask(value).then(function (response) {
                             });
                         });
                     }
@@ -297,7 +304,7 @@ angular.module('abroadathletesApp')
             }
 
             $scope.hide = function() {
-                   $mdDialog.hide();
+                $mdDialog.hide();
             }
 
             function selectedItemChange(item) {

@@ -18,6 +18,7 @@ router.get('/:id/getAllEventsUser', controller.getAllEventsByUser);
 router.get('/:id/getAllTasksUser', controller.getAllTaskByUser);
 router.get('/:id/getTaskById', controller.getTaskById);
 router.get('/:id/getSubTasks', controller.getSubTasks);
+router.get('/:id/getMyTask', controller.getMyTask);
 
 router.delete('/:id/deleteTask', controller.deleteTask);
 
