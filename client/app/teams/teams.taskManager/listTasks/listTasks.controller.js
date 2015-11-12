@@ -105,11 +105,11 @@ angular.module('abroadathletesApp')
         var updateTask = function() {
 
             if (angular.isObject($scope.task)) {
-                $scope.taskView[0]._id = $scope.user._id;
 
-                TaskManager.updateTask($scope.taskView[0]).then(function (response) {
-                    $scope.tasks = response.data;
-                });
+
+               TaskManager.updateTask($scope.taskView[0]).then(function (response) {
+                //    $scope.tasks = response.data;
+               });
             }
         };
 
@@ -119,14 +119,9 @@ angular.module('abroadathletesApp')
                     subTask.dueDate = null;
                 }
 
-                console.log('-----------------NEW---------------------');
-                console.log(subTask)
-                console.log('-----------------NEW END---------------------');
-
-
 
                 TaskManager.updateTask(subTask).then(function (response) {
-                    //$scope.tasks = response.data;
+
                 });
             }
         }
@@ -135,6 +130,14 @@ angular.module('abroadathletesApp')
             var timeout = null;
             if (!angular.equals(newVal, oldVal)) {
 
+                console.log('-----------------NEW---------------------');
+                console.log(newVal)
+                console.log('-----------------NEW END---------------------');
+
+
+                console.log('-----------------OLD---------------------');
+                console.log(oldVal)
+                console.log('-----------------OLD END---------------------');
 
 
                 if (timeout) {
@@ -193,10 +196,10 @@ angular.module('abroadathletesApp')
                         $scope.$watch("subTaskView["+key+"]", WatchSubTaskUpdate, true);
 
                     });
-                    $scope.$watch("taskView", WatchTaskUpdate,true);
+
                 });
 
-
+                $scope.$watch("taskView", WatchTaskUpdate,true);
 
 
 
