@@ -43,7 +43,7 @@
         <!--<pre>{{ tasks }}</pre>-->
     </div>
 
-    <div class="col-lg-7 col-lg-offset-1 view-task" id="viewTask" ng-show="task[0]">
+    <div class="col-lg-7 col-lg-offset-1 view-task" id="viewTask" ng-show="taskView[0]">
         <form class="form-horizontal">
             <div class="row">
 
@@ -64,15 +64,15 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <md-datepicker ng-required="true" ng-model="task[0].dueDate"
+                    <md-datepicker ng-required="true" ng-model="taskView[0].dueDate"
                                    md-placeholder="Due Date"></md-datepicker>
                 </div>
 
                 <div class="col-lg-2">
-                    <button class="btn btn-defaultour-button" ng-click="addSubTask(task[0]._id)">Add Sub Task</button>
+                    <button class="btn btn-defaultour-button" ng-click="addSubTask(taskView[0]._id)">Add Sub Task</button>
                 </div>
                 <div class="col-lg-2">
-                    <md-button   aria-label="Delete"  class="md-fab md-mini deleteTask" ng-click="deleteTask(task[0]._id)"
+                    <md-button   aria-label="Delete"  class="md-fab md-mini deleteTask" ng-click="deleteTask(taskView[0]._id)"
                              >
                         <md-tooltip>
                             Delete task
@@ -86,19 +86,19 @@
             <div class="row">
                 <div class="col-lg-offset-0 view-task-section">
                     <div class="col-lg-2 complete-task">
-                        <md-checkbox ng-model="task[0].isComplete" aria-label="{{ task[0].name }}">
+                        <md-checkbox ng-model="taskView[0].isComplete" aria-label="{{ taskView[0].name }}">
                         </md-checkbox>
                     </div>
 
                     <div class="col-lg-10"><span class="task-name"><textarea resize-textarea class="task-name-textarea"
-                                                                             ng-model="task[0].name"></textarea></span>
+                                                                             ng-model="taskView[0].name"></textarea></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="title" class="col-sm-3 control-label">Description</label>
 
                     <div class="col-sm-8">
-                        <textarea class="task-description" required="" ng-model="task[0].description" rows="10"
+                        <textarea class="task-description" required="" ng-model="taskView[0].description" rows="10"
                                   col="100"></textarea>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                     <h3 class="md-headline">Subtask</h3>
 
 
-                    <div class="task col-lg-12" ng-repeat="subtask in task[0].subtask">
+                    <div class="task col-lg-12" ng-repeat="subtask in subTaskView">
                         <div class="col-lg-1">
                             <md-checkbox ng-model="subtask.isComplete" aria-label="{{ subtask.name }}">
                             </md-checkbox>
@@ -146,8 +146,8 @@
 
             </div>
         </form>
-        <!--<pre>{{ task[0].subtask  }}</pre>-->
-        <!--<pre>{{ task[0] }}</pre>-->
+        <!--<pre>{{ subTaskView  }}</pre>-->
+        <!--<pre>{{ taskView[0] }}</pre>-->
         <!--<pre>{{ taskFor }}</pre>-->
         <!--<pre>{{ forTask }}</pre>-->
 

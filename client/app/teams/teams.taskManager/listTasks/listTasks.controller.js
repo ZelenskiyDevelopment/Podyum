@@ -5,7 +5,10 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-    .controller('ListTaskCtrl', function ($scope, $rootScope, TaskManager, User, $filter, $q, $log, $mdDialog) {
+    .controller('ListTaskCtrl', function ($scope, $rootScope, TaskManager, User, $filter, $q, $log, $mdDialog, $timeout) {
+
+
+        var secondsToWaitBeforeSave = 2;
 
         $scope.tasks = [];
         $scope.user = [];
@@ -41,10 +44,10 @@ angular.module('abroadathletesApp')
                 if (angular.isObject(newValue)) {
                     angular.forEach(newValue, function (value, key) {
 
-                        TaskManager.updateTask(value).then(function (response) {
+                        // TaskManager.updateTask(value).then(function (response) {
 
 
-                        });
+                        //});
 
                     });
                 }
@@ -86,7 +89,7 @@ angular.module('abroadathletesApp')
         function selectedItemChange(item) {
             if ($scope.task.length > 0) {
                 if (angular.isObject(item) && item.hasOwnProperty('id')) {
-                    $scope.task[0].taskFor = item.id;
+                    $scope.taskView[0].taskFor = item.id;
                 }
             }
         }
@@ -99,18 +102,78 @@ angular.module('abroadathletesApp')
             };
         }
 
+        var updateTask = function() {
+
+            if (angular.isObject($scope.task)) {
+                $scope.taskView[0]._id = $scope.user._id;
+
+                TaskManager.updateTask($scope.taskView[0]).then(function (response) {
+                    $scope.tasks = response.data;
+                });
+            }
+        };
+
+        var updateSubTask = function(subTask) {
+            if (angular.isObject(subTask)) {
+                if (subTask.dueDate == null) {
+                    subTask.dueDate = null;
+                }
+
+                console.log('-----------------NEW---------------------');
+                console.log(subTask)
+                console.log('-----------------NEW END---------------------');
+
+
+
+                TaskManager.updateTask(subTask).then(function (response) {
+                    //$scope.tasks = response.data;
+                });
+            }
+        }
+
+        var WatchTaskUpdate = function(newVal, oldVal) {
+            var timeout = null;
+            if (!angular.equals(newVal, oldVal)) {
+
+
+
+                if (timeout) {
+                    $timeout.cancel(timeout);
+                }
+
+                timeout = $timeout(updateTask,  secondsToWaitBeforeSave * 1000);
+            }
+        };
+
+        var WatchSubTaskUpdate = function(newVal, oldVal) {
+
+            var timeout = null;
+
+            if (!angular.equals(newVal, oldVal)) {
+
+                if (timeout) {
+                    $timeout.cancel(timeout);
+                }
+
+                timeout = $timeout(updateSubTask(newVal),  secondsToWaitBeforeSave * 1000);
+            }
+
+        };
+
+
         $scope.viewTask = function (id) {
 
             TaskManager.getTaskById(id).then(function (task) {
 
-                $scope.task = task.data;
-                $rootScope.task = task.data;
-                $scope.task[0].dueDate = new Date($scope.task[0].dueDate);
-                $scope.task[0].subtask = [];
+                $scope.taskView = task.data;
+                $rootScope.taskView = task.data;
+                $scope.taskView[0].dueDate = new Date($scope.taskView[0].dueDate);
+                $scope.subTaskView = [];
+                $rootScope.subTaskView = [];
                 $scope.selectedItem = [];
 
-                if ($scope.task[0].taskFor !=null) {
-                    User.getUserById({id:$scope.task[0].taskFor}).$promise.then(function(response){
+                if ($scope.taskView[0].taskFor !=null) {
+                    User.getUserById({id:$scope.taskView[0].taskFor}).$promise.then(function(response){
                         $scope.selectedItem = {
                             display: response.player.firstName+' '+response.player.lastName,
                             value: response.player.firstName.toLowerCase()+' '+response.player.lastName.toLowerCase() ,
@@ -119,43 +182,25 @@ angular.module('abroadathletesApp')
                     });
                 }
 
-                TaskManager.getSubTasks($scope.task[0]._id).then(function (result) {
+                TaskManager.getSubTasks($scope.taskView[0]._id).then(function (result) {
                     var subTasks = result.data;
                     angular.forEach(subTasks, function (value, key) {
                         value.dueDate = new Date(value.dueDate);
                     });
-                    $scope.task[0].subtask = subTasks;
-
-                });
-                TaskManager.getSubTasks($rootScope.task[0]._id).then(function (result) {
-                    var subTasks = result.data;
+                    $scope.subTaskView = subTasks;
+                    $rootScope.subTaskView = subTasks;
                     angular.forEach(subTasks, function (value, key) {
-                        value.dueDate = new Date(value.dueDate);
+                        $scope.$watch("subTaskView["+key+"]", WatchSubTaskUpdate, true);
+
                     });
-                    $rootScope.task[0].subtask = subTasks;
-
+                    $scope.$watch("taskView", WatchTaskUpdate,true);
                 });
-                $scope.$watch("task[0]", function (newValue, oldValue) {
-                    if (angular.isObject(newValue)) {
-                        newValue.id_ = $scope.user._id;
 
-                        TaskManager.updateTask(newValue).then(function (response) {
-                            $scope.tasks = response.data;
-                        });
-                    }
-                }, true);
 
-                $scope.$watch("task[0].subtask", function (newValue, oldValue) {
-                    if (angular.isObject(newValue)) {
-                        angular.forEach(newValue, function (value, key) {
-                            if (value.dueDate == null) {
-                                value.dueDate = null;
-                            }
-                            TaskManager.updateTask(value).then(function (response) {
-                            });
-                        });
-                    }
-                }, true);
+
+
+
+
             });
 
         };
@@ -169,10 +214,10 @@ angular.module('abroadathletesApp')
                 dueDate: null,
                 shareWith: '',
                 isComplete: false,
-                parentTask: $scope.task[0]._id
+                parentTask: $scope.taskView[0]._id
             };
 
-            $scope.task[0].subtask.push(subTask);
+            $scope.subTaskView.push(subTask);
 
             TaskManager.addSubTask(subTask).then(function (response) {
                 var subTasks = response.data;
@@ -181,7 +226,7 @@ angular.module('abroadathletesApp')
                         value.dueDate = new Date(value.dueDate);
                     }
                 });
-                $scope.task[0].subtask = subTasks;
+                $scope.subTaskView = subTasks;
             });
         }
 
@@ -206,12 +251,12 @@ angular.module('abroadathletesApp')
 
                     });
 
-                    TaskManager.getSubTasks($scope.task[0]._id).then(function (result) {
+                    TaskManager.getSubTasks($scope.taskView[0]._id).then(function (result) {
                         var subTasks = result.data;
                         angular.forEach(subTasks, function (value, key) {
                             value.dueDate = new Date(value.dueDate);
                         });
-                        $scope.task[0].subtask = subTasks;
+                        $scope.subTaskView = subTasks;
                     });
                 });
             }
@@ -230,18 +275,47 @@ angular.module('abroadathletesApp')
             $rootScope.id = id;
         }
 
+        Object.compare = function (obj1, obj2) {
+            //Loop through properties in object 1
+            for (var p in obj1) {
+                //Check property exists on both objects
+                if (obj1.hasOwnProperty(p) !== obj2.hasOwnProperty(p)) return false;
+
+                switch (typeof (obj1[p])) {
+                    //Deep compare objects
+                    case 'object':
+                        if (!Object.compare(obj1[p], obj2[p])) return false;
+                        break;
+                    //Compare function code
+                    case 'function':
+                        if (typeof (obj2[p]) == 'undefined' || (p != 'compare' && obj1[p].toString() != obj2[p].toString())) return false;
+                        break;
+                    //Compare values
+                    default:
+                        if (obj1[p] != obj2[p]) return false;
+                }
+            }
+
+            //Check object 2 for any extra properties
+            for (var p in obj2) {
+                if (typeof (obj1[p]) == 'undefined') return false;
+            }
+            return true;
+        };
+
+
 
         function DialogCtrl ($timeout, $q, $scope, $mdDialog, $rootScope, User) {
 
             $scope.id = $rootScope.id;
-            $scope.sub = $rootScope.task[0].subtask[$scope.id];
+            $scope.sub = $rootScope.subTaskView[$scope.id];
             $scope.user = [];
             $scope.simulateQuery = false;
             $scope.isDisabled = false;
             $scope.querySearch = querySearch;
             $scope.selectedItemChange = selectedItemChange;
 
-            User.getUserById({id:$rootScope.task[0].subtask[$scope.id].taskFor}).$promise.then(function(response){
+            User.getUserById({id:$rootScope.subTaskView[$scope.id].taskFor}).$promise.then(function(response){
                 $scope.selectedItem = {
                     display: response.player.firstName+' '+response.player.lastName,
                     value: response.player.firstName.toLowerCase()+' '+response.player.lastName.toLowerCase() ,
@@ -261,10 +335,10 @@ angular.module('abroadathletesApp')
                     if (angular.isObject(newValue)) {
                         angular.forEach(newValue, function (value, key) {
 
-                            TaskManager.updateTask(value).then(function (response) {
+                            //  TaskManager.updateTask(value).then(function (response) {
 
 
-                            });
+                            // });
 
                         });
                     }
@@ -309,10 +383,12 @@ angular.module('abroadathletesApp')
 
             function selectedItemChange(item) {
 
-                $scope.sub.taskFor  = item.id;
+                if (angular.isObject(item) && item.hasOwnProperty('id')) {
+                    $scope.sub.taskFor  = item.id;
 
-                $rootScope.task[0].subtask[$scope.id].taskFor = item.id;
+                    $rootScope.subTaskView[$scope.id].taskFor = item.id;
 
+                }
 
             }
 
