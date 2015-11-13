@@ -25,7 +25,7 @@ angular.module('abroadathletesApp')
       $scope.refresh();
     };
 
-    $scope.existingTeam = false;
+    $scope.existingTeam = true;
 
     $scope.refresh = function(){
       User.get().$promise.then(function (me) {
