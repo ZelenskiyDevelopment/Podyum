@@ -15,6 +15,7 @@ angular.module('abroadathletesApp')
         $scope.task = [];
         $scope.MyTasks = [];
         var TaskWatcher;
+        var TaskSubWatcher;
         $rootScope.task = [];
         $scope.simulateQuery = false;
         $scope.isDisabled = false;
@@ -23,8 +24,8 @@ angular.module('abroadathletesApp')
 
         $scope.selectedItem = {
             display: '',
-            value: '' ,
-            id:''
+            value: '',
+            id: ''
         };
 
         User.get().$promise.then(function (me) {
@@ -35,7 +36,7 @@ angular.module('abroadathletesApp')
 
             });
 
-            TaskManager.getMyTask(me._id).then(function (tasks){
+            TaskManager.getMyTask(me._id).then(function (tasks) {
 
                 $scope.MyTasks = tasks.data;
 
@@ -64,7 +65,7 @@ angular.module('abroadathletesApp')
             angular.forEach($scope.myPlayers, function (item, key) {
 
                 $scope.forTask.push({
-                    value: item.user.player.firstName.toLowerCase()+' '+item.user.player.lastName.toLowerCase() ,
+                    value: item.user.player.firstName.toLowerCase() + ' ' + item.user.player.lastName.toLowerCase(),
                     id: item.user._id,
                     display: item.user.player.firstName + ' ' + item.user.player.lastName
                 })
@@ -103,31 +104,39 @@ angular.module('abroadathletesApp')
             };
         }
 
-        var updateTask = function() {
+        var updateTask = function () {
 
             if (angular.isObject($scope.task)) {
 
 
-               TaskManager.updateTask($scope.taskView[0]).then(function (response) {
-               $scope.tasks = response.data;
-               });
+                TaskManager.updateTask($scope.taskView[0]).then(function (response) {
+                    $scope.tasks = response.data;
+                });
             }
         };
 
-        var updateSubTask = function(subTask) {
+        var updateSubTask = function (subTask, oldVal) {
             if (angular.isObject(subTask)) {
-                if (subTask.dueDate == null) {
-                    subTask.dueDate = null;
+
+
+                if (!angular.isUndefined(oldVal)) {
+                    if (!angular.equals(subTask, oldVal)) {
+
+                        if (subTask.dueDate == null) {
+                            subTask.dueDate = null;
+                        }
+                        TaskManager.updateTask(subTask).then(function (response) {
+
+                        });
+                    }
+
                 }
 
 
-                TaskManager.updateTask(subTask).then(function (response) {
-
-                });
             }
         }
 
-        var WatchTaskUpdate = function(newVal, oldVal) {
+        var WatchTaskUpdate = function (newVal, oldVal) {
             var timeout = null;
             if (!angular.equals(newVal, oldVal)) {
 
@@ -135,15 +144,15 @@ angular.module('abroadathletesApp')
                     $timeout.cancel(timeout);
                 }
 
-                timeout = $timeout(updateTask,  secondsToWaitBeforeSave * 1000);
+                timeout = $timeout(updateTask, secondsToWaitBeforeSave * 1000);
             }
-            if(angular.isObject($scope.taskView)) {
-                console.log($scope.taskView);
+            if (angular.isObject($scope.taskView)) {
+                //  console.log($scope.taskView);
             }
 
         };
 
-        var WatchSubTaskUpdate = function(newVal, oldVal) {
+        var WatchSubTaskUpdate = function (newVal, oldVal) {
 
             var timeout = null;
 
@@ -153,7 +162,7 @@ angular.module('abroadathletesApp')
                     $timeout.cancel(timeout);
                 }
 
-                timeout = $timeout(updateSubTask(newVal),  secondsToWaitBeforeSave * 1000);
+                timeout = $timeout(updateSubTask(newVal, oldVal), 5000);
             }
 
         };
@@ -163,7 +172,7 @@ angular.module('abroadathletesApp')
 
             TaskManager.getTaskById(id).then(function (task) {
 
-                $scope.taskView  = [];
+                $scope.taskView = [];
                 $rootScope.taskView = [];
                 $scope.subTaskView = [];
                 $rootScope.subTaskView = [];
@@ -174,13 +183,12 @@ angular.module('abroadathletesApp')
                 $scope.taskView[0].dueDate = new Date($scope.taskView[0].dueDate);
 
 
-
-                if ($scope.taskView[0].taskFor !=null) {
-                    User.getUserById({id:$scope.taskView[0].taskFor}).$promise.then(function(response){
+                if ($scope.taskView[0].taskFor != null) {
+                    User.getUserById({id: $scope.taskView[0].taskFor}).$promise.then(function (response) {
                         $scope.selectedItem = {
-                            display: response.player.firstName+' '+response.player.lastName,
-                            value: response.player.firstName.toLowerCase()+' '+response.player.lastName.toLowerCase() ,
-                            id:response._id
+                            display: response.player.firstName + ' ' + response.player.lastName,
+                            value: response.player.firstName.toLowerCase() + ' ' + response.player.lastName.toLowerCase(),
+                            id: response._id
                         };
                     });
                 }
@@ -188,31 +196,43 @@ angular.module('abroadathletesApp')
                 TaskManager.getSubTasks($scope.taskView[0]._id).then(function (result) {
                     var subTasks = result.data;
                     angular.forEach(subTasks, function (value, key) {
-                        value.dueDate = new Date(value.dueDate);
+                        if (value.dueDate === null) {
+                            value.dueDate = new Date();
+                        } else {
+                            value.dueDate = new Date(value.dueDate);
+                        }
+
                     });
                     $scope.subTaskView = subTasks;
                     $rootScope.subTaskView = subTasks;
 
 
-                }).finally(function() {
+                }).finally(function () {
 
                     angular.forEach($scope.subTaskView, function (value, key) {
-                        $scope.$watch("subTaskView["+key+"]", WatchSubTaskUpdate, true);
+                        TaskSubWatcher = $scope.$watch("subTaskView[" + key + "]", WatchSubTaskUpdate, true);
 
                     });
 
                 });
 
-                }).finally(function() {
+            }).finally(function () {
 
 
-                 TaskWatcher =  $scope.$watch("taskView[0]", WatchTaskUpdate,true);
+                TaskWatcher = $scope.$watch("taskView[0]", WatchTaskUpdate, true);
             });
 
             if (angular.isFunction(TaskWatcher)) {
                 TaskWatcher();
             }
+            if (angular.isFunction(TaskSubWatcher)) {
+                TaskSubWatcher();
+            }
         };
+
+        $scope.saveChange = function () {
+
+        }
 
         $scope.addSubTask = function (id) {
             var subTask = {
@@ -234,14 +254,17 @@ angular.module('abroadathletesApp')
                     if (value.dueDate != null) {
                         value.dueDate = new Date(value.dueDate);
                     }
+                    TaskSubWatcher = $scope.$watch("subTaskView[" + key + "]", WatchSubTaskUpdate, true);
+
                 });
+
                 $scope.subTaskView = subTasks;
             });
         }
 
-        $scope.deleteTask = function(id) {
+        $scope.deleteTask = function (id) {
             if (confirm('Delete Task ?')) {
-                TaskManager.deleteTask(id).then(function (response){
+                TaskManager.deleteTask(id).then(function (response) {
                     $scope.task = [];
                     TaskManager.getAllTasksUser($scope.user._id).then(function (tasks) {
                         $scope.tasks = tasks.data;
@@ -251,9 +274,9 @@ angular.module('abroadathletesApp')
             }
 
         }
-        $scope.deleteSubTask = function(id) {
+        $scope.deleteSubTask = function (id) {
             if (confirm('Delete Task ?')) {
-                TaskManager.deleteTask(id).then(function (response){
+                TaskManager.deleteTask(id).then(function (response) {
 
                     TaskManager.getAllTasksUser($scope.user._id).then(function (tasks) {
                         $scope.tasks = tasks.data;
@@ -272,12 +295,12 @@ angular.module('abroadathletesApp')
 
         }
 
-        $scope.openDialog = function(id, $event) {
+        $scope.openDialog = function (id, $event) {
             $mdDialog.show({
                 controller: DialogCtrl,
                 templateUrl: 'app/teams/teams.taskManager/listTasks/dialog.html',
                 parent: angular.element(document.body),
-                clickOutsideToClose:true,
+                clickOutsideToClose: true,
                 targetEvent: $event
             });
 
@@ -313,8 +336,7 @@ angular.module('abroadathletesApp')
         };
 
 
-
-        function DialogCtrl ($timeout, $q, $scope, $mdDialog, $rootScope, User) {
+        function DialogCtrl($timeout, $q, $scope, $mdDialog, $rootScope, User) {
 
             $scope.id = $rootScope.id;
             $scope.sub = $rootScope.subTaskView[$scope.id];
@@ -324,11 +346,11 @@ angular.module('abroadathletesApp')
             $scope.querySearch = querySearch;
             $scope.selectedItemChange = selectedItemChange;
 
-            User.getUserById({id:$rootScope.subTaskView[$scope.id].taskFor}).$promise.then(function(response){
+            User.getUserById({id: $rootScope.subTaskView[$scope.id].taskFor}).$promise.then(function (response) {
                 $scope.selectedItem = {
-                    display: response.player.firstName+' '+response.player.lastName,
-                    value: response.player.firstName.toLowerCase()+' '+response.player.lastName.toLowerCase() ,
-                    id:response._id
+                    display: response.player.firstName + ' ' + response.player.lastName,
+                    value: response.player.firstName.toLowerCase() + ' ' + response.player.lastName.toLowerCase(),
+                    id: response._id
                 };
             });
 
@@ -363,7 +385,7 @@ angular.module('abroadathletesApp')
                 angular.forEach($scope.myPlayers, function (item, key) {
 
                     $scope.forTask.push({
-                        value: item.user.player.firstName.toLowerCase()+' '+item.user.player.lastName.toLowerCase() ,
+                        value: item.user.player.firstName.toLowerCase() + ' ' + item.user.player.lastName.toLowerCase(),
                         id: item.user._id,
                         display: item.user.player.firstName + ' ' + item.user.player.lastName
                     })
@@ -386,14 +408,14 @@ angular.module('abroadathletesApp')
                 }
             }
 
-            $scope.hide = function() {
+            $scope.hide = function () {
                 $mdDialog.hide();
             }
 
             function selectedItemChange(item) {
 
                 if (angular.isObject(item) && item.hasOwnProperty('id')) {
-                    $scope.sub.taskFor  = item.id;
+                    $scope.sub.taskFor = item.id;
 
                     $rootScope.subTaskView[$scope.id].taskFor = item.id;
 

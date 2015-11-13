@@ -129,6 +129,8 @@ exports.updateTask = function(req, res) {
             }).catch(function (err) {
                 return handleError(res, err);
             });
+        } else {
+            return res.json(200);
         }
 
     });
