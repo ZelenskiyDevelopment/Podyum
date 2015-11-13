@@ -14,6 +14,7 @@ angular.module('abroadathletesApp')
         $scope.user = [];
         $scope.task = [];
         $scope.MyTasks = [];
+        var TaskWatcher;
         $rootScope.task = [];
         $scope.simulateQuery = false;
         $scope.isDisabled = false;
@@ -108,7 +109,7 @@ angular.module('abroadathletesApp')
 
 
                TaskManager.updateTask($scope.taskView[0]).then(function (response) {
-                //    $scope.tasks = response.data;
+               $scope.tasks = response.data;
                });
             }
         };
@@ -130,22 +131,16 @@ angular.module('abroadathletesApp')
             var timeout = null;
             if (!angular.equals(newVal, oldVal)) {
 
-                console.log('-----------------NEW---------------------');
-                console.log(newVal)
-                console.log('-----------------NEW END---------------------');
-
-
-                console.log('-----------------OLD---------------------');
-                console.log(oldVal)
-                console.log('-----------------OLD END---------------------');
-
-
                 if (timeout) {
                     $timeout.cancel(timeout);
                 }
 
                 timeout = $timeout(updateTask,  secondsToWaitBeforeSave * 1000);
             }
+            if(angular.isObject($scope.taskView)) {
+                console.log($scope.taskView);
+            }
+
         };
 
         var WatchSubTaskUpdate = function(newVal, oldVal) {
@@ -168,12 +163,17 @@ angular.module('abroadathletesApp')
 
             TaskManager.getTaskById(id).then(function (task) {
 
-                $scope.taskView = task.data;
-                $rootScope.taskView = task.data;
-                $scope.taskView[0].dueDate = new Date($scope.taskView[0].dueDate);
+                $scope.taskView  = [];
+                $rootScope.taskView = [];
                 $scope.subTaskView = [];
                 $rootScope.subTaskView = [];
                 $scope.selectedItem = [];
+
+                $scope.taskView = task.data;
+                $rootScope.taskView = task.data;
+                $scope.taskView[0].dueDate = new Date($scope.taskView[0].dueDate);
+
+
 
                 if ($scope.taskView[0].taskFor !=null) {
                     User.getUserById({id:$scope.taskView[0].taskFor}).$promise.then(function(response){
@@ -192,20 +192,26 @@ angular.module('abroadathletesApp')
                     });
                     $scope.subTaskView = subTasks;
                     $rootScope.subTaskView = subTasks;
-                    angular.forEach(subTasks, function (value, key) {
+
+
+                }).finally(function() {
+
+                    angular.forEach($scope.subTaskView, function (value, key) {
                         $scope.$watch("subTaskView["+key+"]", WatchSubTaskUpdate, true);
 
                     });
 
                 });
 
-                $scope.$watch("taskView", WatchTaskUpdate,true);
+                }).finally(function() {
 
 
-
-
+                 TaskWatcher =  $scope.$watch("taskView[0]", WatchTaskUpdate,true);
             });
 
+            if (angular.isFunction(TaskWatcher)) {
+                TaskWatcher();
+            }
         };
 
         $scope.addSubTask = function (id) {
