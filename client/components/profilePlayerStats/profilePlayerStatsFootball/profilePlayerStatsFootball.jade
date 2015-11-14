@@ -3,9 +3,9 @@ span(ng-repeat="statType in statTypes")
     | {{statType}}
 h2
   | My {{currentActiveType}} summary
-.col-md-12
-  .col-md-3(ng-repeat="event in statsNames[currentActiveType]")
-        stat-box(header="{{event}}" content="{{myStats[currentActiveTypeInd].data[$index]}}")
+.stat-container  
+  .stat-boxes(ng-repeat="event in statsNames[currentActiveType]")
+    stat-box(header="{{event}}" content="{{myStats[currentActiveTypeInd].data[$index]}}")
 
 h2
   | {{currentActiveType}} stats per match

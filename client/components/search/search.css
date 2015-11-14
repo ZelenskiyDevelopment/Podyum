@@ -5,3 +5,12 @@
 .media-body {
   color: #fac553;
 }
+
+.main-search {
+	background: #3c4651;
+}
+
+.main-search:hover,
+.main-search:focus {
+	background: #3c4651;
+}

@@ -2,6 +2,7 @@
 .profile-navbar {
   background:#fac553;
   table-layout: auto;
+  margin-bottom: 15px;
 }
 
 .profile-navbar .btn-group {

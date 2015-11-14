@@ -11,6 +11,7 @@ angular.module('abroadathletesApp')
       },
       link: function (scope,$scope, element, attrs) {
         $scope.user = scope.user;
+        console.log($scope);
       }
     };
   });
