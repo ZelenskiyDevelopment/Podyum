@@ -9,7 +9,10 @@ var TasksTeams = new Schema({
     taskFor: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     description: String,
     name: String,
-    dueDate: Date,
+    dueDate: {
+        type: Date,
+        default: null
+    },
     shareWith: String,
     isComplete: {
         type: Boolean,

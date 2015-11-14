@@ -21,6 +21,7 @@ angular.module('abroadathletesApp', [
   'perfect_scrollbar',
   'luegg.directives',
   'cropme',
+  'ngSpectrum',
   'colorpicker.module',
   'cgNotify',
   'internationalPhoneNumber',

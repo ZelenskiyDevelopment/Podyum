@@ -8,7 +8,12 @@
       h3(ng-hide='selectedTeam') You have to be assigned to team and select a team from list.
       messages(ng-repeat='team in teams' team='team' ng-if='team._id === selectedTeam')
 
-    .col-lg-6.col-lg-offset-4.padding-bottom
+
+    .col-lg-6.col-lg-offset-3.padding-bottom(ng-hide="existingTeam")
+        a.btn.btn-default.our-button(ui-sref='teams.addTeam') Create a Team
+        a.btn.btn-default.our-button.pull-right(ui-sref='#') Join existing team
+
+    .col-lg-6.col-lg-offset-4.padding-bottom(ng-show="existingTeam")
         a.btn.btn-default.our-button(ui-sref='#') Update Team
         a.btn.btn-default.our-button(ui-sref='teams.manageRoster') Manage Roster
         a.btn.btn-default.our-button(ui-sref='teams.taskManager') Task Manager
