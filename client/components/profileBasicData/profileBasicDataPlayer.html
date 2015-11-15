@@ -1,16 +1,76 @@
-<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ffffff; padding: 20px;">
+<div class="col-md-12 col-sm-12 col-xs-12 profile-data">
   <button class="btn" ng-show="showedit" ng-click="edit()"
-          style="position: absolute; top:0px; right:0px; background-color: Transparent;"><img src="assets/images/pen.png"/>
+          style="position: absolute; top:0px; right:0px; background-color: Transparent; z-index:1"><img src="assets/images/pen.png"/>
   </button>
   <div class="row">
-    <div class="col-md-5 col-sm-5 col-xs-12">
-      <a href="#" style="margin-top:30px;">
-        <img class="profile-main-photo" src="photos/{{user.profilePhoto}}" alt=""  style="width:100%; height:200%">
+    <div class="col-md-3" style="border-right: 1px solid #f5f5f5;padding: 30px 0">
+      <a href="#">
+        <img class="profile-main-photo img-rounded" src="photos/{{user.profilePhoto}}" alt="">
       </a>
+      <div class="profile-name">
+        <h1>{{user.player.firstName}} {{user.player.lastName}}</h1>
+      </div>
+      <div class="profile-main-info">
+        <p>
+          <span ng-if="user.player.number">{{user.player.number}}</span>
+          <span ng-if="user.player.position">,{{user.player.position}}</span>
+          <a href="#" ng-if="user.myTeams"><span>,&nbsp;</span>{{user.myTeam}}</a>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-6" style="padding:30px 0">
+      <div class="row additional-block">
+        <div class="col-md-6">
+          <div ng-if="user.player.height" class="additional-info">
+            <p>Height&nbsp;:</p>
+            <span>{{user.player.height}}</span>
+          </div>
+          <div ng-if="user.player.birthday" class="additional-info">
+            <p>Born&nbsp;:</p>
+            <span>{{user.player.birthday | date : 'dd/MM/yyyy'}}</span>
+          </div>
+          <div ng-if="user.player.hometown" class="additional-info">
+            <p>Birth place&nbsp;:</p>
+            <span>{{user.player.hometown}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div ng-if="user.player.weight" class="additional-info">
+            <p>Weight&nbsp;:</p>
+            <span>{{user.player.weight}}</span>
+          </div>
+          <div ng-if="user.player.college" class="additional-info">
+            <p>College&nbsp;:</p>
+            <span>{{user.player.college}}</span>
+          </div>
+          <div ng-if="user.player.experience" class="additional-info">
+            <p>Experience&nbsp;:</p>
+            <span>{{user.player.experience}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <profile-buttons user="user" owner="owner"></profile-buttons>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3" style="background: #fbfbfb;">
+      <div class="user-fans">
+        <a ui-sref="followed({id: user._id})">{{user.followed.length}}</a>
+        <p>Followers</p>
+      </div>
+      <div class="user-friends">
+        <a ui-sref="friends({id: user._id})">{{user.friends.length}}</a>
+        <p>Friends</p>
+      </div>
+    </div>
+    <!-- <div class="col-md-5 col-sm-5 col-xs-12">
+      
       <profile-buttons user="user" owner="owner"></profile-buttons>
 
-    </div>
-    <div class="col-md-7 col-sm-7 col-xs-12">
+    </div> -->
+    <!-- <div class="col-md-7 col-sm-7 col-xs-12">
       <div class="player-data">
         <h1><span ng-if="user.player.number">#{{user.player.number}}</span>
           {{user.player.firstName}} {{user.player.lastName}}</h1>
@@ -58,7 +118,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 
  <!-- <div class="row" ng-show="user._id !== owner._id && user.completed">
