@@ -3,6 +3,10 @@
 	text-align: center;
 }
 
+.profile-data {
+	background: #fff;
+}
+
 .player-data, .plater-facts {
 	margin-left: 30%;
 }
@@ -12,9 +16,122 @@
 }
 
 .profile-main-photo {
-  width: 100%;
-  height: auto;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 0;
 }
+
+.profile-name h1 {
+	font-size: 22px;
+	font-family: 'aileronlight';
+	color: #3c4651;
+	text-align: center;
+	padding: 0;
+}
+
+.profile-main-info {
+	font-size: 14px;
+	text-align: center;
+}
+
+.profile-main-info p {
+	margin: 0;
+}
+
+.profile-main-info a {
+	color: #dfa62c;
+}
+
+.profile-main-info a>span {
+	color: #3c4651;
+}
+
+.profile-main-info a:hover,
+.profile-main-info a:focus {
+	color: #dfa62c;
+	text-decoration: none;
+	outline: none;
+}
+
+.profile-main-info span {
+	text-transform: uppercase;
+}
+
+.additional-info {
+	padding: 10px 0 10px 30px;
+	color: #111e2b;
+	font-weight: bold;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.additional-info p {
+	margin: 0;
+	padding: 0;
+}
+
+.additional-info span {
+	color: #827f79;
+	font-weight: normal;
+	text-transform: none;
+}
+
+.user-fans {
+	padding: 46px 0 30px 45px;
+	position: relative;
+}
+
+.user-friends {
+	position: relative;
+	padding: 30px 0 46px 45px;
+}
+
+.user-fans a, .user-friends a {
+	font-size: 30px;
+	color: #111e2b;
+	display: block;
+}
+
+.user-fans a:hover, .user-friends a:hover {
+	text-decoration: none;
+}
+
+.user-fans a:before {
+	content: ' ';
+	background: url(../../assets/images/followers-icon.png) 100% 100%;
+	display: block;
+	width: 28px;
+	height: 31px;
+	position: absolute;
+	top: 53px;
+	left: 7px;
+}
+
+.user-friends a:before {
+	content: ' ';
+	background: url(../../assets/images/friends-icon.png) 100% 100%;
+	display: block;
+	width: 32px;
+    height: 22px;
+    position: absolute;
+    top: 40px;
+    left: 4px;
+}
+
+.user-fans p, .user-friends p {
+	color: #85929e;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.additional-block {
+	min-height: 190px;
+}
+
+
+
+
 
 .main-data {
 	font-weight: 700;
