@@ -9,11 +9,11 @@
       messages(ng-repeat='team in teams' team='team' ng-if='team._id === selectedTeam')
 
 
-    .col-lg-6.col-lg-offset-3.padding-bottom(ng-hide="existingTeam")
+    .col-lg-6.col-lg-offset-3.padding-bottom(ng-show="team.length == 0")
         a.btn.btn-default.our-button(ui-sref='teams.addTeam') Create a Team
         a.btn.btn-default.our-button.pull-right(ui-sref='#') Join existing team
 
-    .col-lg-6.col-lg-offset-4.padding-bottom(ng-show="existingTeam")
+    .col-lg-6.col-lg-offset-4.padding-bottom(ng-show="team.length > 0")
         a.btn.btn-default.our-button(ui-sref='#') Update Team
         a.btn.btn-default.our-button(ui-sref='teams.manageRoster') Manage Roster
         a.btn.btn-default.our-button(ui-sref='teams.taskManager') Task Manager

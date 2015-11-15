@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .controller('NavbarCtrl', function ($scope, $rootScope, $location, $modal, Auth, User, socket) {
+  .controller('NavbarCtrl', function ($scope, $rootScope, $location, $modal, Auth, User, socket, Teams) {
     $scope.isCollapsedTop = true;
     $scope.isCollapsedBottom = true;
 
@@ -26,46 +26,49 @@ angular.module('abroadathletesApp')
 
     $scope.invitationsNumber = 0;
       $scope.invitations = [];
-      User.getInvitations().$promise.then(function (users) {
-        $scope.invitations = _.map(users, function (user) {
-          return {
-            firstName: user[user.kind].firstName,
-            lastName: user[user.kind].lastName,
-            profilePhoto: user.profilePhoto,
-            _id: user._id
-          }
-        });
-        if ($scope.invitations.length > 3) {
-          $scope.invitationsNumber = 4;
-        }
-        else {
-          $scope.invitationsNumber = $scope.invitations.length;
-        }
-      });
+
+//        User.get().$promise.then(function (me) {
+//            if(!me.completed){
+//                $location.path('/creator');
+//            }
+//            Teams.getAssignRequests({id:me._id}).$promise.then(function (requests) {
+//
+//
+//                $scope.invitations = requests;
+//            });
+//
+//        });
+//      User.getInvitations().$promise.then(function (users) {
+//        $scope.invitations = _.map(users, function (user) {
+//          return {
+//            firstName: user[user.kind].firstName,
+//            lastName: user[user.kind].lastName,
+//            profilePhoto: user.profilePhoto,
+//            _id: user._id
+//          }
+//        });
+//        if ($scope.invitations.length > 3) {
+//          $scope.invitationsNumber = 4;
+//        }
+//        else {
+//          $scope.invitationsNumber = $scope.invitations.length;
+//        }
+//      });
 
 
       $scope.assignRequests = [];
-      User.getAssignRequests().$promise.then(function (users){
-        $scope.assignRequests = _.map(users, function(user){
-          return {
-            firstName: user.user[user.user.kind].firstName,
-            lastName: user.user[user.user.kind].lastName,
-            name: user.user[user.user.kind].name,
-            profilePhoto : user.user.profilePhoto,
-            dateFrom: new Date(user['dateFrom']),
-            dateTo: new Date(user['dateTo']),
-            isPresent: user['isPresent'],
-            position: user['position'],
-            _id: user.user._id
-          }
+
+        User.get().$promise.then(function (me) {
+
+            Teams.getAssignRequests({id: me._id}).$promise.then(function (requests) {
+
+
+                $scope.assignRequests[0] = requests;
+
+            });
+
         });
-        if ($scope.assignRequests.length > 3) {
-          $scope.invitationsNumber = 4;
-        }
-        else {
-          $scope.invitationsNumber = $scope.assignRequests.length;
-        }
-      });
+
 
     $scope.notificationsNumber = 0;
 

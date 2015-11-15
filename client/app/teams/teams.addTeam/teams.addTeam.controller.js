@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-    .controller('AddTeamCtrl',function($scope, Team){
-
-        $scope.team = [];
+    .controller('AddTeamCtrl',function($scope, Team, User, Teams, $location){
 
 
         $scope.countries = [
@@ -49,9 +47,36 @@ angular.module('abroadathletesApp')
         ].map(function (country) { return { abbrev: country }; });
 
         $scope.colorOptions = {
-
             "preferredFormat": "hex"
+        };
+
+        User.get().$promise.then(function (me) {
+            User.getAllHumanUsers({id: me._id}).$promise.then(function (result) {
+                $scope.allHumanUsers = result;
+                $scope.allCoaches = _.filter(result, function(user){
+                    return user.kind ==='coach';
+                });
+            });
+            User.getAllLeagues({id: me._id}).$promise.then(function (result) {
+                $scope.allLeagues = result;
+            });
+
+            $scope.team.id_user = me._id;
+
+        });
+
+        $scope.saveTeam = function() {
+
+            var newTeam  = angular.copy($scope.team);
+
+            newTeam.president = newTeam.president._id;
+            newTeam.headCoach = newTeam.headCoach._id;
+            newTeam.athleticDirector = newTeam.athleticDirector._id;
+            newTeam.myLeagues = newTeam.myLeagues._id;
+
+            Teams.addTeam(newTeam).$promise.then(function(result){
+                $location.path('/teams');
+            });
 
         }
-
     });

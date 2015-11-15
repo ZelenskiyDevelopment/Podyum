@@ -1,3 +1,58 @@
-/**
- * Created by dev on 13.11.15.
- */
+'use strict';
+
+var Team = require('./team.model'),
+
+    assignedToTeam = require('./assignedToTeam.model');
+
+exports.addTeam = function(req, res) {
+
+    var data = req.body;
+
+    var newTeam = new Team(data);
+
+    newTeam.save(function(err){
+        if (err) throw err;
+
+        res.send(200);
+    });
+};
+
+exports.addToTeam = function(req, res) {
+
+    var  data  = req.body;
+
+    var addToTeam  = new assignedToTeam(data);
+
+    addToTeam.save(function(err){
+       if (err) throw err;
+
+        res.send(200);
+
+    });
+};
+
+exports.getAssignRequests = function(req, res) {
+    var userId = req.params.id;
+
+    assignedToTeam.find({
+        id_user: userId
+    }).execQ().then(function (team) {
+        Team.findById(team[0].id_team, function (err, fromUser) {
+
+            return res.json(200, fromUser);
+        });
+    }).catch(function (err) {
+        return handleError(res, err);
+    });
+};
+
+exports.getTeam = function(req, res) {
+    var userId = req.params.id;
+    Team.find({
+        id_user: userId
+    }).execQ().then(function (events) {
+        return res.json(200, events);
+    }).catch(function (err) {
+        return handleError(res, err);
+    });
+}
