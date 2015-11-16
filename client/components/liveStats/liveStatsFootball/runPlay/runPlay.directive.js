@@ -12,7 +12,10 @@ angular.module('abroadathletesApp')
         team: '=',
         events: '=',
         submit: '=',
-        runner: '='
+        runner: '=',
+        topPlayersPlay: '='
+      },
+      controller: function($scope) {
       },
       link: function (scope, element, attrs) {
       }
