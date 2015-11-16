@@ -48,6 +48,11 @@
                 </ul>
               </div>
             </div>
+            <div class="user-profile-stats">
+              <div ng-repeat="event in statsNames[currentActiveType]" class="stat-boxes">
+                <stat-box header="{{event}}" content="{{myStats[currentActiveTypeInd].data[$index]}}"></stat-box>
+              </div>
+            </div>
         </div>
         <div ng-switch-when="league">
           <div>

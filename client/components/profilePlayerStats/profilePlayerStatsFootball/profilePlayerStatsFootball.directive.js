@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .directive('profilePlayerStatsFootball', function () {
+  .directive('profilePlayerStatsFootball', function() {
     return {
       templateUrl: 'components/profilePlayerStats/profilePlayerStatsFootball/profilePlayerStatsFootball.html',
       restrict: 'EA',
@@ -18,20 +18,29 @@ angular.module('abroadathletesApp')
         $scope.returningStatsNames = FootballStatNames.getStatNamesForType('returning');
         $scope.kickingStatsNames = FootballStatNames.getStatNamesForType('kicking');
         $scope.puntingStatsNames = FootballStatNames.getStatNamesForType('punting');
-        $scope.statsNames = {Rushing:FootballStatNames.getStatNamesForType('rushing'), Passing: FootballStatNames.getStatNamesForType('passing'),
-          Receiving:FootballStatNames.getStatNamesForType('receiving'), Defense: FootballStatNames.getStatNamesForType('defense'),
-          Scoring:FootballStatNames.getStatNamesForType('scoring'), Returning: FootballStatNames.getStatNamesForType('returning'),
-          Kicking:FootballStatNames.getStatNamesForType('kicking'), Punting: FootballStatNames.getStatNamesForType('punting')};
+        $scope.statsNames = {
+          Rushing: FootballStatNames.getStatNamesForType('rushing'),
+          Passing: FootballStatNames.getStatNamesForType('passing'),
+          Receiving: FootballStatNames.getStatNamesForType('receiving'),
+          Defense: FootballStatNames.getStatNamesForType('defense'),
+          Scoring: FootballStatNames.getStatNamesForType('scoring'),
+          Returning: FootballStatNames.getStatNamesForType('returning'),
+          Kicking: FootballStatNames.getStatNamesForType('kicking'),
+          Punting: FootballStatNames.getStatNamesForType('punting')
+        };
         $scope.statLenByType = [$scope.rushingStatsNames.length, $scope.passingStatsNames.length, $scope.receivingStatsNames.length,
           $scope.defenseStatsNames.length, $scope.scoringStatsNames.length, $scope.returningStatsNames.length,
-          $scope.kickingStatsNames.length, $scope.puntingStatsNames.length];
+          $scope.kickingStatsNames.length, $scope.puntingStatsNames.length
+        ];
         $scope.currentActiveType = 'Rushing';
         $scope.currentActiveTypeInd = 0;
         $scope.changeStatType = function(type, ind) {
           $scope.currentActiveType = type;
           $scope.currentActiveTypeInd = ind;
         };
-        Game.getGamesForTeams({id: $scope.user._id}).$promise.then(function (games) {
+        Game.getGamesForTeams({
+          id: $scope.user._id
+        }).$promise.then(function(games) {
           _.remove(games, function(game) {
             return !game.data.isFinished || !game.userData;
           });
@@ -44,7 +53,7 @@ angular.module('abroadathletesApp')
             }
           }
           $scope.myStats = new Array($scope.statTypes.length);
-          for(var i = 0; i < $scope.myStats.length; i++) {
+          for (var i = 0; i < $scope.myStats.length; i++) {
             $scope.myStats[i] = {
               name: $scope.statTypes[i],
               data: _.fill(Array($scope.statLenByType[i]), 0)
@@ -53,7 +62,7 @@ angular.module('abroadathletesApp')
 
           for (var i = 0; i < $scope.myGameStats.length; i++) {
             for (var j = 0; j < $scope.statTypes.length; j++) {
-              for(var k = 0; k < $scope.statLenByType[j]; k++) {
+              for (var k = 0; k < $scope.statLenByType[j]; k++) {
                 if ($scope.myGameStats[i]) {
                   $scope.myStats[j].data[k] += $scope.myGameStats[i][j].data[k];
                 }
@@ -62,7 +71,6 @@ angular.module('abroadathletesApp')
           }
         });
       },
-      link: function (scope, element, attrs) {
-      }
+      link: function(scope, element, attrs) {}
     };
   });
