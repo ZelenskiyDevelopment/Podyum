@@ -1,11 +1,18 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .controller('TeamsCtrl', function ($scope,User,$location) {
+  .controller('TeamsCtrl', function ($scope, User, $location, Teams) {
+
+    $scope.team = [];
     User.get().$promise.then(function (me) {
       if(!me.completed){
         $location.path('/creator');
       }
+
+        Teams.getTeam({id:me._id}).$promise.then(function(result){
+
+            $scope.team  = result;
+        })
     });
 
     User.getMyTeams().$promise.then(function(teams){
@@ -25,7 +32,10 @@ angular.module('abroadathletesApp')
       $scope.refresh();
     };
 
-    $scope.existingTeam = true;
+    $scope.existingTeam = false;
+
+
+
 
     $scope.refresh = function(){
       User.get().$promise.then(function (me) {

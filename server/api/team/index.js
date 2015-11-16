@@ -1,3 +1,13 @@
-/**
- * Created by dev on 13.11.15.
- */
+'use strict';
+
+var controller = require('./team.controller'),
+    express = require('express'),
+    router = express.Router();
+
+router.post('/addTeam', controller.addTeam);
+router.post('/addToTeam', controller.addToTeam);
+
+router.get('/:id/getTeam', controller.getTeam);
+router.get('/:id/getAssignRequests', controller.getAssignRequests);
+
+module.exports = router;

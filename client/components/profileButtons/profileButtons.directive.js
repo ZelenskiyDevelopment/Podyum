@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .directive('profileButtons', function (User, AssignModal) {
+  .directive('profileButtons', function (User, AssignModal, Teams) {
     return {
       templateUrl: 'components/profileButtons/profileButtons.html',
       restrict: 'EA',
@@ -52,9 +52,21 @@ angular.module('abroadathletesApp')
         };
 
         scope.recruit = function() {
-          var data = {id: scope.user._id, dtFrom: new Date()};
-          User.addToTeam({data: data});
-          element.find('.recruiter').hide();
+
+            Teams.getTeam({id: scope.owner._id}).$promise.then(function(result){
+
+                var data = {id_user: scope.user._id, id_team: result[0]._id, dtFrom: new Date()};
+
+
+                Teams.addToTeam(data).$promise.then(function(result) {
+                    console.log(result);
+                });
+
+
+            });
+
+         // User.addToTeam({data: data});
+         // element.find('.recruiter').hide();
         };
       }
     };
