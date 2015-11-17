@@ -82,6 +82,7 @@ module.exports = function (socketio) {
           }
           socket.userId = data.id;
         }
+
         console.info('[%s] ID', data);
       });
 
