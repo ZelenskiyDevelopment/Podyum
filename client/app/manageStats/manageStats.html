@@ -1,104 +1,110 @@
 <div class="container" style="margin-top:400px">
 
 
-    <browse-members-modal type="'statsAdmin'" change="myStatsAdmins" user="user">
+  <browse-members-modal type="'statsAdmin'" change="myStatsAdmins" user="user">
     <button class="btn our-button" ng-show="user.kind==='team' && user.role==='premium'">Grant Admin Privileges</button>
-    </browse-members-modal>
+  </browse-members-modal>
 
-    <button ng-if="user.kind === 'team' || user.kind === 'league'" class="btn our-button" ng-click="newGame()">New Game
-    </button>
-    <h2 ng-show="myManagedStats.length > 0">Teams I can manage</h2>
-    <div ng-repeat="managedTeam in myManagedStats">
-    <div class="media">    <div class="media-left">
-    <<a ui-sref="profile.common-story({id: managedTeam._id})">
-    <img class="media-object" src="photos/{{managedTeam.profilePhoto}}" alt="" style="width:64px;height:64px;">
-    </a>    </div>
-    <div class="media-body">
-    <h4 class="media-heading">  </h4
-    {{managedTeam[managedTeam.kind].name}}
-    <button class="btn our-button" ng-click="chooseTeamToManage($index)">Manage</button>
-    </div>
-    </div>
-    </div>
+  <button ng-if="user.kind === 'team' || user.kind === 'league'" class="btn our-button" ng-click="newGame()">New Game
+  </button>
+  <h2 ng-show="myManagedStats.length > 0">Teams I can manage</h2>
 
-    <h2 ng-show="myStatsAdmins.length > 0">My stats admins:</h2>
+  <div ng-repeat="managedTeam in myManagedStats">
+    <div class="media">
+      <div class="media-left">
+        <<a ui-sref="profile.common-story({id: managedTeam._id})">
+        <img class="media-object" src="photos/{{managedTeam.profilePhoto}}" alt="" style="width:64px;height:64px;">
+      </a></div>
+      <div class="media-body">
+        <h4 class="media-heading"></h4
+          {{managedTeam[managedTeam.kind].name}}
+        <button class="btn our-button" ng-click="chooseTeamToManage($index)">Manage</button>
+      </div>
+    </div>
+  </div>
+
+  <h2 ng-show="myStatsAdmins.length > 0">My stats admins:</h2>
+
   <div ng-repeat="admin in myStatsAdmins">
-    <div class="media">    <div class="media-left">
-    <a ui-sref="profile.common-story({id: admin._id})">
-    <img class="media-object" src="photos/{{admin.profilePhoto}}" alt="" style="width:64px;height:64px;">
-    </a></div>
-    <div class="media-body">
-    <h4 class="media-heading">  </h4>
-    {{admin[admin.kind].firstName}} {{admin[admin.kind].lastName}}
-    <button class="btn our-button" ng-click="revokeStatsAdmin(admin._id)">Revoke Admin</button>
-    </div>    </div>    </div>
+    <div class="media">
+      <div class="media-left">
+        <a ui-sref="profile.common-story({id: admin._id})">
+          <img class="media-object" src="photos/{{admin.profilePhoto}}" alt="" style="width:64px;height:64px;">
+        </a></div>
+      <div class="media-body">
+        <h4 class="media-heading"></h4>
+        {{admin[admin.kind].firstName}} {{admin[admin.kind].lastName}}
+        <button class="btn our-button" ng-click="revokeStatsAdmin(admin._id)">Revoke Admin</button>
+      </div>
+    </div>
+  </div>
 
-    <h2 ng-show="chosenTeam >= 0">Games for {{myManagedStats[chosenTeam].team.name}}:</h2>
+  <h2 ng-show="chosenTeam >= 0">Games for {{myManagedStats[chosenTeam].team.name}}:</h2>
 
-    <div class="manage-section">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="col-lg-5"><img class="media-object" src="photos/{{user.profilePhoto}}" alt=""
-                                           style="width:150px;height:150px;">
-                </div>
-
-
-                <div class="col-lg-7">
-                    <div class="command-name">
-                        <h3>PANTHERS WROCLAW</h3>
-                        <h4>Upcoming Schedules</h4>
-                   </div>
-
-                </div>
-            </div>
-            <div class="col-lg-8">
-
-                    <div class="col-lg-10 top-section">
-                    <div class="text-section">
-                        <h3>PANTHERS WROCLAW  -  </h3>  <h4> Upcoming Schedules </h4>
-                        </div>
-                    </div>
-                    <div class="right-section">
-                        <p>Full Schedule </p>
-                    </div>
-
-                <div class="row">
-
-                    <div class="col-lg-12 rows-section-manage">
-                        <div class="col-lg-2 cols">
-                                <p> Date </p>
-                        </div>
-                        <div class="col-lg-1 cols time-col">
-                            <p> Time </p>
-                        </div>
-                        <div class="col-lg-1 cols logo-col">
-                            <p> Logo </p>
-                        </div>
-                        <div class="col-lg-3 cols">
-                            <p> Opponent </p>
-                        </div>
-                        <div class="col-lg-4 cols">
-                            <p> Results </p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="row">
-
-                    <div class="col-lg-12 rows-section-manage-text" ng-repeat="game in games">
-                        <game id="game._id" sport="game.sport" team1="game.team1" team2="game.team2" league="game.league"
-                              date="game.date" data="game.data"/>
-
-                    </div>
-
-                </div>
-
-            </div>
+  <div class="manage-section">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="col-lg-5"><img class="media-object" src="photos/{{user.profilePhoto}}" alt=""
+                                   style="width:150px;height:150px;">
         </div>
 
 
+        <div class="col-lg-7">
+          <div class="command-name">
+            <h3>PANTHERS WROCLAW</h3>
+            <h4>Upcoming Schedules</h4>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-lg-8">
+
+        <div class="col-lg-10 top-section">
+          <div class="text-section">
+            <h3>PANTHERS WROCLAW - </h3>  <h4> Upcoming Schedules </h4>
+          </div>
+        </div>
+        <div class="right-section">
+          <p>Full Schedule </p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-12 rows-section-manage">
+            <div class="col-lg-2 cols">
+              <p> Date </p>
+            </div>
+            <div class="col-lg-1 cols time-col">
+              <p> Time </p>
+            </div>
+            <div class="col-lg-1 cols logo-col">
+              <p> Logo </p>
+            </div>
+            <div class="col-lg-3 cols">
+              <p> Opponent </p>
+            </div>
+            <div class="col-lg-4 cols">
+              <p> Results </p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-12 rows-section-manage-text" ng-repeat="game in games">
+            <game id="game._id" sport="game.sport" team1="game.team1" team2="game.team2" league="game.league"
+                  date="game.date" data="game.data"/>
+
+          </div>
+
+        </div>
+
+      </div>
     </div>
+
+
+  </div>
 
 
 </div>

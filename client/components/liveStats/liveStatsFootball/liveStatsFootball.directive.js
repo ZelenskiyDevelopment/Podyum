@@ -31,7 +31,7 @@ angular.module('abroadathletesApp')
 
         $scope.offense = 0;
 
-        $scope.status = {timeouts: {0: 2, 1: 1}, ballon: 40, down: 1, togo: 10, offense: 0, quart: 1};
+        $scope.status = {timeouts: {0: 3, 1: 3}, ballon: 40, down: 1, togo: 10, offense: 0, quart: 1};
 
         $scope.ballon = 40;
         $scope.down = 1;
@@ -39,6 +39,8 @@ angular.module('abroadathletesApp')
 
         $scope.counter = 900;
         $scope.counterText = '15:00';
+
+        $scope.changingTimer = 0;
 
         $scope.benchSub1 = -1;
         $scope.activeSub1 = -1;
@@ -56,6 +58,24 @@ angular.module('abroadathletesApp')
 
         $scope.playtype = -1;
 
+        $scope.topPlayers = {
+          0:{},
+          1:{}
+        };
+
+        $scope.topPlayersPlay = {};
+
+
+        $scope.setTimeouts = function (team, timeouts) {
+          if(timeouts === undefined && $scope.status.timeouts[team] <=3 ) {
+            timeouts = $scope.status.timeouts[team] + 1;
+          } else {
+            if ($scope.status.timeouts[team] > 0) {
+              timeouts = $scope.status.timeouts[team] - 1;
+            }
+          }
+          $scope.status.timeouts[team] = timeouts;
+        };
 
         $scope.getQuarterString = function () {
           var qtrString = '';
@@ -78,6 +98,40 @@ angular.module('abroadathletesApp')
           return qtrString;
         };
 
+        $scope.sortPlayers = function(players){
+          players.sort(function(a, b){
+            return a.count - b.count;
+          });
+          return players;
+        };
+
+        $scope.getTopPlayers = function() {
+          var players = [];
+          var playtype = $scope.playtype;
+          var currentTeam = $scope.status.offense;
+
+          if($scope.topPlayers[currentTeam] != undefined && $scope.topPlayers[currentTeam][playtype] != undefined ) {
+            var keys = Object.keys($scope.topPlayers[currentTeam][playtype]);
+            for (var i = 0; i < keys.length; ++i) {
+              players.push({number: (+keys[i]), count: $scope.topPlayers[currentTeam][playtype][keys[i]]});
+            }
+            $scope.sortPlayers(players);
+            players.reverse();
+          }
+
+          var roster = currentTeam == 0 ? $scope.roster1 : $scope.roster2;
+
+          players.forEach(function(player, key){
+            roster.forEach(function(rosterPlayer){
+              if((+rosterPlayer.player.number) == player.number){
+                players[key].name = rosterPlayer.player.lastName;
+              }
+            });
+          });
+
+          return players;
+        };
+
         $scope.EndQuarter = function () {
           if ($scope.status.quart < 5) {
             $scope.status.quart = $scope.status.quart + 1;
@@ -90,6 +144,8 @@ angular.module('abroadathletesApp')
 
           var p = $scope.counterText.split(':');
           $scope.counter = (+p[0]) * 60 + (+p[1]);
+
+          $scope.changingTimer = 0;
         };
 
 
@@ -118,15 +174,14 @@ angular.module('abroadathletesApp')
             $scope.events = [];
           }
           $scope.playtype = ind;
+          $scope.topPlayersPlay = $scope.getTopPlayers();
         };
 
         $scope.swapPossession = function () {
-          console.log('Swap position');
           $scope.status.offense = $scope.status.offense == 1 ? 0 : 1;
         };
 
         $scope.playbyplay = [];
-        var message = [];
 
         $scope.teamScore = function (team) {
 
@@ -138,22 +193,98 @@ angular.module('abroadathletesApp')
         };
 
 
+        var makeStats = function(player, eventInd, count) {
+
+          console.log(player, eventInd, count);
+
+          //**** Player stats ****
+          if (count == undefined) {
+            count = 0;
+          }
+          if(player.player.stats) {
+            if(player.player.stats[$scope.game.sport][eventInd] == undefined) {
+              player.player.stats[$scope.game.sport][eventInd] = 0;
+            }
+            player.player.stats[$scope.game.sport][eventInd] = player.player.stats[$scope.game.sport][eventInd] + count;
+            User.updateStats({id:player._id, stats:player.player.stats});
+          }
+          else {
+            player.player.stats = {};
+            player.player.stats[$scope.game.sport] = {};
+            eval("player.player.stats[$scope.game.sport]." + eventInd + " = count");
+            User.updateStats({id:player._id, stats:player.player.stats});
+          }
+        };
+
+        var getUserByPlayerNumber = function (team, num) {
+          var roster = team == 0 ? $scope.roster1 : $scope.roster2;
+          var player = {};
+
+          roster.forEach(function(el){
+            if(el.player.number == num){
+              player = el;
+            }
+          });
+          return player;
+        };
+
+        var updateEventsWithTime = function() {
+          angular.forEach($scope.events, function(el){
+            el.createdAt = $scope.counterText;
+          });
+        };
+
         $scope.submit = function () {
           // update BALLON
           // UPDATE TOGO
           // UPDATE DOWN
           // UPDATE SCORE
-          console.log("submit");
-          console.log($scope.events);
+          updateEventsWithTime();
           $scope.playbyplay.push($scope.events);
 
 
+          if($scope.topPlayers[$scope.status.offense] == undefined){
+            $scope.topPlayers[$scope.status.offense] = {};
+          }
+
+          if($scope.topPlayers[$scope.status.offense][$scope.playtype] == undefined) {
+            $scope.topPlayers[$scope.status.offense][$scope.playtype] = {};
+
+          }
+          if($scope.topPlayers[$scope.status.offense][$scope.playtype][$scope.events[0].data.player] == undefined) {
+            $scope.topPlayers[$scope.status.offense][$scope.playtype][$scope.events[0].data.player] = 0;
+          }
+
+          $scope.topPlayers[$scope.status.offense][$scope.playtype][$scope.events[0].data.player] = $scope.topPlayers[$scope.status.offense][$scope.playtype][$scope.events[0].data.player] + 1;
+
           angular.forEach($scope.events, function (value) {
+
+            //GAMEPLAY!!!
+
+            var count = 1;
+
+            switch (value.type) {
+              case "touchdown" :
+                    count = 1;
+                    break;
+              case "run" :
+                    count = value.data.gain == null ? 0 : value.data.gain;
+                    break;
+              case "tackle" :
+                    count = 1;
+                    break;
+            }
+
+            var playerId = value.data.player ? value.data.player : value.data.tackler;
+
+            makeStats(getUserByPlayerNumber(value.team, playerId), value.type, count);
 
             if ($filter('footballDescription')(value).length > 0) {
               notify({message: $filter('footballDescription')(value), classes: 'alert-success', position: 'right'});
-
             }
+
+
+
 
 
             GameMessage.AddMessage({
@@ -192,9 +323,11 @@ angular.module('abroadathletesApp')
           }
           $scope.reset();
         };
+
         $scope.reset = function () {
           $scope.playtype = -1;
           $scope.events = [];
+          $scope.choosePlayType(-1);
         };
 
 
@@ -337,7 +470,8 @@ angular.module('abroadathletesApp')
             $scope.selectedPlayer = $scope.roster2[ind].player.number;
             $scope.status.offense = 1;
           }
-          console.log($scope.selectedPlayer);
+
+          $scope.choosePlayType($scope.playtype);
         };
 
         $scope.show_team = function () {

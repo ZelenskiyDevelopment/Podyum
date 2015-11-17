@@ -1,5 +1,11 @@
+
+
 span(class="text_play_type") RUNNER:
-  input(type="number", ng-model="event.data.player" class="form-control")
+  div()
+    input(type="number", ng-model="event.data.player" class="form-control")
+    div(ng-repeat="player in topPlayersPlay", class="btn-group", role="group")
+      button(type="button", class="btn btn-warning" ng-click="event.data.player = player.number")
+        | \#{{player.number}} {{player.name}}
 span(class="text_play_type") YARDS:
   input(type="number", ng-model="event.data.gain" class="form-control")
 div(class="padding-bottom")

@@ -9,9 +9,12 @@ angular.module('abroadathletesApp')
         event: '=',
         events: '=',
         status: '=',
-        submit: '='
+        submit: '=',
+        topPlayersPlay: '='
       },
       controller: function($scope) {
+        console.log('Run controller');
+        console.log($scope.topPlayersPlay);
         $scope.otherActions = ["Touchdown", "Fumble", "Penalty", "Lateral", "Safety", "Kneel"];
         $scope.otherActionsBool = [false, false,false,false,false,false];
         $scope.penalty = false;
