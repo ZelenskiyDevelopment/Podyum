@@ -2,7 +2,10 @@
 
 var Team = require('./team.model'),
 
-    assignedToTeam = require('./assignedToTeam.model');
+    assignedToTeam = require('./assignedToTeam.model'),
+
+    socket = require('../../config/socketio.js')();
+
 
 exports.addTeam = function(req, res) {
 
@@ -17,6 +20,15 @@ exports.addTeam = function(req, res) {
     });
 };
 
+
+exports.acceptAssignRequest = function(req, res) {
+    var userId = req.user._id;
+};
+
+exports.rejectAssignRequest = function(req, res) {
+    var userId = req.user._id;
+};
+
 exports.addToTeam = function(req, res) {
 
     var  data  = req.body;
@@ -24,9 +36,11 @@ exports.addToTeam = function(req, res) {
     var addToTeam  = new assignedToTeam(data);
 
     addToTeam.save(function(err){
-       if (err) throw err;
+        Team.findById(data.id_team, function (err, fromUser) {
 
-        res.send(200);
+            socket.directMessage(data.id_user, 'assignRequest', fromUser);
+
+        });
 
     });
 };

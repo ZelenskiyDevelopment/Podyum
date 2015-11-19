@@ -104,6 +104,7 @@ angular.module('abroadathletesApp', [
       Auth.isLoggedInAsync(function (loggedIn) {
         if (loggedIn) {
           var currentUserId = Auth.getCurrentUser()._id;
+            console.log('user id - '+currentUserId);
           socket.emit('id', {id: currentUserId});
         }
         if (next.authenticate && !loggedIn) {

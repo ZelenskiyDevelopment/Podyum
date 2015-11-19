@@ -1,655 +1,936 @@
 <div class="col-md-12 col-sm-12 col-xs-12" style="padding: 0px; margin: 0px;">
-  <log-navbar></log-navbar>
-  <div class="col-md-12 col-sm-12 col-xs-12" style="padding: 0px; margin-top: 124px; height: {{myHeight-124}}px">
-    <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"  style="margin: 0px; padding: 0px;"></div>
-    <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12" >
-      <sign-up></sign-up>
-    </div>
-  <div class="backstretch" style="margin: 0px; padding: 0px; height: 100%; width: 100%" backstretch backstretch-images="images"></div>
-</div>
-</div>
+    <log-navbar></log-navbar>
+    <div class="col-md-12 col-sm-12 col-xs-12"
+         style="padding: 0px; margin: 0px; height: 1000px; background-position: top;">
+        <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12" style="margin: 0px; padding: 0px;"></div>
+        <div class="col-lg-3 col-md-5 col-sm-6 col-xs-12" style="margin-top: 140px;">
+            <div style="z-index:999999999999999; background-color: rgba(255, 255,255, 1); margin-top: 15px; margin-right: 40px; border-radius: 6px"
+                 class="col-md-12 col-sm-12 col-xs-12 sing-up" ng-show='!isLogin'>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="landing-big-font"><h2>SIGN UP - IT'S FREE!</h2></div>
+                    <form name="registerForm" ng-submit="register(registerForm)" novalidate="" class="form registerForm"><!--.form-group(ng-class="{ 'has-success': registerForm.email.$valid && registerSubmitted,\
+'has-error': registerForm.email.$invalid && registerSubmitted }")
+  input.form-control-sign-up(type='email', name='email', placeholder='Email address', ng-model='registerUser.email', required='', mongoose-error='')
+  p.help-block(ng-show='registerForm.email.$error.email && registerSubmitted')
+    | Doesn't look like a valid email.
+  p.help-block(ng-show='registerForm.email.$error.required && registerSubmitted')
+    | What's your email address?
+  p.help-block(ng-show='registerForm.email.$error.mongoose')
+    | {{ registerErrors.email }}-->
+                        <div style="width: 49%; float: left"
+                             ng-class="{ 'has-success': registerSubmitted,      'has-error': registerSubmitted }"
+                             class="form-group"><input type="Name" name="firstname" placeholder="First name"
+                                                       ng-model="registerUser.firstName" required="" mongoose-error=""
+                                                       class="form-control-sign-up"></div>
+                        <div style="width: 49%; float: right"
+                             ng-class="{ 'has-success': registerSubmitted,      'has-error': registerSubmitted }"
+                             class="form-group"><input type="Name" name="lastName" placeholder="Last name"
+                                                       ng-model="registerUser.lastName" required="" mongoose-error=""
+                                                       class="form-control-sign-up"></div>
+                        <div ng-class="{ 'has-success': registerSubmitted,      'has-error': registerSubmitted }"
+                             class="form-group"><input placeholder="Email" type="email" name="email"
+                                                       ng-model="registerUser.email" required=""
+                                                       class="form-control-sign-up ng-pristine ng-valid-email ng-invalid ng-invalid-required ng-touched"
+                                                       aria-required="true" aria-invalid="true" style="">
+                        </div>
+                        <div ng-class="{ 'has-success': registerForm.password.$valid &amp;&amp; registerSubmitted,      'has-error': registerForm.password.$invalid &amp;&amp; registerSubmitted }"
+                             class="form-group"><input type="password" name="password" placeholder="Password"
+                                                       ng-model="registerUser.password" ng-minlength="3" required=""
+                                                       mongoose-error="" class="form-control-sign-up">
 
+                            <p ng-show="(registerForm.password.$error.minlength || registerForm.password.$error.required) &amp;&amp; registerSubmitted"
+                               class="help-block">Password must be at least 3 characters.</p>
 
+                            <p ng-show="registerForm.password.$error.mongoose" class="help-block">{{
+                                registerErrors.password }}</p><input type="password" name="passwordConfirm"
+                                                                     placeholder="Password confirmation"
+                                                                     ng-model="registerUser.passwordConfirm"
+                                                                     style="margin-top:15px;"
+                                                                     class="form-control-sign-up">
 
+                            <p ng-show="!passwordConfirmed &amp;&amp; registerSubmitted" class="help-block">Password and
+                                confirmation do not match.</p></div>
+                        <div ng-class="{ 'has-success': registerSubmitted,      'has-error': registerSubmitted }"
+                             class="form-group"><input type="Date" name="date" class="form-control-sign-up"></div>
+                        <div ng-class="{ 'has-success': registerSubmitted,      'has-error': registerSubmitted }"
+                             class="form-group"><input type="radio" value="male" name="gender" checked="checked"
+                                                       class="form-control-sign-up">Male<input type="radio"
+                                                                                               value="female"
+                                                                                               name="gender"
+                                                                                               class="form-control-sign-up">Female
+                        </div>
+                        <!--.row
+                          .col-md-12.col-sm-12.col-xs-12
+                            .landing-small-font
+                              br
+                              | By clicking Join Now, you agree to Abroad Athletes &#32;
+                              a.landing-small-font-link User Agreement
+                              | , &#32;
+                              a.landing-small-font-link Privacy Policy
+                              |  and &#32;
+                              a.landing-small-font-link Cookies Policy
+                              | .-->
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <ul class="submit">
+                                    <md-button type="submit" class="main-button form-submit">Sign up</md-button>
+                                </ul>
+                                <ul class="social-links">
+                                    <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><i
+                                            class="fa fa-facebook"></i></a></li>
+                                    <li class="twitter"><a target="_blank" href="https://twitter.com/"><i
+                                            class="fa fa-twitter"></i></a></li>
+                                    <!-- <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>-->
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!--carousel
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="landing-big-font">
+                <h1>Connect with the most elite players and coaches around the world!</h1><br>
+                </div>
+                <carousel class="center-block" interval="myInterval" style="margin-bottom: 20px; border-radius: 320px">
+                <slide ng-repeat="slide in slides" active="slide.active">
+                <img ng-src="{{slide.image}}" class="img-rounded">
+                </slide>
+                </carousel>
+                </div>
+                end carousel-->
+            </div>
+            <div style="z-index:999999999999999; background-color: rgba(255, 255,255, 1); margin-top: 15px; margin-right: 40px; border-radius: 6px"
+                 class="col-md-12 col-sm-12 col-xs-12 sing-up" ng-hide='!isLogin'>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="landing-big-font"><h2>LOGIN</h2></div>
+                    <form name="loginForm" ng-submit="login(loginForm)" novalidate="">
+                        <div style="width: 100%; float: left"
+                             ng-class="{ 'has-success': registerSubmitted,      'has-error': registerSubmitted }"
+                             class="form-group"><input placeholder="Email" type="email" name="email"
+                                                       ng-model="loginUser.email" required=""
+                                                       class="form-control-log-in">
+                        </div>
+                        <div ng-class="{ 'has-success': registerForm.password.$valid &amp;&amp; registerSubmitted,      'has-error': registerForm.password.$invalid &amp;&amp; registerSubmitted }"
+                             class="form-group"><input type="password" name="password" placeholder="Password"
+                                                       ng-model="loginUser.password" ng-minlength="3" required=""
+                                                       mongoose-error="" class="form-control-log-in">
+                        </div>
+                        <md-checkbox md-no-ink="" aria-label="Checkbox No Ink" ng-model="loginUser.remember"
+                                     ng-change="remember(loginUser.remember)" role="checkbox"
+                                     class="ng-pristine ng-untouched ng-valid" tabindex="0" aria-checked="false"
+                                     aria-invalid="false">
+                            <div class="md-label"><span class="ng-scope">Remember me</span></div>
+                        </md-checkbox>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <ul class="submit">
+                                    <md-button type="submit" class="main-button form-submit">Login</md-button>
+                                </ul>
+                                <ul class="social-links">
+                                    <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><i
+                                            class="fa fa-facebook"></i></a></li>
+                                    <li class="twitter"><a target="_blank" href="https://twitter.com/"><i
+                                            class="fa fa-twitter"></i></a></li>
+                                    <!-- <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>-->
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
-
-
-        <div class="col-md-12 col-sm-12 col-xs-12 chosen-box-gradient" style="margin: 0px; padding: 0px;">
-          <div id="section">
-
-
-          <div class="col-md-1 col-sm-1">
-          </div>
-          <div class="col-md-2 col-sm-2 col-xs-4 box-player" style="background-image: none" >
-            <h1 class="chosen-title-img">PLAYER</h1>
-            <img class="img-rounded img-main" ng-click="changeFeature('player')" src="assets/images/player-box.png">
-          </div>
-
-          <div class="col-md-2 col-sm-2 col-xs-4 box-coaches" style="background-image: none">
-           <h1 class="chosen-title-img">COACH</h1>
-           <img class="img-rounded img-main" ng-click="changeFeature('coach')" src="assets/images/coach-box.png">
-         </div>
-
-          <div class="col-md-2 col-sm-2 col-xs-4 box-team" style="background-image: none">
-            <h1 class="chosen-title-img">TEAM&LEAGUE</h1>
-            <img class="img-rounded img-main" ng-click="changeFeature('team')" src="assets/images/team-box.png">
-          </div>
-
-
-
-          <div class="col-sm-offset-0 col-xs-offset-2 col-md-2 col-sm-2 col-xs-4 box-fan" style="background-image: none">
-            <h1 class="chosen-title-img">FAN</h1>
-            <img class="img-rounded img-main" ng-click="changeFeature('fan')" src="assets/images/fan-box.png">
-          </div>
-
-          <div class="col-md-2 col-sm-2 col-xs-4 box-fan" style="background-image: none">
-            <h1 class="chosen-title-img">MEDIA</h1>
-            <img class="img-rounded img-main" ng-click="changeFeature('media')" src="assets/images/media-box.png">
-          </div>
-
-          <div class="col-md-1 col-sm-1"></div>
         </div>
-      </div>
+        <div class="backstretch" style="margin: 0px; padding: 0px; height: 100%; width: 100%" backstretch
+             backstretch-images="images"></div>
     </div>
-  </div>
+    </div>
+    <!--<div class="col-md-12">-->
+    <!--<div class="carousel slide" id="myCarousel">-->
+    <!--<div class="carousel-inner">-->
+    <!--<div class="item active">-->
+    <!--<div class="col-md-4"><a href="#"><img src="http://placehold.it/500/bbbbbb/fff&amp;text=1" class="img-responsive"></a></div>-->
+    <!--</div>-->
+    <!--<div class="item">-->
+    <!--<div class="col-md-4"><a href="#"><img src="http://placehold.it/500/CCCCCC&amp;text=2" class="img-responsive"></a></div>-->
+    <!--</div>-->
+    <!--<div class="item">-->
+    <!--<div class="col-md-4"><a href="#"><img src="http://placehold.it/500/eeeeee&amp;text=3" class="img-responsive"></a></div>-->
+    <!--</div>-->
+    <!--<div class="item">-->
+    <!--<div class="col-md-4"><a href="#"><img src="http://placehold.it/500/f4f4f4&amp;text=4" class="img-responsive"></a></div>-->
+    <!--</div>-->
+    <!--<div class="item">-->
+    <!--<div class="col-md-4"><a href="#"><img src="http://placehold.it/500/fcfcfc/333&amp;text=5" class="img-responsive"></a></div>-->
+    <!--</div>-->
+    <!--<div class="item">-->
+    <!--<div class="col-md-4"><a href="#"><img src="http://placehold.it/500/f477f4/fff&amp;text=6" class="img-responsive"></a></div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>-->
+    <!--<a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>-->
+    <!--</div>-->
+    <!--</div>-->
 
 
+    <div class="col-md-12 col-sm-12 col-xs-12 chosen-box-gradient" style="margin: 0px; padding: 0px;">
+        <div id="section">
+
+
+            <div class="col-md-1 col-sm-1">
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-4 box-player" style="background-image: none">
+                <h1 class="chosen-title-img">PLAYER</h1>
+                <img class="img-rounded img-main" ng-click="changeFeature('player')" src="assets/images/player-box.png">
+            </div>
+
+            <div class="col-md-2 col-sm-2 col-xs-4 box-coaches" style="background-image: none">
+                <h1 class="chosen-title-img">COACH</h1>
+                <img class="img-rounded img-main" ng-click="changeFeature('coach')" src="assets/images/coach-box.png">
+            </div>
+
+            <div class="col-md-2 col-sm-2 col-xs-4 box-team" style="background-image: none">
+                <h1 class="chosen-title-img">TEAM&LEAGUE</h1>
+                <img class="img-rounded img-main" ng-click="changeFeature('team')" src="assets/images/team-box.png">
+            </div>
+
+
+            <div class="col-sm-offset-0 col-xs-offset-2 col-md-2 col-sm-2 col-xs-4 box-fan"
+                 style="background-image: none">
+                <h1 class="chosen-title-img">FAN</h1>
+                <img class="img-rounded img-main" ng-click="changeFeature('fan')" src="assets/images/fan-box.png">
+            </div>
+
+            <div class="col-md-2 col-sm-2 col-xs-4 box-fan" style="background-image: none">
+                <h1 class="chosen-title-img">MEDIA</h1>
+                <img class="img-rounded img-main" ng-click="changeFeature('media')" src="assets/images/media-box.png">
+            </div>
+
+            <div class="col-md-1 col-sm-1"></div>
+        </div>
+    </div>
+</div>
+</div>
 
 
 <!-- ================================================== PLAYER ===================================================== -->
 <div id="features">
     <div ng-switch="chosenFeature">
-      <div ng-switch-when="player">
-        <div class="col-md-12 col-sm-12 col-xs-12 chosen-box" style="height: 100%; padding-bottom: 100px">
-
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <h1 class="big-font-why" style="margin-top: 130px; padding-bottom: 50px;">Gold Player Features</h1>
-
+        <div ng-switch-when="player">
+            <div class="col-md-12 col-sm-12 col-xs-12 chosen-box" style="height: 100%; padding-bottom: 100px">
 
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="col-md-6">
-                   <div class="col-md-12 col-sm-12 col-xs-12">
-                      <div class="col-md-1 col-sm-2 col-xs-3">
-                      <div class="kolko"><i class="fa fa-hand-peace-o"></i></div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <h1 class="big-font-why" style="margin-top: 130px; padding-bottom: 50px;">Gold Player
+                                Features</h1>
+
+
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-md-1 col-sm-2 col-xs-3">
+                                            <div class="kolko"><i class="fa fa-hand-peace-o"></i></div>
+                                        </div>
+                                        <div class="col-md-11 col-sm-10 col-xs-9">
+                                            <h1 class="chosen-title">Sports Portfolio</h1>
+
+                                            <h1 class="chosen-text">Track and share all achievements of your athletic
+                                                career including statistics, photos, highlights, and awards.</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-md-1 col-sm-2 col-xs-3">
+                                            <div class="kolko"><i class="fa fa-globe"></i></div>
+                                        </div>
+                                        <div class="col-md-11 col-sm-10 col-xs-9">
+                                            <h1 class="chosen-title">Sports Network</h1>
+
+                                            <h1 class="chosen-text">Connect with the top coaches, athletes, and teams
+                                                around the world.</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="col-md-1 col-sm-2 col-xs-3">
+                                            <div class="kolko"><i class="fa fa-bar-chart"></i></div>
+
+                                        </div>
+                                        <div class="col-md-11 col-sm-10 col-xs-9">
+                                            <h1 class="chosen-title">Set Statistical Goals</h1>
+
+                                            <h1 class="chosen-text">Create added motivation by tracking and monitoring
+                                                progress towards your single game and full season goals.</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="col-md-1 col-sm-2 col-xs-3">
+                                            <div class="kolko"><i class="fa fa-calendar-plus-o"></i></div>
+
+
+                                        </div>
+                                        <div class="col-md-11 col-sm-10 col-xs-9">
+                                            <h1 class="chosen-title">Dynamic Calendar</h1>
+
+                                            <h1 class="chosen-text">Stay organized and manage all upcoming events. We
+                                                provide reminders and mobile alerts to make sure your never late
+                                                again.</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="col-md-1 col-sm-2 col-xs-3">
+                                            <div class="kolko">
+                                                <i class="fa fa-smile-o"></i></div>
+
+                                        </div>
+                                        <div class="col-md-11 col-sm-10 col-xs-9">
+                                            <h1 class="chosen-title">Join your team</h1>
+
+                                            <h1 class="chosen-text">Find your team and request to join your team's
+                                                roster so your schedule, goals, and statistics will be synced to your
+                                                profile.</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="col-md-1 col-sm-2 col-xs-3">
+                                            <div class="kolko">
+                                                <i class="fa fa-television"></i></div>
+
+                                        </div>
+                                        <div class="col-md-11 col-sm-10 col-xs-9">
+                                            <h1 class="chosen-title">Views tracker</h1>
+
+                                            <h1 class="chosen-text">See how many people are looking at your profile by
+                                                geographical location. You'd be surprised how many people around the
+                                                world are checking out your achievements!</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="col-md-1 col-sm-2 col-xs-3">
+                                            <div class="kolko">
+                                                <i class="fa fa-hand-pointer-o"></i></div>
+
+                                        </div>
+                                        <div class="col-md-11 col-sm-10 col-xs-9">
+                                            <h1 class="chosen-title">Be Recruited</h1>
+
+                                            <h1 class="chosen-text">You will be added to the prospect list where teams
+                                                and coaches can compare your profile to other athletes across the
+                                                globe.</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="col-md-1 col-sm-2 col-xs-3">
+
+                                        </div>
+                                        <div class="col-md-11 col-sm-10 col-xs-9">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
-                        <div class="col-md-11 col-sm-10 col-xs-9">
-                          <h1 class="chosen-title">Sports Portfolio</h1>
-                           <h1 class="chosen-text">Track and share all achievements of your athletic career including statistics, photos, highlights, and awards.</h1>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ========================================== COACH ============================================================== -->
+        <div ng-switch-when="coach">
+            <div class="col-md-12 col-sm-12 col-xs-12 chosen-box" style="height: 100%;  padding-bottom: 100px">
+                <div class="col-md-12 col-sm-12 col-xs-12" style="padding-bottom: 40px">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-md-12">
+                            <h1 class="big-font-why" style="margin-top: 130px; padding-bottom: 50px;">Gold Coach
+                                Features</h1>
                         </div>
-                      </div>
-                  </div>
-              <div class="col-md-6">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko"><i class="fa fa-globe"></i></div>
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Sports Network</h1>
-                  <h1 class="chosen-text">Connect with the top coaches, athletes, and teams around the world.</h1>
-              </div></div>
-            </div></div>
+                        <div class="col-md-6">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko"><i class="fa fa-hand-peace-o"></i></div>
+                                </div>
+                                <div class="col-md-11 col-sm-9 col-xs-9">
+                                    <h1 class="chosen-title">Coaching Portfolio</h1>
 
-            <div class="col-md-12">
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                      <div class="kolko"><i class="fa fa-bar-chart"></i></div>
+                                    <h1 class="chosen-text">Organize and display all of your coaching achievements
+                                        throughout your career</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko"><i class="fa fa-globe"></i></div>
+                                </div>
+                                <div class="col-md-11 col-sm-9 col-xs-9">
+                                    <h1 class="chosen-title">Sports Network</h1>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Set Statistical Goals</h1>
-                  <h1 class="chosen-text">Create added motivation by tracking and monitoring progress towards your single game and full season goals.</h1>
+                                    <h1 class="chosen-text">Connect with the top coaches, athletes, and teams around the
+                                        world.</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko">
+                                        <i class="fa fa-cog"></i></div>
+                                </div>
+                                <div class="col-md-11 col-sm-9 col-xs-9">
+                                    <h1 class="chosen-title">Team Management</h1>
+
+                                    <h1 class="chosen-text">Manage every aspect of running an organization including
+                                        statistics, calendars, goals, and rosters.</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko">
+                                        <i class="fa fa-users"></i></div>
+
+                                </div>
+                                <div class="col-md-11 col-sm-9 col-xs-9">
+                                    <h1 class="chosen-title">Coaching job market</h1>
+
+                                    <h1 class="chosen-text">View all coaching vacancies in your sport and apply for your
+                                        dream position in top organizations. </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko"><i class="fa fa-television"></i></div>
+
+                                </div>
+                                <div class="col-md-11 col-sm-9 col-xs-9">
+                                    <h1 class="chosen-title">Views tracker</h1>
+
+                                    <h1 class="chosen-text">See how many people are looking at your profile by
+                                        geographical location. You'd be surprised how many people around the world are
+                                        checking out your achievements!</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-              </div></div>
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko"><i class="fa fa-calendar-plus-o"></i></div>
-
-
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Dynamic Calendar</h1>
-                  <h1 class="chosen-text">Stay organized and manage all upcoming events. We provide reminders and mobile alerts to make sure your never late again.</h1>
-                </div></div>
-              </div>
             </div>
-
-            <div class="col-md-12">
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i class="fa fa-smile-o"></i></div>
-
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Join your team</h1>
-                  <h1 class="chosen-text">Find your team and request to join your team's roster so your schedule, goals, and statistics will be synced to your profile.</h1>
-                </div></div>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i class="fa fa-television"></i></div>
-
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Views tracker</h1>
-                  <h1 class="chosen-text">See how many people are looking at your profile by geographical location. You'd be surprised how many people around the world are checking out your achievements!</h1>
-                </div></div>
-              </div>
-            </div>
-
-            <div class="col-md-12">
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i class="fa fa-hand-pointer-o"></i></div>
-
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Be Recruited</h1>
-                  <h1 class="chosen-text">You will be added to the prospect list where teams and coaches can compare your profile to other athletes across the globe.</h1>
-                </div></div>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-</div>
-</div>
-<!-- ========================================== COACH ============================================================== -->
-      <div ng-switch-when="coach">
-        <div class="col-md-12 col-sm-12 col-xs-12 chosen-box" style="height: 100%;  padding-bottom: 100px">
-          <div class="col-md-12 col-sm-12 col-xs-12" style="padding-bottom: 40px">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="col-md-12">
-                <h1 class="big-font-why" style="margin-top: 130px; padding-bottom: 50px;">Gold Coach Features</h1>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko"><i class="fa fa-hand-peace-o"></i></div>
-                  </div>
-                  <div class="col-md-11 col-sm-9 col-xs-9">
-                    <h1 class="chosen-title">Coaching Portfolio</h1>
-                  <h1 class="chosen-text">Organize and display all of your coaching achievements throughout your career</h1>
-                </div></div>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko"><i class="fa fa-globe"></i></div>
-                  </div>
-                  <div class="col-md-11 col-sm-9 col-xs-9">
-                    <h1 class="chosen-title">Sports Network</h1>
-                  <h1 class="chosen-text">Connect with the top coaches, athletes, and teams around the world.</h1>
-                </div></div>
-              </div>
-            </div>
-
-            <div class="col-md-12">
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i class="fa fa-cog"></i></div>
-                  </div>
-                  <div class="col-md-11 col-sm-9 col-xs-9">
-                    <h1 class="chosen-title">Team Management</h1>
-                  <h1 class="chosen-text">Manage every aspect of running an organization including statistics, calendars, goals, and rosters.</h1>
-                </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i  class="fa fa-users"></i></div>
-
-                  </div>
-                  <div class="col-md-11 col-sm-9 col-xs-9">
-                    <h1 class="chosen-title">Coaching job market</h1>
-                  <h1 class="chosen-text">View all coaching vacancies in your sport and apply for your dream position in top organizations. </h1>
-                </div></div>
-              </div>
-            </div>
-
-            <div class="col-md-12">
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko"> <i class="fa fa-television"></i></div>
-
-                  </div>
-                  <div class="col-md-11 col-sm-9 col-xs-9">
-                    <h1 class="chosen-title">Views tracker</h1>
-                  <h1 class="chosen-text">See how many people are looking at your profile by geographical location. You'd be surprised how many people around the world are checking out your achievements!</h1>
-                </div></div>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-
-                  </div>
-                </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
 
+        <!-- ======================================= TEAM ================================================================== -->
+        <div ng-switch-when="team">
+            <div class="col-md-12 col-sm-12 col-xs-12 chosen-box" style="height: 100%; padding-bottom: 100px">
+                <div class="col-md-12 col-sm-12 col-xs-12" style="padding-bottom: 40px">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-md-12">
+                            <h1 class="big-font-why" style="margin-top: 130px; padding-bottom: 50px;">Gold Team & League
+                                Features</h1>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko"><i class="fa fa-calendar-plus-o"></i></div>
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+                                    <h1 class="chosen-title">Schedule results</h1>
 
-<!-- ======================================= TEAM ================================================================== -->
-      <div ng-switch-when="team">
-        <div class="col-md-12 col-sm-12 col-xs-12 chosen-box" style="height: 100%; padding-bottom: 100px">
-          <div class="col-md-12 col-sm-12 col-xs-12" style="padding-bottom: 40px">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="col-md-12">
-                <h1 class="big-font-why" style="margin-top: 130px; padding-bottom: 50px;">Gold Team & League Features</h1>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko"><i class="fa fa-calendar-plus-o"></i></div>
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Schedule results</h1>
-                  <h1 class="chosen-text">Create and manage your team/league schedule and update through the season</h1>
-                </div></div>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i class="fa fa-credit-card"></i></div>
+                                    <h1 class="chosen-text">Create and manage your team/league schedule and update
+                                        through the season</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko">
+                                        <i class="fa fa-credit-card"></i></div>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Registration</h1>
-                  <h1 class="chosen-text">Forget checks and mail - use our site to pay league registration fees or any other payments online.</h1>
-                </div></div>
-              </div>
-            </div>
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+                                    <h1 class="chosen-title">Registration</h1>
 
-            <div class="col-md-12">
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i  class="fa fa-users"></i></div>
+                                    <h1 class="chosen-text">Forget checks and mail - use our site to pay league
+                                        registration fees or any other payments online.</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Roster Management </h1>
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko">
+                                        <i class="fa fa-users"></i></div>
 
-                  <h1 class="chosen-text">Add/remove players from your roster and set your starting lineup week by week. </h1>
-                </div></div>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i class="fa fa-play-circle"></i></div>
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+                                    <h1 class="chosen-title">Roster Management </h1>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Live Gamecasts</h1>
-                  <h1 class="chosen-text">Provide your fans with play-by-play action displaying live statistics and scoring updates on your profile page</h1>
-                </div></div>
-              </div>
-            </div>
+                                    <h1 class="chosen-text">Add/remove players from your roster and set your starting
+                                        lineup week by week. </h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko">
+                                        <i class="fa fa-play-circle"></i></div>
 
-            <div class="col-md-12">
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i class="fa fa-map"></i></div>
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+                                    <h1 class="chosen-title">Live Gamecasts</h1>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Worldwide Promotion</h1>
+                                    <h1 class="chosen-text">Provide your fans with play-by-play action displaying live
+                                        statistics and scoring updates on your profile page</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                  <h1 class="chosen-text">Promote your profile page to the world and gain new fans in countries you never thought possible.</h1>
-                </div></div>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i class="fa fa-gift"></i></div>
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko">
+                                        <i class="fa fa-map"></i></div>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Sponsor Recognition </h1>
-                  <h1 class="chosen-text">Show your appreciation to sponsors by displaying their logo on your page.</h1>
-                </div></div>
-              </div>
-            </div>
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+                                    <h1 class="chosen-title">Worldwide Promotion</h1>
 
-            <div class="col-md-12">
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko"><i class="fa fa-bar-chart"></i></div>
+                                    <h1 class="chosen-text">Promote your profile page to the world and gain new fans in
+                                        countries you never thought possible.</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko">
+                                        <i class="fa fa-gift"></i></div>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Statistics</h1>
-                  <h1 class="chosen-text">Provide teams the ability to post live stats or input after the game. Teams will be able to set and track goals throughout the season.</h1>
-                </div></div>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i class="fa fa-chevron-circle-down"></i></div>
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+                                    <h1 class="chosen-title">Sponsor Recognition </h1>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Polls</h1>
-                  <h1 class="chosen-text">Allow players, coaches, and fans to vote on awards or rulings during the season. </h1>
-                </div></div>
-              </div>
-            </div>
+                                    <h1 class="chosen-text">Show your appreciation to sponsors by displaying their logo
+                                        on your page.</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko"><i class="fa fa-bar-chart"></i></div>
+
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+                                    <h1 class="chosen-title">Statistics</h1>
+
+                                    <h1 class="chosen-text">Provide teams the ability to post live stats or input after
+                                        the game. Teams will be able to set and track goals throughout the season.</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko">
+                                        <i class="fa fa-chevron-circle-down"></i></div>
+
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+                                    <h1 class="chosen-title">Polls</h1>
+
+                                    <h1 class="chosen-text">Allow players, coaches, and fans to vote on awards or
+                                        rulings during the season. </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
-            <div class="col-md-12">
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i class="fa fa-money"></i></div>
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko">
+                                        <i class="fa fa-money"></i></div>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Job Posts</h1>
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+                                    <h1 class="chosen-title">Job Posts</h1>
 
-                  <h1 class="chosen-text">Post any job vacancy in your organization and have dozens of applicants within hours of the post. </h1>
-                </div></div>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <h1 class="chosen-text">Post any job vacancy in your organization and have dozens of
+                                        applicants within hours of the post. </h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
 
-                  </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-
-                </div>
-              </div>
             </div>
-          </div>
         </div>
 
 
-<!-- =================================== FAN ======================================================================= -->
-      <div ng-switch-when="fan">
-        <div class="col-md-12 col-sm-12 col-xs-12 chosen-box" style="height: 100%;  padding-bottom: 100px">
-          <div class="col-md-12 col-sm-12 col-xs-12" style="padding-bottom: 40px">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="col-md-12">
-                <h1 class="big-font-why" style="margin-top: 130px; padding-bottom: 50px;">Gold Fan Features</h1>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i class="fa fa-align-left"></i></div>
+        <!-- =================================== FAN ======================================================================= -->
+        <div ng-switch-when="fan">
+            <div class="col-md-12 col-sm-12 col-xs-12 chosen-box" style="height: 100%;  padding-bottom: 100px">
+                <div class="col-md-12 col-sm-12 col-xs-12" style="padding-bottom: 40px">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-md-12">
+                            <h1 class="big-font-why" style="margin-top: 130px; padding-bottom: 50px;">Gold Fan
+                                Features</h1>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko">
+                                        <i class="fa fa-align-left"></i></div>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">News</h1>
-                  <h1 class="chosen-text">Follow your favorite athletes, coaches, and teams staying up to date on any new events. Customize your timeline to see every sport you are interested in. </h1>
-                </div></div>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i class="fa fa-television"></i></div>
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+                                    <h1 class="chosen-title">News</h1>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Gamecasts</h1>
-                  <h1 class="chosen-text">Watch your teams live play-by-play action when you can't make it to the game. </h1>
-                </div></div>
-              </div>
-            </div>
+                                    <h1 class="chosen-text">Follow your favorite athletes, coaches, and teams staying up
+                                        to date on any new events. Customize your timeline to see every sport you are
+                                        interested in. </h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko">
+                                        <i class="fa fa-television"></i></div>
 
-            <div class="col-md-12">
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i class="fa fa-chevron-circle-down"></i></div>
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+                                    <h1 class="chosen-title">Gamecasts</h1>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Polls</h1>
-                  <h1 class="chosen-text">Participate in polls to vote for awards or rulings in teams or leagues you are following</h1>
-                </div></div>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <h1 class="chosen-text">Watch your teams live play-by-play action when you can't
+                                        make it to the game. </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko">
+                                        <i class="fa fa-chevron-circle-down"></i></div>
 
-                  </div>
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+                                    <h1 class="chosen-title">Polls</h1>
+
+                                    <h1 class="chosen-text">Participate in polls to vote for awards or rulings in teams
+                                        or leagues you are following</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-12">
-
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
 
 
-<!-- ========================================== MEDIA ============================================================== -->
-      <div ng-switch-when="media">
-        <div class="col-md-12 col-sm-12 col-xs-12 chosen-box" style="height: 100%;  padding-bottom: 100px">
-          <div class="col-md-12 col-sm-12 col-xs-12" style="padding-bottom: 40px">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="col-md-12">
-                <h1 class="big-font-why" style="margin-top: 130px; padding-bottom: 50px;">Gold Fan Features</h1>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i class="fa fa-align-left"></i></div>
+        <!-- ========================================== MEDIA ============================================================== -->
+        <div ng-switch-when="media">
+            <div class="col-md-12 col-sm-12 col-xs-12 chosen-box" style="height: 100%;  padding-bottom: 100px">
+                <div class="col-md-12 col-sm-12 col-xs-12" style="padding-bottom: 40px">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-md-12">
+                            <h1 class="big-font-why" style="margin-top: 130px; padding-bottom: 50px;">Gold Fan
+                                Features</h1>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko">
+                                        <i class="fa fa-align-left"></i></div>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">News</h1>
-                    <h1 class="chosen-text">Follow your favorite athletes, coaches, and teams staying up to date on any new events. Customize your timeline to see every sport you are interested in. </h1>
-                  </div></div>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i class="fa fa-television"></i></div>
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+                                    <h1 class="chosen-title">News</h1>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Gamecasts</h1>
-                    <h1 class="chosen-text">Watch your teams live play-by-play action when you can't make it to the game. </h1>
-                  </div></div>
-              </div>
-            </div>
+                                    <h1 class="chosen-text">Follow your favorite athletes, coaches, and teams staying up
+                                        to date on any new events. Customize your timeline to see every sport you are
+                                        interested in. </h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko">
+                                        <i class="fa fa-television"></i></div>
 
-            <div class="col-md-12">
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
-                    <div class="kolko">
-                      <i class="fa fa-chevron-circle-down"></i></div>
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+                                    <h1 class="chosen-title">Gamecasts</h1>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
-                    <h1 class="chosen-title">Polls</h1>
-                    <h1 class="chosen-text">Participate in polls to vote for awards or rulings in teams or leagues you are following</h1>
-                  </div></div>
-              </div>
-              <div class="col-md-6">
-                <div class="col-md-12">
-                  <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <h1 class="chosen-text">Watch your teams live play-by-play action when you can't
+                                        make it to the game. </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                  </div>
-                  <div class="col-md-11 col-sm-10 col-xs-9">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+                                    <div class="kolko">
+                                        <i class="fa fa-chevron-circle-down"></i></div>
 
-                  </div>
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+                                    <h1 class="chosen-title">Polls</h1>
+
+                                    <h1 class="chosen-text">Participate in polls to vote for awards or rulings in teams
+                                        or leagues you are following</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="col-md-1 col-sm-2 col-xs-3">
+
+                                </div>
+                                <div class="col-md-11 col-sm-10 col-xs-9">
+
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-12">
-
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-      </div>
-
-
     </div>
 
+
+</div>
 
 
 <!-- PRICE =================================================================== -->
 <div class="conteiner">
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 freeorgold" style="height: 100%; padding-bottom: 100px; margin: 0px; padding: 0px; width: 100%">
-  <div id="pricing">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <h1 class="big-font-why" style="margin-top: 130px; padding-bottom: 20px; color: #fff;">Experience <b>free</b> or go for <b>Podyum Gold</b></h1>
-      <!-- 6 v1 -->
-      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-        <h1 class="big-font-why" style="margin-top: 30px; padding-bottom: 30px; color: #eee;">Player & Coaches</h1>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 free-box" >
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"  style="border-top: solid 10px #999;">
-              <div class="big-font-free" style="margin-left: 30px; margin-top: 30px; padding-bottom: 10px;">Free</div>
-              <div class="big-font-free" style="margin-left: 30px; margin-bottom: 61px;">$0.00/month</div>
-              <div class="free-font"><i class="fa fa-check red-check"></i>Messaging</div>
-              <div class="free-font"><i class="fa fa-check red-check"></i>Scheduling</div>
-              <div class="free-font"><i class="fa fa-check red-check"></i>Post game stats</div>
-              <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Unlimited admins</div>
-              <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Live play-by-play stats</div>
-              <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Views tracker</div>
-              <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Recruiting</div>
-              <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Jobs/internships</div>
-              <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Sponsor badges</div>
-            </div>
-          </div>
-          <div class="col-lg-1 col-md-1 col-sm-1"></div>
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 gold-box">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="  border-top: solid 10px #f8c637;">
-              <div class="big-font-gold" style=" margin-left: 30px; margin-top: 30px; padding-bottom: 10px;">Gold subscription</div>
-              <div class="big-font-gold" style="margin-left: 30px; padding-bottom: 6px;">$29.99/month</div>
-              <div class="first-font" style="margin-left: 30px;  padding-bottom: 17px;">First 30 days are on us!</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Messaging</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Scheduling</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Post game stats</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Unlimited admins</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Live play-by-play stats</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Views tracker</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Recruiting</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Jobs/internships</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Sponsor badges</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 freeorgold"
+         style="height: 100%; padding-bottom: 100px; margin: 0px; padding: 0px; width: 100%">
+        <div id="pricing">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h1 class="big-font-why" style="margin-top: 130px; padding-bottom: 20px; color: #fff;">Experience <b>free</b>
+                    or go for <b>Podyum Gold</b></h1>
+                <!-- 6 v1 -->
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <h1 class="big-font-why" style="margin-top: 30px; padding-bottom: 30px; color: #eee;">Player &
+                        Coaches</h1>
 
-      <!-- 6 v2 -->
-      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-        <h1 class="big-font-why" style="margin-top: 30px; padding-bottom: 30px; color: #eee;">Teams & Leagues</h1>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 free-box" >
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"  style="border-top: solid 10px #999;">
-              <div class="big-font-free" style="margin-left: 30px; margin-top: 30px; padding-bottom: 10px;">Free</div>
-              <div class="big-font-free" style="margin-left: 30px; margin-bottom: 61px;">$0.00/month</div>
-              <div class="free-font"><i class="fa fa-check red-check"></i>Messaging</div>
-              <div class="free-font"><i class="fa fa-check red-check"></i>Scheduling</div>
-              <div class="free-font"><i class="fa fa-check red-check"></i>Post game stats</div>
-              <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Unlimited admins</div>
-              <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Live play-by-play stats</div>
-              <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Views tracker</div>
-              <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Recruiting</div>
-              <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Jobs/internships</div>
-              <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Sponsor badges</div>
-            </div>
-          </div>
-          <div class="col-lg-1  col-md-1 col-sm-1"></div>
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 gold-box">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="  border-top: solid 10px #f8c637;">
-              <div class="big-font-gold" style=" margin-left: 30px; margin-top: 30px; padding-bottom: 10px;">Gold subscription</div>
-              <div class="big-font-gold" style="margin-left: 30px; padding-bottom: 6px;">$29.99/month</div>
-              <div class="first-font" style="margin-left: 30px;  padding-bottom: 17px;">First 30 days are on us!</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Messaging</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Scheduling</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Post game stats</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Unlimited admins</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Live play-by-play stats</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Views tracker</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Recruiting</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Jobs/internships</div>
-              <div class="gold-font"><i class="fa fa-check green-check"></i>Sponsor badges</div>
-            </div>
-          </div>
-        </div>
-      </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 free-box">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-top: solid 10px #999;">
+                                <div class="big-font-free"
+                                     style="margin-left: 30px; margin-top: 30px; padding-bottom: 10px;">Free
+                                </div>
+                                <div class="big-font-free" style="margin-left: 30px; margin-bottom: 61px;">$0.00/month
+                                </div>
+                                <div class="free-font"><i class="fa fa-check red-check"></i>Messaging</div>
+                                <div class="free-font"><i class="fa fa-check red-check"></i>Scheduling</div>
+                                <div class="free-font"><i class="fa fa-check red-check"></i>Post game stats</div>
+                                <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Unlimited admins
+                                </div>
+                                <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Live play-by-play
+                                    stats
+                                </div>
+                                <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Views tracker</div>
+                                <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Recruiting</div>
+                                <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Jobs/internships
+                                </div>
+                                <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Sponsor badges</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 gold-box">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                 style="  border-top: solid 10px #f8c637;">
+                                <div class="big-font-gold"
+                                     style=" margin-left: 30px; margin-top: 30px; padding-bottom: 10px;">Gold
+                                    subscription
+                                </div>
+                                <div class="big-font-gold" style="margin-left: 30px; padding-bottom: 6px;">
+                                    $29.99/month
+                                </div>
+                                <div class="first-font" style="margin-left: 30px;  padding-bottom: 17px;">First 30 days
+                                    are on us!
+                                </div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Messaging</div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Scheduling</div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Post game stats</div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Unlimited admins</div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Live play-by-play stats
+                                </div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Views tracker</div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Recruiting</div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Jobs/internships</div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Sponsor badges</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- 6 v2 -->
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <h1 class="big-font-why" style="margin-top: 30px; padding-bottom: 30px; color: #eee;">Teams &
+                        Leagues</h1>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 free-box">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-top: solid 10px #999;">
+                                <div class="big-font-free"
+                                     style="margin-left: 30px; margin-top: 30px; padding-bottom: 10px;">Free
+                                </div>
+                                <div class="big-font-free" style="margin-left: 30px; margin-bottom: 61px;">$0.00/month
+                                </div>
+                                <div class="free-font"><i class="fa fa-check red-check"></i>Messaging</div>
+                                <div class="free-font"><i class="fa fa-check red-check"></i>Scheduling</div>
+                                <div class="free-font"><i class="fa fa-check red-check"></i>Post game stats</div>
+                                <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Unlimited admins
+                                </div>
+                                <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Live play-by-play
+                                    stats
+                                </div>
+                                <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Views tracker</div>
+                                <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Recruiting</div>
+                                <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Jobs/internships
+                                </div>
+                                <div class="grey-check-font"><i class="fa fa-check grey-check"></i>Sponsor badges</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-1  col-md-1 col-sm-1"></div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 gold-box">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                 style="  border-top: solid 10px #f8c637;">
+                                <div class="big-font-gold"
+                                     style=" margin-left: 30px; margin-top: 30px; padding-bottom: 10px;">Gold
+                                    subscription
+                                </div>
+                                <div class="big-font-gold" style="margin-left: 30px; padding-bottom: 6px;">
+                                    $29.99/month
+                                </div>
+                                <div class="first-font" style="margin-left: 30px;  padding-bottom: 17px;">First 30 days
+                                    are on us!
+                                </div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Messaging</div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Scheduling</div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Post game stats</div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Unlimited admins</div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Live play-by-play stats
+                                </div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Views tracker</div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Recruiting</div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Jobs/internships</div>
+                                <div class="gold-font"><i class="fa fa-check green-check"></i>Sponsor badges</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-</div>
-
-
 
 
 <div class="col-md-12 col-sm-12 col-xs-12 cookies">
-  <div class="col-md-1 col-sm-1" style="margin-top: 20px"></div>
-  <div class="col-md-2 col-sm-2 col-xs-2 landing-small-font" style="margin-top: 20px;font-family: 'Oswald', sans-serif;"> Podyum 2015</div>
-  <div class="col-md-8 col-sm-8 col-xs-10" style="margin-top: 20px;margin-bottom: 20px">
+    <div class="col-md-1 col-sm-1" style="margin-top: 20px"></div>
+    <div class="col-md-2 col-sm-2 col-xs-2 landing-small-font"
+         style="margin-top: 20px;font-family: 'Oswald', sans-serif;"> Podyum 2015
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-10" style="margin-top: 20px;margin-bottom: 20px">
 
-    <a class="landing-small-font-link" style="margin-top: 20px"> User Agreement</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-    <a class="landing-small-font-link" style="margin-top: 20px">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-    <a class="landing-small-font-link" style="margin-top: 20px">Copyright Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-    <a class="landing-small-font-link" style="margin-top: 20px">Cookies Policy</a>
+        <a class="landing-small-font-link" style="margin-top: 20px"> User Agreement</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a class="landing-small-font-link" style="margin-top: 20px">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a class="landing-small-font-link" style="margin-top: 20px">Copyright Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a class="landing-small-font-link" style="margin-top: 20px">Cookies Policy</a>
 
-  </div>
-  <div class="col-md-1 col-sm-1"></div>
+    </div>
+    <div class="col-md-1 col-sm-1"></div>
 
 </div>
 </div>

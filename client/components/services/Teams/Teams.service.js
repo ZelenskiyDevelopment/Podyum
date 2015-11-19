@@ -26,11 +26,23 @@ angular.module('abroadathletesApp')
                         controller: 'getAssignRequests'
                     }
                 },
-                addToTeam:{
+                addToTeam: {
                     method: 'POST',
                     params: {
                         controller: 'addToTeam'
                     }
+                },
+                acceptAssignRequest: {
+                    method: 'POST',
+                    params: {
+                        controller: 'acceptAssignRequest'
+                    }
+                },
+                rejectAssignRequest: {
+                    method: 'POST',
+                    params: {
+                        controller: 'acceptAssignRequest'
+                     }
                 }
-            });
+                });
     });

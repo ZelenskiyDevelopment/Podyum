@@ -105,7 +105,9 @@ angular.module('abroadathletesApp')
       $scope.invitationsNumber -= 1;
     };
 
-    $scope.acceptAssignRequests = function(ID){
+
+
+    $scope.acceptAssign = function(ID){
       if(ID.name) {
         User.acceptRecruitRequest({data:ID});
       }
@@ -116,7 +118,7 @@ angular.module('abroadathletesApp')
       $scope.invitationsNumber -= 1;
     };
 
-    $scope.rejectAssignRequests = function(ID){
+    $scope.rejectAssign = function(ID){
       if(ID.name) {
         User.rejectRecruitRequest({data:ID});
       }

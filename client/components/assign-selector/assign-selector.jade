@@ -1,5 +1,4 @@
 .assign-selector
-  .row
     table(ng-show='model.length>0').table
       thead
         tr
@@ -23,5 +22,4 @@
               button.our-button Add achievements
           td
             button(ng-click='remove($index)') X
-  .row
     one-user-selector(label='label' items='items' selected-item='selectedUser' reset='resetOneUserSelector')

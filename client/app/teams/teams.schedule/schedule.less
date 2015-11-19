@@ -1,0 +1,155 @@
+.schedule {
+  padding-bottom: 200px;
+  .section-form {
+    width: 100%;
+    background: #e8e8e8;
+    height: 172px;
+    float:left;
+    .header-title {
+      text-align: center;
+      text-transform: uppercase;
+      padding-top: 30px;
+    }
+    .form-team {
+      margin-top: 40px;
+    }
+    .select-team {
+      background: white;
+      width: 385px;
+      padding-left: 23px;
+      height: 44px;
+      border-radius: 3px;
+      border: none;
+      outline: none;
+    }
+    .select-year {
+      background: white;
+      border: none;
+      width: 158px;
+      padding-left: 23px;
+      height: 44px;
+      border-radius: 3px;
+      outline: none;
+    }
+  }
+
+  .add-game {
+    float: left;
+    margin-top: 30px;
+    width:100%;
+    button {
+      span {
+        background: url('../../../assets/images/icon-sport.png');
+        height: 19px;
+        width: 19px;
+        display: block;
+        float: left;
+        position: relative;
+        left: 20px
+      }
+      text-transform: uppercase;
+      width: 181px;
+      border-radius: 3px;
+      color: rgb( 133, 100, 28 );
+      height: 44px;
+    }
+  }
+  .games {
+    .game {
+      width: 100%;
+      float: left;
+      .info-game {
+        width: 100%;
+        border-style: solid;
+        margin-top: 25px;
+        border-width: 1px;
+        border-color: rgb( 227, 231, 234 );
+        background-color: rgb( 255, 255, 255 );
+        box-shadow: 0.5px 0.866px 10px 0px rgb( 0, 0, 0 );
+        .section-vs {
+          background:#f9fafb;
+          cursor: pointer;
+          height: 100px;
+        }
+        .delete-team {
+          float:right;
+          margin-top: 35px;
+          background: url('../../../assets/images/trash-icon.png') no-repeat;
+          height: 15px;
+          margin-right: 10px;
+          width: 15px;
+        }
+        .time-game {
+          margin-top: 35px;
+          margin-left: 10px;
+        }
+        .section-info-team {
+          transition:opacity 1s linear;
+          width: 100%;
+          height: 140px;
+          display: none;
+          .logo-team {
+            margin-left: 15px;
+            margin-top: 25px;
+          }
+          h3 {
+            font-size: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+          }
+          .full-time-game,.place-game, .stadium-game, .live-stream-game {
+            margin-top: 30px;
+          }
+        }
+        .name-team{
+          margin-top: 30px;
+          font-size: 22px;
+          span {
+            font-family: 'aileronlight';
+            color: rgb( 107, 107, 107 );
+            font-size: 22px;
+          }
+        }
+        .logo-team {
+          margin-top: 14px;
+        }
+        .vs-text {
+          span {
+            text-transform: uppercase;
+            color: #f6c553;
+            font-size: 30px;
+            padding-top: 21px;
+            display: block;
+            padding-left: 10px
+          }
+        }
+        .time-game {
+          .time {
+            font-family: 'aileronregular';
+            color: #a0a1a1;
+            font-size: 14.545px;
+          }
+          .ui-icon-clock {
+            background: url('../../../assets/images/icon-clock.png');
+            height: 13px;
+            display: block;
+            width: 14px;
+            background-repeat: no-repeat;
+            float: left;
+            margin-top: 4px;
+            margin-right: 15px;
+          }
+        }
+
+      }
+      .day-date-game {
+        font-family: 'aileronregular';
+        color: #a0a1a1;
+        font-size: 14.545px;
+      }
+    }
+  }
+}
+

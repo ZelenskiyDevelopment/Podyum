@@ -7,8 +7,9 @@ angular.module('abroadathletesApp')
     $scope.chosenSection = 'section';
 
     $scope.images = [
-      "assets/images/mainpageslides/mainfootball2.jpg",
-      "assets/images/mainpageslides/mainfootball1.jpg"
+      //"assets/images/mainpageslides/mainfootball2.jpg",
+      //"assets/images/mainpageslides/mainfootball1.jpg",
+      "assets/images/mainpageslides/main-banner-img.jpg"
     ];
 
     $scope.$watch(function(){
@@ -83,9 +84,4 @@ angular.module('abroadathletesApp')
         $anchorScroll();
       }
     }
-
-
-
   });
-
-
