@@ -1,22 +1,22 @@
-.log-nav
-  .col-md-2.col-sm-2.col-xs-2
+.log-nav(directive="log-navbar")
+  .col-md-4.col-sm-2.col-xs-2
     a(ui-sref='main')
       img.logo(src='assets/images/podyum.png')
-  .col-lg-5.col-md-4.col-sm-2.col-xs-2
-  form.form(name='loginForm', ng-submit='login(loginForm)', novalidate='')
-    .col-md-2.col-sm-3.col-xs-3
-      input.form-control-log-in(placeholder='Email', type='email', name='email', ng-model='loginUser.email', required='')
-      md-checkbox(md-no-ink='', aria-label='Checkbox No Ink', ng-model='loginUser.remember', ng-change='remember(loginUser.remember)')
-        | Remember me
-    .col-md-2.col-sm-3.col-xs-3
-      input.form-control-log-in(name='password', placeholder='Password', type='password', ng-model='loginUser.password', required='')
-    .col-md-1.col-sm-1.col-xs-2
-      md-button.main-button(type='submit') Log in
+  .col-lg-4.col-md-4.col-sm-2.col-xs-2
+    .btn-group-vertical.nav-menu(role='group', aria-label='...', ng-init="showData()")
 
-.log-nav-2
-  .col-md-1.col-sm-1.col-xs-1
-  .btn-group-vertical(role='group', aria-label='...')
-    a.link-lav-2(ui-sref='football') Latest Highlights
-    a.link-lav-2(ui-sref='main' ng-click="changeSection()") Features
-    a.link-lav-2(ui-sref='main' ng-click="changePricing()") Pricing
+      ul
+        li(ng-repeat="datalist in datalists" ng-click="select(datalist)")
+          a.link-lav-2(href="{{ datalist.href }}" ng-click="select($event)" ng-class="{active: isActive(datalist)}") {{ datalist.name }}
+      //a.link-lav-2.active(ui-sref='football' ng-click="select($event)" ng-class="{active: isActive(datalist)}") HOME
+      //a.link-lav-2(ui-sref='main' ng-click="select($event)" ng-class="{active: isActive(datalist)}") EXPLORE
+      //a.link-lav-2(ui-sref='main' ng-click="select($event)" ng-class="{active: isActive(datalist)}") ABOUT
+  .col-md-4.col-sm-5.col-xs-12
+    button.main-button(ng-click='isLogin=false') Sign Up
+    button.main-button(ng-click='isLogin=true') Log in
+
+
+//.log-nav-2
+  //.col-md-1.col-sm-1.col-xs-1
+
     // a.link-lav-2(ui-sref='basketball') Basketball

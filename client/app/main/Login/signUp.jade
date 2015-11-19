@@ -1,8 +1,8 @@
-.col-md-12.col-sm-12.col-xs-12.sing-up(style='z-index:999999999999999; background-color: rgba(255, 255,255, 1); margin-top: 15px; margin-right: 40px; border-radius: 6px')
+.col-md-12.col-sm-12.col-xs-12.sing-up(ng-show="showSignup", style='z-index:999999999999999; background-color: rgba(255, 255,255, 1); margin-top: 15px; margin-right: 40px; border-radius: 6px')
   .col-md-12.col-sm-12.col-xs-12
     .landing-big-font
       h2 SIGN UP - IT'S FREE!
-    form.form(name='registerForm', ng-submit='register(registerForm)', novalidate='')
+    form.form(name='registerForm', ng-submit='register(registerForm)', novalidate='', ng-show='!isLogin')
       //
         .form-group(ng-class="{ 'has-success': registerForm.email.$valid && registerSubmitted,\
         'has-error': registerForm.email.$invalid && registerSubmitted }")
