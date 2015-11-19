@@ -55,9 +55,7 @@ angular.module('abroadathletesApp')
 
             Teams.getTeam({id: scope.owner._id}).$promise.then(function(result){
 
-                var data = {id_user: scope.user._id, id_team: result[0]._id, dtFrom: new Date()};
-
-
+                var data = {id_user: scope.user._id, id_team: result[0]._id, dateFrom: new Date(), isPresent: true};
                 Teams.addToTeam(data).$promise.then(function(result) {
                     console.log(result);
                 });

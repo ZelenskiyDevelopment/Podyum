@@ -17,6 +17,14 @@ var Teams = new Schema({
     telephoneNumber: String,
     email: String,
     website: String,
+    logoTeam: {
+        type: String,
+        default: 'team.jpg'
+    },
+    logoStadium: {
+        type: String,
+        default: 'team.jpg'
+    },
     president:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     myLeagues: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     athleticDirector:  {type: mongoose.Schema.Types.ObjectId, ref: 'User'},

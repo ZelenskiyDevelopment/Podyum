@@ -15,6 +15,10 @@ angular.module('abroadathletesApp')
         })
     });
 
+    $scope.isActive = function(route) {
+      return $location.path().indexOf(route)>-1;
+    };
+
     User.getMyTeams().$promise.then(function(teams){
       $scope.teams = teams;
       console.log(teams);

@@ -1,0 +1,28 @@
+.col-md-12.col-sm-12.col-xs-12.login(style='z-index:999999999999999; background-color: rgba(255, 255,255, 1); margin-top: 15px; margin-right: 40px; border-radius: 6px')
+  .col-md-12.col-sm-12.col-xs-12
+    .landing-big-font
+      h2 Login
+    form.form(name='loginForm', ng-submit='login(loginForm)', novalidate='', ng-hide='isLogin')
+    .col-md-2.col-sm-3.col-xs-3
+      input.form-control-log-in(placeholder='Email', type='email', name='email', ng-model='loginUser.email', required='')
+      md-checkbox(md-no-ink='', aria-label='Checkbox No Ink', ng-model='loginUser.remember', ng-change='remember(loginUser.remember)')
+        | Remember me
+    .col-md-2.col-sm-3.col-xs-3
+      input.form-control-log-in(name='password', placeholder='Password', type='password', ng-model='loginUser.password', required='')
+    .col-md-1.col-sm-1.col-xs-2
+      md-button.main-button(type='submit') Log in
+
+
+
+      .row
+        .col-md-12.col-sm-12.col-xs-12
+          ul.submit
+            md-button.main-button(type='submit')
+              | Sign up
+          ul.social-links
+            li.facebook
+              a(target='_blank', href='https://www.facebook.com/')
+                i.fa.fa-facebook
+            li.twitter
+              a(target='_blank', href='https://twitter.com/')
+                i.fa.fa-twitter

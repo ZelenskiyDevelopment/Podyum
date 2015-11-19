@@ -7,14 +7,14 @@
 .log-nav {
   position: fixed;
   border-radius: 0px;
-  padding: 10px 3px;
-  height: 75px;
+  padding: 22px 3px;
+  height: 100px;
   width: 100%;
   margin: 0px;
   text-align: left;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   z-index:49;
-  background-color: rgba(33, 33, 33, 1);
+  background-color: transparent;
 }
 
 
@@ -51,7 +51,7 @@ md-checkbox {
   line-height: 15px;
   min-width: 10px;
   min-height: 10px;
-  color: #fff;
+  color: #696969;
   font-size: 10px;
 }
 
@@ -63,49 +63,60 @@ md-toast.md-top {
 
 
 /*  email and password box ---------------- */
-.form-control-log-in {
-  box-sizing: border-box;
-  font-size: 11px;
-  color: #fff;
-  background-color: transparent;
-  width: 100%;
-  height: 25px;
-  padding: 0px 0px;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  border-bottom: 1px solid #777;
-}
+/*.form-control-log-in {*/
+  /*box-sizing: border-box;*/
+  /*font-size: 11px;*/
+  /*color: #fff;*/
+  /*background-color: transparent;*/
+  /*width: 100%;*/
+  /*height: 25px;*/
+  /*padding: 0px 0px;*/
+  /*border-top: 0px;*/
+  /*border-left: 0px;*/
+  /*border-right: 0px;*/
+  /*border-bottom: 1px solid #777;*/
+/*}*/
 
-.form-control-log-in:focus, .form-control-log-in:hover, .form-control-log-in:active {
-  font-size: 11px;
-  color: #fff;
-  background-color: transparent;
-  width: 100%;
-  height: 25px;
-  padding: 0px 0px;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  border-bottom: 1px solid #f8c637;
-}
+/*.form-control-log-in:focus, .form-control-log-in:hover, .form-control-log-in:active {*/
+  /*font-size: 11px;*/
+  /*color: #fff;*/
+  /*background-color: transparent;*/
+  /*width: 100%;*/
+  /*height: 25px;*/
+  /*padding: 0px 0px;*/
+  /*border-top: 0px;*/
+  /*border-left: 0px;*/
+  /*border-right: 0px;*/
+  /*border-bottom: 1px solid #f8c637;*/
+/*}*/
 
 /*  main-button  ----------------------- */
 .main-button {
   box-sizing: border-box;
   font-family: 'Oswald', sans-serif;
-  margin: 10px 0px;
-  background: rgba(248, 198, 55, 1) none repeat scroll 0 0;
+  margin: 10px 11px;
+  background: transparent;
   font-size: 16px;
-  padding: 0px 0px;
-  width: auto;
+  padding: 12px 31px;
+  width: 125px;
   color: #fff;
   transition: box-shadow 1.0s cubic-bezier(0.25, 0.8, 0.25, 1.0) 0s, background-color 1.0s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  border: 1px solid;
+  border-radius: 40px;
 }
 
 .main-button:hover, .main-button:focus, .main-button:active, .main-button:hover:not([disabled]){
   color: #fff;
-  background-color: #f8ce55;
+  background-color: #5e5e5e;
+}
+
+sign-up .main-button{
+  background-color: #FFB517;
+}
+
+.submit{
+  text-align: center;
+  padding-left: 0px;
 }
 
 /*  log alert danger  --------------------- */
@@ -117,8 +128,6 @@ md-toast.md-top {
   background-color: #f5f5ff;
 }
 
-
-/* NAVIGATION BAR 2 ---------------------------------------------------------------------- */
 .log-nav-2 {
   font-family: 'Oswald', sans-serif;
   position: fixed;
@@ -140,17 +149,28 @@ md-toast.md-top {
   outline:0;
   text-decoration: none;
   padding: 10px 12px;
-  font-size: 22px;
+  font-size: 18px;
   color: #eee;
   text-align: center;
-  text-shadow: 2px 2px 2px #000;
+  margin-right: 25px;
+}
+
+.nav-menu{
+  margin-top: 17px;
+}
+
+.nav-menu li{
+  display: inline-block;
+}
+
+.nav-menu .active{
+  border-bottom: 3px solid #F8C637;
 }
 
 .link-lav-2:active, .link-lav-2:focus, .link-lav-2:hover{
   outline:0;
   padding: 10px 12px;
   text-decoration: none;
-  font-size: 22px;
   color: #fff;
   text-align: center;
   text-shadow: 2px 2px 2px #000;
@@ -183,8 +203,7 @@ md-toast.md-top {
 .landing-big-font {
   font-family: 'Oswald', sans-serif;
   text-align: center;
-  text-shadow: 1px 1px 1px #000;
-  color: #fff;
+  color: #858182
 }
 
 .landing-small-font-link {
@@ -206,38 +225,51 @@ md-toast.md-top {
   position: relative;
 }
 
-
-
-
 /*  email and password box ---------------- */
-.form-control-sign-up {
+.form-control-sign-up, .form-control-log-in{
   box-sizing: border-box;
   font-size: 14px;
-  background-color: transparent;
+  background-color: #EAEFF1;
   width: 100%;
   height: 25px;
   padding: 0px 0px;
   border-top: 0px;
   border-left: 0px;
   border-right: 0px;
-  border-bottom: 1px solid #777;
-  color: #fff;
+  /* border-bottom: 1px solid #777; */
+  color: #B7BBBD;
+  border-radius: 5px;
+  height: 45px;
+  padding: 12px;
 }
 
 .form-control-sign-up:focus, .form-control-sign-up:hover, .form-control-sign-up:active {
-  font-size: 14px;
-  background-color: transparent;
-  width: 100%;
-  height: 25px;
-  padding: 0px 0px;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  color: #fff;
-  border-bottom-color: #f8c637;
+  /*font-size: 14px;*/
+  /*background-color: transparent;*/
+  /*width: 100%;*/
+  /*height: 25px;*/
+  /*padding: 0px 0px;*/
+  /*border-top: 0px;*/
+  /*border-left: 0px;*/
+  /*border-right: 0px;*/
+  /*color: #fff;*/
+  /*border-bottom-color: #f8c637;*/
 
 }
 
+.form-control-sign-up[type=radio]{
+  width: 19px;
+  height: 16px;
+  margin-left: 5px;
+}
+
+.form-submit{
+  background-color: #f1a227!important;
+}
+
+.form-submit:hover, .form-submit:active, .form-submit:focus{
+  background-color: #f8c637;
+}
 
 
 /* SOCIAL LINKS ---------------------------------------------------------------------------*/
@@ -249,7 +281,7 @@ md-toast.md-top {
 }
 
 .social-links li {
-  margin: 0px 10px 0px 20px;
+  margin: 0px 3px 29px 3px !important;
   display: inline-block;
   font-size: 30px;
 }
@@ -264,22 +296,30 @@ md-toast.md-top {
   transition: all 0.2s ease-in-out;
 }
 
-.social-links li.twitter a:hover {
+.social-links .fa{
+  border: 1px solid #55acee;
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.social-links li.twitter a {
   color: #55acee;
 }
 
-.social-links li.googleplus a:hover {
+.social-links li.googleplus a {
   color: #f8c637;
 
 }
 
-.social-links li.facebook a:hover {
+.social-links li.facebook a {
   color: #3b5998;
 }
 
 
 
-/* CAROUSEL  -----------------------------------------------------------------------------
+/* CAROUSEL  -----------------------------------------------------------------------------*/
 
 .carousel-control.left {
   background-image: none;
@@ -326,7 +366,6 @@ md-toast.md-top {
   margin: -52px 2px;
 }
 
-*/
 
 /* BACKGROUND IMAGE  --------------------------------------------------------------------- */
 .backstretch {
@@ -598,7 +637,12 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
 }
 
+/* carousel =================================================== */
 
+.carousel-inner .active.left { left: -33%; }
+.carousel-inner .next        { left:  33%; }
+.carousel-inner .prev        { left: -33%; }
+.carousel-control.left,.carousel-control.right {background-image:none;}
 
 /* MEDIA ====================================================== */
 

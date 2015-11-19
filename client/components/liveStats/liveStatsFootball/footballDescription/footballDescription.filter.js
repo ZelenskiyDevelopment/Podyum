@@ -3,12 +3,13 @@
 angular.module('abroadathletesApp')
   .filter('footballDescription', function () {
     return function (input) {
-      var result = "";
+
+      var result = input.createdAt + " ";
       if(input.type ==="run") {
         if(input.data.gain > 0 || input.data.gain < 0)
-          return "Player " + input.data.player + " ran for " + input.data.gain + " yards gain."
+          return input.createdAt + " Player " + input.data.player + " ran for " + input.data.gain + " yards gain."
         else
-          return "Player " + input.data.player + " ran for no gain."
+          return input.createdAt + " Player " + input.data.player + " ran for no gain."
       }
       else if(input.type === "tackle") {
         if(input.data.tackler > 0) {
@@ -70,19 +71,19 @@ angular.module('abroadathletesApp')
         return result;
       }
       else if(input.type === "touchdown") {
-        result = "Player " + input.data.player + " scores a touchdown!";
+        result = input.createdAt + " Player " + input.data.player + " scores a touchdown!";
         return result;
       }
       else if(input.type === "safety") {
-        result = "Safety by player " + input.data.player;
+        result = input.createdAt + " Safety by player " + input.data.player;
         return result;
       }
       else if(input.type === "kneel") {
-        result = "Player " + input.data.player + " kneeled.";
+        result = input.createdAt + " Player " + input.data.player + " kneeled.";
         return result;
       }
       else if(input.type === "complete") {
-        result = "Player " + input.data.passer + " successfully passed the ball to player " + input.data.receiver + " for ";
+        result = input.createdAt + " Player " + input.data.passer + " successfully passed the ball to player " + input.data.receiver + " for ";
         if(input.data.gain > 0 || input.data.gain < 0) {
           result += input.data.gain + " yards gain."
         }
@@ -92,14 +93,14 @@ angular.module('abroadathletesApp')
         return result;
       }
       else if(input.type === "incomplete") {
-        result = "Pass from player " + input.data.passer + " broken"
+        result = input.createdAt + " Pass from player " + input.data.passer + " broken"
         if(input.data.breakup > 0) {
           result += " by player " + input.data.breakup;
         }
         return result;
       }
       else if(input.type === "intercept") {
-        result = "Pass from player " + input.data.passer + " intercepted"
+        result = input.createdAt + " Pass from player " + input.data.passer + " intercepted"
         if(input.data.intercept > 0) {
           result += " by player " + input.data.intercept + " for ";
         }
@@ -119,7 +120,7 @@ angular.module('abroadathletesApp')
         return result;
       }
       else if(input.type === "kickoff") {
-        result = "Player " + input.data.player + " made a kickoff for " + input.data.gain + " yards";
+        result = input.createdAt + " Player " + input.data.player + " made a kickoff for " + input.data.gain + " yards";
         if(input.data.result === "touchback") {
           result += " and a touchback!";
         }
@@ -169,7 +170,7 @@ angular.module('abroadathletesApp')
         return result;
       }
       else if(input.type === "return") {
-        result = "The ball was returned by player " + input.data.player;
+        result = input.createdAt + " The ball was returned by player " + input.data.player;
         if(input.data.fairCatch) {
           result += " with a fair catch.";
         }
@@ -182,7 +183,7 @@ angular.module('abroadathletesApp')
         return result;
       }
       else if(input.type === "punt") {
-        result = "Player " + input.data.player + " made a punt for " + input.data.gain + " yards gain";
+        result = input.createdAt + " Player " + input.data.player + " made a punt for " + input.data.gain + " yards gain";
         if(input.data.result === "touchback") {
           result += " and a touchback!";
         }
@@ -194,7 +195,7 @@ angular.module('abroadathletesApp')
         }
       }
       else if(input.type === "fieldgoal") {
-        result = "Field goal attempt by player " + input.data.player;
+        result = input.createdAt + " Field goal attempt by player " + input.data.player;
         if(input.data.gain > 0 || input.data.gain < 0) {
           result += " for " + input.data.gain + " yards gain"
         }
@@ -213,7 +214,7 @@ angular.module('abroadathletesApp')
         return result;
       }
       else if(input.type === "pointafter") {
-        result = "Point after " + input.data.type + " made by player " + input.data.player;
+        result = input.createdAt + " Point after " + input.data.type + " made by player " + input.data.player;
         if(input.data.result === " good") {
           result += " which was good."
         }

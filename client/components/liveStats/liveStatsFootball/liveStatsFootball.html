@@ -18,21 +18,21 @@
 
 
           <div>
-            <span class="timeout-icon" ng-show="status.timeouts[0] > 0"></span>
-            <span class="timeout-icon" ng-show="status.timeouts[0] > 1"></span>
-            <span class="timeout-icon" ng-show="status.timeouts[0] > 2"></span>
-            <span class="timeout-icon-used" ng-show="status.timeouts[0] < 3"></span>
-            <span class="timeout-icon-used" ng-show="status.timeouts[0] < 2"></span>
-            <span class="timeout-icon-used" ng-show="status.timeouts[0] < 1"></span>
+            <span class="timeout-icon" ng-show="status.timeouts[0] > 0" ng-click="setTimeouts(0,0)"></span>
+            <span class="timeout-icon" ng-show="status.timeouts[0] > 1" ng-click="setTimeouts(0,1)"></span>
+            <span class="timeout-icon" ng-show="status.timeouts[0] > 2" ng-click="setTimeouts(0,2)"></span>
+            <span class="timeout-icon-used" ng-show="status.timeouts[0] < 3" ng-click="setTimeouts(0)"></span>
+            <span class="timeout-icon-used" ng-show="status.timeouts[0] < 2" ng-click="setTimeouts(0)"></span>
+            <span class="timeout-icon-used" ng-show="status.timeouts[0] < 1" ng-click="setTimeouts(0)"></span>
           </div>
 
         </div>
         <div class="col-md-4">
           <div class="score">
 
-            <input ng-model="counterText" ng-change="manuallyChangeTimer()"/>
+            <input ng-show="changingTimer == 1" class="input-md ng-pristine ng-binding" ng-model="counterText" ng-blur="manuallyChangeTimer()"/>
 
-            <div ng-model="counter" class="input-lg ng-pristine ng-untouched ng-valid" aria-invalid="false">{{counter | timerDisplay}}</div>
+            <div ng-model="counter" ng-show="changingTimer == 0" ng-click="changingTimer = 1" class="h1 ng-binding" aria-invalid="false" role="button">{{counter | timerDisplay}}</div>
           </div>
         </div>
         <div class="col-md-4">
@@ -44,12 +44,12 @@
             <button class="deffence" ng-click="swapPossession()" ng-show="status.offense===0"></button>
           </div>
           <div>
-            <span class="timeout-icon" ng-show="status.timeouts[1] > 0"></span>
-            <span class="timeout-icon" ng-show="status.timeouts[1] > 1"></span>
-            <span class="timeout-icon" ng-show="status.timeouts[1] > 2"></span>
-            <span class="timeout-icon-used" ng-show="status.timeouts[1] < 3"></span>
-            <span class="timeout-icon-used" ng-show="status.timeouts[1] < 2"></span>
-            <span class="timeout-icon-used" ng-show="status.timeouts[1] < 1"></span>
+            <span class="timeout-icon" ng-show="status.timeouts[1] > 0" ng-click="setTimeouts(1,0)"></span>
+            <span class="timeout-icon" ng-show="status.timeouts[1] > 1" ng-click="setTimeouts(1,1)"></span>
+            <span class="timeout-icon" ng-show="status.timeouts[1] > 2" ng-click="setTimeouts(1,2)"></span>
+            <span class="timeout-icon-used" ng-show="status.timeouts[1] < 3" ng-click="setTimeouts(1)"></span>
+            <span class="timeout-icon-used" ng-show="status.timeouts[1] < 2" ng-click="setTimeouts(1)"></span>
+            <span class="timeout-icon-used" ng-show="status.timeouts[1] < 1" ng-click="setTimeouts(1)"></span>
           </div>
         </div>
       </div>
@@ -124,32 +124,31 @@
   <div class="row">
     <div style="text-align:center" class="col-md-offset-3 col-md-6">
       <run-play ng-show="playtype === 0" events="events" game="game" submit="submit" swap="swapPossession" team="team"
-                status="status" class="ng-binding ng-isolate-scope ng-hide" aria-hidden="true" runner="runner">[]
-        <!-- ngRepeat: event in events track by $index --></run-play>
+                status="status" class="ng-binding ng-isolate-scope ng-hide" aria-hidden="true" runner="runner" top-players-play="topPlayersPlay">
+      </run-play>
       <pass-play ng-show="playtype === 1" events="events" game="game" submit="submit" swap="swapPossession" team="team"
-                 status="status" class="ng-binding ng-isolate-scope ng-hide" aria-hidden="true">[]
-        <!-- ngRepeat: event in events track by $index --></pass-play>
+                 status="status" class="ng-binding ng-isolate-scope ng-hide" aria-hidden="true">
+
+      </pass-play>
       <special-teams ng-show="playtype === 2" events="events" game="game" submit="submit" swap="swapPossession"
-                     team="team" status="status" class="ng-binding ng-isolate-scope ng-hide" aria-hidden="true">[]
-        <!-- ngRepeat: specialAction in specialActions -->
+                     team="team" status="status" class="ng-binding ng-isolate-scope ng-hide" aria-hidden="true">
         <div ng-repeat="specialAction in specialActions" ng-show="events.length == 0" role="group"
              class="btn-group ng-scope" aria-hidden="false">
-          <button type="button" ng-click="chooseSpecialAction($index)" class="btn ng-binding">Kickoff</button>
+          <button type="button" ng-click="chooseSpecialAction(0)" class="btn ng-binding">Kickoff</button>
+        </div>
+        <div ng-repeat="specialAction in specialActions" ng-show="events.length == 0" role="group"
+             class="btn-group ng-scope" aria-hidden="false">
+          <button type="button" ng-click="chooseSpecialAction(1)" class="btn ng-binding">Punt</button>
         </div>
         <!-- end ngRepeat: specialAction in specialActions -->
         <div ng-repeat="specialAction in specialActions" ng-show="events.length == 0" role="group"
              class="btn-group ng-scope" aria-hidden="false">
-          <button type="button" ng-click="chooseSpecialAction($index)" class="btn ng-binding">Punt</button>
+          <button type="button" ng-click="chooseSpecialAction(2)" class="btn ng-binding">Field Goal</button>
         </div>
         <!-- end ngRepeat: specialAction in specialActions -->
         <div ng-repeat="specialAction in specialActions" ng-show="events.length == 0" role="group"
              class="btn-group ng-scope" aria-hidden="false">
-          <button type="button" ng-click="chooseSpecialAction($index)" class="btn ng-binding">Field Goal</button>
-        </div>
-        <!-- end ngRepeat: specialAction in specialActions -->
-        <div ng-repeat="specialAction in specialActions" ng-show="events.length == 0" role="group"
-             class="btn-group ng-scope" aria-hidden="false">
-          <button type="button" ng-click="chooseSpecialAction($index)" class="btn ng-binding">Point After</button>
+          <button type="button" ng-click="chooseSpecialAction(3)" class="btn ng-binding">Point After</button>
         </div>
         <!-- end ngRepeat: specialAction in specialActions --><!-- ngRepeat: event in events track by $index -->
       </special-teams>
@@ -157,5 +156,13 @@
         <div>this is the penalty directive</div>
       </penalty>
     </div>
-    <!-- ngRepeat: playDesc in playbyplay --></div>
+  </div>
+
+  <div class="row">
+    <div ng-repeat="playDesc in playbyplay track by $index">
+      <div ng-repeat="event in playDesc">
+        {{event | footballDescription}}
+      </div>
+    </div>
+  </div>
 </div>

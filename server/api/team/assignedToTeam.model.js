@@ -15,7 +15,14 @@ var assignedToTeam  = ({
     accepted:{
         type: Boolean,
         default: false
-    }
+    },
+    rejected: {
+        type: Boolean,
+        default: false
+    },
+    dateFrom: Date,
+    dateTo: Date,
+    isPresent:Boolean
 });
 
 module.exports = mongoose.model('assignedToTeam', assignedToTeam);
