@@ -14,10 +14,17 @@
         a.btn.btn-default.our-button.pull-right(ui-sref='#') Join existing team
 
     .col-lg-6.col-lg-offset-4.padding-bottom(ng-show="team.length > 0")
-        a.btn.btn-default.our-button(ui-sref='#') Update Team
-        a.btn.btn-default.our-button(ui-sref='teams.manageRoster') Manage Roster
-        a.btn.btn-default.our-button(ui-sref='teams.taskManager') Task Manager
-        a.btn.btn-default.our-button(ui-sref='#') Fans
-        a.btn.btn-default.our-button(ui-sref='teams.schedule') Schedule
 
+        .navbar-default
+            ul.nav.navbar-nav
+              li(ng-class="{ active: isActive('/teams/update-team') }")
+               a(ui-sref='teams.updateTeam'  data-toggle="modal" role="button") Update Team
+              li(ng-class="{ active: isActive('/teams/manage-roster') }")
+               a(ui-sref='teams.manageRoster'  data-toggle="modal" role="button") Manage Roster
+              li(ng-class="{ active: isActive('/teams/task-manager') }")
+               a(ui-sref='teams.taskManager'  data-toggle="modal" role="button") Task Manager
+              li(ng-class="{ active: isActive('/teams/fans') }")
+               a(ui-sref='teams.fans'  data-toggle="modal" role="button") Fans
+              li(ng-class="{ active: isActive('/teams/schedule') }")
+               a(ui-sref='teams.schedule'  data-toggle="modal" role="button") Schedule
   div(ui-view='')

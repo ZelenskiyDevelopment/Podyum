@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-    .controller('AddTeamCtrl',function($scope, Team, User, Teams, $location){
+    .controller('AddTeamCtrl',function($scope, Team, User, Teams, $location, Upload){
 
 
         $scope.countries = [
@@ -50,6 +50,69 @@ angular.module('abroadathletesApp')
             "preferredFormat": "hex"
         };
 
+        $scope.logoTeam = null;
+        $scope.croppedLogoTeam = null;
+
+
+        $scope.logoStadium = null;
+        $scope.croppedLogoStadium = null;
+
+        /*
+         * Select Logo Team
+         */
+        var selectLogoTeam = function(evt) {
+            var file = evt.currentTarget.files[0];
+            var reader = new FileReader();
+            reader.onload = function (evt) {
+                $scope.$apply(function($scope){
+                    $scope.logoTeam = evt.target.result;
+                });
+            };
+            reader.readAsDataURL(file);
+        };
+
+        /*
+         * Select Logo Stadium
+         */
+
+        var selectStadiumLogo = function(evt) {
+            var file = evt.currentTarget.files[0];
+            var reader = new FileReader();
+            reader.onload = function (evt) {
+                $scope.$apply(function($scope){
+                    $scope.logoStadium = evt.target.result;
+                });
+            };
+            reader.readAsDataURL(file);
+        };
+
+        function base64ToBlob(base64Data, contentType) {
+            contentType = contentType || '';
+            var sliceSize = 1024;
+            var byteCharacters = atob(base64Data);
+            var bytesLength = byteCharacters.length;
+            var slicesCount = Math.ceil(bytesLength / sliceSize);
+            var byteArrays = new Array(slicesCount);
+
+            for (var sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
+                var begin = sliceIndex * sliceSize;
+                var end = Math.min(begin + sliceSize, bytesLength);
+
+                var bytes = new Array(end - begin);
+                for (var offset = begin, i = 0 ; offset < end; ++i, ++offset) {
+                    bytes[i] = byteCharacters[offset].charCodeAt(0);
+                }
+                byteArrays[sliceIndex] = new Uint8Array(bytes);
+            }
+            return new Blob(byteArrays, { type: contentType });
+        }
+
+
+
+        angular.element(document.querySelector('#fileInputLogo')).on('change',selectLogoTeam);
+        angular.element(document.querySelector('#fileInputStadium')).on('change',selectStadiumLogo);
+
+
         User.get().$promise.then(function (me) {
             User.getAllHumanUsers({id: me._id}).$promise.then(function (result) {
                 $scope.allHumanUsers = result;
@@ -61,22 +124,51 @@ angular.module('abroadathletesApp')
                 $scope.allLeagues = result;
             });
 
-            $scope.team.id_user = me._id;
+            $scope.create.id_user = me._id;
 
         });
 
         $scope.saveTeam = function() {
 
-            var newTeam  = angular.copy($scope.team);
+            var newTeam  = angular.copy($scope.create);
 
-            newTeam.president = newTeam.president._id;
-            newTeam.headCoach = newTeam.headCoach._id;
-            newTeam.athleticDirector = newTeam.athleticDirector._id;
-            newTeam.myLeagues = newTeam.myLeagues._id;
+            var logoTeam = base64ToBlob($scope.croppedLogoTeam.replace('data:image/png;base64,',''), 'image/jpeg');
 
-            Teams.addTeam(newTeam).$promise.then(function(result){
-                $location.path('/teams');
+            Upload.upload({
+                url: '/api/uploads/photos',
+                file: logoTeam
+            }).progress(function (evt) {
+
+            }).success(function (dataTeam, status, headers, config) {
+
+
+                var logoStadium = base64ToBlob($scope.croppedLogoStadium.replace('data:image/png;base64,',''), 'image/jpeg');
+
+
+                Upload.upload({
+                    url: '/api/uploads/photos',
+                    file: logoStadium
+                }).progress(function (evt) {
+
+                }).success(function (dataStadium, status, headers, config) {
+
+                    newTeam.president = newTeam.president._id;
+                    newTeam.headCoach = newTeam.headCoach._id;
+                    newTeam.athleticDirector = newTeam.athleticDirector._id;
+                    newTeam.myLeagues = newTeam.myLeagues[0]._id;
+                    newTeam.logoTeam = dataTeam.photo;
+                    newTeam.logoStadium = dataStadium.photo;
+
+
+                    Teams.addTeam(newTeam).$promise.then(function(result){
+                        $location.path('/');
+                    });
+
+
+                });
+
             });
 
         }
+
     });

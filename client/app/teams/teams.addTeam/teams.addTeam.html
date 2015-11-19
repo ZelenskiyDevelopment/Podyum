@@ -1,4 +1,4 @@
-<div class="row create-team">
+<div class="create-team">
 
     <div class="col-lg-12">
         <div class="md-display-2 text-center"> Add team</div>
@@ -11,17 +11,18 @@
             <div class="col-lg-12">
                 <md-input-container>
                     <label> Team name </label>
-                    <input type="text" ng-model="team.teamName" required>
+                    <input type="text" ng-model="create.teamName" required>
                 </md-input-container>
             </div>
             <div class="col-lg-12">
-                <assign-selector kind='"team"' model='team.myLeagues' items='allLeagues' label='"Select leagues"'></assign-selector>
+                <assign-selector kind='"team"' model='create.myLeagues' items='allLeagues'
+                                 label='"Select leagues"'></assign-selector>
 
             </div>
             <div class="col-lg-12">
                 <md-input-container>
                     <label>Country</label>
-                    <md-select ng-model="team.country">
+                    <md-select ng-model="create.country">
                         <md-option ng-repeat="country in countries" value="{{country.abbrev}}">
                             {{country.abbrev}}
                         </md-option>
@@ -31,7 +32,7 @@
             <div class="col-lg-12">
                 <md-input-container>
                     <label> Address </label>
-                    <input type="text" ng-model="team.address" required>
+                    <input type="text" ng-model="create.address" required>
                 </md-input-container>
             </div>
             <div class="col-lg-12">
@@ -44,14 +45,14 @@
 
                 <label class="color-team"> Team colors </label>
 
-                <div class="input-group col-lg-offset-3">
+                <div class="input-group col-lg-offset-4">
 
                     <div class="col-lg-7">
-                        <input type="text" class="form-control" ng-model="team.color" required>
+                        <input type="text" class="form-control" ng-model="create.color" required>
                     </div>
 
                     <div class="col-lg-5">
-                        <spectrum ng-model="team.color" options="colorOptions"></spectrum>
+                        <spectrum ng-model="create.color" options="colorOptions"></spectrum>
                     </div>
 
                 </div>
@@ -59,15 +60,48 @@
                 <div class="col-lg-12">
                     <md-content>
                         <h4 class="text-center"> Year founded </h4>
-                        <md-datepicker ng-model="team.founded" class="col-lg-offset-3"
+                        <md-datepicker ng-model="create.founded" class="col-lg-offset-4"
                                        md-placeholder="Year founded"></md-datepicker>
                     </md-content>
                 </div>
                 <div class="col-lg-12">
                     <md-input-container>
-                        <label>   Stadium name </label>
-                        <input type="text" ng-model="team.stadium" required>
+                        <label> Stadium name </label>
+                        <input type="text" ng-model="create.stadium" required>
                     </md-input-container>
+                </div>
+            </div>
+
+
+            <div class="col-lg-12">
+                <div class="md-headline">Logo stadium</div>
+                <div class="upload"> +
+                    <input type="file" id="fileInputStadium">
+                </div>
+                <div class="image-crop">
+                    <img-crop image='logoStadium' result-image='croppedLogoStadium' area-type="square"
+                              result-image-quality="1.0"></img-crop>
+                </div>
+
+                <div class="preview-img" ng-show="logoStadium">
+                    <div class="md-title">Preview:</div>
+                    <img ng-src="{{croppedLogoStadium}}">
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                <div class="md-headline">Logo team</div>
+                <div class="upload"> +
+                    <input type="file" id="fileInputLogo">
+                </div>
+                <div class="image-crop">
+                    <img-crop image='logoTeam' result-image='croppedLogoTeam' area-type="square"
+                              result-image-quality="1.0"></img-crop>
+                </div>
+
+                <div class="preview-img" ng-show="logoTeam">
+                    <div class="md-title">Preview:</div>
+                    <img ng-src="{{croppedLogoTeam}}">
                 </div>
             </div>
         </div>
@@ -77,7 +111,7 @@
                 <label class="col-lg-5"> Telephone number </label>
 
                 <div class="col-lg-5">
-                    <input type="text" international-phone-number ng-model="team.phone" class="form-control" required>
+                    <input type="text" international-phone-number ng-model="create.phone" class="form-control" required>
                 </div>
             </div>
         </div>
@@ -85,29 +119,32 @@
         <div class="col-lg-12">
             <md-input-container>
                 <label> Email </label>
-                <input type="email" ng-model="team.email" required>
+                <input type="email" ng-model="create.email" required>
             </md-input-container>
         </div>
         <div class="col-lg-12">
             <md-input-container>
                 <label> Website </label>
-                <input type="text" ng-model="team.link" required>
+                <input type="text" ng-model="create.link" required>
             </md-input-container>
         </div>
         <div class="col-lg-12">
-            <one-user-selector label='"President/owner"' items='allHumanUsers' selected-item='team.president'></one-user-selector>
+            <one-user-selector label='"President/owner"' items='allHumanUsers'
+                               selected-item='create.president'></one-user-selector>
         </div>
         <div class="col-lg-12">
-            <one-user-selector label='"Athletic director"' items='allHumanUsers' selected-item='team.athleticDirector'></one-user-selector>
+            <one-user-selector label='"Athletic director"' items='allHumanUsers'
+                               selected-item='create.athleticDirector'></one-user-selector>
         </div>
         <div class="col-lg-12">
-            <one-user-selector label='"Head coach"' items='allHumanUsers' selected-item='team.headCoach'></one-user-selector>
+            <one-user-selector label='"Head coach"' items='allHumanUsers'
+                               selected-item='create.headCoach'></one-user-selector>
         </div>
         <div class="col-lg-12">
-            <button class="btn col-lg-5 col-lg-offset-4 save-team btn-default our-button" ng-click="saveTeam()"> Save team</button>
+            <button class="btn col-lg-5 col-lg-offset-4 save-team btn-default our-button" ng-click="saveTeam()"> Save
+                team
+            </button>
         </div>
-
-        <pre> {{ team }} </pre>
     </div>
 
 </div>
