@@ -11,12 +11,12 @@ angular.module('abroadathletesApp')
       },
       link: function (scope, element, attrs) {
         var me = Auth.getCurrentUser();
-
         if(scope.event.isShared){
           scope.targetEvent = scope.event.originalEvent;
           scope.sharedEventTitle = eventTitles.getTitle(scope.event.type);
         } else {
           scope.targetEvent = scope.event;
+          console.log(scope.event);
         }
         scope.isLiked = _.indexOf(scope.targetEvent.medals, me._id, true) !== -1;
         scope.isMine = me._id === scope.targetEvent.author._id;
