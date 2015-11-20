@@ -3,8 +3,8 @@
 angular.module('abroadathletesApp')
     .config(function($stateProvider){
        $stateProvider.state('teams.updateTeam',{
-            url:'',
-            templateUrl:'',
-            controller:''
+            url:'/update-team',
+            templateUrl:'app/teams/teams.updateTeam/teams.updateTeam.html',
+            controller:'UpdateTeamCtrl'
        });
     });

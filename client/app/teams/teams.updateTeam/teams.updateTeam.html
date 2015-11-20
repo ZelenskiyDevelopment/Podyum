@@ -1,0 +1,150 @@
+<div class="update-team">
+
+    <div class="col-lg-12">
+        <div class="md-display-2 text-center"> Update team</div>
+    </div>
+
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="big-q">Team info</div>
+
+        <div class="team_info">
+            <div class="col-lg-12">
+                <md-input-container>
+                    <label> Team name </label>
+                    <input type="text" ng-model="teamUpdate[0].teamName" required>
+                </md-input-container>
+            </div>
+            <!--<div class="col-lg-12">-->
+                <!--<assign-selector kind='"team"' model='teamUpdate[0].myLeagues' items='allLeagues'-->
+                                 <!--label='"Select leagues"'></assign-selector>-->
+
+            <!--</div>-->
+            <div class="col-lg-12">
+                <md-input-container>
+                    <label>Country</label>
+                    <md-select ng-model="teamUpdate[0].country">
+                        <md-option ng-repeat="country in countries" value="{{country.abbrev}}">
+                            {{country.abbrev}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div class="col-lg-12">
+                <md-input-container>
+                    <label> Address </label>
+                    <input type="text" ng-model="teamUpdate[0].address" required>
+                </md-input-container>
+            </div>
+            <div class="col-lg-12">
+                <md-input-container>
+                    <label> Mascot </label>
+                    <input type="text" ng-model="team.mascot" required>
+                </md-input-container>
+            </div>
+            <div class="col-lg-12">
+
+                <label class="color-team"> Team colors </label>
+
+                <div class="input-group col-lg-offset-4">
+
+                    <div class="col-lg-7">
+                        <input type="text" class="form-control" ng-model="teamUpdate[0].color" required>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <spectrum ng-model="teamUpdate[0].color" options="colorOptions"></spectrum>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-12">
+                    <md-content>
+                        <h4 class="text-center"> Year founded </h4>
+                        <md-datepicker ng-model="teamUpdate[0].founded" class="col-lg-offset-4"
+                                       md-placeholder="Year founded"></md-datepicker>
+                    </md-content>
+                </div>
+                <div class="col-lg-12">
+                    <md-input-container>
+                        <label> Stadium name </label>
+                        <input type="text" ng-model="teamUpdate[0].stadium" required>
+                    </md-input-container>
+                </div>
+            </div>
+
+
+            <!--<div class="col-lg-12">-->
+                <!--<div class="md-headline">Logo stadium</div>-->
+                <!--<div class="upload"> +-->
+                    <!--<input type="file" id="fileInputStadium">-->
+                <!--</div>-->
+                <!--<div class="image-crop">-->
+                    <!--<img-crop image='logoStadium' result-image='croppedLogoStadium' area-type="square"-->
+                              <!--result-image-quality="1.0"></img-crop>-->
+                <!--</div>-->
+
+                <!--<div class="preview-img" ng-show="logoStadium">-->
+                    <!--<div class="md-title">Preview:</div>-->
+                    <!--<img ng-src="{{croppedLogoStadium}}">-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="col-lg-12">-->
+                <!--<div class="md-headline">Logo team</div>-->
+                <!--<div class="upload"> +-->
+                    <!--<input type="file" id="fileInputLogo">-->
+                <!--</div>-->
+                <!--<div class="image-crop">-->
+                    <!--<img-crop image='logoTeam' result-image='croppedLogoTeam' area-type="square"-->
+                              <!--result-image-quality="1.0"></img-crop>-->
+                <!--</div>-->
+
+                <!--<div class="preview-img" ng-show="logoTeam">-->
+                    <!--<div class="md-title">Preview:</div>-->
+                    <!--<img ng-src="{{croppedLogoTeam}}">-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="big-q">Contact info</div>
+        <div class="col-lg-12">
+            <div class="form-group">
+                <label class="col-lg-5"> Telephone number </label>
+
+                <div class="col-lg-5">
+                    <input type="text" international-phone-number ng-model="teamUpdate[0].phone" class="form-control" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <md-input-container>
+                <label> Email </label>
+                <input type="email" ng-model="teamUpdate[0].email" required>
+            </md-input-container>
+        </div>
+        <div class="col-lg-12">
+            <md-input-container>
+                <label> Website </label>
+                <input type="text" ng-model="teamUpdate[0].website" required>
+            </md-input-container>
+        </div>
+        <!--<div class="col-lg-12">-->
+            <!--<one-user-selector label='"President/owner"' items='allHumanUsers'-->
+                               <!--selected-item='teamUpdate[0].president'></one-user-selector>-->
+        <!--</div>-->
+        <!--<div class="col-lg-12">-->
+            <!--<one-user-selector label='"Athletic director"' items='allHumanUsers'-->
+                               <!--selected-item='teamUpdate[0].athleticDirector'></one-user-selector>-->
+        <!--</div>-->
+        <!--<div class="col-lg-12">-->
+            <!--<one-user-selector label='"Head coach"' items='allHumanUsers'-->
+                               <!--selected-item='teamUpdate[0].headCoach'></one-user-selector>-->
+        <!--</div>-->
+        <div class="col-lg-12">
+            <button class="btn col-lg-5 col-lg-offset-4 save-team btn-default our-button" ng-click="updateTeam()"> Update
+                team
+            </button>
+        </div>
+    </div>
+
+</div>

@@ -21,6 +21,24 @@ exports.addTeam = function(req, res) {
 };
 
 
+exports.updateTeam = function(req, res) {
+
+    var data = req.body,
+
+        id = data._id;
+
+    delete data._id;
+    delete data.__v;
+
+    console.log(id);
+    Team.update({_id: id}, {$set: data}, {}, function(err){
+        if (err) return validationError(res, err);
+
+        res.send(200);
+    });
+
+};
+
 exports.acceptAssignRequest = function(req, res) {
     var userId = req.user._id;
 };
@@ -69,4 +87,9 @@ exports.getTeam = function(req, res) {
     }).catch(function (err) {
         return handleError(res, err);
     });
+}
+
+
+function validationError(res, err) {
+    return res.json(422, err);
 }
