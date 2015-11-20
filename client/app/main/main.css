@@ -274,6 +274,23 @@ sign-up .main-button{
   background-color: #f8c637;
 }
 
+md-datepicker {
+  position: relative;
+  background: rgb(234, 239, 241);
+  top: -14px;
+}
+
+.md-datepicker-input-container {
+  border-bottom-width: 0;
+}
+
+.md-datepicker-triangle-button.md-button.md-icon-button{
+  display: none;
+}
+
+.md-datepicker-input-container.md-datepicker-focused{
+  border-bottom-width: 0;
+}
 
 /* SOCIAL LINKS ---------------------------------------------------------------------------*/
 .social-links {
@@ -647,6 +664,40 @@ h1, h2, h3, h4, h5, h6 {
 .carousel-inner .prev        { left: -33%; }
 .carousel-control.left,.carousel-control.right {background-image:none;}
 
+.slides_control {
+  position: relative;
+  padding: 0;
+}
+
+/* carousel 1 =================================================== */
+
+#carousel1,#carousel2{
+  background-color: white;
+}
+
+/* carousel 2 =================================================== */
+
+
+
+/* about-us  =================================================== */
+
+
+#about-us{
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+#about-us img{
+  width: 100%;
+  height: auto;
+}
+
+#about-us>div{
+  margin: 0;
+  padding: 0;
+}
+
 /* MEDIA ====================================================== */
 
 
@@ -762,4 +813,5 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0px;
     font-size: 25px;
   }
+
 }

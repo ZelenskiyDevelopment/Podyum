@@ -2,12 +2,12 @@
 
 angular.module('abroadathletesApp')
   .controller('AppCtrl', function ($scope, $state) {
-    $scope.excludedStates = ['', 'main', 'football', 'basketball', 'creator'];
+    $scope.excludedStates = ['', 'main', 'about', 'football', 'basketball', 'creator'];
     $scope.$state = $state;
     $scope.datalists = [
-      {"name": "HOME", "href":"/football"},
+      {"name": "HOME", "href":"/"},
       {"name": "EXPLORE", "href":"/"},
-      {"name": "ABOUT", "href":"/"}
+      {"name": "ABOUT", "href":"/about"}
     ];
 
     $scope.select= function(item) {
