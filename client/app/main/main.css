@@ -292,6 +292,24 @@ md-datepicker {
   border-bottom-width: 0;
 }
 
+.explore-sing-up-form{
+  background: #071321!important;
+}
+
+.explore-sing-up-form h2{
+  color:#f1a227;
+}
+.explore-sing-up-form .form-control-sign-up, .explore-sing-up-form .form-control-log-in{
+  background: #47515B;
+  border: none;
+  width: 100%;
+  padding: 15px;
+  border-radius: 4px;
+}
+.explore-sing-up-form md-datepicker {
+  background: rgb(71, 81, 91);
+}
+
 /* SOCIAL LINKS ---------------------------------------------------------------------------*/
 .social-links {
   text-align: center;

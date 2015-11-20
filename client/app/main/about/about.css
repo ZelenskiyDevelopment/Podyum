@@ -12,9 +12,9 @@
 	background: #071422 url(/assets/images/American-Football-Wallpaper.png) no-repeat center;
 	color: #6B7A8A;
 	padding-bottom: 55px;
+	padding-top: 200px;
 }
 #topdiv .row:first-child{
-	border-bottom: 1px solid #625C51;
 	height: 110px;
 }
 #topdiv .row:nth-child(2){
@@ -27,6 +27,9 @@
 }
 #topdiv .row:last-child img{
 	margin-bottom: 15px;
+}
+#topdiv .row>div{
+	text-align: center;
 }
 /*2*/
 #seconddiv{
@@ -95,6 +98,7 @@
 	border-top: 5px solid #E0E0E0;
 	padding: 40px 0;
 	text-align: center;
+	background: #fff;
 }
 #lastdiv a{
 	color: #BABAC1;
