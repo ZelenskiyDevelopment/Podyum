@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .controller('CreatorTeamCtrl', function ($scope, PlayLevels, CitizenShips, User) {
-    $scope.playLevels = PlayLevels.getPlayLevels($scope.formData.sport);
+    .controller('CreatorLeagueCtrl',function($scope, User, CitizenShips){
 
         $scope.selectedCitizenShips =  _.keys($scope.formData.sport);
         $scope.CitizenShips = {};
@@ -11,4 +10,5 @@ angular.module('abroadathletesApp')
             $scope.CitizenShips[value] = CitizenShips.getCitizenShips(value);
             console.log($scope.CitizenShips[value]);
         });
-  });
+
+});

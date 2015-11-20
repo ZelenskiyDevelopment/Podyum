@@ -1,0 +1,292 @@
+.roster {
+  width: 221px;
+  background-color: rgba(7, 20, 34, 0.6);
+  float: left;
+}
+
+.game {
+  width: 728px;
+  float: left;
+}
+
+.roster .header {
+  height: 115px;
+}
+
+.roster h1 {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.612);
+  padding-left: 13px;
+}
+
+.roster .header input {
+  margin-left: 13px;
+  background: #2e3947;
+  border: #48525d solid 1px;
+  height: 33px;
+  width: 198px;
+  color: white;
+  padding-left: 10px;
+}
+
+.roster .header .header-top-host {
+  display: block;
+  height: 8px;
+  width: 100%;
+  background-color: #faca64;
+  opacity: 1;
+}
+
+.roster .header .header-top-guest {
+  display: block;
+  height: 8px;
+  width: 100%;
+  background-color: #258ee7;
+}
+
+.roster ul {
+  list-style: none;
+  padding-left: 13px;
+  padding-right: 13px;
+}
+
+.roster ul li {
+  height: 33px;
+}
+
+.roster ul li button {
+  background: none !important;
+  color: #fff;
+  font-size: 16px;
+  span {
+    color: #a6abb1;
+  }
+}
+
+.roster ul li button:hover, .roster ul li button:focus {
+  background: #2e3947 !important;
+  border: #48525d solid 1px;
+  color: #FFFFFF;
+  opacity: 0.7;
+}
+
+.game-container {
+  background: url('/assets/images/livestats/livestats-header-background.png') no-repeat;
+  width: 1170px;
+}
+
+.game .header {
+  height: 227px;
+  text-align: center;
+  h3 {
+    color: #FFFFFF;
+    font-size: 20px;
+  }
+;
+  h1 {
+    color: #fac553;
+    font-weight: lighter;
+  }
+  p {
+    color: #FFFFFF;
+    span {
+      background: url('/assets/images/livestats/calendar-ok.png') no-repeat;
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      padding-left: 20px;
+    }
+  }
+  button {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(248, 248, 248, 0.2);
+    border-radius: 2px;
+    background-color: rgba(248, 248, 248, 0.1);
+    width: 169px;
+    height: 38px;
+    background: url('/assets/images/livestats/pen.png') no-repeat;
+    background-size: 18px;
+    background-position: 15px 10px;
+    span {
+      display: inline-block;
+      color: #faca64;
+      padding-left: 20px;
+    }
+  ;
+  }
+}
+
+.game-details {
+  min-height: 800px;
+  background: #FFFFFF;
+  margin: 0;
+  text-align: center;
+}
+
+.ball {
+  margin-top: 25px;
+  width: 34px;
+  height: 30px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.ball-active {
+  background: url('/assets/images/livestats/ball-active.png') no-repeat;
+}
+
+.ball-inactive {
+  background: url('/assets/images/livestats/ball-inactive.png') no-repeat;
+}
+
+.timeouts-container {
+  padding-top: 30px;
+}
+
+.timeout {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.timeout-active {
+  background: url('/assets/images/livestats/clock-active.png') no-repeat;
+}
+
+.timeout-inactive {
+  background: url('/assets/images/livestats/clock-inactive.png') no-repeat;
+}
+
+.dark-grey {
+  background: #eeeeee;
+}
+
+.light-gray {
+  background: #f8f8f8;
+}
+
+.gray {
+  background: #f7f7f7;
+}
+
+.big {
+  margin-top: 24px;
+  color: #071422;
+  font-size: 24px;
+  display: inline-block;
+}
+
+.normal {
+  margin-top: 29px;
+  color: #85929e;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.btn-custom {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(183, 188, 191);
+  border-radius: 3px;
+  background-color: rgb(204, 207, 209);
+  width: 183px;
+  height: 46px;
+  color: #071422;
+  font-weight: bold;
+  margin-right: 13px;
+}
+
+.btn-timeout {
+  background: url('/assets/images/livestats/clock.png') no-repeat;
+  background-color: rgb(204, 207, 209);
+  background-position: 35px 13px;
+}
+
+.btn-timer {
+  background: url('/assets/images/livestats/switch.png') no-repeat;
+  background-color: rgb(204, 207, 209);
+  background-position: 24px 15px;
+}
+
+.btn-end-qtr {
+  background: url('/assets/images/livestats/calendar.png') no-repeat;
+  background-color: rgb(204, 207, 209);
+  background-position: 35px 13px;
+  margin: 0;
+}
+
+.custom-btn-group {
+  padding-top: 28px;
+}
+
+md-tab-item {
+  width: 25%;
+  color: #232323!important;
+}
+
+md-tab-content {
+  height: 100% !important;
+  overflow: hidden;
+}
+
+md-pagination-wrapper {
+  width: 100% !important;
+}
+
+md-tabs-wrapper {
+  background-color: #fac553!important;
+  color: #232323!important;
+}
+
+.custom-input {
+  border-style: solid!important;
+  border-width: 1px!important;
+  border-color: rgb(229, 229, 229)!important;
+  border-radius: 3px!important;
+  background-color: rgb(255, 255, 255)!important;
+  height: 38px;
+}
+
+.row-advanced-controls {
+  padding-top: 14px;
+  padding-bottom: 10px;
+  margin: 0;
+}
+
+.row-advanced-controls > div {
+  height: 40px;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 22px;
+  color: #827f79;
+}
+
+.advanced-button-container {
+  text-align: left!important;
+}
+
+.button-top-players-inactive {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(238, 238, 238);
+  border-radius: 3px;
+  background-color: rgba(238, 238, 238, 0.522);
+  color: #c0c0c0;
+  font-size: 12px;
+  height: 38px;
+  text-transform: uppercase;
+}
+
+.button-top-players-active {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(250, 197, 83);
+  border-radius: 3px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(250, 197, 83);
+  font-size: 12px;
+  height: 38px;
+  text-transform: uppercase;
+}
+

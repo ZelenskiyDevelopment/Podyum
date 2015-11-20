@@ -4,7 +4,7 @@ angular.module('abroadathletesApp')
   .controller('NavbarCtrl', function ($scope, $rootScope, $location, $modal, Auth, User, socket, Teams) {
     $scope.isCollapsedTop = true;
     $scope.isCollapsedBottom = true;
-
+    $scope.user = [];
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
@@ -66,6 +66,8 @@ angular.module('abroadathletesApp')
                 $scope.assignRequests[0] = requests;
 
             });
+
+            $scope.user = me;
 
         });
 

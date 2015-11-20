@@ -5,6 +5,7 @@ angular.module('abroadathletesApp')
     $stateProvider
       .state('creator.league', {
         url: '/league',
-        templateUrl: 'app/creator/creator-league/creator-league.html'
+        templateUrl: 'app/creator/creator-league/creator-league.html',
+        controller: 'CreatorLeagueCtrl'
       });
   });

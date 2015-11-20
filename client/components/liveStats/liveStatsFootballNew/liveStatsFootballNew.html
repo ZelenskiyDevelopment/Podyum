@@ -1,0 +1,244 @@
+<div class="container">
+  <div class="row game-container">
+    <div class="roster">
+      <div class="header">
+        <div class="header-top-host"></div>
+        <h1>Player List</h1>
+        <input type="text" ng-model="roster1Filter"/>
+      </div>
+      <ul class="roster-player-list">
+        <li class="player-in-roster" ng-repeat="player in roster1 | filter:roster1Filter">
+          <button style="width: 100%;" class="btn">
+            <span>{{player.player.number}}</span>&nbsp;&nbsp;{{player.player.firstName}}&nbsp;{{player.player.lastName}}
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="game">
+      <div class="row header">
+        <h3>Manage Live Match</h3>
+
+        <h1>{{game.team1.team.name}} Vs. {{game.team2.team.name}}</h1>
+
+        <p><span></span>07.11.2015, Wroclaw Stadion, Attendance 15,043</p>
+        <button><span>Edit Game Details</span></button>
+      </div>
+      <div class="row game-details">
+        <div class="col-md-12">
+          <div class="row light-gray timeouts-container">
+            <div class="col-md-4">
+              <span class="timeout timeout-active"></span>
+              <span class="timeout timeout-active"></span>
+              <span class="timeout timeout-inactive"></span>
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+              <span class="timeout timeout-active"></span>
+              <span class="timeout timeout-active"></span>
+              <span class="timeout timeout-active"></span>
+            </div>
+          </div>
+          <div class="row light-gray">
+            <div class="col-md-4">
+              <h1>{{game.data.score1}}</h1>
+
+              <h3>{{game.team1.team.name}}</h3>
+            </div>
+            <div class="col-md-1">
+              <span class="ball {{gameStats.teamOffence == 0 ? 'ball-active' : 'ball-inactive'}}" ng-click="gameStats.teamOffence = 0"></span>
+            </div>
+            <div class="col-md-2">
+              <h1>{{gameStats.counter | timerDisplay}}</h1>
+            </div>
+            <div class="col-md-1">
+              <span class="ball {{gameStats.teamOffence == 1 ? 'ball-active' : 'ball-inactive'}}" ng-click="gameStats.teamOffence = 1"></span>
+            </div>
+            <div class="col-md-4">
+              <h1>{{game.data.score2}}</h1>
+
+              <h3>{{game.team2.team.name}}</h3>
+            </div>
+          </div>
+          <div class="row dark-gray">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-3">
+                  <span class="big">{{gameStats.down}}</span><span class="normal">&nbsp;&nbsp;DOWN</span>
+                </div>
+                <div class="col-md-3">
+                  <span class="big">{{gameStats.toGo}}</span><span class="normal">&nbsp;&nbsp;TO GO</span>
+                </div>
+                <div class="col-md-3">
+                  <span class="big">{{gameStats.ballPosition}}</span><span class="normal">&nbsp;&nbsp;BALL ON</span>
+                </div>
+                <div class="col-md-3">
+                  <span class="big">{{gameStats.quarter}}</span><span class="normal">&nbsp;&nbsp;QTR</span>
+                </div>
+              </div>
+              <div class="row custom-btn-group">
+                <div class="col-md-12">
+                  <button class="btn-custom btn-timeout">TIME OUT</button>
+                  <button class="btn-custom btn-timer">START/STOP</button>
+                  <button class="btn-custom btn-end-qtr">{{getQuarterString()}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row dark-gray" style="padding-top: 40px;">
+            <div class="col-md-12">
+              <div ng-cloak>
+                <md-content>
+                  <md-tabs class="md-dynamic-height md-border-bottom" md-align-tabs="top" md-selected="-1">
+                    <md-tab id="run">
+                      <md-tab-label>RUN</md-tab-label>
+                      <md-tab-body>
+                        <div class="row row-advanced-controls">
+                          <div class="col-md-2">
+                            Runner
+                          </div>
+                          <div class="col-md-2">
+                            <input type="number" class="form-control custom-input" ng-model="round.runner"/>
+                          </div>
+
+                          <div class="col-md-8 advanced-button-container">
+                            <button class="button-top-players-active">#7 bredgewater</button>
+                            <button class="button-top-players-inactive">#2 vick</button>
+                            <button class="button-top-players-inactive">#13 richardson</button>
+                          </div>
+                        </div>
+                      </md-tab-body>
+                    </md-tab>
+                    <md-tab id="pass">
+                      <md-tab-label>PASS</md-tab-label>
+                      <md-tab-body>
+                        <div class="row light-gray row-advanced-controls">
+                          <div class="col-md-12">
+                            <button
+                              class="{{round.pass=='complete' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                              ng-click="round.pass='complete'">complete
+                            </button>
+                            <button
+                              class="{{round.pass=='incomplete' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                              ng-click="round.pass='incomplete'">incomplete
+                            </button>
+                            <button
+                              class="{{round.pass=='interception' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                              ng-click="round.pass='interception'">interception
+                            </button>
+                            <button
+                              class="{{round.pass=='sack' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                              ng-click="round.pass='sack'">sack
+                            </button>
+                          </div>
+                        </div>
+                        <div class="row row-advanced-controls">
+                          <div class="col-md-2">
+                            Passer
+                          </div>
+                          <div class="col-md-2">
+                            <input type="number" class="form-control custom-input" ng-model="round.passer"/>
+                          </div>
+
+                          <div class="col-md-8 advanced-button-container">
+                            <button class="button-top-players-active">#7 bredgewater</button>
+                            <button class="button-top-players-inactive">#2 vick</button>
+                            <button class="button-top-players-inactive">#13 richardson</button>
+                          </div>
+                        </div>
+                        <div class="row row-advanced-controls" ng-show="round.pass=='complete'">
+                          <div class="col-md-2">
+                            Reciever
+                          </div>
+                          <div class="col-md-2">
+                            <input type="number" class="form-control custom-input" ng-model="round.reciever"/>
+                          </div>
+
+                          <div class="col-md-8 advanced-button-container">
+                            <button class="button-top-players-active">#7 sims</button>
+                            <button class="button-top-players-inactive">#2 powel</button>
+                            <button class="button-top-players-inactive">#13 sherman</button>
+                          </div>
+                        </div>
+                        <div class="row row-advanced-controls" ng-show="round.pass=='incomplete'">
+                          <div class="col-md-2">
+                            Breakuper
+                          </div>
+                          <div class="col-md-2">
+                            <!--Защищающаяся команда-->
+                            <input type="number" class="form-control custom-input" ng-model="round.breakuper"/>
+                          </div>
+                          <div class="col-md-8 advanced-button-container">
+                            <button class="button-top-players-active">#0 trave</button>
+                            <button class="button-top-players-inactive">#71 kinder</button>
+                            <button class="button-top-players-inactive">#54 adelman</button>
+                          </div>
+                        </div>
+                        <div class="row row-advanced-controls" ng-show="round.pass=='interception'">
+                          <div class="col-md-2">
+                            Interceptor
+                          </div>
+                          <div class="col-md-2">
+                            <!--Защищающаяся команда-->
+                            <input type="number" class="form-control custom-input" ng-model="round.interceptor"/>
+                          </div>
+                          <div class="col-md-8 advanced-button-container">
+                            <button class="button-top-players-active">#0 trave</button>
+                            <button class="button-top-players-inactive">#71 kinder</button>
+                            <button class="button-top-players-inactive">#54 adelman</button>
+                          </div>
+                        </div>
+                        <div class="row row-advanced-controls" ng-show="round.pass=='sack'">
+                          <div class="col-md-2">
+                            Sacker
+                          </div>
+                          <div class="col-md-2">
+                            <!--Защищающаяся команда-->
+                            <input type="number" class="form-control custom-input" ng-model="round.sacker"/>
+                          </div>
+                          <div class="col-md-8 advanced-button-container">
+                            <button class="button-top-players-active">#0 trave</button>
+                            <button class="button-top-players-inactive">#71 kinder</button>
+                            <button class="button-top-players-inactive">#54 adelman</button>
+                          </div>
+                        </div>
+                      </md-tab-body>
+                    </md-tab>
+                    <md-tab id="special">
+                      <md-tab-label>Special teams</md-tab-label>
+                      <md-tab-body>
+                        View for Item #3 <br/>
+                        data.selectedIndex = 2;
+                      </md-tab-body>
+                    </md-tab>
+                    <md-tab id="penalty">
+                      <md-tab-label>Penalty</md-tab-label>
+                      <md-tab-body>
+                        View for Item #3 <br/>
+                        data.selectedIndex = 2;
+                      </md-tab-body>
+                    </md-tab>
+                  </md-tabs>
+                </md-content>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="roster">
+      <div class="header">
+        <div class="header-top-guest">
+
+        </div>
+        <h1>Player List</h1>
+        <input type="text" ng-model="roster2Filter"/>
+      </div>
+      <ul class="roster-player-list">
+        <li class="player-in-roster" ng-repeat="player in roster2 | filter:roster2Filter">
+          <button style="width: 100%;" class="btn">
+            <span>{{player.player.number}}</span>&nbsp;&nbsp;{{player.player.firstName}}&nbsp;{{player.player.lastName}}
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
