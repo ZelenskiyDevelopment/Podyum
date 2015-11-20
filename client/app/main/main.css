@@ -17,6 +17,9 @@
   background-color: transparent;
 }
 
+.md-datepicker-calendar-pane {
+    z-index: 999999999999999;
+}
 
 /* logo ----------------------------------- */
 

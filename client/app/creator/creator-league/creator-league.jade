@@ -3,50 +3,71 @@
   .col-md-8.col-sm-10.col-xs-12
     .col-md-12.col-sm-12.col-xs-12
       .col-md-6.col-sm-6.col-xs-6
-        .div(class="creator-q") What's your league name?
+        .div(class="creator-q") What's your first name?
       .col-md-6.col-sm-6.col-xs-6
         label
-          input(type="text" class="form-inline" id="name" ng-model="formData.name")
+          input(type="text" class="form-inline" id="firstName" ng-model="formData.firstName")
     .col-md-12.col-sm-12.col-xs-12
       .col-md-6.col-sm-6.col-xs-6
-        .div(class="creator-q") What year was your league founded?
+        .div(class="creator-q") What's your last name?
       .col-md-6.col-sm-6.col-xs-6
         label
-         input(type="date" class="form-inline" id="founded" ng-model="formData.founded" placeholder="yyyy-MM-dd")
+          input(type="text" class="form-inline" id="lastName" ng-model="formData.lastName")
+    .col-md-12.col-sm-12.col-xs-12
+      .col-md-6.col-sm-6.col-xs-6
+        .div(class="creator-q")  What's your date of birth?
+      .col-md-6.col-sm-6.col-xs-6
+        label
+        md-datepicker(ng-model="formData.birthday" md-placeholder="Enter date"
+                        md-min-date="minDate" md-max-date="maxDate")
+    .col-md-12.col-sm-12.col-xs-12
+          .col-md-6.col-sm-6.col-xs-6
+            .div(class="creator-q")  What's your country?
+          .col-md-6.col-sm-6.col-xs-6
+             md-input-container
+
+               md-select(ng-model="formData.country")
+                 md-option(ng-repeat="country in countries" value="{{country.abbrev}}")
+                   {{country.abbrev}}
+
 
     .col-md-12.col-sm-12.col-xs-12
       .col-md-6.col-sm-6.col-xs-6
-        .div(class="creator-q")  What's your address?
+        .div(class="creator-q")  What's your hometown?
       .col-md-6.col-sm-6.col-xs-6
         label
-          input(type="text" class="form-inline" id="address" ng-model="formData.address")
+          input(type="text" class="form-inline" id="hometown" ng-model="formData.hometown")
     .col-md-12.col-sm-12.col-xs-12
       .col-md-6.col-sm-6.col-xs-6
-        .div(class="creator-q")  What's the link to your page?
+        .div(class="creator-q")  Are you male of female?
       .col-md-6.col-sm-6.col-xs-6
-        label
-          input(type="text" class="form-inline" id="link" ng-model="formData.link")
-
+        md-radio-group(ng-model="formData.sex")
+          label
+            md-radio-button.md-primary(type="radio" value="male" checked) Male
+          label
+            md-radio-button.md-primary(type="radio" value="female" checked) Female
   .col-md-2.col-sm-1
-  .col-md-12.col-sm-12.col-xs-12
-    .col-md-2.col-sm-1
-    .col-md-8.col-sm-10.col-xs-12
-      .big-q Short biography
-      .col-md-12.col-sm-12.col-xs-12
-        textarea(ng-model="formData.bio" value="bio" style="height: 100px; width: 100%")
-    .col-md-2.col-sm-1
+
+
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
   .col-md-8.col-sm-10.col-xs-12
-    br
-    country-select.creator-country-select(ng-model="formData.country")
+    .big-q Short biography
+    .col-md-12.col-sm-12.col-xs-12
+      textarea(ng-model="formData.bio" value="bio" style="height: 100px; width: 100%")
   .col-md-2.col-sm-1
 
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
   .col-md-8.col-sm-10.col-xs-12
-    one-user-selector(label='"Executive"' items='allHumanUsers' selected-item='formData.executive')
+    .big-q Citizenships
+
+.col-md-8.col-sm-12.col-xs-12.col-lg-offset-1
   .col-md-2.col-sm-1
+  .row(ng-repeat='value in ::selectedCitizenShips')
+    multistring-selector(items='::CitizenShips[value]' model='formData.citizenship' label='"Select Citizenship"')
+  .col-md-2.col-sm-1
+
 
 .col-xs-12.col-sm-12.col-md-12.row
   .col-xs-2.col-sm-3.col-md-3
