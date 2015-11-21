@@ -12,7 +12,13 @@ angular.module('abroadathletesApp')
                         controller: 'addTeam'
                     }
                 },
-
+                updateTeam:{
+                    method: 'POST',
+                    params: {
+                        id: '@id',
+                        controller: 'updateTeam'
+                    }
+                },
                 getTeam: {
                     method: 'GET',
                     isArray: true,

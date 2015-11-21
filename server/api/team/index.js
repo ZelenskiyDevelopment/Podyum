@@ -6,8 +6,10 @@ var controller = require('./team.controller'),
 
 router.post('/addTeam', controller.addTeam);
 router.post('/addToTeam', controller.addToTeam);
+router.post('/updateTeam', controller.updateTeam);
 
 router.get('/:id/getTeam', controller.getTeam);
 router.get('/:id/getAssignRequests', controller.getAssignRequests);
+
 
 module.exports = router;
