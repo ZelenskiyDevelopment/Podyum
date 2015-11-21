@@ -2,3 +2,44 @@ h3 {
     margin: 0;
     padding: 0;
 }
+
+.margin-t-10 {
+	margin-top: 10px;
+}
+
+.margin-b-10 {
+	margin-bottom: 10px;
+}
+
+.form-tab-header {
+	margin: 20px 0;
+}
+
+.form-tab-header h3 {
+	color: #FAC553;
+	text-transform: uppercase;
+}
+
+.tab-form-btn {
+	border-radius: 0;
+	border: 1px solid #F4B400;
+	background: #F4B400;
+	color: #fff;
+	padding: 5px 10px;
+	text-transform: uppercase;
+
+}
+
+.tab-form-btn:hover {
+	background: #FBCB46;
+}
+
+.tab-content {
+	margin-bottom: 30px;
+}
+
+.text-field {
+	background: #fff;
+}
+
+

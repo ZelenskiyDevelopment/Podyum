@@ -8,6 +8,8 @@ angular.module('abroadathletesApp')
             answers: [{text: ''},{text: ''},{text: ''}]
         };
 
+        console.log($scope);
+
         $scope.counts = ['First', 'Second', 'Third', 'Fourth', 'Fifth'];
 
         $scope.addAnswer = addAnswer;
@@ -32,13 +34,11 @@ angular.module('abroadathletesApp')
 
         $scope.clearFieldAnswer = clearFieldAnswer;
 
-        function clearFieldAnswer(e) {
+        function clearFieldAnswer($index, e) {
             e.preventDefault();
-            e.stopPropagation();
-            angular.forEach($scope.user.answers, function() {
-                $scope.user.answer = null;
-            })
+            $scope.user.answers[$index].text = '';
         }
+
     })
     .filter('filledAnswers', function () {
         return function (answers) {
