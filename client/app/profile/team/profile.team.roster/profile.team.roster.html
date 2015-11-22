@@ -1,6 +1,12 @@
+<header class="roster-header">
+  <ul>
+    <li><a href="" ng-class="{active: isSet(1)}" ng-click="setTab(1)"><i class="fa fa-bars"></i></a></li>
+    <li><a href=""  ng-class="{active: isSet(2)}" ng-click="setTab(2)"><i class="fa fa-th"></i></a></li>
+  </ul>
+</header>
 <div ng-repeat="member in players">
 </div>
-<div class="row">
+<div ng-show="isSet(2)">
   <div ng-repeat="player in myPlayers" class="col-sm-3 col-xs-6 members-tab">
     <a ui-sref="profile.common-story({id: player.user._id})">
       <img src="photos/{{player.user.profilePhoto}}" alt="" class="" style="width:100%; height:180px;">
@@ -8,7 +14,7 @@
     </a>
   </div>
 </div>
-<div>
+<div ng-show="isSet(1)">
   <table class="table table-bordered table-striped member-table">
     <tr>
       <th>No.</th>

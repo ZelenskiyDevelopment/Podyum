@@ -1,3 +1,47 @@
+.roster-header {
+	background: #eeeeee;
+	padding: 15px;
+	margin: -15px 0 15px 0; 
+}
+
+.roster-header ul {
+	margin: 0;
+	padding: 0;
+}
+
+.roster-header ul>li {
+	display: inline-block;
+}
+
+.roster-header ul>li>a {
+	color: #c0c0c0;
+	width: 45px;
+	height: 45px;
+	display: block;
+	text-align: center;
+	margin: 0 7px 0 0;
+	background: #f6f6f6;
+	border-radius: 2px;
+	border: 1px solid #f6f6f6;
+}
+
+.roster-header ul>li>a:hover, .roster-header ul>li>.active {
+	border: 1px solid #fac553;
+	color: #fac553;
+	background: #fff;
+	width: 45px;
+	height: 45px;
+}
+
+.roster-header ul>li>a .fa {
+	line-height: 45px;
+}
+
+.members-tab {
+	background: #fff;
+}
+
+
 .member-table {
 	color: #4a4a4a;
 	font-size: 13px;
