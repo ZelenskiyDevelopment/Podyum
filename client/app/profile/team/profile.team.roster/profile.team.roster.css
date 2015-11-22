@@ -1,0 +1,43 @@
+.member-table {
+	color: #4a4a4a;
+	font-size: 13px;
+}
+
+
+.member-table > tbody > tr > th,
+.member-table > tbody > tr > td
+ {
+	padding: 16px;
+	border: 1px solid #f0f0f0;
+	color: #4a4a4a;
+}
+
+.member-table > tbody > tr > th {
+	font-weight: bold;
+}
+
+.member-table > tbody > tr:nth-of-type(odd) {
+	background: #fdfeff;
+}
+
+.member-table > tbody > tr > td a {
+	color: #4a4a4a;
+}
+
+.member-table > tbody > tr > td a:hover {
+	color: #4a4a4a;
+	text-decoration: none;
+}
+
+.members-tab img {
+	border-radius: 3px;
+}
+
+.members-tab a {
+	color: #111e2b;
+	font-size: 18px;
+}
+
+.members-tab a:hover {
+	text-decoration: none;
+}

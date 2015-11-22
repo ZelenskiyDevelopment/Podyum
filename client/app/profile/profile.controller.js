@@ -61,6 +61,7 @@ angular.module('abroadathletesApp')
 
 
 
+
         if ($scope.user.kind === "player") {
       /*    Game.getGamesForTeams({id: $scope.user._id}).$promise.then(function (games) {
             _.remove(games, function(game) {
