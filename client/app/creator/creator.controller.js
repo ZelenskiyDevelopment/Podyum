@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-    .controller('CreatorCtrl', function ($scope, $timeout, User, $window, Upload, $location, sports, $state, $http) {
+    .controller('CreatorCtrl', function ($scope, $timeout, User, $window, Upload, $location, sports, $state, $http, Teams) {
 
         $scope.progressValue = 10;
 
@@ -341,9 +341,14 @@ angular.module('abroadathletesApp')
                 $scope.formData.tags = [];
             }
             User.get().$promise.then(function (me) {
+
                 if (type === 'player' || type==='coach' || type==='fan') {
                     User.getAllTeams({id: me._id}).$promise.then(function (result) {
                         $scope.allTeams = result;
+                    });
+
+                    Teams.getAllTeam().$promise.then(function (result) {
+                        $scope.Teams = result;
                     });
                 }
                 if(type ==='team' || type==='fan') {

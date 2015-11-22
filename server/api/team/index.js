@@ -10,6 +10,7 @@ router.post('/updateTeam', controller.updateTeam);
 
 router.get('/:id/getTeam', controller.getTeam);
 router.get('/:id/getAssignRequests', controller.getAssignRequests);
+router.get('/getAllTeam', controller.getAllTeam);
 
 
 module.exports = router;

@@ -11,6 +11,7 @@ exports.addTeam = function(req, res) {
 
     var data = req.body;
 
+    console.log(data);
     var newTeam = new Team(data);
 
     newTeam.save(function(err){
@@ -89,6 +90,13 @@ exports.getTeam = function(req, res) {
     });
 }
 
+exports.getAllTeam = function(req, res) {
+    Team.find().execQ().then(function (events) {
+        return res.json(200, events);
+    }).catch(function (err) {
+        return handleError(res, err);
+    });
+};
 
 function validationError(res, err) {
     return res.json(422, err);

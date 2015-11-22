@@ -49,6 +49,14 @@ angular.module('abroadathletesApp')
                     params: {
                         controller: 'acceptAssignRequest'
                      }
+                },
+                getAllTeam: {
+                    method: 'GET',
+                    isArray: true,
+                    params: {
+                        controller: 'getAllTeam'
+                    }
                 }
+
                 });
     });

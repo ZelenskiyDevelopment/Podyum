@@ -154,16 +154,16 @@ angular.module('abroadathletesApp')
 
 
 
-                    if (newTeam.president.length > 0) {
-                        newTeam.president = newTeam.president._id;
+                    if ($scope.president.length > 0) {
+                        newTeam.president = $scope.president._id;
                     }
 
-                    if (newTeam.headCoach.length > 0) {
-                        newTeam.headCoach = newTeam.headCoach._id;
+                    if ($scope.headCoach.length > 0) {
+                        newTeam.headCoach = $scope.headCoach._id;
                     }
 
-                    if (newTeam.athleticDirector.length > 0) {
-                        newTeam.athleticDirector = newTeam.athleticDirector._id;
+                    if ($scope.athleticDirector.length > 0) {
+                        newTeam.athleticDirector = $scope.athleticDirector._id;
                     }
 
                     if (newTeam.myLeagues.length > 0) {
@@ -179,9 +179,8 @@ angular.module('abroadathletesApp')
                     newTeam.logoTeam = dataTeam.photo;
                     newTeam.logoStadium = dataStadium.photo;
 
-
                     Teams.addTeam(newTeam).$promise.then(function(result){
-                        $location.path('/');
+                        $location.path('/home');
                     });
 
 
