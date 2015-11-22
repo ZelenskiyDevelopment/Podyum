@@ -169,10 +169,9 @@ angular.module('abroadathletesApp')
           });
         }
         $scope.events = $scope.user.events;
-        console.log($scope.user);
-        if ($scope.user.player.position = []) {
-          $scope.user.player.position = '';
-        }
+        // if ($scope.user.player.position = []) {
+        //   $scope.user.player.position = '';
+        // }
       });
 
 

@@ -1,31 +1,27 @@
 <div class="ask-form-block">
     <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-            <div class="question-block"><strong>What color uniforms should we wear this upcoming game?</strong></div>
+        <div class="col-sm-12 col-md-12 col-lg-12" ng-if="user.question">
+            <div class="question-block"><strong>{{user.question}}</strong></div>
             <div class="answer-block">
                 <form>
                     <div class="choose-answer">
-                        <div class="form-group radio-form">
+                        <div class="form-group radio-form" ng-repeat="answer in user.answers track by $index">
                             <input id="first" name="answer" type="radio" checked="checked" class="radio"/>
-                            <label for="first">Blue Pants, Black Jersey</label>
-                        </div>
-                        <div class="form-group radio-form">
-                            <input id="second" name="answer" type="radio" class="radio"/>
-                            <label for="second">White Pants, Blue Jersey</label>
-                        </div>
-                        <div class="form-group radio-form">
-                            <input id="third" name="answer" type="radio" class="radio"/>
-                            <label for="third">All Black</label>
+                            <label for="first">{{user.answer}}</label>
                         </div>
                     </div>
                     <div class="form-group submit-form">
                         <select id="home-select" name="select">
-                            <option value="1"></option>
+                            <option value="1">Public</option>
+                            <option value="1">Team</option>
                         </select>
                         <input type="submit" value="Update" placeholder="Update" class="btn-submit"/>
                     </div>
                 </form>
             </div>
+        </div>
+        <div class="col-md-12 col-sm-12" ng-if="!user.question">
+            <p>You don't have any questions</p>
         </div>
     </div>
 </div>

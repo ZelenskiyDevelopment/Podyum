@@ -2,7 +2,7 @@
   .col-md-12.col-sm-12.col-xs-12
     .landing-big-font
       h2 SIGN UP - IT'S FREE!
-    form.form(name='registerForm', ng-submit='register(registerForm)', novalidate='')
+    form.form(name='registerForm', novalidate='')
       //
         .form-group(ng-class="{ 'has-success': registerForm.email.$valid && registerSubmitted,\
         'has-error': registerForm.email.$invalid && registerSubmitted }")
@@ -53,7 +53,7 @@
       .row
         .col-md-12.col-sm-12.col-xs-12
           ul.submit
-            md-button.main-button(type='submit')
+            md-button.main-button(type='submit'  ng-click='register(registerForm)')
               | Sign up
           ul.social-links
             li.facebook

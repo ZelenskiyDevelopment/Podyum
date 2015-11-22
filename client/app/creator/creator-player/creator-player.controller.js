@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .controller('CreatorPlayerCtrl', function ($scope, GamePositions, AwardsPlayer, CategoriesLevel, LevelsCollege, CitizenShips, $window) {
+  .controller('CreatorPlayerCtrl', function ($scope, GamePositions, AwardsPlayer, CategoriesLevel, LevelsCollege, CitizenShips, $window, User) {
 
         window.scrollTo(0, 0);
 
@@ -63,8 +63,6 @@ angular.module('abroadathletesApp')
                 name: value
             })
         });
-
-
 
         $scope.addExperience  = function() {
             $scope.experienceTable.push({

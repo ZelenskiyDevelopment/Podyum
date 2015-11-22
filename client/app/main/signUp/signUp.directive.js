@@ -15,6 +15,7 @@ angular.module('abroadathletesApp')
         $scope.registerErrors = {};
 
         $scope.register = function(form) {
+            console.log(form);
           $scope.registerSubmitted = true;
           $scope.passwordConfirmed = false;
           if($scope.registerUser.passwordConfirm === $scope.registerUser.password) {

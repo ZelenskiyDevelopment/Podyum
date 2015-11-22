@@ -1,20 +1,56 @@
-<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ffffff; padding: 20px;">
+<div class="col-md-12 col-sm-12 col-xs-12 profile-data">
   <button class="btn" ng-show="showedit" ng-click="edit()"
           style="position: absolute; top:0px; right:0px; background-color: Transparent;"><img src="assets/images/pen.png"/>
   </button>
   <div class="row">
-    <div class="col-md-5 col-sm-5 col-xs-12">
-      <a href="#"  style="margin-top:40px;">
-        <img class="profile-main-photo" src="photos/{{user.profilePhoto}}" alt="s" >
+    <div class="col-md-3" style="border-right: 1px solid #f5f5f5;padding: 30px 0">
+      <a href="#">
+        <img class="profile-main-photo img-rounded" src="photos/{{user.profilePhoto}}">
       </a>
-
+      <div class="profile-name">
+        <h1>{{user.team.name}} {{user.team.short}}</h1>
+      </div>
+      <div class="profile-main-info">
+        <p><span>{{user.team.league}}</span></p>
+      </div>
     </div>
-    <div class="col-md-7 col-sm-7 col-xs-12">
-      <div class="player-data">
-        <h1>#{{user.team.name}} {{user.team.short}}</h1>
-        <div class="main-data">
-          <p>{{user.team.league}}</p>
+    <div class="col-md-6" style="padding:30px 0">
+      <div class="row additional-block">
+        <div class="col-md-6">
+          <div ng-if="user.team.address" class="additional-info">
+            <p>Address&nbsp;:</p>
+            <span>{{user.team.address}}</span>
+          </div>
+          <div ng-if="user.team.phone" class="additional-info">
+            <p>Phone&nbsp;:</p>
+            <span>{{user.team.phone}}</span>
+          </div>
         </div>
+        <div class="col-md-6">
+          <div ng-if="user.team.email" class="additional-info">
+            <p>Email&nbsp;:</p>
+            <span>{{user.team.email}}</span>
+          </div>
+          <div ng-if="user.team.link" class="additional-info">
+            <p>Site&nbsp;:</p>
+            <span>{{user.team.link}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 social">
+          <a href="#"><img src="assets/images/facebook-ico.png" alt=""></a>
+          <a href="#"><img src="assets/images/twiter-md-ico.png" alt=""></a>
+        </div>  
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <profile-buttons user="user" owner="owner"></profile-buttons>
+        </div>
+      </div>
+    </div>
+    <!--<div class="col-md-7 col-sm-7 col-xs-12">
+      <div class="player-data">
         <div class="player-facts">
           <div class="col-md-6 left-col">
             <p ng-if="user.team.city">City:</p>
@@ -24,7 +60,7 @@
           </div>
           <div class="col-md-6">
             <p ng-if="user.team.city">{{user.team.city}}</p>
-            <p ng-if="user.team.phone">{{user.team.phone}}}</p>
+            <p ng-if="user.team.phone">{{user.team.phone}}</p>
             <p ng-if="user.team.link"><a href="{{user.team.link}}">{{user.team.link}}</a></p>
             <p ng-if="user.team.address">{{user.team.address}}</p>
           </div>
@@ -32,11 +68,11 @@
       </div>
 
 
-      </div>
+    </div>
 
     </div>
   </div>
-  <profile-buttons user="user" owner="owner"></profile-buttons>
+  <profile-buttons user="user" owner="owner"></profile-buttons> -->
   <!--<div class="row" ng-show="user._id !== owner._id && user.completed">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <button class="btn-sm btn-default our-button round-corners" ng-click="onassign()" ng-show="(owner.kind==='player' || owner.kind==='coach' )">Assign!</button>
@@ -45,4 +81,3 @@
       <button class="btn-sm btn-default our-button round-corners">Send Message!</button>
     </div>
   </div>-->
-</div>

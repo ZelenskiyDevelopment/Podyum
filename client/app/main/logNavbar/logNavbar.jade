@@ -1,4 +1,4 @@
-.log-nav(directive="log-navbar")
+.log-nav(directive="log-navbar" ng-class="{dark:boolChangeClass}")
   .col-md-4.col-sm-2.col-xs-2
     a(ui-sref='main')
       img.logo(src='assets/images/podyum.png')
@@ -11,9 +11,9 @@
       //a.link-lav-2.active(ui-sref='football' ng-click="select($event)" ng-class="{active: isActive(datalist)}") HOME
       //a.link-lav-2(ui-sref='main' ng-click="select($event)" ng-class="{active: isActive(datalist)}") EXPLORE
       //a.link-lav-2(ui-sref='main' ng-click="select($event)" ng-class="{active: isActive(datalist)}") ABOUT
-  .col-md-4.col-sm-5.col-xs-12
-    button.main-button(ng-click='isLogin=false') Sign Up
-    button.main-button(ng-click='isLogin=true') Log in
+  .col-md-4.col-sm-5.col-xs-12(ng-init="isLogin=false;isSignup=false")
+    button.main-button(ng-click='isLogin=true;isSignup=false' ) Sign Up
+    button.main-button(ng-click='isLogin=false;isSignup=true' ) Log in
 
 
 //.log-nav-2

@@ -49,28 +49,18 @@ angular.module('abroadathletesApp')
 
 
       link: function (scope, element, attrs) {
-        var el = element.parent();
-        el = el[0].children[1];
-        //console.log('bind', angular.element(el));
+        var el = document.getElementsByClassName('main-container')[0];
+
         angular.element(el).bind("scroll", function() {
 
-          //console.log('asdasdasd');
-
-          if (this.pageYOffset >= 0) {
-            //scope.boolChangeClass = true;
+          if(el.scrollTop != 0) {
+            scope.boolChangeClass = true;
             console.log('Scrolled below header.');
           } else {
-            //scope.boolChangeClass = false;
+            scope.boolChangeClass = false;
             console.log('Header is in view.');
           }
-          //scope.$apply();
         });
       }
-
-
     };
-
   })
-  //.directive("logNavbar", function ($window) {
-  //
-  //});

@@ -262,7 +262,7 @@ h3,h4,h5 {
 #home {
   font-weight: normal;
   font-family: 'aileronlight';
-  padding: 180px 0 0 0;
+  padding: 100px 0 0 0;
 }
 
 .info-card {
@@ -443,8 +443,9 @@ h3,h4,h5 {
 }
 
 .tab-content {
-    height: 250px;
-    background: #eaeaea;
+  min-height: 250px;
+  height: auto;
+  background: #eaeaea;
 }
 
 .home-wall {

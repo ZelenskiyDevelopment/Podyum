@@ -37,6 +37,7 @@ function getPipeline(interestedUsers) {
   }];
 }
 
+
 // Get list of events
 exports.index = function (req, res) {
   var paths = ['author', 'comments.author'],
@@ -121,8 +122,9 @@ exports.show = function (req, res) {
 };
 
 exports.create = function (req, res) {
-  var userId = req.user._id,
+  var userId = req.body._id,
     event = req.body;
+
   req.body.author = userId;
   Event.createQ(event).then(function (event) {
     return Photo.populateQ(event,'photos');

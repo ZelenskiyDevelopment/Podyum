@@ -38,6 +38,17 @@ require('./routes')(app, orientDatabase);
 server.listen(config.port, config.ip, function () {
 	console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
 });
+if(process.env.NODE_ENV == 'developer'){
+
+	var error = function(err, req, res, next) {
+		if (req.xhr) {
+			res.status(500).send({ error: 'Something blew up!' });
+		} else {
+			next(err);
+		}
+	};
+	app.use(error);
+}
 
 // Expose app
 exports = module.exports = app;

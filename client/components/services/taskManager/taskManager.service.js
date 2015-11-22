@@ -3,6 +3,7 @@
 angular.module('abroadathletesApp')
     .factory('TaskManager', function ($http) {
         return {
+
             AddEvent: function(id_user,title, start, end) {
                 var event = {
                     Title: title,
