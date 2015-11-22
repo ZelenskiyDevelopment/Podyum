@@ -16,7 +16,11 @@
   z-index:49;
   background-color: transparent;
 }
-
+.explore-page .log-nav{
+  background-image: url(/assets/images/header-background.jpg);
+  position: fixed;
+  top: 0;
+}
 .md-datepicker-calendar-pane {
     z-index: 999999999999999;
 }
