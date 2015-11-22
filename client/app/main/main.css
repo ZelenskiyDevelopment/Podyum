@@ -20,6 +20,12 @@
 .md-datepicker-calendar-pane {
     z-index: 999999999999999;
 }
+.dark{
+    background-image:
+      linear-gradient(rgba(20, 20, 20, 0.9) 0%, rgba(255, 255, 255, 0) 95%);
+      -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0.8)), color-stop(0.5, rgb(51, 51, 51)), to(rgba(80, 80, 80, 0.2)))
+}
+
 
 /* logo ----------------------------------- */
 
@@ -359,49 +365,73 @@ md-datepicker {
 
 /* CAROUSEL  -----------------------------------------------------------------------------*/
 
-.carousel-control.left {
-  background-image: none;
-}
-.carousel-control.right {
-  background-image: none;
-}
-.carousel-control {
-  bottom: 0;
-  color: transparent;
-  font-size: 20px;
-  left: 0;
-  opacity: 0.5;
-  position: absolute;
-  text-align: center;
-  text-shadow: 0 0px 0px rgba(0, 0, 0, 0.0);
-  top: 0;
-  width: 0%;
-}
-.carousel-control:hover, .carousel-control:active, .carousel-control:focus {
-  bottom: 0;
-  color: transparent;
-  font-size: 20px;
-  left: 0;
-  opacity: 0.5;
-  position: absolute;
-  text-align: center;
-  text-shadow: 0 0px 0px rgba(0, 0, 0, 0);
-  top: 0;
-  width: 0%;
-}
-
-.carousel-indicators .active {
-  background-color: #f8c637;
-  border-radius: 10px;
-  border-color: #f8c637;
-  margin: -52px 2px;
-}
-
-.carousel-indicators li {
+#carousel-home-1{
+  height: 325px;
   background-color: #fff;
-  border-radius: 10px;
-  border-color: #fff;
-  margin: -52px 2px;
+
+}
+#carousel-home-1 .item, #carousel-home-2 .item{
+  text-align: center;
+}
+#carousel-home-1 .item img, #carousel-home-2 .item img{
+  display: inline;
+}
+#carousel-home-1 .carousel-caption, #carousel-home-2 .carousel-caption{
+  position: static;
+  color: #828282;
+  text-shadow: none;
+}
+#carousel-home-1 .carousel-control, #carousel-home-2 .carousel-control{
+  background-image: none;
+  text-shadow: none;
+  color: #EBEBEB;
+  font-size: 20px;
+  position: absolute;
+  top: -65px;
+}
+#carousel-home-2 .carousel-control{
+  top: 0;
+}
+#carousel-home-1 .carousel-control span, #carousel-home-2 .carousel-control span{
+  border: 1px solid #8F8F8F;
+  border-radius: 50%;
+  padding: 15px;
+  height: auto;
+  width: auto;
+}
+#carousel-home-1 .carousel-caption h3{
+  color: #7A7A98;
+}
+#carousel-home-2{
+  height: 303px;
+  padding-top: 42px;
+  background: #071422 url(/assets/images/bg-carousel2-home.png);
+}
+#carousel-home-2 .item img{
+  border-radius: 50%;
+}
+#carousel-home-2 .carousel-caption h3{
+  color: #fff;
+  font-size: bold;
+}
+.orange-underline{
+  background: #FFB517;
+  height: 1px;
+  width: 85px;
+  margin: 0 auto 20px;
+}
+#carousel-home-2 .carousel-caption img{
+  height: 15px;
+  width: auto;
+  margin: -10px 10px 0 10px;
+}
+.carousel-indicators {
+  display: none;
+}
+#carousel-home-1 h2{
+  text-align: center;
+  font-size: 40px;
+  color: #8F8F8F;
 }
 
 
@@ -472,7 +502,7 @@ font-size: 40px;
 .chosen-box-gradient {
   background-repeat: repeat-x;
   background-image: url("../../assets/images/pasek.png");
-  background-color: #eee;
+  background-color: #fff;
 
 }
 .chosen-box {
@@ -701,20 +731,40 @@ h1, h2, h3, h4, h5, h6 {
 
 
 #about-us{
-  background-color: #fff;
+  background-color: #F7F7F7;
+;
   margin: 0;
   padding: 0;
-}
-
-#about-us img{
-  width: 100%;
-  height: auto;
 }
 
 #about-us>div{
   margin: 0;
   padding: 0;
+  height: 456px;
+
 }
+#about-us>div:first-child, #about-us>div:last-child{
+  padding-top: 100px;
+  text-align: center;
+}
+
+#players-image{
+  background: url(/assets/images/main-img2.jpg) no-repeat;
+  width: auto;
+  height: 455px;
+  background-position: center;
+  background-size: cover;
+}
+#ball-image{
+  background: url(/assets/images/main-img1.jpg) no-repeat;
+  width: auto;
+  height: 455px;
+  background-position: center;
+  background-size: cover;
+}
+
+
+
 
 /* MEDIA ====================================================== */
 
