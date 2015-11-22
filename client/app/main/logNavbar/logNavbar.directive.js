@@ -55,10 +55,8 @@ angular.module('abroadathletesApp')
 
           if(el.scrollTop != 0) {
             scope.boolChangeClass = true;
-            console.log('Scrolled below header.');
           } else {
             scope.boolChangeClass = false;
-            console.log('Header is in view.');
           }
         });
       }
