@@ -16,7 +16,11 @@
   z-index:49;
   background-color: transparent;
 }
-
+.explore-page .log-nav{
+  background-image: url(/assets/images/header-background.jpg);
+  position: fixed;
+  top: 0;
+}
 .md-datepicker-calendar-pane {
     z-index: 999999999999999;
 }
@@ -298,14 +302,15 @@ md-datepicker {
   border-bottom-width: 0;
 }
 
-.explore-sing-up-form{
+.explore-sing-up-form, .explore-login-form{
   background: #071321!important;
 }
 
-.explore-sing-up-form h2{
+.explore-sing-up-form h2, .explore-login-form h2{
   color:#f1a227;
 }
-.explore-sing-up-form .form-control-sign-up, .explore-sing-up-form .form-control-log-in{
+.explore-sing-up-form .form-control-sign-up, .explore-sing-up-form .form-control-log-in,
+.explore-login-form .form-control-sign-up, .explore-login-form .form-control-log-in{
   background: #47515B;
   border: none;
   width: 100%;

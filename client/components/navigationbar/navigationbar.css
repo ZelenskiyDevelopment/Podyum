@@ -4,13 +4,11 @@
 
 }
 
-
 .header {
   border-width:0;
 }
 
 .navbar-fixed-top {
-  top:81px;
   height: 50px
 }
 
@@ -39,8 +37,8 @@
   color: #f8c637;
 }
 
-.social-links li {
-    margin: 0 0 0 50px;
+.nav-links li {
+    margin: 0 0 0 50px !important;
 }
 
 .social-links li:last-child {

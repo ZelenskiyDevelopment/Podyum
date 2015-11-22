@@ -12,7 +12,6 @@ angular.module('abroadathletesApp')
         $location.path('/creator');
       }
       $scope.user = me;
-      console.log(me);
       $scope.friendsNumber = $scope.user.friends.length;
       $scope.followersNumber = $scope.user.followed.length;
      // fetchMyMilestones();

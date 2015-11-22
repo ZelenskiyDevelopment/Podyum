@@ -1,0 +1,27 @@
+<div class="col-md-12 tab-content">
+    <header class="form-tab-header clearfix">
+        <h3 class="pull-left">Your Question!</h3>
+        <button class="add-Answer pull-right tab-form-btn" ng-hide="user.answers.length == 5" ng-click="addAnswer()">Add Field
+</button>
+    </header>
+
+    <form action="">
+        <div class="form-group">
+            <label for="question">Add your question!</label>
+            <input class="form-control text-field" type="text" ng-model="user.question" id="question"/>
+            <button class="tab-form-btn margin-t-10" ng-if="user.question.length" ng-click="clearFieldQuestion($event)">Clear field</button>
+        </div>
+        <div class="form-group" ng-repeat="answer in user.answers track by $index">
+            <label>{{counts[$index]}} answer is:</label>
+            <input class="form-control text-field" type="text" ng-model="answer.text"/>
+            <button class="tab-form-btn margin-t-10" ng-show="answer.removed" ng-click="removeAnswer($index, $event)">Remove</button>
+            <button class="tab-form-btn margin-t-10" ng-show="answer.text" ng-click="clearFieldAnswer($index,$event)">Clear field</button>
+        </div>
+        <div class="form-group clearfix" ng-show="user.question && (user.answers | filledAnswers).length > 1">
+            <input class="tab-form-btn pull-right margin-t-10 margin-b-10" type="submit" value="Create a question"/>
+        </div>
+    </form>
+</div>
+
+
+

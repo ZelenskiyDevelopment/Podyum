@@ -1,139 +1,257 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--<link rel="stylesheet" href="styles.css" />-->
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous" />-->
-<!--</head>-->
-<!--<body>-->
 <div class="col-md-12 col-sm-12 col-xs-12" style="padding: 0px; margin: 0px;">
 	<log-navbar></log-navbar>
-	<div id="topdiv">
-		<div class="container">
-			<!--<div class="row">-->
-				<!--<div class="col-md-3 col-sm-3 col-xs-12">-->
-					<!--<img src="assets/images/PodyumLogo.png" alt="logo" />-->
-				<!--</div>-->
-				<!--<div class="col-md-6 col-sm-6 col-xs-12">-->
-					<!--<div id="topdivhead">-->
-						<!--<a href="#" title="home">HOME</a>-->
-						<!--<a href="#" title="explore">EXPLORE</a>-->
-						<!--<a href="#" title="about">ABOUT</a>-->
-						<!--<img src="img/search.png" alt="search" />-->
-					<!--</div>-->
-				<!--</div>-->
-				<!--<div class="col-md-3 col-sm-3 col-xs-12">-->
-					<!--<div id="signlog">-->
-						<!--<a href="#" title="sign up">SIGN UP</a>-->
-						<!--<a href="#" title="log in">LOG IN</a>-->
-					<!--</div>-->
-				<!--</div>-->
-			<!--</div>-->
-			<div class="row">
+	<div id="main-container" class="col-md-12 col-sm-12 col-xs-12"
+		 style="padding: 0px; margin: 0px; height: 1000px; background-position: top; position: absolute">
+		<div class="col-lg-7 col-md-7 col-sm-6 col-xs-12" style="margin: 0px; padding: 0px;"></div>
+		<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12" style="margin-top: 140px;">
+			<div style="z-index:10000; background-color: rgba(255, 255,255, 1); margin-top: 15px; margin-right: 40px; border-radius: 6px"
+				 class="col-md-12 col-sm-12 col-xs-12 sing-up" ng-hide='!isLogin'>
 				<div class="col-md-12 col-sm-12 col-xs-12">
-					<img src="assets/images/Bestplace.png" alt="logo" />
+					<div class="landing-big-font">
+						<h2>SIGN UP - IT'S FREE!</h2>
+					</div>
+					<form name="registerForm" ng-submit="register(registerForm)" novalidate=""
+						  class="form registerForm">
+
+						<div style="width: 49%; float: left"
+							 ng-class="{ 'has-success': registerSubmitted,      'has-error': registerSubmitted }"
+							 class="form-group"><input type="text" name="firstname" placeholder="First name"
+													   ng-model="registerUser.firstName" required="" mongoose-error=""
+													   class="form-control-sign-up">
+
+							<p ng-show="(registerForm.firstname.$error.required) && registerSubmitted "
+							   class="help-block">Field required</p>
+						</div>
+						<div style="width: 49%; float: right"
+							 ng-class="{ 'has-success': registerSubmitted,      'has-error': registerSubmitted }"
+							 class="form-group"><input type="text" name="lastName" placeholder="Last name"
+													   ng-model="registerUser.lastName" required="" mongoose-error=""
+													   class="form-control-sign-up">
+							<p ng-show="(registerForm.lastName.$error.required) && registerSubmitted "
+							   class="help-block">Field required</p>
+						</div>
+						<div ng-class="{ 'has-success': registerSubmitted,      'has-error': registerSubmitted }"
+							 class="form-group"><input placeholder="Email" type="email" name="email"
+													   ng-model="registerUser.email" required=""
+													   class="form-control-sign-up ng-pristine ng-valid-email ng-invalid ng-invalid-required ng-touched"
+													   aria-required="true" aria-invalid="true" style="">
+
+							<p ng-show="(registerForm.email.$error.required) && registerSubmitted "
+							   class="help-block">Field required</p>
+							<p ng-show="registerForm.email.$error.mongoose" class="help-block">{{
+								registerErrors.email }}
+							</p>
+						</div>
+						<div ng-class="{ 'has-success': registerForm.password.$valid &amp;&amp; registerSubmitted,      'has-error': registerForm.password.$invalid &amp;&amp; registerSubmitted }"
+							 class="form-group">
+							<input type="password" name="password" placeholder="Password"
+								   ng-model="registerUser.password" ng-minlength="3" required=""
+								   mongoose-error="" class="form-control-sign-up">
+							<p ng-show="(registerForm.password.$error.minlength || registerForm.password.$error.required) &amp;&amp; registerSubmitted"
+							   class="help-block">Password must be at least 3 characters.</p>
+							<p ng-show="registerForm.password.$error.mongoose" class="help-block">{{
+								registerErrors.password }}
+							</p>
+							<input type="password" name="passwordConfirm"
+								   placeholder="Password confirmation"
+								   ng-model="registerUser.passwordConfirm"
+								   style="margin-top:15px;"
+								   class="form-control-sign-up">
+							<p ng-show="!passwordConfirmed &amp;&amp; registerSubmitted" class="help-block">Password and
+								confirmation do not match.
+							</p>
+						</div>
+						<div ng-class="{ 'has-success': registerSubmitted,      'has-error': registerSubmitted }"
+							 class="form-group">
+
+
+
+							<div type="Date" name="date" class="form-control-sign-up">
+								<md-datepicker ng-model="registerUser.birthday"
+											   md-placeholder="Date of birth" class="col-lg-offset-1"></md-datepicker>
+
+								<p ng-show="(registerUser.birthday + '').length == 0 && registerSubmitted "
+								   class="help-block text-center">Field required</p>
+							</div>
+
+						</div>
+						<div ng-class="{ 'has-success': registerSubmitted,      'has-error': registerSubmitted }"
+							 class="form-group">
+							<md-radio-group ng-model="registerUser.sex" class="col-lg-offset-1">
+								<label>
+									<md-radio-button type="radio" value="male" checked class="md-primary">Male</md-radio-button>
+								</label>
+								<label>
+									<md-radio-button type="radio" value="female" checked class="md-primary">Female</md-radio-button>
+								</label>
+							</md-radio-group>
+						</div>
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<ul class="submit">
+									<md-button type="submit" class="main-button form-submit">Sign up</md-button>
+								</ul>
+								<ul class="social-links">
+									<li class="facebook"><a target="_blank" href="https://www.facebook.com/"><i
+											class="fa fa-facebook"></i></a></li>
+									<li class="twitter"><a target="_blank" href="https://twitter.com/"><i
+											class="fa fa-twitter"></i></a></li>
+									<!-- <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>-->
+								</ul>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-4 col-sm-4 col-xs-12">
-					<img src="assets/images/headicon1.png" />
-					<div>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin</div>
+			<div style="z-index:100; background-color: rgba(255, 255,255, 1); margin-top: 15px; margin-right: 40px; border-radius: 6px"
+				  class="col-md-12 col-sm-12 col-xs-12 sing-up" ng-hide='!isSignup'>
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="landing-big-font">
+					<h2>LOGIN</h2>
 				</div>
-				<div class="col-md-4 col-sm-4 col-xs-12">
-					<img src="assets/images/headicon2.png" />
-					<div>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin</div>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-12">
-					<img src="assets/images/headicon3.png" />
-					<div>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin</div>
-				</div>
+				<form name="loginForm" ng-submit="login(loginForm)" novalidate="">
+					<div style="width: 100%; float: left"
+						 ng-class="{ 'has-success': registerSubmitted,      'has-error': registerSubmitted }"
+						 class="form-group"><input placeholder="Email" type="email" name="email"
+												   ng-model="loginUser.email" required=""
+												   class="form-control-log-in">
+					</div>
+					<div ng-class="{ 'has-success': registerForm.password.$valid &amp;&amp; registerSubmitted,      'has-error': registerForm.password.$invalid &amp;&amp; registerSubmitted }"
+						 class="form-group"><input type="password" name="password" placeholder="Password"
+												   ng-model="loginUser.password" ng-minlength="3" required=""
+												   mongoose-error="" class="form-control-log-in">
+					</div>
+					<md-checkbox md-no-ink="" aria-label="Checkbox No Ink" ng-model="loginUser.remember"
+								 ng-change="remember(loginUser.remember)" role="checkbox"
+								 class="ng-pristine ng-untouched ng-valid" tabindex="0" aria-checked="false"
+								 aria-invalid="false">
+						<div class="md-label"><span class="ng-scope">Remember me</span></div>
+					</md-checkbox>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<ul class="submit">
+								<md-button type="submit" class="main-button form-submit">Login</md-button>
+							</ul>
+							<ul class="social-links">
+								<li class="facebook"><a target="_blank" href="https://www.facebook.com/"><i
+										class="fa fa-facebook"></i></a></li>
+								<li class="twitter"><a target="_blank" href="https://twitter.com/"><i
+										class="fa fa-twitter"></i></a></li>
+								<!-- <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>-->
+							</ul>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
-	</div>
-	<div id="seconddiv">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-2 col-sm-2 col-xs-12">
-				   <img src="assets/images/our-bio.png" alt="logo" />
-				   <div>We launched at 2015</div>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-12">
-					<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor consequat ipsum, nec sagittis sem nibh id elit.</p>
-					<p>Duis sed odio sit amet nibh vulputate curcus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauns vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra per inceptos himenaeos. Mauris in erat justo.</p>
-					<p>Nullam ac urna eu felis dapibus condimentum sit amel a augue. Sed non neque alit. Sed ul imperdiel</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="thirddiv">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 col-sm-6 col-xs-12">
-					<img src="assets/images/man.png" />
-					<div class="sofondcaption">
-						<img src="assets/images/fin.png" />
-						<div>JOHN DOUG</div>
-						<div>General Director</div>
+
+
+		</div></div></div>
+			<div id="topdiv">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<img src="assets/images/Bestplace.png" alt="logo" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<img src="assets/images/headicon1.png" />
+							<div>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<img src="assets/images/headicon2.png" />
+							<div>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<img src="assets/images/headicon3.png" />
+							<div>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin</div>
+						</div>
 					</div>
 				</div>
-				<div class="col-md-4 col-sm-6 col-xs-12">
-					<img src="assets/images/woman.png" />
-					<div class="sofondcaption">
-						<img src="assets/images/fin.png" />
-						<div>HELEN REEVES</div>
-						<div>Co foundr</div>
+			</div>
+			<div id="seconddiv">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-2 col-sm-2 col-xs-12">
+						   <img src="assets/images/our-bio.png" alt="logo" />
+						   <div>We launched at 2015</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor consequat ipsum, nec sagittis sem nibh id elit.</p>
+							<p>Duis sed odio sit amet nibh vulputate curcus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauns vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra per inceptos himenaeos. Mauris in erat justo.</p>
+							<p>Nullam ac urna eu felis dapibus condimentum sit amel a augue. Sed non neque alit. Sed ul imperdiel</p>
+						</div>
 					</div>
 				</div>
-				<div class="col-md-4 col-sm-12 col-xs-12 margin-top-70">
-					<img src="assets/images/sofonders.png" />
-					<div class="margin-top-20">Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin</div>
+			</div>
+			<div id="thirddiv">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-sm-6 col-xs-12">
+							<img src="assets/images/man.png" />
+							<div class="sofondcaption">
+								<img src="assets/images/fin.png" />
+								<div>JOHN DOUG</div>
+								<div>General Director</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 col-xs-12">
+							<img src="assets/images/woman.png" />
+							<div class="sofondcaption">
+								<img src="assets/images/fin.png" />
+								<div>HELEN REEVES</div>
+								<div>Co foundr</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12 margin-top-70">
+							<img src="assets/images/sofonders.png" />
+							<div class="margin-top-20">Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin</div>
+						</div>
+					</div>
 				</div>
 			</div>
+			<div id="fourthdiv">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12 text-align-center">
+							<img src="assets/images/our-programming.png" />
+						</div>
+					</div>
+					<div class="row margin-top-70">
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<span class="for123">01</span>
+							<span class="for123caption">OUR GOAL</span>
+							<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor consequat ipsum, nec sagittis sem nibh id elit.</p>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<span class="for123">02</span>
+							<span class="for123caption">OUR USERS</span>
+							<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor consequat ipsum, nec sagittis sem nibh id elit.</p>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<span class="for123">03</span>
+							<span class="for123caption">OUR PROGRAM</span>
+							<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor consequat ipsum, nec sagittis sem nibh id elit.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="fifthdiv">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div>Sign in and start your trip today!</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<a href="/" class="signuporange">SIGN UP <span>></span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer-navbar></footer-navbar>
 		</div>
-	</div>
-	<div id="fourthdiv">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 col-sm-12 col-xs-12 text-align-center">
-					<img src="assets/images/our-programming.png" />
-				</div>
-			</div>
-			<div class="row margin-top-70">
-				<div class="col-md-4 col-sm-4 col-xs-12">
-					<span class="for123">01</span>
-					<span class="for123caption">OUR GOAL</span>
-					<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor consequat ipsum, nec sagittis sem nibh id elit.</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-12">
-					<span class="for123">02</span>
-					<span class="for123caption">OUR USERS</span>
-					<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor consequat ipsum, nec sagittis sem nibh id elit.</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-12">
-					<span class="for123">03</span>
-					<span class="for123caption">OUR PROGRAM</span>
-					<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor consequat ipsum, nec sagittis sem nibh id elit.</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="fifthdiv">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 col-sm-12 col-xs-12">
-					<div>Sign in and start your trip today!</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 col-sm-12 col-xs-12">
-					<a href="/" class="signuporange">SIGN UP <span>></span></a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<footer-navbar></footer-navbar>
 </div>
-<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>-->
-<!--</body>-->
-<!--</html>-->
+</div>
