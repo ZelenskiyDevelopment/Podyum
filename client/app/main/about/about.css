@@ -1,0 +1,103 @@
+.margin-top-70{
+	margin-top: 70px;
+}
+.margin-top-20{
+	margin-top: 20px;
+}
+.text-align-center{
+	text-align: center;
+}
+/*1*/
+#topdiv{
+	background: #071422 url(/assets/images/American-Football-Wallpaper.png) no-repeat center;
+	color: #6B7A8A;
+	padding-bottom: 55px;
+}
+#topdiv .row:first-child{
+	border-bottom: 1px solid #625C51;
+	height: 110px;
+}
+#topdiv .row:nth-child(2){
+	text-align: center;
+	margin: 95px 0;
+}
+#topdiv .row:last-child{
+	max-width: 950px;
+	margin: 0 auto;
+}
+#topdiv .row:last-child img{
+	margin-bottom: 15px;
+}
+/*2*/
+#seconddiv{
+	background: url(/assets/images/Amazing-American-Football-Wallpaper-HD-or.png) no-repeat center -5px;
+	padding: 105px 0 150px;
+}
+/*3*/
+#thirddiv{
+	background: #071422;
+	padding: 70px 0;
+	color: #536171;
+}
+#thirddiv img:nth-child(1), #thirddiv img:nth-child(2), .sofondcaption{
+	max-width: 295px;
+}
+.sofondcaption img{
+	float: right;
+}
+.sofondcaption{
+	padding-top: 20px;
+	font-weight: bold;
+	color: #fff;
+}
+.sofondcaption div:last-child{
+	font-style: italic;
+	color: #536171;
+	font-weight: normal;
+}
+/*4*/
+#fourthdiv{
+	background: url(/assets/images/american-football-league-in-japan.png) no-repeat center top;
+	padding: 110px 0;
+}
+.for123{
+	font-size: 100px;
+	color: #FFB517;
+}
+.for123caption{
+	font-size: 25px;
+	color: #6B7A8A;
+	margin-left: -55px;
+    top: -25px;
+    position: relative;
+}
+/*5*/
+#fifthdiv{
+	background: #071422 url(/assets/images/laptop-shutterstock-6c.png) no-repeat center;
+	text-align: center;
+	padding: 110px 0 85px;
+	color: #6B7A8A;
+	font-size: 50px;
+}
+.signuporange{
+	background: #FFB517;
+	color: #fff;
+	border-radius: 35px;
+	padding: 20px 25px 20px 50px;
+	margin-top: 40px;
+	font-size: 10px;
+}
+.signuporange span{
+	margin-left: 20px;
+}
+/*6*/
+#lastdiv{
+	border-top: 5px solid #E0E0E0;
+	padding: 40px 0;
+	text-align: center;
+}
+#lastdiv a{
+	color: #BABAC1;
+	padding: 0 35px;
+	font-size: 16px;
+}
