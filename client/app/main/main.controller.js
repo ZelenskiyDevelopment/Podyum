@@ -165,16 +165,16 @@ angular.module('abroadathletesApp')
 
     $scope.carousel1Interval = 4000;
     $scope.carousel1 = [
-        {image: 'assets/images/mainpageslides/slide1.png', header: 'Our Feature', text: 'Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin'},
-        {image: 'assets/images/mainpageslides/slide2.png', header: 'Our Feature', text: 'Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin'},
-        {image: 'assets/images/mainpageslides/slide3.png', header: 'Our Feature', text: 'Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin'}
+        {image: 'assets/images/mainpageslides/carousel-item1.png', header: 'Our Feature', text: 'Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin'},
+        {image: 'assets/images/mainpageslides/carousel-item2.png', header: 'Our Feature', text: 'Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin'},
+        {image: 'assets/images/mainpageslides/carousel-item3.png', header: 'Our Feature', text: 'Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin'}
     ];
 
     $scope.carousel2Interval = 4000;
     $scope.carousel2 = [
-        {image: 'assets/images/mainpageslides/slide1.png', header: 'Our Feature', text: 'Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin'},
-        {image: 'assets/images/mainpageslides/slide2.png', header: 'Our Feature', text: 'Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin'},
-        {image: 'assets/images/mainpageslides/slide3.png', header: 'Our Feature', text: 'Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin'}
+        {image: 'assets/images/mainpageslides/Happy-Young-Businessman-Carousel.png', header: 'Our Feature', text: 'Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin'},
+        {image: 'assets/images/mainpageslides/Happy-Young-Businessman-Carousel.png', header: 'Our Feature', text: 'Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin'},
+        {image: 'assets/images/mainpageslides/Happy-Young-Businessman-Carousel.png', header: 'Our Feature', text: 'Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin'}
     ];
 
     $scope.remember = function(value){
