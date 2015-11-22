@@ -1,4 +1,4 @@
-<div class="col-md-12 col-sm-12 col-xs-12" style="padding: 0px; margin: 0px;" class="explore-tpl">
+<div id="top" class="col-md-12 col-sm-12 col-xs-12" style="padding: 0px; margin: 0px;" class="explore-tpl">
 	<div class="explore-page">
 	<log-navbar></log-navbar>
 	<div id="topnav">
@@ -109,8 +109,8 @@
 					</div>
 				</div>
 				<div class="col-md-5 col-sm-12 col-xs-12">
-					<div style="z-index:100; background-color: rgba(255, 255,255, 1); margin-top: 15px; margin-right: 40px; border-radius: 6px"
-						 class="col-md-12 col-sm-12 col-xs-12 sing-up explore-sing-up-form" ng-show='!isLogin'>
+					<div id="sing-up" style="z-index:100; background-color: rgba(255, 255,255, 1); margin-top: 15px; margin-right: 40px; border-radius: 6px"
+						 class="col-md-12 col-sm-12 col-xs-12 sing-up explore-sing-up-form" ng-show='!isSignup'>
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<div class="landing-big-font">
 								<h2>SIGN UP - IT'S FREE!</h2>
@@ -220,7 +220,7 @@
 						</div>
 					</div>
 					<div style="z-index:100; background-color: rgba(255, 255,255, 1); margin-top: 15px; margin-right: 40px; border-radius: 6px"
-						 class="col-md-12 col-sm-12 col-xs-12 sing-up explore-login-form" ng-hide='!isLogin'>
+						 class="col-md-12 col-sm-12 col-xs-12 sing-up explore-login-form" ng-show='isSignup'>
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<div class="landing-big-font">
 								<h2>LOGIN</h2>

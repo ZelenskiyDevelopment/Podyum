@@ -26,7 +26,12 @@ var Teams = new Schema({
         default: 'team.jpg'
     },
     president:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-    myLeagues: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    myLeagues:[{
+        user: {
+            type: mongoose.Schema.Types.ObjectId, ref: 'User'
+        },
+        _id: false
+    }],
     athleticDirector:  {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     headCoach: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 

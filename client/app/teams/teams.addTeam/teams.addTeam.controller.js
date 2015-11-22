@@ -131,8 +131,8 @@ angular.module('abroadathletesApp')
         $scope.saveTeam = function() {
 
             var newTeam  = angular.copy($scope.create);
-
             var logoTeam = base64ToBlob($scope.croppedLogoTeam.replace('data:image/png;base64,',''), 'image/jpeg');
+            var leagues = [];
 
             Upload.upload({
                 url: '/api/uploads/photos',
@@ -152,16 +152,35 @@ angular.module('abroadathletesApp')
 
                 }).success(function (dataStadium, status, headers, config) {
 
-                    newTeam.president = newTeam.president._id;
-                    newTeam.headCoach = newTeam.headCoach._id;
-                    newTeam.athleticDirector = newTeam.athleticDirector._id;
-                    newTeam.myLeagues = newTeam.myLeagues[0]._id;
+
+
+                    if ($scope.president.length > 0) {
+                        newTeam.president = $scope.president._id;
+                    }
+
+                    if ($scope.headCoach.length > 0) {
+                        newTeam.headCoach = $scope.headCoach._id;
+                    }
+
+                    if ($scope.athleticDirector.length > 0) {
+                        newTeam.athleticDirector = $scope.athleticDirector._id;
+                    }
+
+                    if (newTeam.myLeagues.length > 0) {
+
+                        angular.forEach(newTeam.myLeagues, function(value,key){
+                            leagues.push({
+                                user:value._id
+                            })
+                        });
+                    }
+
+                    newTeam.myLeagues = leagues;
                     newTeam.logoTeam = dataTeam.photo;
                     newTeam.logoStadium = dataStadium.photo;
 
-
                     Teams.addTeam(newTeam).$promise.then(function(result){
-                        $location.path('/');
+                        $location.path('/home');
                     });
 
 
