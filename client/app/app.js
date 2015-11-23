@@ -26,8 +26,8 @@ angular.module('abroadathletesApp', [
   'cgNotify',
   'internationalPhoneNumber',
   'ngImgCrop',
-  'ui.calendar'
-
+  'ui.calendar',
+  'nvd3'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $provide, $mdThemingProvider, $mdIconProvider) {
 
