@@ -202,6 +202,7 @@ angular.module('abroadathletesApp')
           });
         }
         var me = $scope.owner;
+        console.log($scope.user);
         if ($scope.user.kind === "player" || $scope.user.kind === "coach") {
           User.getUserByTeam({id: $scope.user._id}).$promise.then(function (user) {
             $scope.user.myTeams = user.assignedTo;

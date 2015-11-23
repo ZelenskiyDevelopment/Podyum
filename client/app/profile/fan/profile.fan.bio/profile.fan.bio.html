@@ -1,0 +1,17 @@
+<div class="row user-about" style="background: #fff; margin: 20px 0; min-height: 150px;padding: 30px 0">
+    <div class="col-md-6" >
+        <div class="fan-biography">
+            <h3>Biography</h3>
+            <p>{{user.bio}}</p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <p class="fan-bio-info" ng-if="user.phone"><strong>Phone&nbsp;:</strong>&nbsp;{{user.phone}}</p>
+        <p class="fan-bio-info" ng-if="user.email"><strong>Email&nbsp;:</strong>&nbsp;{{user.email}}</p>
+        <p class="fan-bio-info" ng-if="user.link"><strong>Email&nbsp;:</strong>&nbsp;{{user.link}</p>
+        <div class="history">
+        </div>
+    </div>
+</div>
+
+

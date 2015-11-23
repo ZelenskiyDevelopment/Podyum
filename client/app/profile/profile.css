@@ -72,6 +72,48 @@ pre {
   border-top: 1px solid #f1f1f1;
 }
 
+.sponsor-block {
+  text-align: center;
+}
+
+.sponsor-block h4 {
+  margin-top: 35px;
+}
+
+.choose-sport {
+  text-align: center;
+  padding: 15px;
+  background: #eeeeee;
+}
+
+.choose-sport select {
+  width: 100%;
+  padding: 20px;
+  border: none;
+}
+
+.team-profile-side .table-resultate tbody > tr > td,
+.team-profile-side .table-resultate tbody > tr > th {
+  border: 1px solid #f1f1f1;
+  padding: 20px;
+}
+
+.team-profile-side .table-resultate {
+  margin: 0;
+}
+
+.team-profile-side .form-group {
+  margin: 0;
+}
+
+.team-profile-side .table-resultate tbody > tr:nth-child(odd) {
+  background: #fcfcfc;
+}
+
+.team-profile-side .table-resultate tbody > tr > td a {
+  color: #4a4a4a;
+}
+
 .goal {
   width: 20px;
   height: 20px;

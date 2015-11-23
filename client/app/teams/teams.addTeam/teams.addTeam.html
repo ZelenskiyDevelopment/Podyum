@@ -1,5 +1,5 @@
-<div class="create-team">
-<pre> {{ create }} </pre>
+<div class="createTeam-team">
+
     <div class="col-lg-12">
         <div class="md-display-2 text-center"> Add team</div>
     </div>
@@ -11,18 +11,28 @@
             <div class="col-lg-12">
                 <md-input-container>
                     <label> Team name </label>
-                    <input type="text" ng-model="create.teamName" required>
+                    <input type="text" ng-model="createTeam.teamName" required>
                 </md-input-container>
             </div>
             <div class="col-lg-12">
-                <assign-selector kind='"team"' model='create.myLeagues' items='allLeagues'
-                                 label='"Select leagues"'></assign-selector>
+
+                <md-chips ng-model="selectedLeagues" md-autocomplete-snap="" md-require-match="">
+                    <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="item in querySearch(searchText)" md-item-text="item.leagueName" placeholder="Search for a league">
+                        <span md-highlight-text="searchText">{{item.leagueName}}</span>
+                    </md-autocomplete>
+                    <md-chip-template>
+                    <span>
+                      <strong>{{$chip.leagueName}}</strong>
+
+                    </span>
+                    </md-chip-template>
+                </md-chips>
 
             </div>
             <div class="col-lg-12">
                 <md-input-container>
                     <label>Country</label>
-                    <md-select ng-model="create.country">
+                    <md-select ng-model="createTeam.country">
                         <md-option ng-repeat="country in countries" value="{{country.abbrev}}">
                             {{country.abbrev}}
                         </md-option>
@@ -32,7 +42,7 @@
             <div class="col-lg-12">
                 <md-input-container>
                     <label> Address </label>
-                    <input type="text" ng-model="create.address" required>
+                    <input type="text" ng-model="createTeam.address" required>
                 </md-input-container>
             </div>
             <div class="col-lg-12">
@@ -48,11 +58,11 @@
                 <div class="input-group col-lg-offset-4">
 
                     <div class="col-lg-7">
-                        <input type="text" class="form-control" ng-model="create.color" required>
+                        <input type="text" class="form-control" ng-model="createTeam.color" required>
                     </div>
 
                     <div class="col-lg-5">
-                        <spectrum ng-model="create.color" options="colorOptions"></spectrum>
+                        <spectrum ng-model="createTeam.color" options="colorOptions"></spectrum>
                     </div>
 
                 </div>
@@ -60,14 +70,14 @@
                 <div class="col-lg-12">
                     <md-content>
                         <h4 class="text-center"> Year founded </h4>
-                        <md-datepicker ng-model="create.founded" class="col-lg-offset-4"
+                        <md-datepicker ng-model="createTeam.founded" class="col-lg-offset-4"
                                        md-placeholder="Year founded"></md-datepicker>
                     </md-content>
                 </div>
                 <div class="col-lg-12">
                     <md-input-container>
                         <label> Stadium name </label>
-                        <input type="text" ng-model="create.stadium" required>
+                        <input type="text" ng-model="createTeam.stadium" required>
                     </md-input-container>
                 </div>
             </div>
@@ -111,7 +121,7 @@
                 <label class="col-lg-5"> Telephone number </label>
 
                 <div class="col-lg-5">
-                    <input type="text" international-phone-number ng-model="create.phone" class="form-control" required>
+                    <input type="text" international-phone-number ng-model="createTeam.phone" class="form-control" required>
                 </div>
             </div>
         </div>
@@ -119,13 +129,13 @@
         <div class="col-lg-12">
             <md-input-container>
                 <label> Email </label>
-                <input type="email" ng-model="create.email" required>
+                <input type="email" ng-model="createTeam.email" required>
             </md-input-container>
         </div>
         <div class="col-lg-12">
             <md-input-container>
                 <label> Website </label>
-                <input type="text" ng-model="create.website" required>
+                <input type="text" ng-model="createTeam.website" required>
             </md-input-container>
         </div>
         <div class="col-lg-12">

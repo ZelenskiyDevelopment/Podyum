@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-    .controller('AddTeamCtrl',function($scope, Team, User, Teams, $location, Upload){
+    .controller('AddTeamCtrl',function($scope, Team, User, Teams, $location, Upload, League, $http){
 
 
         $scope.countries = [
@@ -52,11 +52,13 @@ angular.module('abroadathletesApp')
 
         $scope.logoTeam = null;
         $scope.croppedLogoTeam = null;
-
+        $scope.user = [];
 
         $scope.logoStadium = null;
         $scope.croppedLogoStadium = null;
 
+        $scope.allLeagues = [];
+        $scope.createTeam  = [];
         /*
          * Select Logo Team
          */
@@ -120,19 +122,26 @@ angular.module('abroadathletesApp')
                     return user.kind ==='coach';
                 });
             });
-            User.getAllLeagues({id: me._id}).$promise.then(function (result) {
-                $scope.allLeagues = result;
+
+            League.getAll().then(function(result) {
+                $scope.allLeagues = result.data;
+                $scope.Leagues =  result.data.map(function (league) {
+                    league._lowername = league.leagueName.toLowerCase();
+                    return league;
+                });
             });
 
-            $scope.create.id_user = me._id;
-
+            $scope.user = me;
         });
 
         $scope.saveTeam = function() {
 
-            var newTeam  = angular.copy($scope.create);
+
             var logoTeam = base64ToBlob($scope.croppedLogoTeam.replace('data:image/png;base64,',''), 'image/jpeg');
+
             var leagues = [];
+            var  myLeagues = null,
+                id_user = null;
 
             Upload.upload({
                 url: '/api/uploads/photos',
@@ -154,40 +163,88 @@ angular.module('abroadathletesApp')
 
 
 
-                    if ($scope.president.length > 0) {
-                        newTeam.president = $scope.president._id;
-                    }
+                    if ($scope.selectedLeagues.length > 0 && angular.isArray($scope.selectedLeagues)) {
 
-                    if ($scope.headCoach.length > 0) {
-                        newTeam.headCoach = $scope.headCoach._id;
-                    }
-
-                    if ($scope.athleticDirector.length > 0) {
-                        newTeam.athleticDirector = $scope.athleticDirector._id;
-                    }
-
-                    if (newTeam.myLeagues.length > 0) {
-
-                        angular.forEach(newTeam.myLeagues, function(value,key){
+                        angular.forEach($scope.selectedLeagues, function(value,key){
                             leagues.push({
                                 user:value._id
                             })
                         });
                     }
 
-                    newTeam.myLeagues = leagues;
-                    newTeam.logoTeam = dataTeam.photo;
-                    newTeam.logoStadium = dataStadium.photo;
+                    myLeagues  = leagues;
+                    logoTeam = dataTeam.photo;
+                    logoStadium = dataStadium.photo;
+                    id_user = $scope.user._id;
 
-                    Teams.addTeam(newTeam).$promise.then(function(result){
-                        $location.path('/home');
+
+                    var newTeam = {
+                        president:  (angular.isObject($scope.president)) ? $scope.president._id : null,
+                        headCoach: (angular.isObject($scope.headCoach)) ? $scope.headCoach._id : null,
+                        athleticDirector:  (angular.isObject($scope.athleticDirector)) ? $scope.athleticDirector._id : null,
+                        id_user:  id_user,
+                        logoStadium: logoStadium,
+                        myLeagues: myLeagues,
+                        teamName: $scope.createTeam.teamName,
+                        country: $scope.createTeam.country,
+                        address: $scope.createTeam.address,
+                        mascot: $scope.createTeam.mascot,
+                        color: $scope.createTeam.color,
+                        founded: $scope.createTeam.founded,
+                        stadium: $scope.createTeam.stadium,
+                        phone: $scope.createTeam.phone,
+                        email: $scope.createTeam.email,
+                        website: $scope.createTeam.website
+                    };
+
+               $http.post('/api/team/addTeam',newTeam).then(function(result) {
+                   $location.path('/home');
                     });
+//                    Teams.addTeam(newTeam).$promise.then(function(result){
+//
+//                   });
 
 
                 });
 
             });
 
+        };
+
+
+        $scope.readonly = false;
+        $scope.selectedItem = null;
+        $scope.searchText = null;
+        $scope.querySearch = querySearch;
+        $scope.selectedLeagues = [];
+        $scope.numberChips = [];
+        $scope.numberChips2 = [];
+        $scope.numberBuffer = '';
+
+        /**
+         * Search for vegetables.
+         */
+        function querySearch (query) {
+
+            var results = query ?  $scope.Leagues.filter(createFilterFor(query)) : [];
+
+            return results;
+
+
         }
+
+        /**
+         * Create filter function for a query string
+         */
+        function createFilterFor(query) {
+            var lowercaseQuery = angular.lowercase(query);
+
+            return function filterFn(league) {
+                return (league._lowername.indexOf(lowercaseQuery) === 0);
+
+            };
+
+        }
+
 
     });

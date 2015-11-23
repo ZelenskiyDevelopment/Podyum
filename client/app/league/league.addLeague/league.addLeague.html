@@ -1,0 +1,85 @@
+<div class="create-league">
+
+<div class="container">
+
+    <div class="col-lg-12">
+        <div class="md-display-2 text-center"> Add League</div>
+    </div>
+
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="big-q">League info</div>
+
+
+    <div class="col-lg-12">
+        <md-input-container>
+            <label> League name </label>
+            <input type="text" ng-model="createLeague.leagueName" required>
+        </md-input-container>
+    </div>
+        <div class="col-lg-12">
+            <md-input-container>
+                <label> Short Biography </label>
+                <textarea ng-model="createLeague.bio" required></textarea>
+            </md-input-container>
+        </div>
+    <div class="col-lg-12">
+        <md-content>
+            <h4 class="text-center"> Year founded </h4>
+            <md-datepicker ng-model="createLeague.founded" class="col-lg-offset-4"
+                           md-placeholder="Year founded"></md-datepicker>
+        </md-content>
+    </div>
+        <div class="col-lg-12">
+            <div class="md-headline">Logo league</div>
+            <div class="upload"> +
+                <input type="file" id="fileInputLogo">
+            </div>
+            <div class="image-crop">
+                <img-crop image='logoLeague' result-image='croppedLogoLeague' area-type="square"
+                          result-image-quality="1.0"></img-crop>
+            </div>
+
+            <div class="preview-img" ng-show="logoLeague">
+                <div class="md-title">Preview:</div>
+                <img ng-src="{{croppedLogoLeague}}">
+            </div>
+        </div>
+        <div class="big-q">Contact info</div>
+    <div class="col-lg-12">
+        <md-input-container>
+            <label> Address </label>
+            <input type="text" ng-model="createLeague.address" required>
+        </md-input-container>
+    </div>
+
+    <div class="col-lg-12">
+        <md-input-container>
+            <label> Website </label>
+            <input type="text" ng-model="createLeague.website" required>
+        </md-input-container>
+    </div>
+
+        <div class="col-lg-12">
+            <md-input-container>
+                <label>Country</label>
+                <md-select ng-model="createLeague.country">
+                    <md-option ng-repeat="country in countries" value="{{country.abbrev}}">
+                        {{country.abbrev}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
+        <div class="col-lg-12">
+            <one-user-selector label="'Executive'" items='allHumanUsers'
+                               selected-item='executiveLeague'></one-user-selector>
+        </div>
+
+        <div class="col-lg-12">
+            <button class="btn col-lg-5 col-lg-offset-4 save-league btn-default our-button" ng-click="saveLeague()"> Save
+                league
+            </button>
+        </div>
+    </div>
+
+</div></div>

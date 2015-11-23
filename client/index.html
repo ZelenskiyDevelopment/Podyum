@@ -60,6 +60,8 @@
   <link rel="stylesheet" href="app/profile/coach/profile.coach.highs/profile.coach.highs.css">
   <link rel="stylesheet" href="app/profile/coach/profile.coach.stats/profile.coach.stats.css">
   <link rel="stylesheet" href="app/profile/common/profile.common.story/profile.common.story.css">
+  <link rel="stylesheet" href="app/profile/fan/profile.fan.bio/profile.fan.bio.css">
+  <link rel="stylesheet" href="app/profile/fan/profile.fan.galery/profile.fan.galery.css">
   <link rel="stylesheet" href="app/profile/league/profile.league.contact/profile.league.contact.css">
   <link rel="stylesheet" href="app/profile/league/profile.league.stats/profile.league.stats.css">
   <link rel="stylesheet" href="app/profile/league/profile.league.store/profile.league.store.css">
@@ -104,6 +106,10 @@
   <link rel="stylesheet" href="components/wall/publisher/publisher.css">
   <link rel="stylesheet" href="components/wall/wall.css">
   <!-- endinjector -->
+    <link href="//rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.css" rel="stylesheet">
+
+
+
   <!-- endbuild -->
 </head>
 <body ng-app="abroadathletesApp">
@@ -252,6 +258,20 @@
   <script src="app/jobs/jobsFiltering/jobsFiltering.directive.js"></script>
   <script src="app/jobs/jobsList/jobsList.directive.js"></script>
   <script src="app/jobs/jobsSearcher/jobsSearcher.directive.js"></script>
+  <script src="app/league/league.addLeague/league.addLeague.controller.js"></script>
+  <script src="app/league/league.addLeague/league.addLeague.js"></script>
+  <script src="app/league/league.controller.js"></script>
+  <script src="app/league/league.js"></script>
+  <script src="app/league/league.taskManager/addEvent/eventModal.controller.js"></script>
+  <script src="app/league/league.taskManager/addTask/taskModal.controller.js"></script>
+  <script src="app/league/league.taskManager/league.taskManager.controller.js"></script>
+  <script src="app/league/league.taskManager/league.taskManager.js"></script>
+  <script src="app/league/league.taskManager/listTasks/listTasks.controller.js"></script>
+  <script src="app/league/league.taskManager/listTasks/listTasks.js"></script>
+  <script src="app/league/league.taskManager/listTasks/taskView/taskView.controller.js"></script>
+  <script src="app/league/league.taskManager/listTasks/taskView/taskView.js"></script>
+  <script src="app/league/league.updateLeague/league.updateLeague.controller.js"></script>
+  <script src="app/league/league.updateLeague/league.updateLeague.js"></script>
   <script src="app/main/Login/login.directive.js"></script>
   <script src="app/main/about/about.controller.js"></script>
   <script src="app/main/about/about.js"></script>
@@ -285,6 +305,8 @@
   <script src="app/profile/coach/profile.coach.stats/profile.coach.stats.js"></script>
   <script src="app/profile/common/profile.common.story/profile.common.story.controller.js"></script>
   <script src="app/profile/common/profile.common.story/profile.common.story.js"></script>
+  <script src="app/profile/fan/profile.fan.bio/profile.fan.bio.js"></script>
+  <script src="app/profile/fan/profile.fan.galery/profile.fan.galery.js"></script>
   <script src="app/profile/league/profile.league.contact/profile.league.contact.controller.js"></script>
   <script src="app/profile/league/profile.league.contact/profile.league.contact.js"></script>
   <script src="app/profile/league/profile.league.stats/profile.league.stats.controller.js"></script>
@@ -452,6 +474,7 @@
   <script src="components/services/Citizenships/Citizenships.service.js"></script>
   <script src="components/services/Comment/Comment.service.js"></script>
   <script src="components/services/Event/Event.service.js"></script>
+  <script src="components/services/League/League.services.js"></script>
   <script src="components/services/Photo/photo.service.js"></script>
   <script src="components/services/Subscription/Subscription.service.js"></script>
   <script src="components/services/Team/Team.service.js"></script>
@@ -498,6 +521,8 @@
 
   <script src="bower_components/ammap3/ammap/maps/js/worldLow.js"></script>
   <script src="bower_components/ammap3/ammap/themes/dark.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
+  <script src="//rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.js"></script>
   </div>
 </body>
 </html>

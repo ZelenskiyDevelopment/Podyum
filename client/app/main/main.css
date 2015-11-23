@@ -14,21 +14,27 @@
   text-align: left;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   z-index:49;
-  background-color: transparent;
-}
-.explore-page .log-nav{
   background-image: url(/assets/images/header-background.jpg);
   position: fixed;
   top: 0;
+  background-size: cover;
 }
+.log-nav-buttons {
+  padding-left: 140px;
+}
+/*.explore-page .log-nav{*/
+  /*background-image: url(/assets/images/header-background.jpg);*/
+  /*position: fixed;*/
+  /*top: 0;*/
+/*}*/
 .md-datepicker-calendar-pane {
     z-index: 999999999999999;
 }
-.dark{
-    background-image:
-      linear-gradient(rgba(20, 20, 20, 0.9) 0%, rgba(255, 255, 255, 0) 95%);
-      -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0.8)), color-stop(0.5, rgb(51, 51, 51)), to(rgba(80, 80, 80, 0.2)))
-}
+/*.dark{*/
+    /*background-image:*/
+      /*linear-gradient(rgba(20, 20, 20, 0.9) 0%, rgba(255, 255, 255, 0) 95%);*/
+      /*-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0.8)), color-stop(0.5, rgb(51, 51, 51)), to(rgba(80, 80, 80, 0.2)))*/
+/*}*/
 
 
 /* logo ----------------------------------- */
@@ -119,8 +125,8 @@ md-toast.md-top {
 }
 
 .main-button:hover, .main-button:focus, .main-button:active, .main-button:hover:not([disabled]){
-  color: #fff;
-  background-color: #5e5e5e;
+  color: #F1A227;
+  background: #fff!important;
 }
 
 sign-up .main-button{
@@ -184,9 +190,8 @@ sign-up .main-button{
   outline:0;
   padding: 10px 12px;
   text-decoration: none;
-  color: #fff;
+  color: #F1A227;
   text-align: center;
-  text-shadow: 2px 2px 2px #000;
 }
 
 
@@ -728,13 +733,6 @@ h1, h2, h3, h4, h5, h6 {
   background-color: white;
 }
 
-/* carousel 2 =================================================== */
-
-
-
-/* about-us  =================================================== */
-
-
 #about-us{
   background-color: #F7F7F7;
 ;
@@ -768,6 +766,52 @@ h1, h2, h3, h4, h5, h6 {
   background-size: cover;
 }
 
+#home-icons-div{
+  background: url(/assets/images/bg-tech-savvy-man.png) #fff no-repeat;
+  padding: 120px 0 90px;
+  background-size: cover;
+}
+.h-icons-wrap{
+  text-align: center;
+  font-size: 16px;
+  color: #47535D;
+}
+.h-icons-wrap-caption div:first-child{
+  color: #84849A;
+  font-size: 30px;
+  margin: 10px 0 5px;
+}
+#home-after-icons-div{
+  text-align: center;
+  font-size: 16px;
+  padding: 60px 0;
+  background: #fff;
+}
+#home-after-icons-div .home-after-icons-caption{
+  color: #84849A;
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+#home-block-img{
+  background: #fff;
+}
+#home-block-img .col-md-1.col-sm-4.col-xs-12,
+#home-block-img .col-md-2.col-sm-4.col-xs-12,
+#home-block-img .col-md-4.col-sm-4.col-xs-12{
+  padding-right: 0;
+  padding-left: 0;
+}
+.width-33{
+  width: 33.33%;
+  height: auto;
+}
+.width-66{
+  width: 66.66%;
+  height: 100%;
+}
+.height-100{
+  height: 100%;
+}
 
 /* MEDIA ====================================================== */
 

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-    .controller('CreatorCtrl', function ($scope, $timeout, User, $window, Upload, $location, sports, $state, $http, Teams) {
+    .controller('CreatorCtrl', function ($scope, $timeout, User, $window, Upload, $location, sports, $state, $http, Teams, $filter) {
 
         $scope.progressValue = 10;
 
@@ -88,7 +88,8 @@ angular.module('abroadathletesApp')
             $scope.formData.lastName = me.lastName;
             $scope.formData.sex = me.sex;
             if (me.birthday != undefined) {
-                $scope.formData.birthday = new Date(me.birthday);
+
+                $scope.formData.birthday = $filter('date')(me.birthday, 'yyyy-MM-dd');
             }
 
         });

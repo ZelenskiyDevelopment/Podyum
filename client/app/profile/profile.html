@@ -11,50 +11,194 @@
               <!-- end ngSwitchWhen: --><!-- ngSwitchWhen: league --><!-- ngSwitchWhen: fan --></div>
             <div class="follower-user"><p><span class="total ng-binding"> 0&nbsp;</span><span>Loyal Fans</span></p>
             </div>
-            <!--<div>
-            <p>Friends : {{friendsNumber}}</p>
-            </div>--></div>
+            <div class="user-profile-stats">
+              <div ng-repeat="event in statsNames[currentActiveType]" class="stat-boxes">
+                <stat-box header="{{event}}" content="{{myStats[currentActiveTypeInd].data[$index]}}"></stat-box>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-md-6">
-          <div class="upcoming-schedule" style="height: 250px">
-            <div class="table-header"><h3>Upcomming Schedule</h3></div>
-            <table class="table table-striped">
-              <tbody>
-              <tr>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Location</th>
-                <th>Event</th>
-              </tr>
-              <tr>
-                <td>Live Now</td>
-                <td>7:15 pm</td>
-                <td><img alt="" ng-src="photos/user.png" src="photos/user.png">@Gdynia</td>
-                <td>4th quartet 56-21</td>
-              </tr>
-              <tr>
-                <td>Sun 11/15</td>
-                <td>11:30 am</td>
-                <td><img alt="" ng-src="photos/user.png" src="photos/user.png">@Rynek</td>
-                <td>Football in square</td>
-              </tr>
-              <tr>
-                <td>Mon 11/26</td>
-                <td>6:00 pm</td>
-                <td><img alt="" ng-src="photos/user.png" src="photos/user.png">Vs. Byalistok</td>
-                <td class="text-center"><a href=""><img src="assets/images/play-btn.png" alt=""></a><a
-                  ui-sref="manageStats" href="/manageStats"><img src="assets/images/stat-btn.png" alt=""></a></td>
-              </tr>
-              <tr>
-                <td>Thur 11/29</td>
-                <td>7:00 pm</td>
-                <td><img alt="" ng-src="photos/user.png" src="photos/user.png">Vs. Warsaw Eagles</td>
-                <td class="text-center"><a href=""><img src="assets/images/play-btn.png" alt=""></a><a
-                  ui-sref="manageStats" href="/manageStats"><img src="assets/images/stat-btn.png" alt=""></a></td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
+
+
+
+
+
+
+
+          <div ng-switch="user.kind">
+            <div ng-switch-when="player">
+              <div class="user-profile-side">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <h2>2015 Goals</h2>
+                  </div>
+                </div>
+                <div class="row">
+                  <milestones></milestones>
+                  <!--<ul style="list-style-type: none;">
+                    <li><input type="checkbox" ng-checked="true" disabled/> 500 pts season</li>
+                    <li><input type="checkbox" ng-checked="false" disabled/> 8 three pointers in one game</li>
+                    <li><input type="checkbox" ng-checked="true" disabled/> 50 pts in one game</li>
+                  </ul>-->
+                </div>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <h4 style="text-align: center">Upcoming milestones</h4>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 15px;">
+                  <ul>
+                    <li>Average over 50 points per game</li>
+                    <li>10 game win streak</li>
+                    <li>Average over 20 assists per game</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="user-profile-stats">
+                <div ng-repeat="event in statsNames[currentActiveType]" class="stat-boxes">
+                  <stat-box header="{{event}}" content="{{myStats[currentActiveTypeInd].data[$index]}}"></stat-box>
+                </div>
+              </div>
+            </div>
+            <div ng-switch-when="league" class="team-profile-side">
+              <div class="sponsor-block">
+                <a href=""><img src="assets/images/logo.png" alt=""/></a>
+                <h4>Proud Sponsor</h4>
+              </div>
+              <div class="choose-sport form-group">
+                <select name="sport" id="league-select">
+                  <option value="0">2015 Novi Sad Dukes</option>
+                </select>
+              </div>
+              <table class="table table-resultate">
+                <tr>
+                  <th>Team</th>
+                  <th>Conf</th>
+                  <th>All</th>
+                </tr>
+                <tr ng-repeat="game in games|orderBy:'-date' | limitTo:5">
+                  <td>
+                    <a ui-sref="profile.common-story({id: game.team1._id})">
+                      {{game.team1.team.name}}
+                    </a>
+                  </td>
+                  <td>
+                    {{game.data.score1}}
+                  </td>
+                  <td>
+                    {{game.data.score2}}
+                  </td>
+                </tr>
+
+              </table>
+              <!-- <div>
+                <table class="table">
+                  <tr>
+                    <th>Team</th>
+                    <th>Wins</th>
+                    <th>Loses</th>
+                  </tr>
+                  <tr ng-repeat="item in myStandings | orderBy:'-wins'">
+                    <th>
+                      <a ui-sref="profile.common-story({id: item.id})">
+                        {{item.teamName}}
+                      </a>
+                    </th>
+                    <th>{{item.wins}}</th>
+                    <th>{{item.loses}}</th>
+                  </tr>
+                </table>
+              </div>
+              Upcoming schedule:
+              <table class="table">
+                <tr>
+                  <th>Date</th>
+                  <th>Home</th>
+                  <th>Away</th>
+                </tr>
+                <tr ng-repeat="game in upcoming |orderBy:'date' | limitTo:5">
+                  <th>{{game.date | date:'medium'}}</th>
+                  <th>
+                    <a ui-sref="profile.common-story({id: game.team1._id})">
+                      {{game.team1.team.name}}
+                    </a>
+                  </th>
+                  <th>
+                    <a ui-sref="profile.common-story({id: game.team2._id})">
+                      {{game.team2.team.name}}
+                    </a>
+                  </th>
+                </tr>
+              </table>
+              Previous matches:
+              <table class="table">
+                <tr>
+                  <th>Date</th>
+                  <th>Home</th>
+                  <th>Away</th>
+                  <th>Result</th>
+                </tr>
+                <tr ng-repeat="game in previous |orderBy:'-date' | limitTo:5">
+                  <th>{{game.date | date:'medium'}}</th>
+                  <th>
+                    <a ui-sref="profile.common-story({id: game.team1._id})">
+                      {{game.team1.team.name}}
+                    </a>
+                  </th>
+                  <th>
+                    <a ui-sref="profile.common-story({id: game.team2._id})">
+                      {{game.team2.team.name}}
+                    </a>
+                  </th>
+                  <th>
+                    {{game.data.score1}}-{{game.data.score2}}
+                  </th>
+                </tr>
+              </table> -->
+            </div>
+            <!--<div ng-switch-when="team">
+              <div>
+                <simple-calendar events="user.events" options="calendarOptions" newevent="newEvent"></simple-calendar>
+              </div>
+            </div>-->
+            <div ng-if="user.kind === 'team'" class="team-profile-side">
+              <h2>Upcoming events:</h2>
+              <table class="table">
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Event</th>
+                </tr>
+                <tr ng-repeat="event in upcoming |orderBy:'event.date' | limitTo:5">
+                  <td>{{event.event.date | date:'EEE m/d'}}</td>
+                  <td>{{event.event.date | date:'h:mm'}}</td>
+                  <td>
+                    {{event.event.title}}
+                  </td>
+                </tr>
+              </table>
+              <!-- <h2>Previous events:</h2>
+              <table class="table">
+                <tr>
+                  <th>Date</th>
+                  <th>Event</th>
+                </tr>
+                <tr ng-repeat="event in previous |orderBy:'-event.date' | limitTo:5">
+                  <td>{{event.event.date | date:'medium'}}</td>
+                  <td>
+                    {{event.event.title}}
+                  </td>
+                </tr>
+              </table> -->
+            </div>
+            </div>
+
+
+
+
+
+
         </div>
         <div class="col-md-3">
           <div class="upcoming-schedule" style="height: 250px">
@@ -94,7 +238,6 @@
               </tr>
             </table>
           </div>
-
         </div>
       </div>
       <div class="row">
@@ -202,7 +345,8 @@
                                       </div>
                                       <div class="row white">
                                         <div class="col-md-12">
-                                          <div class="view-all" ng-click="mapDataLimit = 300" ng-hide="mapDataLimit>10">
+                                          <div class="view-all" ng-click="mapDataLimit = 300"
+                                               ng-hide="mapDataLimit>10">
                                             <div class="view-all-content">
                                               View All
                                             </div>
@@ -266,7 +410,8 @@
                               <md-content class="light-gray info-card">
                                 <md-list>
                                   <md-list-item class="md-3-line" ng-repeat="item in todos">
-                                    <img ng-src="{{item.face}}?{{$index}}" class="md-avatar face" alt="{{item.name}}"
+                                    <img ng-src="{{item.face}}?{{$index}}" class="md-avatar face"
+                                         alt="{{item.name}}"
                                          width="55" height="55">
 
                                     <div class="md-list-item-text" layout="column">
@@ -328,4 +473,3 @@
     </div>
   </div>
 </div>
-

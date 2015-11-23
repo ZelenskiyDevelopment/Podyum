@@ -9,7 +9,6 @@ angular.module('abroadathletesApp')
             _.forEach(popovers, function( popover ){
               angular.element(popover).scope().$parent.isOpen = false;
               angular.element(popover).scope().$parent.$apply();
-              angular.element(popover).remove();
             });
           };
 
@@ -20,7 +19,6 @@ angular.module('abroadathletesApp')
 
           // Hide when clicking outside.
           $timeout(function () {
-
             angular.element("body").one("click", _hide);
           }, 0);
 

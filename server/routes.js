@@ -23,6 +23,7 @@ module.exports = function(app, orientDatabase) {
   app.use('/api/subscription', require('./api/subscription'));
   app.use('/api/taskmanager', require('./api/taskmanager'));
   app.use('/api/team', require('./api/team'));
+  app.use('/api/league', require('./api/league'));
   app.use('/auth', require('./auth'));
 
   // All undefined asset or api routes should return a 404
