@@ -1,0 +1,22 @@
+<div class="league">
+
+    <div class="container">
+
+        <div class="col-lg-6 col-lg-offset-4 padding-bottom" ng-show="league.length == 0">
+
+            <a class="btn btn-default our-button" ui-sref="league.addLeague"> Create a League </a>
+
+        </div>
+        <div ng-show="league.length > 0" class="col-lg-6 col-lg-offset-4 padding-bottom">
+            <div class="navbar-default">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{ active: isActive('/league/task-manager') }"><a ui-sref="league.taskManager" data-toggle="modal" role="button">Task Manager</a></li>
+                    <li ng-class="{ active: isActive('/league/update-league') }"><a ui-sref="league.updateLeague" data-toggle="modal" role="button">Update League</a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div ui-view=""></div>
+    </div>
+
+</div>

@@ -1,0 +1,501 @@
+.league {
+  margin-top: 220px;
+  .preview-img {
+    img {
+      width: 200px !important;
+      height: 200px !important;
+      display: block;
+      margin: 0px auto;
+      margin-bottom: 30px;
+    }
+
+    .md-title {
+      text-align: center;
+      padding-bottom: 20px;
+    }
+  }
+  .image-crop {
+    height: 330px;
+    margin: 43px auto;
+  }
+  .save-league {
+    margin-top: 40px;
+  }
+  .create-league {
+    padding-bottom: 200px;
+    width: 100%;
+    float: left;
+  }
+
+
+  .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: black!important;
+    background: none!important;
+    outline: none!important;
+  }
+  .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: black!important;
+    background: none!important;
+    outline: none!important;
+  }
+  .navbar-default .navbar-nav > .active > a {
+    color: black;
+    background: none;
+    outline: none;
+
+  }
+  .alert-danger.event-danger {
+    margin-right: 0px;
+  }
+  .padding-top {
+    padding-top: 40px;
+  }
+
+  .current-task {
+    border: 2px solid #d7d7d7;
+    height: 100%;
+    padding: 17px;
+    border-radius: 5px;
+    min-height: 500px;
+    margin-bottom: 30px;
+
+    md-checkbox.md-checked .md-icon:after {
+
+      top: 2px;
+    }
+
+    md-checkbox.md-default-theme.md-checked, md-checkbox.md-checked .md-icon:after {
+
+      border-right: 2px solid #eeeeee!important;
+      border-bottom: 2px solid #eeeeee!important;
+    }
+  }
+  .complete-task {
+    position: relative;
+    left: 34px;
+    top: 1px;
+  }
+  .current-task-list {
+    padding-top: 30px;
+    .task-name {
+      margin-top: 2px;
+      display: block;
+      a {
+        text-decoration: none;
+        color: black;
+        &:hover {
+          color:#fac553;
+          text-decoration: none;
+        }
+      }
+    }
+    md-checkbox .md-icon {
+      border-radius: 11px;
+    }
+  }
+  .hide-assign {
+    width: 100px;
+    margin: 0px auto;
+  }
+  .view-task {
+    border: 2px solid #d7d7d7;
+    height: 100%;
+    padding: 17px;
+    border-radius: 5px;
+    min-height: 500px;
+    margin-bottom: 30px;
+
+    md-datepicker.md-default-theme, md-datepicker {
+      background: none;
+    }
+    .deleteTask {
+      margin-top: -5px;
+    }
+    .md-button.md-icon-button {
+      margin: -6px 4px 13px;
+      height: 46px;
+      min-width: 0;
+      line-height: 48px;
+      padding-left: 0;
+      padding-right: 0;
+      width: 48px;
+      border-radius: 50%;
+    }
+    md-checkbox .md-icon {
+      border-radius: 30px;
+      width: 40px;
+      height: 40px;
+    }
+    .sub-tasks {
+      md-checkbox .md-icon {
+        border-radius: 30px;
+        width: 18px;
+        height: 18px;
+      }
+      .task-name-textarea {
+        margin-top: 4px;
+        font-size: 14px;
+        line-height: 18px;
+        height: 40px;
+      }
+      .md-datepicker-input {
+        position: absolute;
+        left: -99999999999999999px;
+      }
+      .md-datepicker-triangle-button.md-button.md-icon-button {
+        display:none!important;
+      }
+    }
+    md-checkbox .md-container .md-ripple-container {
+      display: none;
+    }
+    .task-date {
+      margin-top: 10px;
+      display: block;
+    }
+    .assign-user {
+      margin-top: -5px;
+    }
+    .task-name {
+      margin-top: -4px;
+      display: block;
+    }
+    .task-name-textarea {
+      resize: none;
+      line-height: 18px;
+      height: 40px;
+      font-family: "amasis", "Helvetica Neue", Arial, sans-serif;
+      font-size: 24px;
+      background: transparent;
+      border: 1px solid transparent;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      display: block;
+      padding: 5px;
+      padding-left: 13px;
+      width: 100%;
+      padding-top: 10px;
+      margin-top: 13px;
+      &:hover {
+        border-color: #CDCFD2;
+        -webkit-transition: border-color 150ms;
+        -moz-transition: border-color 150ms;
+        transition: border-color 150ms;
+      }
+    }
+  }
+  .md-virtual-repeat-container.md-autocomplete-suggestions-container {
+    z-index: 99999999999999999999999999;
+  }
+  .deleteTask {
+    margin-top: -3px;
+  }
+  .view-task-section {
+
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 60px;
+    .task-name {
+      padding-bottom: 30px;
+    }
+    md-checkbox.md-checked .md-icon:after {
+
+      top: 13px;
+      left: 16px;
+    }
+
+    md-checkbox.md-default-theme.md-checked, md-checkbox.md-checked .md-icon:after {
+
+      border-right: 2px solid #eeeeee!important;
+      border-bottom: 2px solid #eeeeee!important;
+    }
+  }
+  .task-description {
+    padding: 5px;
+  }
+  md-checkbox.md-default-theme.md-checked, md-checkbox.md-checked .md-icon:after {
+    border-color: rgb(238,238,238);
+    border: none;
+  }
+  .task-name  {
+
+    a {
+      color:black;
+      &:hover {
+        color: #fac553;
+        text-decoration: none;
+      }
+    }
+
+  }
+  md-calendar {
+    font-size: 13px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .md-default-theme .md-calendar-day-header, .md-calendar-day-header {
+    background: rgb(224,224,224);
+    color: rgba(0,0,0,0.87);
+  }
+  .task-description {
+    width: 100%;
+  }
+  .md-calendar-scroll-mask {
+    display: inline-block;
+    overflow: hidden;
+    height: 308px;
+  }
+  .md-calendar-scroll-mask .md-virtual-repeat-scroller {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+  .md-calendar-scroll-mask .md-virtual-repeat-scroller::-webkit-scrollbar {
+    display: none;
+  }
+  .md-calendar-scroll-mask .md-virtual-repeat-offsetter {
+    width: 100%}
+  .md-calendar-scroll-container {
+    box-shadow: inset -3px 3px 6px rgba(0, 0, 0, .2);
+    display: inline-block;
+    height: 308px;
+    width: 346px;
+  }
+  .md-calendar-date {
+    height: 44px;
+    width: 44px;
+    text-align: center;
+    padding: 0;
+    border: none;
+  }
+  .md-calendar-date:first-child {
+    padding-left: 16px;
+  }
+  .md-calendar-date:last-child {
+    padding-right: 16px;
+  }
+  .md-calendar-date.md-calendar-date-disabled {
+    cursor: default;
+  }
+  .md-calendar-date-selection-indicator {
+    transition: background-color, color .4s cubic-bezier(.25, .8, .25, 1);
+    border-radius: 50%;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+  .md-calendar-date:not(.md-disabled) .md-calendar-date-selection-indicator {
+    cursor: pointer;
+  }
+  .md-calendar-month-label {
+    height: 44px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0 0 0 24px;
+  }
+  .md-calendar-day-header {
+    table-layout: fixed;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+  .md-calendar-day-header th {
+    width: 44px;
+    text-align: center;
+    padding: 0;
+    border: none;
+    font-weight: 400;
+    height: 40px;
+  }
+  .md-calendar-day-header th:first-child {
+    padding-left: 16px;
+  }
+  .md-calendar-day-header th:last-child {
+    padding-right: 16px;
+  }
+  .md-calendar {
+    table-layout: fixed;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+  .md-calendar tr:last-child td {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
+  .md-calendar:first-child {
+    border-top: 1px solid transparent;
+  }
+  md-datepicker {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .md-inline-form md-datepicker {
+    margin-top: 8px;
+  }
+  .md-datepicker-button {
+    display: inline-block;
+    box-sizing: border-box;
+    background: 0 0;
+  }
+  .md-datepicker-input {
+    font-size: 14px;
+    box-sizing: border-box;
+    border: none;
+    box-shadow: none;
+    outline: 0;
+    background: 0 0;
+    min-width: 120px;
+    max-width: 328px;
+  }
+  .md-datepicker-input::-ms-clear {
+    display: none;
+  }
+  .md-datepicker-input-container {
+    position: relative;
+    padding-bottom: 5px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    display: inline-block;
+    width: auto;
+    margin-left: 12px;
+  }
+  .md-datepicker-input-container.md-datepicker-focused {
+    border-bottom-width: 2px;
+  }
+  .md-datepicker-input-mask {
+    display: none;
+  }
+  .md-default-theme .md-datepicker-calendar-pane, .md-datepicker-calendar-pane {
+    border-color: rgb(224,224,224);
+    background: white;
+  }
+  .md-default-theme .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-default-theme .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator {
+    background: rgb(16,108,200);
+    color: rgba(255,255,255,0.87);
+    border-color: transparent;
+  }
+  .md-default-theme .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator, .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator {
+    border: 1px solid rgb(16,108,200);
+  }
+  .md-default-theme .md-calendar-date-selection-indicator:hover, .md-calendar-date-selection-indicator:hover {
+    background: rgb(224,224,224);
+  }
+  .md-datepicker-calendar-pane {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999995;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    transition: -webkit-transform .2s cubic-bezier(.25, .8, .25, 1);
+    transition: transform .2s cubic-bezier(.25, .8, .25, 1);
+  }
+  .md-datepicker-calendar-pane.md-pane-open {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  .md-datepicker-input-mask {
+    height: 40px;
+    width: 340px;
+    position: relative;
+    background: 0 0;
+    pointer-events: none;
+    cursor: text;
+  }
+  .md-datepicker-input-mask-opaque {
+    position: absolute;
+    right: 0;
+    left: 120px;
+    height: 100%}
+  .md-datepicker-calendar {
+    opacity: 0;
+    transition: opacity .2s cubic-bezier(.5, 0, .25, 1);
+  }
+  .md-pane-open .md-datepicker-calendar {
+    opacity: 1;
+  }
+  .md-datepicker-calendar md-calendar:focus {
+    outline: 0;
+  }
+  .md-datepicker-expand-triangle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid;
+  }
+  .md-datepicker-triangle-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-transform: translateY(-25%) translateX(45%);
+    transform: translateY(-25%) translateX(45%);
+  }
+  .md-datepicker-triangle-button.md-button.md-icon-button {
+    height: 100%;
+    width: 36px;
+    position: absolute;
+  }
+  md-content.md-default-theme, md-content, md-datepicker.md-default-theme, md-datepicker {
+    background: none;
+  }
+  md-datepicker[disabled] .md-datepicker-input-container {
+    border-bottom-color: transparent;
+  }
+  md-datepicker[disabled] .md-datepicker-triangle-button {
+    display: none;
+  }
+  .md-datepicker-open .md-datepicker-input-container {
+    margin-left: -12px;
+    border: none;
+  }
+  .md-datepicker-open .md-datepicker-input {
+    margin-left: 24px;
+    height: 40px;
+  }
+  .md-datepicker-open .md-datepicker-triangle-button, .md-datepicker-pos-adjusted .md-datepicker-input-mask {
+    display: none;
+  }
+  .md-datepicker-calendar-pane .md-calendar {
+    -webkit-transform: translateY(-85px);
+    transform: translateY(-85px);
+    transition: -webkit-transform .65s cubic-bezier(.25, .8, .25, 1);
+    transition: transform .65s cubic-bezier(.25, .8, .25, 1);
+    transition-delay: .125s;
+  }
+  .md-datepicker-calendar-pane.md-pane-open .md-calendar {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  .md-dialog-is-showing {
+    max-height: 100%}
+  .md-dialog-container {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 80;
+    overflow: hidden;
+}}
