@@ -1,37 +1,48 @@
-<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ffffff; padding: 20px;">
+<div class="col-md-12 col-sm-12 col-xs-12 profile-data">
   <button class="btn" ng-show="showedit" ng-click="edit()"
-          style="position: absolute; top:0px; right:0px; background-color: Transparent;"><img src="assets/images/pen.png"/>
+          style="position: absolute; top:0px; right:0px; background-color: Transparent; z-index:1"><img src="assets/images/pen.png"/>
   </button>
-  <a ui-sref="friends({id: user._id})" ng-if="!showedit" style="position: absolute; top:2px; right:0px;">Friends</a>
-  <div class="row">
-    <div class="col-md-4 col-sm-4 col-xs-12">
-      <a href="#" class="thumbnail" style="margin-top:40px;">
-        <img src="photos/{{user.profilePhoto}}" alt="s" class="img-rounded">
-      </a>
-
-    </div>
-    <div class="col-md-8 col-sm-8 col-xs-12">
+  <div class="col-md-3" style="border-right: 1px solid #f5f5f5;padding: 30px 0">
+    <a href="#">
+      <img class="profile-main-photo img-rounded" src="photos/{{user.profilePhoto}}" alt="">
+    </a>
+    <div class="profile-name">
       <h1>{{user.fan.firstName}} {{user.fan.lastName}}</h1>
-
-      <div class="col-md-4 col-sm-4 col-xs-6">
-        <p>Hometown</p>
-
-        <p>Height</p>
-
-        <p>Weight</p>
-
-        <p>Age</p>
-
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-6">
+    <div class="row additional-block">
+      <div class="col-md-6">
+        <div ng-if="user.fan.birth" class="additional-info">
+          <p>Born&nbsp;:</p>
+          <span>{{user.fan.birth}}</span>
+        </div>
+        <div ng-if="user.fan.city" class="additional-info">
+          <p>Birth Place&nbsp;:</p>
+          <span>{{user.fan.city}}</span>
+        </div>
       </div>
-      <div class="col-md-8 col-sm-8 col-xs-6">
-        <p>{{user.fan.hometown}}</p>
-
-        <p>{{user.fan.height}}</p>
-
-        <p>{{user.fan.weight}}</p>
-
-        <p>{{user.fan.age}}</p>
+      <div class="col-md-6">
+        <div ng-if="user.fan.team" class="additional-info">
+          <p>Favorite teams&nbsp;:</p>
+          <span>{{user.fan.team}}</span>
+        </div>
       </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <profile-buttons user="user" owner="owner"></profile-buttons>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3" style="background: #fbfbfb;">
+    <div class="user-fans">
+      <a ui-sref="followed({id: user._id})">{{user.followed.length}}</a>
+      <p>Followers</p>
+    </div>
+    <div class="user-friends">
+      <a ui-sref="friends({id: user._id})">{{user.friends.length}}</a>
+      <p>Friends</p>
     </div>
   </div>
   <profile-buttons user="user" owner="owner"></profile-buttons>
