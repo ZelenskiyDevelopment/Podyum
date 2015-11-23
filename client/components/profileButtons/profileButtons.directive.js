@@ -10,10 +10,7 @@ angular.module('abroadathletesApp')
         owner: '='
       },
       link: function (scope, element, attrs) {
-        console.log(scope.user)
-        console.log(scope.owner)
         scope.friendsNumber = scope.user.friends.length;
-        console.log(scope.friendsNumber);
         scope.follow = function () {
           var ID = scope.user._id;
           User.followUser({id: ID}).$promise.then(function(result){

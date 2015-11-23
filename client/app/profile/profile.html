@@ -54,9 +54,39 @@
               </div>
             </div>
         </div>
-        <div ng-switch-when="league">
-          <div>
-            <table class="table table-bordered">
+        <div ng-switch-when="league" class="team-profile-side">
+          <div class="sponsor-block">
+            <a href=""><img src="assets/images/logo.png" alt=""/></a>
+            <h4>Proud Sponsor</h4>
+          </div>
+          <div class="choose-sport form-group">
+            <select name="sport" id="league-select">
+              <option value="0">2015 Novi Sad Dukes</option>
+            </select>
+          </div>
+          <table class="table table-resultate">
+            <tr>
+              <th>Team</th>
+              <th>Conf</th>
+              <th>All</th>
+            </tr>
+            <tr ng-repeat="game in games|orderBy:'-date' | limitTo:5">
+              <td>
+                <a ui-sref="profile.common-story({id: game.team1._id})">
+                  {{game.team1.team.name}}
+                </a>
+              </td>
+              <td>
+                  {{game.data.score1}}
+              </td>
+              <td>
+                {{game.data.score2}}
+              </td>
+            </tr>
+
+          </table>
+          <!-- <div>
+            <table class="table">
               <tr>
                 <th>Team</th>
                 <th>Wins</th>
@@ -74,7 +104,7 @@
             </table>
           </div>
           Upcoming schedule:
-          <table class="table table-bordered">
+          <table class="table">
             <tr>
               <th>Date</th>
               <th>Home</th>
@@ -95,7 +125,7 @@
             </tr>
           </table>
           Previous matches:
-          <table class="table table-bordered">
+          <table class="table">
             <tr>
               <th>Date</th>
               <th>Home</th>
@@ -118,7 +148,7 @@
                 {{game.data.score1}}-{{game.data.score2}}
               </th>
             </tr>
-          </table>
+          </table> -->
         </div>
         <!--<div ng-switch-when="team">
           <div>

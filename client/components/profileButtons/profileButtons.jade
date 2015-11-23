@@ -10,6 +10,6 @@
   button(class="player-links" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && (owner['invited'].indexOf(user['_id']) ===-1 && isNotInArray(owner.friends, user._id))" ng-click="friend()")
     | Invite to friends!
   send-message-modal(receiver="user")
-    button(class="player-links" ng-show="(owner.kind!=='team')")
+    button(class="player-links" ng-hide="(user.kind ==='team')")
       | Send Message
 div

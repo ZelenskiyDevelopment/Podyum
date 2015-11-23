@@ -159,4 +159,22 @@
 	margin: 0;
 }
 
+.league-basic .img-rounded {
+	width: 82px;
+	height: 82px;
+}
+
+.league-basic {
+	margin: 15px 0;
+}
+
+.league-header {
+	font: 22px/40px "aileronlight";
+	color: #111E2B;
+	text-align: center;
+	border-bottom: 1px solid #F1F1F1;
+	margin: 0;
+	padding: 10px 0;
+}
+
 
