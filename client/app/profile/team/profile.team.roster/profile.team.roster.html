@@ -1,9 +1,24 @@
+<header class="roster-header">
+  <ul>
+    <li><a href="" ng-class="{active: isSet(1)}" ng-click="setTab(1)"><i class="fa fa-bars"></i></a></li>
+    <li><a href=""  ng-class="{active: isSet(2)}" ng-click="setTab(2)"><i class="fa fa-th"></i></a></li>
+  </ul>
+</header>
 <div ng-repeat="member in players">
 </div>
-<div>
-  <table class="table table-bordered">
+<div ng-show="isSet(2)">
+  <div ng-repeat="player in myPlayers" class="col-sm-3 col-xs-6 members-tab">
+    <a ui-sref="profile.common-story({id: player.user._id})">
+      <img src="photos/{{player.user.profilePhoto}}" alt="" class="" style="width:100%; height:180px;">
+      <p>{{player.user.player.firstName}} {{player.user.player.lastName}}</p>
+    </a>
+  </div>
+</div>
+<div ng-show="isSet(1)">
+  <table class="table table-bordered table-striped member-table">
     <tr>
       <th>No.</th>
+      <th>Picture</th>
       <th>Name</th>
       <th>Position</th>
       <th>Experience</th>
@@ -12,14 +27,15 @@
       <th>Hometown</th>
     </tr>
     <tr ng-repeat="member in players">
-      <th>{{member.user.player.number}}</th>
-      <th><a ui-sref="profile.common-story({id: member.user._id})" style="color:#333;">{{member.user.player.firstName}}
-        {{member.user.player.lastName}}</a></th>
-      <th>{{member.user.player.position}}</th>
-      <th>{{member.user.player.experience}}</th>
-      <th>{{member.user.player.height}}</th>
-      <th>{{member.user.player.weight}}</th>
-      <th>{{member.user.player.hometown}}</th>
+      <td>{{member.user.player.number}}</td>
+      <td><img src="photos/{{player.user.profilePhoto}}" alt=""></td>
+      <td><a ui-sref="profile.common-story({id: member.user._id})">{{member.user.player.firstName}}
+        {{member.user.player.lastName}}</a></td>
+      <td>{{member.user.player.position}}</td>
+      <td>{{member.user.player.experience}}</td>
+      <td>{{member.user.player.height}}</td>
+      <td>{{member.user.player.weight}}</td>
+      <td>{{member.user.player.hometown}}</td>
     </tr>
   </table>
 </div>

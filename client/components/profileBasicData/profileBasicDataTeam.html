@@ -14,26 +14,26 @@
         <p><span>{{user.team.league}}</span></p>
       </div>
     </div>
-    <div class="col-md-6" style="padding:30px 0">
-      <div class="row additional-block">
+    <div class="col-md-5" style="padding:30px 0">
+      <div class="row additional-block" style="min-height: 130px">
         <div class="col-md-6">
-          <div ng-if="user.team.address" class="additional-info">
+          <div ng-if="user.address" class="additional-info">
             <p>Address&nbsp;:</p>
-            <span>{{user.team.address}}</span>
+            <span>{{user.address}}</span>
           </div>
-          <div ng-if="user.team.phone" class="additional-info">
+          <div ng-if="user.phone" class="additional-info">
             <p>Phone&nbsp;:</p>
-            <span>{{user.team.phone}}</span>
+            <span>{{user.phone}}</span>
           </div>
         </div>
         <div class="col-md-6">
-          <div ng-if="user.team.email" class="additional-info">
+          <div ng-if="user.email" class="additional-info">
             <p>Email&nbsp;:</p>
-            <span>{{user.team.email}}</span>
+            <span>{{user.email}}</span>
           </div>
           <div ng-if="user.team.link" class="additional-info">
             <p>Site&nbsp;:</p>
-            <span>{{user.team.link}}</span>
+            <span>{{user.link}}</span>
           </div>
         </div>
       </div>
@@ -44,40 +44,19 @@
         </div>  
       </div>
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 btn-basic-team">
           <profile-buttons user="user" owner="owner"></profile-buttons>
         </div>
       </div>
     </div>
-    <!--<div class="col-md-7 col-sm-7 col-xs-12">
-      <div class="player-data">
-        <div class="player-facts">
-          <div class="col-md-6 left-col">
-            <p ng-if="user.team.city">City:</p>
-            <p ng-if="user.team.phone">Phone:</p>
-            <p ng-if="user.team.link">Team website:</p>
-            <p ng-if="user.team.address">Address:</p>
-          </div>
-          <div class="col-md-6">
-            <p ng-if="user.team.city">{{user.team.city}}</p>
-            <p ng-if="user.team.phone">{{user.team.phone}}</p>
-            <p ng-if="user.team.link"><a href="{{user.team.link}}">{{user.team.link}}</a></p>
-            <p ng-if="user.team.address">{{user.team.address}}</p>
-          </div>
-        </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-3" style="background: #fbfbfb; display: table;">
+      <div class="user-fans-team">
+        <a>{{user.team.fans.length}}</a>
+        <p>Loyal Fans</p>
       </div>
-
-
-    </div>
-
     </div>
   </div>
-  <profile-buttons user="user" owner="owner"></profile-buttons> -->
-  <!--<div class="row" ng-show="user._id !== owner._id && user.completed">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-      <button class="btn-sm btn-default our-button round-corners" ng-click="onassign()" ng-show="(owner.kind==='player' || owner.kind==='coach' )">Assign!</button>
-      <button class="btn-sm btn-default our-button round-corners" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && owner['follows'].indexOf(user['_id']) === -1" ng-click="onclickfollow()">Follow!</button>
-      <button class="btn-sm btn-default our-button round-corners" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && owner['follows'].indexOf(user['_id']) !== -1" ng-click="onclickunfollow()">Unfollow</button>
-      <button class="btn-sm btn-default our-button round-corners">Send Message!</button>
-    </div>
-  </div>-->
+</div>  
+      
+    
