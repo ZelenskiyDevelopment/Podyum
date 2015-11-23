@@ -17,9 +17,8 @@
       .col-md-6.col-sm-6.col-xs-6
         .div(class="creator-q")  What's your date of birth?
       .col-md-6.col-sm-6.col-xs-6
-        label
-        md-datepicker(ng-model="formData.birthday" md-placeholder="Enter date"
-                        md-min-date="minDate" md-max-date="maxDate")
+        .div(moment-picker='formData.birthday', format='YYYY-MM-DD')
+            input.form-inline(placeholder='Select a date', ng-model='formData.birthday')
     .col-md-12.col-sm-12.col-xs-12
           .col-md-6.col-sm-6.col-xs-6
             .div(class="creator-q")  What's your country?
