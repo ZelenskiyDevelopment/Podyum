@@ -8,7 +8,7 @@
       </div>
       <ul class="roster-player-list">
         <li class="player-in-roster" ng-repeat="player in roster1 | filter:roster1Filter">
-          <button style="width: 100%;" class="btn">
+          <button style="width: 100%;" class="btn" ng-click="choosePlayer(player.player.number)">
             <span>{{player.player.number}}</span>&nbsp;&nbsp;{{player.player.firstName}}&nbsp;{{player.player.lastName}}
           </button>
         </li>
@@ -27,20 +27,20 @@
         <div class="col-md-12">
           <div class="row light-gray timeouts-container">
             <div class="col-md-4">
-              <span class="timeout timeout-active"></span>
-              <span class="timeout timeout-active"></span>
-              <span class="timeout timeout-inactive"></span>
+              <span class="timeout {{hostTeam.timeouts > 0 ? 'timeout-active' : 'timeout-inactive'}}" ng-click="hostTeam.timeouts > 0 ? takeTimeout(true) : addTimeout(true)"></span>
+              <span class="timeout {{hostTeam.timeouts > 1 ? 'timeout-active' : 'timeout-inactive'}}" ng-click="hostTeam.timeouts > 1 ? takeTimeout(true) : addTimeout(true)"></span>
+              <span class="timeout {{hostTeam.timeouts > 2 ? 'timeout-active' : 'timeout-inactive'}}" ng-click="hostTeam.timeouts > 2 ? takeTimeout(true) : addTimeout(true)"></span>
             </div>
             <div class="col-md-4 col-md-offset-4">
-              <span class="timeout timeout-active"></span>
-              <span class="timeout timeout-active"></span>
-              <span class="timeout timeout-active"></span>
+              <span class="timeout {{guestTeam.timeouts > 0 ? 'timeout-active' : 'timeout-inactive'}}" ng-click="guestTeam.timeouts > 0 ? takeTimeout(false) : addTimeout(false)"></span>
+              <span class="timeout {{guestTeam.timeouts > 1 ? 'timeout-active' : 'timeout-inactive'}}" ng-click="guestTeam.timeouts > 1 ? takeTimeout(false) : addTimeout(false)"></span>
+              <span class="timeout {{guestTeam.timeouts > 2 ? 'timeout-active' : 'timeout-inactive'}}" ng-click="guestTeam.timeouts > 2 ? takeTimeout(false) : addTimeout(false)"></span>
             </div>
           </div>
           <div class="row light-gray">
-            <div class="col-md-4">
-              <h1>{{game.data.score1}}</h1>
-
+            <div class="col-md-4" style="align-content: center">
+              <h1 ng-show="!changingHostScore" ng-click="changingHostScore=true">{{game.data.score1}}</h1>
+              <input style="margin-left: 62px;" class="form-control custom-input" ng-model="game.data.score1" ng-blur="changingHostScore = false" ng-show="changingHostScore">
               <h3>{{game.team1.team.name}}</h3>
             </div>
             <div class="col-md-1">
@@ -48,14 +48,16 @@
                     ng-click="setOffence(0)"></span>
             </div>
             <div class="col-md-2">
-              <h1>{{gameStats.counter | timerDisplay}}</h1>
+              <h1 ng-show="!changingTimer" ng-click="changingTimer=1">{{gameStats.counter | timerDisplay}}</h1>
+              <input class="form-control custom-input" ng-model="gameStats.counterString" ng-blur="manuallyChangeTimer()" ng-show="changingTimer">
             </div>
             <div class="col-md-1">
               <span class="ball {{gameStats.teamOffence == 1 ? 'ball-active' : 'ball-inactive'}}"
                     ng-click="setOffence(1)"></span>
             </div>
             <div class="col-md-4">
-              <h1>{{game.data.score2}}</h1>
+              <h1 ng-show="!changingGuestScore" ng-click="changingGuestScore=true">{{game.data.score2}}</h1>
+              <input style="margin-left: 62px;" class="form-control custom-input" ng-model="game.data.score2" ng-blur="changingGuestScore = false" ng-show="changingGuestScore">
 
               <h3>{{game.team2.team.name}}</h3>
             </div>
@@ -64,23 +66,23 @@
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-3">
-                  <span class="big">{{gameStats.down}}</span><span class="normal">&nbsp;&nbsp;DOWN</span>
+                  <span class="big" ng-show="!changingDown" ng-click="changingDown = true">{{gameStats.down}}</span><input type="number" class="form-control custom-input" ng-model="gameStats.down" ng-show="changingDown" ng-blur="changingDown = false"><span class="normal">&nbsp;&nbsp;DOWN</span>
                 </div>
                 <div class="col-md-3">
-                  <span class="big">{{gameStats.toGo}}</span><span class="normal">&nbsp;&nbsp;TO GO</span>
+                  <span class="big" ng-show="!changingToGo" ng-click="changingToGo = true">{{gameStats.toGo = 90-gameStats.ballPosition;}}</span><input type="number" class="form-control custom-input" ng-model="gameStats.toGo" ng-show="changingToGo" ng-blur="changingToGo = false"><span class="normal">&nbsp;&nbsp;TO GO</span>
                 </div>
                 <div class="col-md-3">
-                  <span class="big">{{gameStats.ballPosition}}</span><span class="normal">&nbsp;&nbsp;BALL ON</span>
+                  <span class="big" ng-show="!changingBallOn" ng-click="changingBallOn = true">{{gameStats.ballPosition}}</span><input type="number" class="form-control custom-input" ng-model="gameStats.ballPosition" ng-show="changingBallOn" ng-blur="changingBallOn = false"><span class="normal">&nbsp;&nbsp;BALL ON</span>
                 </div>
                 <div class="col-md-3">
-                  <span class="big">{{gameStats.quarter}}</span><span class="normal">&nbsp;&nbsp;QTR</span>
+                  <span class="big" ng-show="!changingQtr" ng-click="changingQtr = true">{{gameStats.quarter < 4 ? gameStats.quarter : 'Ended'}}</span><input type="number" class="form-control custom-input" ng-model="gameStats.quarter" ng-blur="changingQtr = false" ng-show="changingQtr" /><span class="normal">&nbsp;&nbsp;QTR</span>
                 </div>
               </div>
               <div class="row custom-btn-group">
                 <div class="col-md-12">
-                  <button class="btn-custom btn-timeout">TIME OUT</button>
-                  <button class="btn-custom btn-timer">START/STOP</button>
-                  <button class="btn-custom btn-end-qtr">{{getQuarterString()}}</button>
+                  <button class="btn-custom btn-timeout" ng-click="takeTimeout(gameStats.teamOffence == 0)">TIME OUT</button>
+                  <button class="btn-custom btn-timer" ng-click="startCount()">START/STOP</button>
+                  <button class="btn-custom btn-end-qtr" ng-click="endQtr()">{{getQuarterString()}}</button>
                 </div>
               </div>
             </div>
@@ -89,7 +91,7 @@
             <div class="col-md-12">
               <div ng-cloak>
                 <md-content>
-                  <md-tabs class="md-dynamic-height md-border-bottom" md-align-tabs="top" md-selected="-1">
+                  <md-tabs class="md-dynamic-height md-border-bottom" md-align-tabs="top" md-selected="selectedPlaytype">
                     <!-- run play start -->
                     <md-tab id="run" md-on-select="playSelected = true; setOffence(gameStats.teamOffence)">
                       <md-tab-label>RUN</md-tab-label>
@@ -99,7 +101,7 @@
                             Runner
                           </div>
                           <div class="col-md-2">
-                            <input type="number" class="form-control custom-input" ng-model="round.runner"/>
+                            <input ng-focus="lastPlayerInputField = 'round.runner'" type="number" class="form-control custom-input" ng-model="round.runner"/>
                           </div>
 
                           <div class="col-md-8 advanced-button-container">
@@ -116,18 +118,15 @@
                         <div class="row light-grey">
                           <div class="col-md-4">
                             <span>START:&nbsp;</span><input type="number" ng-model="round.start"
-                                                            ng-focus="setCurrentPositionSelector('round.start')"
-                                                            ng-change="$scope.run = ''"/>
+                                                            ng-focus="setCurrentPositionSelector('round.start')" ng-change="round.gained = round.end - round.start"/>
                           </div>
                           <div class="col-md-4">
-                            <span>END:&nbsp;</span><input type="number" ng-model="round.end"
-                                                          ng-focus="setCurrentPositionSelector('round.end')"
-                                                          ng-change="$scope.run = ''"/>
+                            <span>END:&nbsp;</span><input type="number" ng-model="round.end" ng-change="round.gained = round.end - round.start"
+                                                          ng-focus="setCurrentPositionSelector('round.end')" />
                           </div>
                           <div class="col-md-4">
                             <span>GAINED:&nbsp;</span><input type="number" ng-model="round.gained"
-                                                             value="{{round.end-round.start}}"
-                                                             ng-change="$scope.run = ''"/>
+                                                             value="{{round.end-round.start}}" />
                           </div>
                         </div>
                         <div class="row football-field">
@@ -1261,6 +1260,16 @@
               </button>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-4">
+              <h2>Play-by-Play</h2>
+              <div ng-repeat="playDesc in playbyplay track by $index">
+                <div ng-repeat="event in playDesc">
+                  {{event | footballDescription}}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1274,7 +1283,7 @@
       </div>
       <ul class="roster-player-list">
         <li class="player-in-roster" ng-repeat="player in roster2 | filter:roster2Filter">
-          <button style="width: 100%;" class="btn">
+          <button style="width: 100%;" class="btn" ng-click="choosePlayer(player.player.number)">
             <span>{{player.player.number}}</span>&nbsp;&nbsp;{{player.player.firstName}}&nbsp;{{player.player.lastName}}
           </button>
         </li>
