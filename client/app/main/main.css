@@ -123,7 +123,7 @@ md-toast.md-top {
 
 .main-button:hover, .main-button:focus, .main-button:active, .main-button:hover:not([disabled]){
   color: #F1A227;
-  background: #fff;
+  background: #fff!important;
 }
 
 sign-up .main-button{
