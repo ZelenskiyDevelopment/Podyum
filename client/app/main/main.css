@@ -30,11 +30,11 @@
 .md-datepicker-calendar-pane {
     z-index: 999999999999999;
 }
-.dark{
-    background-image:
-      linear-gradient(rgba(20, 20, 20, 0.9) 0%, rgba(255, 255, 255, 0) 95%);
-      -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0.8)), color-stop(0.5, rgb(51, 51, 51)), to(rgba(80, 80, 80, 0.2)))
-}
+/*.dark{*/
+    /*background-image:*/
+      /*linear-gradient(rgba(20, 20, 20, 0.9) 0%, rgba(255, 255, 255, 0) 95%);*/
+      /*-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0.8)), color-stop(0.5, rgb(51, 51, 51)), to(rgba(80, 80, 80, 0.2)))*/
+/*}*/
 
 
 /* logo ----------------------------------- */
