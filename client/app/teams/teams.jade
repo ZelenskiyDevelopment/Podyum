@@ -1,3 +1,10 @@
+.col-md-2.select-page
+      md-input-container
+        md-select(ng-model="stateSelected" ng-change="stateChange()")
+          md-option(value='teams.schedule')
+            | Schedule
+          md-option(value='teams.manageRoster')
+            | Manage Roster
 .teams
   .container
     //md-input-container
@@ -19,12 +26,8 @@
             ul.nav.navbar-nav
               li(ng-class="{ active: isActive('/teams/update-team') }")
                a(ui-sref='teams.updateTeam'  data-toggle="modal" role="button") Update Team
-              li(ng-class="{ active: isActive('/teams/manage-roster') }")
-               a(ui-sref='teams.manageRoster'  data-toggle="modal" role="button") Manage Roster
               li(ng-class="{ active: isActive('/teams/task-manager') }")
                a(ui-sref='teams.taskManager'  data-toggle="modal" role="button") Task Manager
               li(ng-class="{ active: isActive('/teams/fans') }")
                a(ui-sref='teams.fans'  data-toggle="modal" role="button") Fans
-              li(ng-class="{ active: isActive('/teams/schedule') }")
-               a(ui-sref='teams.schedule'  data-toggle="modal" role="button") Schedule
   div(ui-view='')

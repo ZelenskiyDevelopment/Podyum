@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .controller('TeamsCtrl', function ($scope, User, $location, Teams) {
+  .controller('TeamsCtrl', function ($scope, User, $location, Teams, $state) {
 
     $scope.team = [];
     User.get().$promise.then(function (me) {
@@ -14,6 +14,11 @@ angular.module('abroadathletesApp')
             $scope.team  = result;
         })
     });
+
+    $scope.stateChange = function() {
+        $state.go($scope.stateSelected);
+
+    };
 
     $scope.isActive = function(route) {
       return $location.path().indexOf(route)>-1;

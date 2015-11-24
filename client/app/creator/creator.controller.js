@@ -199,8 +199,6 @@ angular.module('abroadathletesApp')
                         });
                     }
 
-
-
                     UserUpdate = {
                         player: {
                             firstName: $scope.formData.firstName,
@@ -225,8 +223,6 @@ angular.module('abroadathletesApp')
                     break
 
                 case "team":
-
-
 
                     UserUpdate = {
                         teamExecutive: {
@@ -299,10 +295,7 @@ angular.module('abroadathletesApp')
 
                     break
 
-            }
-
-
-
+            };
             User.updateProfile({id:$scope.formData.id,data:UserUpdate}).$promise.then(function (response){
 
                $location.path('/home');
