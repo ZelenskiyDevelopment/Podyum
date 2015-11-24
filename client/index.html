@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="bower_components/intl-tel-input/build/css/intlTelInput.css" />
   <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
   <link rel="stylesheet" href="bower_components/spectrum/spectrum.css" />
-  <link rel="stylesheet" href="bower_components/sc-date-time/dist/sc-date-time.css" />
+  <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css({.tmp,client}) app/app.css -->
@@ -198,7 +198,10 @@
   <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
   <script src="bower_components/spectrum/spectrum.js"></script>
   <script src="bower_components/angular-spectrum/dist/angular-spectrum.min.js"></script>
-  <script src="bower_components/sc-date-time/dist/sc-date-time.js"></script>
+  <script src="bower_components/d3/d3.js"></script>
+  <script src="bower_components/nvd3/build/nv.d3.js"></script>
+  <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
+  <script src="bower_components/ammap3/ammap/ammap.js"></script>
   <!-- endbower -->
   <script src="socket.io-client/socket.io.js"></script>
   <!-- endbuild -->
@@ -515,6 +518,9 @@
   <script src="components/wall/wall.directive.js"></script>
   <!-- endinjector -->
   <!-- endbuild -->
+
+  <script src="bower_components/ammap3/ammap/maps/js/worldLow.js"></script>
+  <script src="bower_components/ammap3/ammap/themes/dark.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
   <script src="//rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.js"></script>
   </div>
