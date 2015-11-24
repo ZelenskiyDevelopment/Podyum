@@ -64,7 +64,7 @@
 
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
-  .row(ng-repeat='value in ::selectedCitizenShips')
+  .col-lg-8(ng-repeat='value in ::selectedCitizenShips')
     multistring-selector(items='::CitizenShips[value]' model='formData.citizenship' label='"Select Citizenship"')
   .col-md-2.col-sm-1
 
@@ -73,16 +73,29 @@
   .col-md-2.col-sm-1
   .col-md-8.col-sm-10.col-xs-12
     .big-q Title
-    md-select(ng-model='formData.sportData[0].data.title')
+    md-select(ng-model='formData.title')
       md-option(ng-repeat='title in titles', value='{{title}}')
         | {{title}}
   .col-md-2.col-sm-1
 
 .col-md-12.col-sm-12.col-xs-12
+    .col-md-2.col-sm-1
+    .col-md-8.col-sm-10.col-xs-12
+         md-list(ng-show="selectedTeam.value.length > 0")
+              md-subheader.md-no-sticky Team
+              md-list-item.md-3-line
+                img.md-avatar(ng-src="assets/images/{{ selectedTeam.logo }}", alt='{{ selectedTeam.value }}')
+                .md-list-item-text(layout='column')
+                  h3 {{ selectedTeam.value }}
+                  h4 {{ selectedTeam.address }}
+
+.col-md-12.col-sm-12.col-xs-12.team-select
   .col-md-2.col-sm-1
   .col-md-8.col-sm-10.col-xs-12
-    .creator-q.select-text(style="border: 0px")
-      assign-selector(kind='"coach"' model='formData.sportData[0].data.myTeams' items='Teams' label='"Select teams"')
+    .big-q Team
+    md-autocomplete(ng-disabled='isDisabled', md-selected-item='selectedItem', md-search-text='searchText', md-selected-item-change='selectedItemChange(item)', md-items='item in querySearch(searchText)', md-item-text='item.display', md-min-length='0', placeholder='Select team')
+          md-item-template
+            span(md-highlight-text='searchText', md-highlight-flags='^i') {{item.display}}
   .col-md-2.col-sm-1
 
 .col-xs-12.col-sm-12.col-md-12.row

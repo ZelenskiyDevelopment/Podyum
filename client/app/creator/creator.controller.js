@@ -119,6 +119,14 @@ angular.module('abroadathletesApp')
             var HeadCoach = [];
             var CitizenShip = [];
 
+            if ($scope.formData.citizenship.length > 0) {
+                angular.forEach($scope.formData.citizenship, function(value,key){
+                    CitizenShip.push({
+                        name: value.name
+                    })
+                });
+            }
+
             switch ($scope.formData.type) {
 
                 case "player":
@@ -131,13 +139,6 @@ angular.module('abroadathletesApp')
                         });
                     }
 
-                    if ($scope.formData.citizenship.length > 0) {
-                        angular.forEach($scope.formData.citizenship, function(value,key){
-                            CitizenShip.push({
-                                name: value.name
-                            })
-                        });
-                    }
 
                     if ($scope.formData.otherAwards  != null) {
                         angular.forEach($scope.formData.otherAwards.split(','), function(value,key){
@@ -225,13 +226,7 @@ angular.module('abroadathletesApp')
 
                 case "team":
 
-                    if ($scope.formData.citizenship.length > 0) {
-                        angular.forEach($scope.formData.citizenship, function(value,key){
-                            CitizenShip.push({
-                                name: value.name
-                            })
-                        });
-                    }
+
 
                     UserUpdate = {
                         teamExecutive: {
@@ -254,14 +249,6 @@ angular.module('abroadathletesApp')
 
                 case "league":
 
-                    if ($scope.formData.citizenship.length > 0) {
-                        angular.forEach($scope.formData.citizenship, function(value,key){
-                            CitizenShip.push({
-                                name: value.name
-                            })
-                        });
-                    }
-
                     UserUpdate = {
                         leagueExecutive: {
                             bio: $scope.formData.bio,
@@ -283,11 +270,22 @@ angular.module('abroadathletesApp')
 
                 case "coach":
 
+                    if (angular.isObject($scope.formData.selectedTeam)) {
+                        var team = {
+                            id_user: $scope.formData.id,
+                            _id: $scope.formData.selectedTeam.id
+                        };
+                        Teams.updateTeam(team).$promise.then(function(){
+
+                        });
+                    }
+
                     UserUpdate = {
                         coach: {
                             bio: $scope.formData.bio,
                             hometown: $scope.formData.hometown,
-                            citizenship: CitizenShip
+                            citizenship: CitizenShip,
+                            title: $scope.formData.title
                         },
                         firstName: $scope.formData.firstName,
                         lastName: $scope.formData.lastName,
@@ -305,11 +303,11 @@ angular.module('abroadathletesApp')
 
 
 
-        User.updateProfile({id:$scope.formData.id,data:UserUpdate}).$promise.then(function (response){
+            User.updateProfile({id:$scope.formData.id,data:UserUpdate}).$promise.then(function (response){
 
-            $location.path('/home');
+               $location.path('/home');
 
-        });
+           });
         };
         $scope.setType = function(type) {
             $scope.progressValue = 20;
@@ -344,12 +342,12 @@ angular.module('abroadathletesApp')
             User.get().$promise.then(function (me) {
 
                 if (type === 'player' || type==='coach' || type==='fan') {
-                    User.getAllTeams({id: me._id}).$promise.then(function (result) {
-                        $scope.allTeams = result;
-                    });
+//                    User.getAllTeams({id: me._id}).$promise.then(function (result) {
+//                        $scope.allTeams = result;
+//                    });
 
                     Teams.getAllTeam().$promise.then(function (result) {
-                        $scope.Teams = result;
+                        $scope.allTeams = result;
                     });
                 }
                 if(type ==='team' || type==='fan') {
