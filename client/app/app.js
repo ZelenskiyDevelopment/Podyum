@@ -27,8 +27,7 @@ angular.module('abroadathletesApp', [
   'internationalPhoneNumber',
   'ngImgCrop',
   'ui.calendar',
-  'moment-picker',
-  'scDateTime'
+  'moment-picker'
 
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $provide, $mdThemingProvider, $mdIconProvider) {
