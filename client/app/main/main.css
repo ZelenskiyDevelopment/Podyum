@@ -16,6 +16,9 @@
   z-index:49;
   background-color: transparent;
 }
+.log-nav-buttons {
+  padding-left: 140px;
+}
 .explore-page .log-nav{
   background-image: url(/assets/images/header-background.jpg);
   position: fixed;
@@ -119,8 +122,8 @@ md-toast.md-top {
 }
 
 .main-button:hover, .main-button:focus, .main-button:active, .main-button:hover:not([disabled]){
-  color: #fff;
-  background-color: #5e5e5e;
+  color: #F1A227;
+  background: #fff;
 }
 
 sign-up .main-button{
@@ -184,9 +187,8 @@ sign-up .main-button{
   outline:0;
   padding: 10px 12px;
   text-decoration: none;
-  color: #fff;
+  color: #F1A227;
   text-align: center;
-  text-shadow: 2px 2px 2px #000;
 }
 
 
