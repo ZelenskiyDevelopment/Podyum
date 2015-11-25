@@ -1,3 +1,90 @@
+.col-md-12.col-sm-12.col-xs-12(style="font-size: 18px; font-family: 'Verdana', sans-serif; font-weight: 100")
+  .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12
+    .col-md-12.col-sm-12.col-xs-12
+      .col-md-6.col-sm-6.col-xs-6
+        .div(class="creator-q") What's your media name?
+      .col-md-6.col-sm-6.col-xs-6
+        label
+          input(type="text" class="form-inline" id="name" ng-model="formData.name")
+    .col-md-12.col-sm-12.col-xs-12
+      .col-md-6.col-sm-6.col-xs-6
+        .div(class="creator-q") Founder
+      .col-md-6.col-sm-6.col-xs-6
+        label
+          input(type="text" class="form-inline" id="founder" ng-model="formData.founder")
+    .col-md-12.col-sm-12.col-xs-12
+      .col-md-6.col-sm-6.col-xs-6
+        .div(class="creator-q")  What's your date of birth?
+      .col-md-6.col-sm-6.col-xs-6
+         .div(moment-picker='formData.birthday', format='YYYY-MM-DD')
+            input.form-inline(placeholder='Select a date', ng-model='formData.birthday')
+    .col-md-12.col-sm-12.col-xs-12
+          .col-md-6.col-sm-6.col-xs-6
+            .div(class="creator-q")  What's your country?
+          .col-md-6.col-sm-6.col-xs-6
+             md-input-container
+               md-select(ng-model="formData.country")
+                 md-option(ng-repeat="country in countries" value="{{country.abbrev}}")
+                   {{country.abbrev}}
+
+
+    .col-md-12.col-sm-12.col-xs-12
+      .col-md-6.col-sm-6.col-xs-6
+        .div(class="creator-q")  What's your hometown?
+      .col-md-6.col-sm-6.col-xs-6
+        label
+          input(type="text" class="form-inline" id="hometown" ng-model="formData.hometown")
+    .col-md-12.col-sm-12.col-xs-12
+      .col-md-6.col-sm-6.col-xs-6
+        .div(class="creator-q")  Are you male of female?
+      .col-md-6.col-sm-6.col-xs-6
+        md-radio-group(ng-model="formData.sex")
+          label
+            md-radio-button.md-primary(type="radio" value="male" checked) Male
+          label
+            md-radio-button.md-primary(type="radio" value="female" checked) Female
+  .col-md-2.col-sm-1
+
+
+.col-md-12.col-sm-12.col-xs-12
+  .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12
+    .big-q Short biography
+    .col-md-12.col-sm-12.col-xs-12
+      textarea(ng-model="formData.bio" value="bio" style="height: 100px; width: 100%")
+  .col-md-2.col-sm-1
+
+.col-md-12.col-sm-12.col-xs-12
+  .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12
+    .big-q Citizenships
+
+.col-md-8.col-sm-12.col-xs-12.col-lg-offset-1
+  .col-md-2.col-sm-1
+  .row(ng-repeat='value in ::selectedCitizenShips')
+    multistring-selector(items='::CitizenShips[value]' model='formData.citizenship' label='"Select Citizenship"')
+  .col-md-2.col-sm-1
+
+
+.col-xs-12.col-sm-12.col-md-12.row
+  .col-xs-2.col-sm-3.col-md-3
+  .col-xs-8.col-sm-6.col-md-6
+    .col-xs-12.col-sm-12.col-md-12.row
+      .col-xs-6.col-sm-6.col-md-6
+        a(ui-sref="creator.photo").md-button.create-button(ng-click="changeProgress(20)")
+          .i(class="fa fa-arrow-left" style="font-size: 22px; margin: 0; padding: 0;")
+          | &#32; Back
+      .col-xs-6.col-sm-6.col-md-6
+        a(ui-sref="creator.finish").md-button.create-button(ng-click="changeProgress(100)" ng-show="formData.type && formData.photo")
+          | Next step &#32;
+          .i(class="fa fa-arrow-right" style="font-size: 22px; margin: 0; padding: 0;")
+  .col-xs-2.col-sm-3.col-md-3
+
+
+
+
+
 label
   | What's your media name?
   input(type="text" class="form-inline" id="name" ng-model="formData.name")

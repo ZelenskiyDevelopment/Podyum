@@ -61,21 +61,21 @@
                                 confirmation do not match.
                             </p>
                         </div>
-                        <div ng-class="{ 'has-success': registerSubmitted,      'has-error': registerSubmitted }"
-                             class="form-group">
-                            <div type="Date" name="date" class="form-control-sign-up">
-                                <p class="input-group">
-                                    <input type="text" class="form-control ng-valid ng-isolate-scope ng-valid-required ng-valid-date ng-touched ng-dirty" uib-datepicker-popup="shortDate" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" required="required" style=""><!-- ngIf: isOpen -->
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-                                </p>
+                        <!--<div ng-class="{ 'has-success': registerSubmitted,      'has-error': registerSubmitted }"-->
+                             <!--class="form-group">-->
+                            <!--<div type="Date" name="date" class="form-control-sign-up">-->
+                                <!--<p class="input-group">-->
+                                    <!--<input type="text" class="form-control ng-valid ng-isolate-scope ng-valid-required ng-valid-date ng-touched ng-dirty" uib-datepicker-popup="shortDate" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" required="required" style="">&lt;!&ndash; ngIf: isOpen &ndash;&gt;-->
+              <!--<span class="input-group-btn">-->
+                <!--<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
+              <!--</span>-->
+                                <!--</p>-->
 
-                                <p ng-show="(registerUser.birthday + '').length == 0 && registerSubmitted "
-                                   class="help-block text-center">Field required</p>
-                            </div>
+                                <!--<p ng-show="(registerUser.birthday + '').length == 0 && registerSubmitted "-->
+                                   <!--class="help-block text-center">Field required</p>-->
+                            <!--</div>-->
 
-                        </div>
+                        <!--</div>-->
                         <div ng-class="{ 'has-success': registerSubmitted,      'has-error': registerSubmitted }"
                              class="form-group">
                             <md-radio-group ng-model="registerUser.sex" class="col-lg-offset-1">

@@ -242,7 +242,26 @@ angular.module('abroadathletesApp')
 
 
                     break
+                case "fan":
 
+                    UserUpdate = {
+                        teamExecutive: {
+                            bio: $scope.formData.bio,
+                            hometown: $scope.formData.hometown,
+                            citizenship: CitizenShip
+                        },
+                        firstName: $scope.formData.firstName,
+                        lastName: $scope.formData.lastName,
+                        birthday: $scope.formData.birthday,
+                        sex: $scope.formData.sex,
+                        kind: $scope.formData.type,
+                        sport: $scope.formData.sport_type,
+                        completed: true,
+                        country: $scope.formData.country
+                    }
+
+
+                    break
                 case "league":
 
                     UserUpdate = {
