@@ -24,20 +24,104 @@
     <div class="container">
 
         <div class="add-game">
-            <button class="pull-right btn btn-default our-button"><span></span> add game</button>
+            <button class="pull-right btn btn-default our-button" ng-click="open()"><span></span> add game</button>
         </div>
-
-
         <div class="games" ng-repeat="game in games">
 
 
-            <game-schedule  id="game._id" sport="game.sport" team1="game.team1" team2="game.team2" league="game.league"
-                            date="game.date" data="game.data">
+            <game-schedule id="game._id" time="game.time" sport="game.sport" place="game.place" stream="game.liveStream"
+                           stadium="game.stadiumArena" team1="game.team1" team2="game.team2" league="game.league"
+                           date="game.date" data="game.data">
 
             </game-schedule>
 
         </div>
 
     </div>
+    <script type="text/ng-template" id="ModalAddGame.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Add Game</h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="league" class="col-sm-2 control-label">League:</label>
 
+                    <div class="col-sm-10">
+                        <select class="form-control" ng-model="game.league" ng-change="onChange(game.league)">
+                            <option ng-repeat="league in leagues"
+                                    value="{{league._id}}">
+                                {{league.leagueName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="league" class="col-sm-2 control-label">Guests:</label>
+
+                    <div class="col-sm-10">
+                        <select class="form-control" ng-model="game.team2">
+                            <option ng-repeat="team in teams"
+                                    value="{{team._id}}">
+                                {{team.teamName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="league" class="col-sm-2 control-label">Home:</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="team1[0].teamName" id="home_team">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="league" class="col-sm-2 control-label">Date:</label>
+
+                    <div class="col-sm-10">
+                        <md-datepicker class="margin-top" ng-model="game.date"
+                                       md-placeholder="Enter date"></md-datepicker>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="league" class="col-sm-2 control-label">Time:</label>
+
+                    <div class="col-sm-10">
+                        <div class="col-lg-offset-3">
+                            <timepicker ng-model="time" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="place" class="col-sm-2 control-label">Place:</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="game.place" id="place">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="stadium_arena" class="col-sm-3 control-label">Stadium/Arena:</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="game.stadiumArena" id="stadium_arena">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="live_stream" class="col-sm-3 control-label">Live Stream:</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="game.liveStream" id="live_stream">
+                    </div>
+                </div>
+        </div>
+        </form>
+
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="save()">Save</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
 </div>

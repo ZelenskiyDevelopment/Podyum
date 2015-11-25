@@ -95,8 +95,7 @@ exports.getGamesWithId = function (req, res) {
     optionsTeam1 = PopulateUtils.userPopulateOptions('team1'),
     optionsTeam2 = PopulateUtils.userPopulateOptions('team2');
   Game.find({$or: [{'league': id}, {'team1': id}, {'team2': id}]})
-    .populate(optionsTeam1)
-    .populate(optionsTeam2)
+
     .exec(function (err, games) {
       if (err) {
         return handleError(res, err);

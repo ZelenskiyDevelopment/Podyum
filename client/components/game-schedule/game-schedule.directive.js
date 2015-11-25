@@ -9,15 +9,28 @@ angular.module('abroadathletesApp')
                 team1:'=',
                 team2:'=',
                 league:'=',
+                stadium:'=',
                 date:'=',
                 data:'=',
                 sport:'=',
+                stream:'=',
                 id:'=',
                 userdata:'=',
+                place: '=',
+                time: '=',
                 userid:'=?'
             },
-            controller: function($scope){
-                    console.log($scope.team2);
+            controller: function($scope, Teams){
+
+
+                    Teams.getTeamById({id:$scope.team1}).$promise.then(function(result){
+                        $scope.team1 = result;
+                    });
+                    Teams.getTeamById({id:$scope.team2}).$promise.then(function(result){
+                        $scope.team2 = result;
+
+                });
+
             },
             link: function (scope, element, attrs) {
 
