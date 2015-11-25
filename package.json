@@ -18,7 +18,7 @@
     "jsonwebtoken": "^0.3.0",
     "lodash": "~3.10.1",
     "method-override": "~1.0.0",
-    "mongodb": "^2.0.48",
+    "mongodb": "^2.0.49",
     "mongoose": "~3.8.8",
     "mongoose-q": "0.0.17",
     "morgan": "~1.0.0",

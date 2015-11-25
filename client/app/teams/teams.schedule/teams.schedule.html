@@ -28,10 +28,13 @@
         </div>
 
 
-        <div class="games">
+        <div class="games" ng-repeat="game in games">
 
 
-            <game-schedule></game-schedule>
+            <game-schedule  id="game._id" sport="game.sport" team1="game.team1" team2="game.team2" league="game.league"
+                            date="game.date" data="game.data">
+
+            </game-schedule>
 
         </div>
 
