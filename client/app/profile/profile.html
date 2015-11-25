@@ -7,9 +7,9 @@
             <div class="main-picture"><img alt="" ng-src="photos/user.png" src="photos/user.png"></div>
             <div ng-switch="user.kind" class="kind-user"><!-- ngSwitchWhen: player --><!-- ngSwitchWhen: coach -->
               <!-- ngSwitchWhen: team -->
-              <div ng-switch-when="team" class="ng-scope"><h3 class="ng-binding">team1</h3></div>
+              <div ng-switch-when="team" class="ng-scope"><h3 class="ng-binding"> {{user.team.name}}</h3></div>
               <!-- end ngSwitchWhen: --><!-- ngSwitchWhen: league --><!-- ngSwitchWhen: fan --></div>
-            <div class="follower-user"><p><span class="total ng-binding"> 0&nbsp;</span><span>Loyal Fans</span></p>
+            <div class="follower-user"><p><span class="total ng-binding">  {{followersNumber}}&nbsp;</span><span>Loyal Fans</span></p>
             </div>
             <div class="user-profile-stats">
               <div ng-repeat="event in statsNames[currentActiveType]" class="stat-boxes">
