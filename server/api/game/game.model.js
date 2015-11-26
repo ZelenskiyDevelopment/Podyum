@@ -12,11 +12,13 @@ var GameSchema = new Schema({
   data: {T1: [], T2: [], score1: Number, score2: Number, winner: Number, isFinished: Boolean, quart: Number, time: Number},
   userData: {},
   lastIn: {},
+  homeTeam: String,
+  guestTeam: String,
   sport: String,
   liveStream: String,
   place: String,
-  stadiumArena:String,
-  time: String
+  stadiumArena: String,
+  time: Date
 });
 
 module.exports = mongoose.model('Game', GameSchema);

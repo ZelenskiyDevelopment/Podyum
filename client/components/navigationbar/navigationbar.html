@@ -70,7 +70,7 @@
           <a ui-sref="teams">
             My Team
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" ng-show="team.length > 0">
             <li><a ui-sref="teams.schedule">Schedule</a></li>
             <li><a ui-sref="teams.manageRoster">Manage Roster</a></li>
           </ul>

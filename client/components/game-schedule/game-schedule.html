@@ -8,7 +8,7 @@
 
         <div class="section-vs" ng-click="showInfo()">
             <div class="col-lg-2 time-game">
-                <span class="ui-icon-clock"></span><span class="time">{{ time }} PM  </span>
+                <span class="ui-icon-clock"></span><span class="time"> {{time | date:'shortTime' }} </span>
             </div>
             <div class="team col-lg-offset-2">
                 <div class="team-1 col-lg-4">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="delete-team col-lg-1 "></div>
+            <div class="delete-team col-lg-1" ng-click="delete(index,id)"></div>
         </div>
 
         <div class="section-info-team">
@@ -40,7 +40,7 @@
 
             <div class="full-time-game col-lg-2">
                 <h3>Time:</h3>
-                <span>{{ time }}</span>
+                <span> {{time | date:'shortTime' }} </span>
             </div>
             <div class="place-game col-lg-2">
                 <h3>Place:</h3>

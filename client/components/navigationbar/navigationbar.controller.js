@@ -25,38 +25,9 @@ angular.module('abroadathletesApp')
     };
 
     $scope.invitationsNumber = 0;
-      $scope.invitations = [];
-
-//        User.get().$promise.then(function (me) {
-//            if(!me.completed){
-//                $location.path('/creator');
-//            }
-//            Teams.getAssignRequests({id:me._id}).$promise.then(function (requests) {
-//
-//
-//                $scope.invitations = requests;
-//            });
-//
-//        });
-//      User.getInvitations().$promise.then(function (users) {
-//        $scope.invitations = _.map(users, function (user) {
-//          return {
-//            firstName: user[user.kind].firstName,
-//            lastName: user[user.kind].lastName,
-//            profilePhoto: user.profilePhoto,
-//            _id: user._id
-//          }
-//        });
-//        if ($scope.invitations.length > 3) {
-//          $scope.invitationsNumber = 4;
-//        }
-//        else {
-//          $scope.invitationsNumber = $scope.invitations.length;
-//        }
-//      });
-
-
-      $scope.assignRequests = [];
+    $scope.invitations = [];
+    $scope.team = [];
+    $scope.assignRequests = [];
 
         User.get().$promise.then(function (me) {
 
@@ -65,6 +36,11 @@ angular.module('abroadathletesApp')
 
                 $scope.assignRequests[0] = requests;
 
+            });
+
+            Teams.getTeam({id:me._id}).$promise.then(function(result){
+
+                $scope.team  = result;
             });
 
             $scope.user = me;
