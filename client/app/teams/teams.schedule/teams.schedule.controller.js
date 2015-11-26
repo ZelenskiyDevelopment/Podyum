@@ -1,26 +1,13 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-    .controller('ScheduleCtrl', function ($scope, User, Game, $uibModal, Teams, $rootScope, $state) {
+    .controller('ScheduleCtrl', function ($scope, User, Game, $uibModal, Teams, $rootScope) {
 
-        $scope.showInfo = function(data) {
+        $scope.showInfo = function (data) {
             console.log(data);
         };
 
-        User.get().$promise.then(function (me) {
-            $scope.user = me;
-
-            Teams.getTeam({id:me._id}).$promise.then(function(result){
-
-                Game.getGames({id: result[0]._id}).$promise.then(function (games) {
-                    $scope.games = games;
-
-                });
-
-            });
-
-            console.log($scope.games);
-        });
+        loadGame();
 
         $scope.open = function (size) {
 
@@ -32,4 +19,26 @@ angular.module('abroadathletesApp')
             });
         };
 
-});
+        $rootScope.$on('AddGame', function (event, args) {
+
+            Game.create(args).$promise.then(function () {
+
+                loadGame();
+
+            });
+
+            $rootScope.$emit('CloseModalAddGame', {close: true});
+        });
+
+
+        function loadGame() {
+            User.get().$promise.then(function (me) {
+                $scope.user = me;
+
+                Game.getGames({id: me._id}).$promise.then(function (games) {
+                    $scope.games = games;
+                });
+            });
+        }
+
+    });

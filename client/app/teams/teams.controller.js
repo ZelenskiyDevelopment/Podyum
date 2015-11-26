@@ -8,9 +8,10 @@ angular.module('abroadathletesApp')
         $scope.currentUrl = $state.current.url;
 
         User.get().$promise.then(function (me) {
-      if(!me.completed){
-        $location.path('/creator');
-      }
+          if(!me.completed){
+
+            $location.path('/creator');
+          }
 
         Teams.getTeam({id:me._id}).$promise.then(function(result){
 
@@ -27,6 +28,9 @@ angular.module('abroadathletesApp')
       return $location.path().indexOf(route)>-1;
     };
 
+    $scope.checkState = function(check) {
+      return $location.path().indexOf(check)>-1;
+    };
     User.getMyTeams().$promise.then(function(teams){
       $scope.teams = teams;
       console.log(teams);
