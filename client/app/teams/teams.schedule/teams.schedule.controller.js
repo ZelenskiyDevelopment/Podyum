@@ -32,13 +32,22 @@ angular.module('abroadathletesApp')
 
 
         function loadGame() {
+
+
             User.get().$promise.then(function (me) {
                 $scope.user = me;
 
-                Game.getGames({id: me._id}).$promise.then(function (games) {
-                    $scope.games = games;
+                Teams.getTeam({id:me._id}).$promise.then(function(result){
+
+                    Game.getGames({id: result[0]._id}).$promise.then(function (games) {
+                        $scope.games = games;
+
+                    });
+
                 });
+
             });
-        }
+
+        };
 
     });
