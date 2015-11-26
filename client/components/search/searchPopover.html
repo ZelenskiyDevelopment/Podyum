@@ -1,21 +1,23 @@
-<div ng-repeat="user in searchResult">
-  <div style="padding:5px;">
-    <a ui-sref="profile.common-story({id: user._id})">
-      <div class="media">
-        <div class="media-left">
-          <img class="media-object" src="photos/{{user.profilePhoto}}" alt="" style="width:64px;height:64px;">
+<div focusable-popover="">
+  <div ng-repeat="user in searchResult">
+    <div style="padding:5px;">
+      <a ui-sref="profile.common-story({id: user._id})">
+        <div class="media">
+          <div class="media-left">
+            <img class="media-object" src="photos/{{user.profilePhoto}}" alt="" style="width:64px;height:64px;">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"></h4>
+            {{user[user.kind].firstName}} {{user[user.kind].lastName}} {{user[user.kind].name}}
+          </div>
         </div>
-        <div class="media-body">
-          <h4 class="media-heading"></h4>
-          {{user[user.kind].firstName}} {{user[user.kind].lastName}} {{user[user.kind].name}}
-        </div>
-      </div>
-    </a>
+      </a>
+    </div>
   </div>
-</div>
-<div ng-show="searchResult.length===0">
-  <p>Pattern not found</p>
-</div>
-<div ng-show="searchResult.length>=5" class="pull-right search-result result-field-search">
-  <a ui-sref="search({pattern:pattern})"><p>More results</p></a>
+  <div ng-show="searchResult.length===0">
+    <p>Pattern not found</p>
+  </div>
+  <div ng-show="searchResult.length>=5" class="pull-right search-result result-field-search">
+    <a ui-sref="search({pattern:pattern})"><p>More results</p></a>
+  </div>
 </div>
