@@ -15,24 +15,37 @@
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   z-index:49;
   background-color: transparent;
+  -webkit-transition: background-image 1s linear;
+  -o-transition: background-image 1s linear;
+  -moz-transition: background-image 1s linear;
+  transition: background-image 1s linear;
 }
 .log-nav-buttons {
   padding-left: 140px;
 }
 .explore-page .log-nav{
   background-image: url(/assets/images/header-background.jpg);
+
   position: fixed;
   top: 0;
-  background-size: cover;
+  background-size: cover!important;
+}
+.transition{
+  transition: 3s;
 }
 .md-datepicker-calendar-pane {
     z-index: 999999999999999;
 }
-/*.dark{*/
+.dark{
     /*background-image:*/
       /*linear-gradient(rgba(20, 20, 20, 0.9) 0%, rgba(255, 255, 255, 0) 95%);*/
       /*-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0.8)), color-stop(0.5, rgb(51, 51, 51)), to(rgba(80, 80, 80, 0.2)))*/
-/*}*/
+
+  background-image: url(/assets/images/mainpageslides/main-banner-img.jpg);
+  background-position: 0 -200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 
 /* logo ----------------------------------- */
