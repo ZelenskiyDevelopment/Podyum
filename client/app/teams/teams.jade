@@ -12,7 +12,7 @@ div(class="teams {{ (checkState('teams/manage-roster')) ? 'manage-roster' : '' }
     .col-lg-6.col-lg-offset-3.padding-bottom(ng-show="team.length == 0" ng-hide="checkState('/teams/schedule') || checkState('teams/manage-roster')")
         a.btn.btn-default.our-button(ui-sref='teams.addTeam') Create a Team
         a.btn.btn-default.our-button.pull-right(ui-sref='#') Join existing team
-    div(ng-hide="checkState('/schedule')")
+    div(ng-hide="checkState('/schedule') || checkState('teams/manage-roster')")
         .col-lg-6.col-lg-offset-4.padding-bottom(ng-show="team.length > 0" )
             .navbar-default
                 ul.nav.navbar-nav
