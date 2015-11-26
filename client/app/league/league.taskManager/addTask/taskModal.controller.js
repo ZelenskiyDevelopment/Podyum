@@ -41,7 +41,7 @@ angular.module('abroadathletesApp')
 
         $scope.cancel = function() {
             $uibModalInstance.dismiss('close');
-        }
+        };
 
         $scope.forTask = [];
         setTimeout(function () {
@@ -57,7 +57,7 @@ angular.module('abroadathletesApp')
 
             });
 
-        }, 1000)
+        }, 1000);
 
 
          $scope.openDialog = function($event) {

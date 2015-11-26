@@ -113,3 +113,120 @@ pre {
 .team-profile-side .table-resultate tbody > tr > td a {
   color: #4a4a4a;
 }
+
+.goal {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.goal-reached {
+  background: url('/assets/images/goal-reached.png') no-repeat;
+}
+
+.goal-unreached {
+  background: url('/assets/images/goal-unreached.png') no-repeat;
+}
+
+.info-card h2 {
+  font-size: 14.545px;
+  color: rgb(130, 127, 121);
+  line-height: 1.2;
+  text-align: left;
+  -moz-transform: matrix( 1.61954586913416,0,0,1.5813341693949,0,0);
+  -webkit-transform: matrix( 1.61954586913416,0,0,1.5813341693949,0,0);
+  -ms-transform: matrix( 1.61954586913416,0,0,1.5813341693949,0,0);
+}
+
+.row-advanced-controls-profile {
+  padding-top: 14px;
+  padding-bottom: 10px;
+  margin: 0;
+}
+
+.profile-content {
+  padding: 0;
+}
+
+.profile-content md-tab-item {
+  width: 20%;
+  background-color: #efefef;
+  color: #ecd196;
+}
+
+.profile-sidebar {
+
+}
+
+.dark-grey {
+  background: #eeeeee;
+}
+
+.inner-tab-content {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+#chartdiv {
+  width		: 100%;
+  height		: 500px;
+  font-size	: 11px;
+}
+
+.country-list li {
+  line-height: 35px;
+}
+
+.view-all {
+  background-color: #fbfdfe;
+  display: table;
+  width: 100%;
+  height: 80px;
+}
+
+.view-all-content {
+  display: table-cell;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  color: #fac553;
+  text-align: center;
+}
+
+md-divider {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+md-list-item {
+  border-bottom: 1px solid #efefef;
+}
+
+.face {
+  width: 55px !important;
+  height: 55px !important;
+}
+
+.white {
+  background-color: #ffffff;
+}
+
+.posts-list li {
+  font-size: 12px;
+  color: #656565;
+  padding-left: 18px;
+  line-height: 14px;
+  padding-top: 18px;
+  margin-top: 18px;
+}
+
+.posts-list a {
+  color: #656565;
+  text-decoration: none;
+}
+
+.posts-list a:hover {
+  color: #fac553;
+}

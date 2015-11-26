@@ -2,7 +2,6 @@
 #topnav{
 	text-align: center;
 	padding: 10px 0;
-	margin-top: 100px;
 	position: relative;
 }
 #topnav a{
@@ -10,6 +9,9 @@
 	padding: 15px 35px;
 	font-size: 16px;
 	text-decoration: none;
+}
+#topnav .container {
+	margin-top: 100px;
 }
 /*content*/
 #ll-content{

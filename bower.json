@@ -36,7 +36,10 @@
     "ng-img-crop": "ngImgCrop#~0.3.2",
     "international-phone-number": "~0.0.13",
     "angular-ui-calendar": "~1.0.1",
-    "angular-spectrum": "~0.0.1"
+    "angular-spectrum": "~0.0.1",
+    "nvd3": "1.7.1",
+    "angular-nvd3" : "1.0.3",
+    "ammap3" : "3.17.3"
   },
   "devDependencies": {
     "angular-mocks": "1.4.6",

@@ -1,6 +1,12 @@
 .teams {
   margin-top: 220px;
 
+  &.schedule {
+    margin-top: 72px;
+  }
+  &.manage-roster {
+    margin-top:100px;
+  }
   .btn-primary:active,.btn-primary:focus  {
     color: #fff;
     background-color: #f8c637;
@@ -28,6 +34,16 @@
 
 }
 
+.navbar-nav  {
+  li {
+    &:hover {
+      ul {
+        display: block;
+      }
+    }
+
+  }
+}
 
 .preview-img {
   img {
@@ -110,7 +126,7 @@
   margin-bottom: 30px;
 
   md-datepicker.md-default-theme, md-datepicker {
-    background: none;
+    background: none!important;
   }
   .deleteTask {
     margin-top: -5px;
@@ -451,8 +467,8 @@ md-datepicker {
   width: 36px;
   position: absolute;
 }
-md-content.md-default-theme, md-content, md-datepicker.md-default-theme, md-datepicker {
-  background: none;
+ md-datepicker.md-default-theme, md-datepicker {
+  background: none!important;
 }
 md-datepicker[disabled] .md-datepicker-input-container {
   border-bottom-color: transparent;

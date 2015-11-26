@@ -26,6 +26,13 @@ angular.module('abroadathletesApp')
                         controller: 'getTeam'
                     }
                 },
+                getTeamById: {
+                method: 'GET',
+                isArray: true,
+                params: {
+                    controller: 'getTeamById'
+                }
+            },
                 getAssignRequests: {
                     method: 'GET',
                     params: {

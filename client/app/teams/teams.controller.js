@@ -1,13 +1,17 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .controller('TeamsCtrl', function ($scope, User, $location, Teams) {
+  .controller('TeamsCtrl', function ($scope, User, $location, Teams, $state) {
 
-    $scope.team = [];
-    User.get().$promise.then(function (me) {
-      if(!me.completed){
-        $location.path('/creator');
-      }
+        $scope.team = [];
+        $scope.currentUrl = '';
+        $scope.currentUrl = $state.current.url;
+
+        User.get().$promise.then(function (me) {
+          if(!me.completed){
+
+            $location.path('/creator');
+          }
 
         Teams.getTeam({id:me._id}).$promise.then(function(result){
 
@@ -15,10 +19,18 @@ angular.module('abroadathletesApp')
         })
     });
 
+    $scope.stateChange = function() {
+        $state.go($scope.stateSelected);
+
+    };
+
     $scope.isActive = function(route) {
       return $location.path().indexOf(route)>-1;
     };
 
+    $scope.checkState = function(check) {
+      return $location.path().indexOf(check)>-1;
+    };
     User.getMyTeams().$promise.then(function(teams){
       $scope.teams = teams;
       console.log(teams);

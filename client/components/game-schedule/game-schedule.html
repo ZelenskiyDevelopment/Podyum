@@ -1,32 +1,32 @@
 <div class="game ">
 
     <div class="day-date-game">
-        <span>Saturday, November 19th</span>
+        <span>{{ date | date: 'EEEE, MMMM d, y' }}</span>
     </div>
 
     <div class="info-game">
 
         <div class="section-vs" ng-click="showInfo()">
             <div class="col-lg-2 time-game">
-                <span class="ui-icon-clock"></span><span class="time">2 PM  </span>
+                <span class="ui-icon-clock"></span><span class="time">{{ time }} PM  </span>
             </div>
-            <div class="team col-lg-offset-3">
-                <div class="team-1 col-lg-3">
+            <div class="team col-lg-offset-2">
+                <div class="team-1 col-lg-4">
                     <div class="name-team col-lg-6 md-headline">
-                        <span>Coyotes</span>
+                        <span>{{ team1[0].teamName }}</span>
                     </div>
 
                     <div class="logo-team col-lg-5">
-                        <img src="assets/images/logo-rebbit.png">
+                        <img width="70" height="70" src="assets/images/{{ team1[0].logoTeam }}">
                     </div>
                 </div>
                 <div class="vs-text col-lg-1"><span>vs</span></div>
-                <div class="team-2 col-lg-3">
-                    <div class="logo-team col-lg-6">
-                        <img src="assets/images/logo-rebbit.png">
+                <div class="team-2 col-lg-4">
+                    <div class="logo-team col-lg-5">
+                        <img width="70" height="70" src="assets/images/{{ team2[0].logoTeam }}">
                     </div>
-                    <div class="name-team col-lg-5  md-headline">
-                        <span>JackRabbits</span>
+                    <div class="name-team col-lg-6  md-headline">
+                        <span>{{ team2[0].teamName }}</span>
                     </div>
                 </div>
             </div>
@@ -35,23 +35,23 @@
 
         <div class="section-info-team">
             <div class="logo-team col-lg-2">
-                <img src="assets/images/logo-team-big.png">
+                <img width="120" height="78" src="assets/images/{{ team1[0].logoTeam }}">
             </div>
 
             <div class="full-time-game col-lg-2">
                 <h3>Time:</h3>
-                <span>tets tets</span>
+                <span>{{ time }}</span>
             </div>
             <div class="place-game col-lg-2">
                 <h3>Place:</h3>
-                <span>place</span></div>
+                <span>{{ place }}</span></div>
             <div class="stadium-game col-lg-2">
                 <h3>Stadium/Arena:</h3>
-                <span>stadium/arena</span>
+                <span>{{ stadium }}</span>
             </div>
             <div class="live-stream-game col-lg-3">
                 <h3>Live stream:</h3>
-                <span>live stream</span>
+                <span>{{ stream }}</span>
             </div>
 
         </div>

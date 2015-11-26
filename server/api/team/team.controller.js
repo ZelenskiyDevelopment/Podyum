@@ -6,6 +6,7 @@ var Team = require('./team.model'),
 
     socket = require('../../config/socketio.js')();
 
+var mongo = require('mongodb');
 
 exports.addTeam = function(req, res) {
 
@@ -89,6 +90,18 @@ exports.getTeam = function(req, res) {
         return handleError(res, err);
     });
 }
+
+exports.getTeamById  = function(req, res) {
+    var Id = req.params.id;
+    var findId = new mongo.ObjectID(Id);
+    Team.find({
+        _id: findId
+    }).execQ().then(function(task) {
+        return res.json(200, task);
+    }).catch(function (err) {
+        return handleError(res, err);
+    });
+};
 
 exports.getAllTeam = function(req, res) {
     Team.find().execQ().then(function (events) {

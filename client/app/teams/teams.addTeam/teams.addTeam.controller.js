@@ -161,8 +161,6 @@ angular.module('abroadathletesApp')
 
                 }).success(function (dataStadium, status, headers, config) {
 
-
-
                     if ($scope.selectedLeagues.length > 0 && angular.isArray($scope.selectedLeagues)) {
 
                         angular.forEach($scope.selectedLeagues, function(value,key){
@@ -176,7 +174,6 @@ angular.module('abroadathletesApp')
                     logoTeam = dataTeam.photo;
                     logoStadium = dataStadium.photo;
                     id_user = $scope.user._id;
-
 
                     var newTeam = {
                         president:  (angular.isObject($scope.president)) ? $scope.president._id : null,
@@ -197,13 +194,9 @@ angular.module('abroadathletesApp')
                         website: $scope.createTeam.website
                     };
 
-               $http.post('/api/team/addTeam',newTeam).then(function(result) {
-                   $location.path('/home');
+                    $http.post('/api/team/addTeam',newTeam).then(function(result) {
+                         $location.path('/home');
                     });
-//                    Teams.addTeam(newTeam).$promise.then(function(result){
-//
-//                   });
-
 
                 });
 

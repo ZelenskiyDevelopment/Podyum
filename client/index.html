@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="bower_components/intl-tel-input/build/css/intlTelInput.css" />
   <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
   <link rel="stylesheet" href="bower_components/spectrum/spectrum.css" />
+  <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css({.tmp,client}) app/app.css -->
@@ -197,6 +198,10 @@
   <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
   <script src="bower_components/spectrum/spectrum.js"></script>
   <script src="bower_components/angular-spectrum/dist/angular-spectrum.min.js"></script>
+  <script src="bower_components/d3/d3.js"></script>
+  <script src="bower_components/nvd3/build/nv.d3.js"></script>
+  <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
+  <script src="bower_components/ammap3/ammap/ammap.js"></script>
   <!-- endbower -->
   <script src="socket.io-client/socket.io.js"></script>
   <!-- endbuild -->
@@ -207,10 +212,12 @@
   <script src="app/app.controller.js"></script>
   <script src="app/creator/creator-coach/creator-coach.controller.js"></script>
   <script src="app/creator/creator-coach/creator-coach.js"></script>
+  <script src="app/creator/creator-fan/creator-fan.controller.js"></script>
   <script src="app/creator/creator-fan/creator-fan.js"></script>
   <script src="app/creator/creator-finish/creator-finish.js"></script>
   <script src="app/creator/creator-league/creator-league.controller.js"></script>
   <script src="app/creator/creator-league/creator-league.js"></script>
+  <script src="app/creator/creator-media/creator-media.controller.js"></script>
   <script src="app/creator/creator-media/creator-media.js"></script>
   <script src="app/creator/creator-photo/creator-photo.controller.js"></script>
   <script src="app/creator/creator-photo/creator-photo.js"></script>
@@ -272,6 +279,7 @@
   <script src="app/main/about/about.js"></script>
   <script src="app/main/basketball/basketball.controller.js"></script>
   <script src="app/main/basketball/basketball.js"></script>
+  <script src="app/main/datePicker/datePicker.directive.js"></script>
   <script src="app/main/explore/explore.controller.js"></script>
   <script src="app/main/explore/explore.js"></script>
   <script src="app/main/football/football.controller.js"></script>
@@ -338,6 +346,7 @@
   <script src="app/teams/teams.addTeam/teams.addTeam.js"></script>
   <script src="app/teams/teams.controller.js"></script>
   <script src="app/teams/teams.js"></script>
+  <script src="app/teams/teams.schedule/addGame/addGame.controller.js"></script>
   <script src="app/teams/teams.schedule/teams.schedule.controller.js"></script>
   <script src="app/teams/teams.schedule/teams.schedule.js"></script>
   <script src="app/teams/teams.taskManager/addEvent/eventModal.controller.js"></script>

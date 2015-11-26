@@ -46,14 +46,14 @@ angular.module('abroadathletesApp')
 
 
       },
-
-
       link: function (scope, element, attrs) {
-        var el = document.getElementsByClassName('main-container')[0];
+        var el = angular.element('.main-container')[0],
+            topElem = angular.element('#top')[0],
+            nav = angular.element('.log-nav')[0];
 
         angular.element(el).bind("scroll", function() {
 
-          if(el.scrollTop != 0) {
+          if(el.scrollTop > topElem.offsetHeight - nav.offsetHeight) {
             scope.boolChangeClass = true;
           } else {
             scope.boolChangeClass = false;

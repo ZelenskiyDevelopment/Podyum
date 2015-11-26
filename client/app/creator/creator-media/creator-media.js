@@ -5,6 +5,7 @@ angular.module('abroadathletesApp')
     $stateProvider
       .state('creator.media', {
         url: '/media',
-        templateUrl: 'app/creator/creator-media/creator-media.html'
+        templateUrl: 'app/creator/creator-media/creator-media.html',
+        'controller': 'CreatorMediaCtrl'
       });
   });

@@ -5,6 +5,7 @@ angular.module('abroadathletesApp')
     $stateProvider
       .state('creator.fan', {
         url: '/fan',
-        templateUrl: 'app/creator/creator-fan/creator-fan.html'
+        templateUrl: 'app/creator/creator-fan/creator-fan.html',
+        controller: 'CreatorFanCtrl'
       });
   });
