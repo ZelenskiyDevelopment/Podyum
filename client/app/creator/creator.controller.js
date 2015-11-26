@@ -268,13 +268,14 @@ angular.module('abroadathletesApp')
 
                     UserUpdate = {
                         media: {
-                            bio: $scope.formData.bio,
+                            name: $scope.formData.name,
+                            founder: $scope.formData.founder,
+                            link: $scope.formData.link,
                             hometown: $scope.formData.hometown,
+                            bio: $scope.formData.bio,
+                            writers: $scope.formData.writers,
                             citizenship: CitizenShip
                         },
-                        firstName: $scope.formData.firstName,
-                        lastName: $scope.formData.lastName,
-                        birthday: $scope.formData.birthday,
                         sex: $scope.formData.sex,
                         kind: $scope.formData.type,
                         sport: $scope.formData.sport_type,
@@ -284,6 +285,7 @@ angular.module('abroadathletesApp')
 
 
                     break
+
                 case "league":
 
                     UserUpdate = {
@@ -337,10 +339,9 @@ angular.module('abroadathletesApp')
                     break
 
             };
+
             User.updateProfile({id:$scope.formData.id,data:UserUpdate}).$promise.then(function (response){
-
                $location.path('/home');
-
            });
         };
         $scope.setType = function(type) {

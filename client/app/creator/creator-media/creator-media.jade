@@ -23,7 +23,7 @@
     .col-md-12.col-sm-12.col-xs-12
           .col-md-6.col-sm-6.col-xs-6
             .div(class="creator-q")  What's your country?
-          .col-md-5.col-sm-6.col-xs-6
+          .col-md-6.col-sm-6.col-xs-6
              md-input-container
                md-select(ng-model="formData.country")
                  md-option(ng-repeat="country in countries" value="{{country.abbrev}}")
@@ -70,10 +70,10 @@
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
   .col-md-8.col-sm-10.col-xs-12
-    .big-q Tagsy
+    .big-q Writers
     .col-md-12.col-sm-12.col-xs-12
-       md-chips(ng-model='tags', md-separator-keys='keys', placeholder='Enter a tag', secondary-placeholder='Comma separated tags')
-          md-chips(ng-model='ctrl.contacts', md-separator-keys='ctrl.customKeys')
+        label.writers
+            input(type="text" class="form-inline" id="writers" ng-model="formData.writers")
 
   .col-md-2.col-sm-1
 
@@ -90,16 +90,3 @@
           | Next step &#32;
           .i(class="fa fa-arrow-right" style="font-size: 22px; margin: 0; padding: 0;")
   .col-xs-2.col-sm-3.col-md-3
-
-md-content(class="md-padding" layout="column")
-  h2(class="md-title")
-    | Writers
-  md-chips(ng-model="formData.writers" readonly="false")
-    md-chip-template
-      | {{$chip}}
-md-content(class="md-padding" layout="column")
-  h2(class="md-title")
-    | Tags
-  md-chips(ng-model="formData.tags" readonly="false")
-    md-chip-template
-      | {{$chip}}

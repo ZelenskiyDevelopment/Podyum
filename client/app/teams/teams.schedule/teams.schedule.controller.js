@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-    .controller('ScheduleCtrl', function ($scope, User, Game, $uibModal, Teams, $rootScope) {
+    .controller('ScheduleCtrl', function ($scope, User, Game, $uibModal, Teams, $rootScope, $state) {
 
         $scope.showInfo = function(data) {
             console.log(data);

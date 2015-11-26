@@ -12,15 +12,14 @@
     .col-lg-6.col-lg-offset-3.padding-bottom(ng-show="team.length == 0")
         a.btn.btn-default.our-button(ui-sref='teams.addTeam') Create a Team
         a.btn.btn-default.our-button.pull-right(ui-sref='#') Join existing team
-
-    .col-lg-6.col-lg-offset-4.padding-bottom(ng-show="team.length > 0")
-
-        .navbar-default
-            ul.nav.navbar-nav
-              li(ng-class="{ active: isActive('/teams/update-team') }")
-               a(ui-sref='teams.updateTeam'  data-toggle="modal" role="button") Update Team
-              li(ng-class="{ active: isActive('/teams/task-manager') }")
-               a(ui-sref='teams.taskManager'  data-toggle="modal" role="button") Task Manager
-              li(ng-class="{ active: isActive('/teams/fans') }")
-               a(ui-sref='teams.fans'  data-toggle="modal" role="button") Fans
+    div(ng-if="currentUrl === '/schedule'" data="{{ $state }}")
+        .col-lg-6.col-lg-offset-4.padding-bottom(ng-show="team.length > 0")
+            .navbar-default
+                ul.nav.navbar-nav
+                  li(ng-class="{ active: isActive('/teams/update-team') }")
+                   a(ui-sref='teams.updateTeam'  data-toggle="modal" role="button") Update Team
+                  li(ng-class="{ active: isActive('/teams/task-manager') }")
+                   a(ui-sref='teams.taskManager'  data-toggle="modal" role="button") Task Manager
+                  li(ng-class="{ active: isActive('/teams/fans') }")
+                   a(ui-sref='teams.fans'  data-toggle="modal" role="button") Fans
   div(ui-view='')

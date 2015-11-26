@@ -3,8 +3,11 @@
 angular.module('abroadathletesApp')
   .controller('TeamsCtrl', function ($scope, User, $location, Teams, $state) {
 
-    $scope.team = [];
-    User.get().$promise.then(function (me) {
+        $scope.team = [];
+        $scope.currentUrl = '';
+        $scope.currentUrl = $state.current.url;
+
+        User.get().$promise.then(function (me) {
       if(!me.completed){
         $location.path('/creator');
       }

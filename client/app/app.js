@@ -98,7 +98,9 @@ angular.module('abroadathletesApp', [
     };
   })
 
-  .run(function ($rootScope, $location, Auth, socket) {
+  .run(function ($rootScope, $location, Auth, socket, $state) {
+
+        $rootScope.$state = $state;
 
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
