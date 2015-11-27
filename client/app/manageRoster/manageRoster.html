@@ -1,6 +1,6 @@
 <div class="manage-roster">
     <div class="add-user-form">
-        <div class="col-lg-offset-1 padding-top">
+        <div class="col-lg-offset-half padding-top">
             <div class="col-lg-4">
                 <div class="form-group">
                     <input type="text" class="input" placeholder="First Name" ng-model="athlete.firstName">
@@ -28,7 +28,8 @@
             <div class="col-lg-4">
                 <div class="small">
                     <div class="form-group">
-                        <input type="number" class="input small-input" placeholder="Jersey number" ng-model="athlete.number">
+                        <input type="number" class="input small-input" placeholder="Jersey number"
+                               ng-model="athlete.number">
                     </div>
                 </div>
                 <div class="small">
@@ -40,7 +41,8 @@
             <div class="col-lg-4">
                 <div class="small">
                     <div class="form-group">
-                        <input type="number" class="input small-input" placeholder="Birth place" ng-model="athlete.birthPlace">
+                        <input type="number" class="input small-input" placeholder="Birth place"
+                               ng-model="athlete.birthPlace">
                     </div>
                 </div>
                 <div class="small">
@@ -50,6 +52,60 @@
                 </div>
             </div>
         </div>
+        <div class="add-athlete">
+            <button class="btn btn-default our-button addAthlete" ng-click="addAthlete()"><span>add athlete</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="search-section">
+        <div class="col-lg-4 col-lg-offset-4">
+            <h3 class="md-headline text-center">2015 South dakota roster</h3>
+        </div>
+        <div class="col-lg-1">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <div class="search-form">
+
+        <div class="row">
+            <div class="col-lg-offset-2">
+                <div class="col-lg-1">
+                    <select class="select-number select" ng-model="number">
+                        <option selected>#</option>
+                    </select>
+                </div>
+                <div class="col-lg-2">
+                    <select class="select-position select" ng-model="position">
+                        <option selected>#</option>
+                    </select>
+                </div>
+                <div class="col-lg-4">
+                    <input type="text" class="input" placeholder="Search" ng-model="text">
+                </div>
+                <div class="col-lg-2">
+                    <select class="select-season select" ng-model="season">
+                        <option selected>#</option>
+                    </select>
+                </div>
+                <div class="col-30">
+                    <button class="btn btn-default our-button switch-btn blocks "
+                            ng-class="{ 'active': template.viewBlocks}" ng-click="switch('blocks')"></button>
+                </div>
+                <div class="col-30">
+                    <button class="btn btn-default our-button switch-btn lines"
+                            ng-class="{ 'active': template.viewLines}" ng-click="switch('lines')"></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container-athlete">
+        <div class="athlete-items" ng-include="template.url">
+
+
+        </div>
     </div>
 </div>
-</div>
+
