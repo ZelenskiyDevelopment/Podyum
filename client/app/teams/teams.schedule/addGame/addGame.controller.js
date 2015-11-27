@@ -25,6 +25,10 @@ angular.module('abroadathletesApp')
         });
 
 
+        Teams.getAllTeam().$promise.then(function (result) {
+            $scope.teams = result;
+        });
+
         $scope.onChange = function (value) {
             Teams.getAllTeam().$promise.then(function (result) {
                 angular.forEach(result, function (item, key) {
