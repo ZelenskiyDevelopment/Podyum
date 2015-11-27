@@ -8,7 +8,7 @@ angular.module('abroadathletesApp')
         $scope.teams = [];
         $scope.team = [];
         $scope.game = {};
-        $scope.game.league = '';
+        $scope.game.league = null;
         $scope.team1 = '';
         $scope.game.team2 = '';
         User.get().$promise.then(function (me) {
@@ -30,6 +30,7 @@ angular.module('abroadathletesApp')
         });
 
         $scope.onChange = function (value) {
+            $scope.teams = [];
             Teams.getAllTeam().$promise.then(function (result) {
                 angular.forEach(result, function (item, key) {
 

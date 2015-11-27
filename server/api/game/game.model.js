@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var GameSchema = new Schema({
-  league: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  league: {type: mongoose.Schema.Types.ObjectId, ref: 'User',   default: null},
   team1: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   team2: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   date: Date,
