@@ -63,6 +63,13 @@ angular.module('abroadathletesApp')
                     params: {
                         controller: 'getAllTeam'
                     }
+                },
+                getPlayersByTeam: {
+                    method: 'GET',
+                    isArray: true,
+                    params: {
+                        controller: 'getPlayersByTeam'
+                    }
                 }
 
                 });

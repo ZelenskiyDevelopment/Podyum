@@ -1,9 +1,11 @@
-<div class="col-lg-3 athlete-item">
+
+
+<div class="col-lg-3 athlete-item" ng-repeat="player in players">
 
     <div class="head-tools">
 
         <div class="number">
-            <h3 class="md-headline"># 17 WR</h3>
+            <h3 class="md-headline"># {{ player.player.number }} WR</h3>
         </div>
 
         <div class="tools">
@@ -14,8 +16,8 @@
     </div>
 
     <div class="name">
-        <h3 class="md-headline">Will Powell</h3>
-        <p class="md-body-1">dsdadsasd</p>
+        <h3 class="md-headline"> {{ player.player.firstName }} {{ player.player.lastName }} </h3>
+        <p class="md-body-1"> {{ player.player.weight }} {{ player.player.height }} Lbs {{ (player.player.born.length > 0) ?  calculateAge(player.player.born) : calculateAge(player.player.birthday)  }} Years Old </p>
     </div>
 
     <div class="photo">
@@ -24,37 +26,16 @@
     <div class="info">
 
         <h3 class="md-subhead">BORN : </h3>
-        <p class="md-body-1">dsdadsasd</p>
+        <p class="md-body-1">{{ player.player.born }}</p>
 
         <h3 class="md-subhead">BIRTH PLACE : </h3>
-        <p class="md-body-1">dsdadsasd</p>
+        <p class="md-body-1"> {{ player.player.birthPlace }} </p>
 
         <h3 class="md-subhead">EXPERIENCE : </h3>
-        <p class="md-body-1">dsdadsasd</p>
+        <p class="md-body-1"> empty </p>
 
         <h3 class="md-subhead">HIGH SCHOOL : </h3>
-        <p class="md-body-1">dsdadsasd</p>
+        <p class="md-body-1"> empty </p>
 
     </div>
-</div>
-<div class="col-lg-3 athlete-item">
-
-    <div class="head-tools">
-
-    </div>
-
-</div>
-<div class="col-lg-3 athlete-item">
-
-    <div class="head-tools">
-
-    </div>
-
-</div>
-<div class="col-lg-3 athlete-item">
-
-    <div class="head-tools">
-
-    </div>
-
 </div>

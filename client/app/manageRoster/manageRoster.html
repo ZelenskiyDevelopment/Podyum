@@ -1,61 +1,118 @@
 <div class="manage-roster">
     <div class="add-user-form">
-        <div class="col-lg-offset-half padding-top">
-            <div class="col-lg-4">
-                <div class="form-group">
-                    <input type="text" class="input" placeholder="First Name" ng-model="athlete.firstName">
-                </div>
+        <form name="athleteForm" novalidate ng-submit="addAthlete(athleteForm)" id="add-athlete">
+            <div class="col-lg-offset-half padding-top">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <input type="text" class="input" name="firstName" placeholder="First Name"
+                               ng-model="athlete.firstName" required="">
 
-                <div class="form-group">
-                    <input type="text" class="input" placeholder="Email Address" ng-model="athlete.email">
+                        <div ng-show="athleteForm.$submitted || athleteForm.firstName.$touched">
+                            <div ng-show="!athlete.firstName || !athlete.firstName"><label class="error">Field is
+                                required</label></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="input" name="email" placeholder="Email Address"
+                               ng-model="athlete.email" required="">
+
+                        <div ng-show="athleteForm.$submitted || athleteForm.email.$touched">
+                            <div ng-show="!athlete.email || !athlete.email"><label class="error">Field is
+                                required</label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <input type="text" class="input" name="lastName" placeholder="Last Name"
+                               ng-model="athlete.lastName" required="">
+
+                        <div ng-show="athleteForm.$submitted || athleteForm.lastName.$touched">
+                            <div ng-show="!athlete.lastName || !athlete.lastName"><label class="error">Field is
+                                required</label></div>
+                        </div>
+                    </div>
+                    <div class="small">
+                        <div class="form-group">
+                            <input type="text" class="input small-input" name="height" placeholder="Height"
+                                   ng-model="athlete.height" required="">
+
+                            <div ng-show="athleteForm.$submitted || athleteForm.height.$touched">
+                                <div ng-show="!athlete.height || !athlete.height"><label class="error">Field is
+                                    required</label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small">
+                        <div class="form-group">
+                            <input type="text" class="input small-input" name="weight" placeholder="Weight"
+                                   ng-model="athlete.weight" required="">
+
+                            <div ng-show="athleteForm.$submitted || athleteForm.height.$touched">
+                                <div ng-show="!athlete.weight || !athlete.weight"><label class="error">Field is
+                                    required</label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="small">
+                        <div class="form-group">
+                            <input type="text" class="input small-input" placeholder="Jersey number"
+                                   ng-model="athlete.number" name="number" required="">
+
+                            <div ng-show="athleteForm.$submitted || athleteForm.number.$touched">
+                                <div ng-show="!athlete.number || !athlete.number"><label class="error">Field is
+                                    required</label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small">
+                        <div class="form-group">
+                            <input type="text" class="input small-input" name="position" placeholder="Position"
+                                   ng-model="athlete.position" required="">
+
+                            <div ng-show="athleteForm.$submitted || athleteForm.position.$touched">
+                                <div ng-show="!athlete.position || !athlete.position"><label class="error">Field is
+                                    required</label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="small">
+                        <div class="form-group">
+                            <input type="text" name="birthPlace" class="input small-input" placeholder="Birth place"
+                                   ng-model="athlete.birthPlace">
+
+                            <div ng-show="athleteForm.$submitted || athleteForm.birthPlace.$touched">
+                                <div ng-show="!athlete.birthPlace || !athlete.birthPlace"><label class="error">Field is
+                                    required</label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small">
+                        <div class="form-group">
+                            <div moment-picker="athlete.born" format="YYYY-MM-DD" class="div">
+                                <input type="text" name="born" class="input small-input" placeholder="Select a date"
+                                       ng-model="athlete.born" class="form-inline" required=""/>
+
+                                <div ng-show="athleteForm.$submitted || athleteForm.born.$touched">
+                                    <div ng-show="!athlete.born || !athlete.born"><label class="error">Field is
+                                        required</label></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="form-group">
-                    <input type="text" class="input" placeholder="Last Name" ng-model="athlete.lastName">
-                </div>
-                <div class="small">
-                    <div class="form-group">
-                        <input type="text" class="input small-input" placeholder="Height" ng-model="athlete.height">
-                    </div>
-                </div>
-                <div class="small">
-                    <div class="form-group">
-                        <input type="text" class="input small-input" placeholder="Weight" ng-model="athlete.weight">
-                    </div>
-                </div>
+            <div class="add-athlete">
+                <button class="btn btn-default our-button addAthlete" type="submit"><span>add athlete</span>
+                </button>
             </div>
-            <div class="col-lg-4">
-                <div class="small">
-                    <div class="form-group">
-                        <input type="number" class="input small-input" placeholder="Jersey number"
-                               ng-model="athlete.number">
-                    </div>
-                </div>
-                <div class="small">
-                    <div class="form-group">
-                        <input type="text" class="input small-input" placeholder="Position" ng-model="athlete.position">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="small">
-                    <div class="form-group">
-                        <input type="number" class="input small-input" placeholder="Birth place"
-                               ng-model="athlete.birthPlace">
-                    </div>
-                </div>
-                <div class="small">
-                    <div class="form-group">
-                        <input type="text" class="input small-input" placeholder="Born" ng-model="athlete.born">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="add-athlete">
-            <button class="btn btn-default our-button addAthlete" ng-click="addAthlete()"><span>add athlete</span>
-            </button>
-        </div>
+        </form>
     </div>
 
     <div class="search-section">

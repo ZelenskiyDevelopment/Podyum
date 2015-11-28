@@ -11,6 +11,7 @@ router.post('/updateTeam', controller.updateTeam);
 router.get('/:id/getTeam', controller.getTeam);
 router.get('/:id/getTeamById', controller.getTeamById);
 router.get('/:id/getAssignRequests', controller.getAssignRequests);
+router.get('/:id/getPlayersByTeam', controller.getPlayersByTeam);
 router.get('/getAllTeam', controller.getAllTeam);
 
 

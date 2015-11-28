@@ -16,7 +16,7 @@ angular.module('abroadathletesApp')
         Teams.getTeam({id:me._id}).$promise.then(function(result){
 
             $scope.team  = result;
-        })
+        });
     });
 
     $scope.stateChange = function() {

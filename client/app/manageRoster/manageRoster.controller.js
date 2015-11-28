@@ -1,7 +1,10 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-    .controller('ManageRosterCtrl', function ($scope, User) {
+    .controller('ManageRosterCtrl', function ($scope, User, Auth, Teams) {
+
+        $scope.athlete = {};
+        $scope.players = [];
 
         $scope.templates =
             [
@@ -26,24 +29,21 @@ angular.module('abroadathletesApp')
                 });
             }
 
-            $scope.switch = function (type) {
+            Teams.getTeam({id:me._id}).$promise.then(function(result){
 
-                var template = findElement($scope.templates,'name',type);
+                $scope.team  = result;
 
-                $scope.template = template;
+                Teams.getPlayersByTeam({id:result[0]._id}).$promise.then(function(players){
 
-            };
+                    angular.forEach(players, function(item, key){
+                        User.getUserById({id: item.id_user}).$promise.then(function(user){
+                            $scope.players.push(user);
+                        });
 
-            $scope.sortChoice = 'user.player.lastName';
+                    });
+                });
 
-            $scope.changeSort = function (type) {
-                if (type === $scope.sortChoice) {
-                    $scope.sortChoice = '-' + $scope.sortChoice;
-                }
-                else {
-                    $scope.sortChoice = type;
-                }
-            };
+            });
 
             if (me.kind === "team") {
                 User.getUserRosterAdmins({id: me._id}).$promise.then(function (user) {
@@ -156,11 +156,111 @@ angular.module('abroadathletesApp')
             };
 
 
+
+
         });
+
+        $scope.switch = function (type) {
+
+            var template = findElement($scope.templates,'name',type);
+
+            $scope.template = template;
+
+        };
+
+        $scope.sortChoice = 'user.player.lastName';
+
+        $scope.changeSort = function (type) {
+            if (type === $scope.sortChoice) {
+                $scope.sortChoice = '-' + $scope.sortChoice;
+            }
+            else {
+                $scope.sortChoice = type;
+            }
+        };
+
+        $scope.addAthlete = function(form) {
+
+
+            if (form.$valid) {
+
+                var user = {
+                    player: {
+                        firstName: $scope.athlete.firstName,
+                        lastName: $scope.athlete.lastName,
+                        born: $scope.athlete.born,
+                        birthPlace: $scope.athlete.birthPlace,
+                        number: $scope.athlete.number,
+                        height: $scope.athlete.height,
+                        weight: $scope.athlete.weight,
+                        position: $scope.athlete.position
+                    },
+                    email: $scope.athlete.email,
+                    password: '123456',
+                    kind: 'user',
+                    sport: 'football',
+                    sex: 'male',
+                    completed: true,
+                    id_team: $scope.team[0]._id
+
+                };
+
+                User.createUserByTeam(user).$promise.then(function () {
+
+                    $scope.athlete.firstName = '';
+                    $scope.athlete.firstName= '';
+                    $scope.athlete.lastName = '';
+                    $scope.athlete.position = '';
+                    $scope.athlete.born = '';
+                    $scope.athlete.birthPlace = '';
+                    $scope.athlete.number = '';
+                    $scope.athlete.height = '';
+                    $scope.athlete.weight = '';
+                    $scope.athlete.email = '';
+                    form.$setPristine();
+                    form.$setUntouched();
+
+                    updatePlayers();
+                });
+
+
+            }
+
+        };
 
         function findElement(arr, propName, propValue) {
             for (var i=0; i < arr.length; i++)
                 if (arr[i][propName] == propValue)
                     return arr[i];
+        }
+
+        $scope.calculateAge = function(dateString) { // birthday is a date
+            var today = new Date();
+            var birthDate = new Date(dateString);
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+
+
+        function updatePlayers() {
+            Teams.getTeam({id:$scope.user._id}).$promise.then(function(result){
+
+                $scope.team  = result;
+
+                Teams.getPlayersByTeam({id:result[0]._id}).$promise.then(function(players){
+
+                    angular.forEach(players, function(item, key){
+                        User.getUserById({id: item.id_user}).$promise.then(function(user){
+                            $scope.players.push(user);
+                        });
+
+                    });
+                });
+
+            });
         }
     });

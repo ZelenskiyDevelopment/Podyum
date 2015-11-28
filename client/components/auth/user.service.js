@@ -209,6 +209,12 @@ angular.module('abroadathletesApp')
           controller: 'unFriendUser'
         }
       },
+      createUserByTeam: {
+        method: 'POST',
+        params: {
+            controller: 'createUserByTeam'
+        }
+      },
       getAssignRequests: {
         method: 'GET',
         isArray: true,

@@ -65,6 +65,21 @@ exports.addToTeam = function(req, res) {
     });
 };
 
+exports.getPlayersByTeam = function(req, res) {
+
+    var id = req.params.id;
+
+    assignedToTeam.find({
+        id_team: id
+    }).execQ().then(function (playes) {
+
+       return res.json(200, playes);
+    }).catch(function (err) {
+        return handleError(res, err);
+    });
+
+};
+
 exports.getAssignRequests = function(req, res) {
     var userId = req.params.id;
 

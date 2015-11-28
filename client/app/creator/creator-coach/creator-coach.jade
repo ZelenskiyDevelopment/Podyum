@@ -81,13 +81,13 @@
 .col-md-12.col-sm-12.col-xs-12
     .col-md-2.col-sm-1
     .col-md-8.col-sm-10.col-xs-12
-         md-list(ng-show="selectedTeam.value.length > 0")
+         md-list(ng-show="formData.selectedTeam.value.length > 0")
               md-subheader.md-no-sticky Team
               md-list-item.md-3-line
-                img.md-avatar(ng-src="assets/images/{{ selectedTeam.logo }}", alt='{{ selectedTeam.value }}')
+                img.md-avatar(ng-src="assets/images/{{ formData.selectedTeam.logo }}", alt='{{ formData.selectedTeam.value }}')
                 .md-list-item-text(layout='column')
-                  h3 {{ selectedTeam.value }}
-                  h4 {{ selectedTeam.address }}
+                  h3 {{ formData.selectedTeam.value }}
+                  h4 {{ formData.selectedTeam.address }}
 
 .col-md-12.col-sm-12.col-xs-12.team-select
   .col-md-2.col-sm-1

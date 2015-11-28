@@ -154,16 +154,12 @@ angular.module('abroadathletesApp')
                                 name: value
                             });
                         });
-
-
                     }
 
                     if ($scope.formData.collegeLevels.length > 0) {
-                        //angular.forEach($scope.formData.collegeLevels ,function(value,key){
                             CollegeLevels.push({
                                 name: $scope.formData.collegeLevels
                             });
-                      //  });
 
                         console.log(CollegeLevels);
                     }
@@ -187,15 +183,10 @@ angular.module('abroadathletesApp')
                         console.log(CategoriesLevel);
                     }
 
-                    if ($scope.formData.sportData[0].data.myTeams.length > 0) {
-                        angular.forEach($scope.formData.sportData[0].data.myTeams,function(value,key) {
-                            assignto.push({
-                                user: value._id,
-                                dateFrom: value.dateFrom,
-                                dateTo: value.dateTo,
-                                isPresent: value.isPresent,
-                                position: positionPlayer
-                            });
+                    if (angular.isObject($scope.formData.selectedTeam)) {
+                        var data = {id_user: $scope.formData.id, id_team: $scope.formData.selectedTeam.id, dateFrom: new Date(), isPresent: true};
+                        Teams.addToTeam(data).$promise.then(function(result) {
+                            console.log(result);
                         });
                     }
 
@@ -208,7 +199,9 @@ angular.module('abroadathletesApp')
                             bio: $scope.formData.bio,
                             number: $scope.formData.number,
                             awards: AwardsPlayer,
-                            categoriesLevel:CategoriesLevel,
+                            categoriesLevel: CategoriesLevel,
+                            height: $scope.formData.height,
+                            weight: $scope.formData.weight,
                             collegeLevels: CollegeLevels,
                             citizenship: CitizenShip
                         },
@@ -216,7 +209,6 @@ angular.module('abroadathletesApp')
                         sport: $scope.formData.sport_type,
                         sex: $scope.formData.sex,
                         country:  $scope.formData.country,
-                        assignedTo: assignto,
                         completed: true
                     };
 
@@ -238,7 +230,7 @@ angular.module('abroadathletesApp')
                         sport: $scope.formData.sport_type,
                         completed: true,
                         country: $scope.formData.country
-                    }
+                    };
 
 
                     break
@@ -259,7 +251,7 @@ angular.module('abroadathletesApp')
                         sport: $scope.formData.sport_type,
                         completed: true,
                         country: $scope.formData.country
-                    }
+                    };
 
 
                     break

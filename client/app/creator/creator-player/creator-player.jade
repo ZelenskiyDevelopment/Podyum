@@ -28,12 +28,27 @@
       .col-md-6.col-sm-6.col-xs-6
         label
           input(type="number" class="form-inline" id="number" ng-model="formData.number")
+     .col-md-12.col-sm-12.col-xs-12
+          .col-md-6.col-sm-6.col-xs-6
+            .div(class="creator-q")  Height
+          .col-md-6.col-sm-6.col-xs-6
+            label
+              input(type="text" class="form-inline" id="height" ng-model="formData.height")
 
+     .col-md-12.col-sm-12.col-xs-12
+          .col-md-6.col-sm-6.col-xs-6
+            .div(class="creator-q")  Weight
+          .col-md-6.col-sm-6.col-xs-6
+            label
+              input(type="text" class="form-inline" id="weight" ng-model="formData.weight")
     .col-md-12.col-sm-12.col-xs-12
       .col-md-6.col-sm-6.col-xs-6
         .div(class="creator-q")  What's your country?
       .col-md-6.col-sm-6.col-xs-6
-           country-select.creator-country-select(ng-model="formData.country")
+           md-input-container
+                   md-select(ng-model="formData.country")
+                     md-option(ng-repeat="country in countries" value="{{country.abbrev}}")
+                       {{country.abbrev}}
 
     .col-md-12.col-sm-12.col-xs-12
       .col-md-6.col-sm-6.col-xs-6
@@ -51,8 +66,8 @@
             md-radio-button.md-primary(type="radio" value="male" checked) Male
           label
             md-radio-button.md-primary(type="radio" value="female" checked) Female
-
   .col-md-2.col-sm-1
+
 
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
@@ -69,7 +84,7 @@
 
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
-  .row(ng-repeat='value in ::selectedCitizenShips')
+  .col-lg-8(ng-repeat='value in ::selectedCitizenShips')
     multistring-selector(items='::CitizenShips[value]' model='formData.citizenship' label='"Select Citizenship"')
   .col-md-2.col-sm-1
 
@@ -81,10 +96,10 @@
 
 
 .col-md-12.col-sm-12.col-xs-12
-.col-lg-8.col-lg-offset-3
-  .row
-   md-input-container
-   md-select(ng-model='formData.awards' multiple placeholder='Awards')
+  .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12
+    md-input-container
+     md-select(ng-model='formData.awards' multiple placeholder='Awards')
       md-option(ng-repeat="award in awards" value="{{ award.name }}")
         {{ award.name }}
 
@@ -95,7 +110,7 @@
 
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
-  .row
+  .col-md-8.col-sm-10.col-xs-12
     md-input-container(flex)
      label Other awards, enter a comma
      input(ng-model="formData.otherAwards")
@@ -109,7 +124,7 @@
   div(class="alert alert-warning" ng-if="formData.sportData[0].data.positions.length > 3")
     | Select only three football positions
   .col-md-2.col-sm-1
-  .row(ng-repeat='sport in ::selectedSports')
+  .col-lg-8(ng-repeat='sport in ::selectedSports')
     multistring-selector(items='::positions[sport]' model='formData.sportData[0].data.positions' label='"Select "+sport+" positions"')
   .col-md-2.col-sm-1
 
@@ -119,10 +134,10 @@
     .big-q Experience
 
 .col-md-12.col-sm-12.col-xs-12
-.col-lg-8.col-lg-offset-3
-  .row
+  .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12
    md-input-container
-   md-select(ng-model='formData.categoriesLevel' multiple ng-change='addExperience()' placeholder='Experience')
+    md-select(ng-model='formData.categoriesLevel' multiple ng-change='addExperience()' placeholder='Experience')
       md-option(ng-repeat="expr in experience" value="{{ expr.name }}")
         {{ expr.name }}
 
@@ -153,21 +168,30 @@
 
 .col-md-12.col-sm-12.col-xs-12
   .col-md-2.col-sm-1
-  .row
+  .col-md-8.col-sm-10.col-xs-12
     md-input-container(flex)
      label Other experience, enter a comma
      input(ng-model="formData.otherCategories")
 
+
 .col-md-12.col-sm-12.col-xs-12
+    .col-md-2.col-sm-1
+    .col-md-8.col-sm-10.col-xs-12
+         md-list(ng-show="formData.selectedTeam.value.length > 0")
+              md-subheader.md-no-sticky Team
+              md-list-item.md-3-line
+                img.md-avatar(ng-src="assets/images/{{ formData.selectedTeam.logo }}", alt='{{ formData.selectedTeam.value }}')
+                .md-list-item-text(layout='column')
+                  h3 {{ formData.selectedTeam.value }}
+                  h4 {{ formData.selectedTeam.address }}
+
+.col-md-12.col-sm-12.col-xs-12.team-select
   .col-md-2.col-sm-1
   .col-md-8.col-sm-10.col-xs-12
     .big-q Team
-
-.col-md-12.col-sm-12.col-xs-12
-  .col-md-2.col-sm-1
-  .col-md-8.col-sm-10.col-xs-12
-    .row
-    assign-selector(kind='"player"' model='formData.sportData[0].data.myTeams' items='allTeams' label='"Select teams"')
+    md-autocomplete(ng-disabled='isDisabled', md-selected-item='selectedItem', md-search-text='searchText', md-selected-item-change='selectedItemChange(item)', md-items='item in querySearch(searchText)', md-item-text='item.display', md-min-length='0', placeholder='Select team')
+          md-item-template
+            span(md-highlight-text='searchText', md-highlight-flags='^i') {{item.display}}
   .col-md-2.col-sm-1
 
 .col-xs-12.col-sm-12.col-md-12.row

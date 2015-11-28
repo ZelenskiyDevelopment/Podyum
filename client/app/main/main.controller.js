@@ -69,7 +69,7 @@ angular.module('abroadathletesApp')
             // since $location.hash hasn't changed
             $anchorScroll();
         }
-    }
+    };
 
         $scope.registerUser = {};
         $scope.registerErrors = {};

@@ -31,21 +31,24 @@ angular.module('abroadathletesApp')
 
         User.get().$promise.then(function (me) {
 
-            Teams.getAssignRequests({id: me._id}).$promise.then(function (requests) {
+            if (me.completed) {
+
+                Teams.getAssignRequests({id: me._id}).$promise.then(function (requests) {
 
 
-                $scope.assignRequests[0] = requests;
+                    $scope.assignRequests[0] = requests;
 
-            });
+                });
 
-            Teams.getTeam({id:me._id}).$promise.then(function(result){
+                Teams.getTeam({id:me._id}).$promise.then(function(result){
 
-                $scope.team  = result;
-            });
+                    $scope.team  = result;
+                });
 
-            $scope.user = me;
+                $scope.user = me;
 
-        });
+            }
+     });
 
 
     $scope.notificationsNumber = 0;
