@@ -12,6 +12,8 @@ router.get('/:id/getTeam', controller.getTeam);
 router.get('/:id/getTeamById', controller.getTeamById);
 router.get('/:id/getAssignRequests', controller.getAssignRequests);
 router.get('/:id/getPlayersByTeam', controller.getPlayersByTeam);
+router.get('/:id/acceptAssignRequest', controller.acceptAssignRequest);
+router.get('/:id/rejectAssignRequest', controller.rejectAssignRequest);
 router.get('/getAllTeam', controller.getAllTeam);
 
 

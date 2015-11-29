@@ -29,14 +29,27 @@ angular.module('abroadathletesApp')
     $scope.team = [];
     $scope.assignRequests = [];
 
+
         User.get().$promise.then(function (me) {
 
             if (me.completed) {
 
                 Teams.getAssignRequests({id: me._id}).$promise.then(function (requests) {
 
+                    if (requests.length) {
+                        Teams.getTeamById({id:requests[0].id_team}).$promise.then(function(team){
 
-                    $scope.assignRequests[0] = requests;
+                            var allRequests = _.map(requests, function (request) {
+                                if (request.accepted === false) {
+                                    return request;
+                                }
+
+                            });
+                            $scope.assignRequests.push({team: team[0], requests: allRequests});
+
+                        });
+
+                    }
 
                 });
 
@@ -88,26 +101,19 @@ angular.module('abroadathletesApp')
 
 
 
-    $scope.acceptAssign = function(ID){
-      if(ID.name) {
-        User.acceptRecruitRequest({data:ID});
-      }
-      else {
-        User.acceptAssignRequests({data: ID});
-      }
-      _.remove($scope.assignRequests, function(assignRequest){return (assignRequest._id === ID._id && assignRequest.dateFrom === ID.dateFrom && assignRequest.dateTo === ID.dateTo)});
-      $scope.invitationsNumber -= 1;
+    $scope.acceptAssign = function(request, index){
+        Teams.acceptAssignRequest({id:request._id}).$promise.then(function(response){
+            console.log(index);
+        });
+        delete $scope.assignRequests[0].requests[index];
+        $scope.invitationsNumber -= 1;
     };
 
-    $scope.rejectAssign = function(ID){
-      if(ID.name) {
-        User.rejectRecruitRequest({data:ID});
-      }
-      else {
-        User.rejectAssignRequests({data:ID});
-      }
-      _.remove($scope.assignRequests, function(assignRequest){return (assignRequest._id === ID._id && assignRequest.dateFrom === ID.dateFrom && assignRequest.dateTo === ID.dateTo)});
-      $scope.invitationsNumber -= 1;
+    $scope.rejectAssign = function(request, index){
+        Teams.rejectAssignRequest({id:request._id}).$promise.then(function(response){
+            console.log(index);
+        });
+        delete $scope.assignRequests[0].requests[index];
     };
 
     socket.on('notification', function(notification){

@@ -16,8 +16,10 @@
     <!--</div>-->
     <!--</div>-->
     <!--</div>-->
+
     <div ng-repeat="assignRequest in assignRequests">
-        <div class="media">
+
+        <div class="media" ng-repeat="request in assignRequest.requests" ng-show="request._id.length > 0">
             <div class="media-left">
                 <!--<a ui-sref="profile.common-story({id: assignRequest._id})">-->
                 <!--<img class="media-object" src="photos/user.png" alt="" style="width:64px;height:64px;">-->
@@ -28,34 +30,34 @@
                 </a>
             </div>
             <div class="media-body">
-                <div ng-if="assignRequest.teamName">
-                    <h4 class="media-heading">{{assignRequest.teamName}}</h4>
+                <div ng-if="assignRequest.team.teamName">
+                    <h4 class="media-heading">{{assignRequest.team.teamName}}</h4>
 
-                    <div ng-if="assignRequest.isPresent">
+                    <div ng-if="request.isPresent">
                         Wants to recruit you!
                     </div>
 
                 </div>
-                <div ng-if="!assignRequest.name">
+                <div ng-if="!request.name">
                     <h4 class="media-heading">{{assignRequest.firstName}} {{assignRequest.lastName}}</h4>
 
-                    <div ng-if="!assignRequest.isPresent">
-                    <div ng-if="!assignRequest.isPresent">
-                        Ask for confirmation of being your member in the past from {{assignRequest.dateFrom | date :
-                        'yyyy-MM'}} to {{assignRequest.dateTo | date : 'yyyy-MM'}}
+                    <div ng-if="!request.isPresent">
+                        <div ng-if="!request.isPresent">
+                            Ask for confirmation of being your member in the past from {{request.dateFrom | date :
+                            'yyyy-MM'}} to {{request.dateTo | date : 'yyyy-MM'}}
+                        </div>
+                        <div ng-if="request.isPresent">
+                            Ask for confirmation of being your member since {{request.dateFrom | date : 'yyyy-MM'}}
+                        </div>
                     </div>
-                    <div ng-if="assignRequest.isPresent">
-                        Ask for confirmation of being your member since {{assignRequest.dateFrom | date : 'yyyy-MM'}}
+                    <div class="form-group">
+                        <button class="btn btn-success" ng-click="acceptAssign(request, $index)">Accept</button>
+                        <button class="btn btn-danger" ng-click="rejectAssign(request, $index)">Reject</button>
                     </div>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-success" ng-click="acceptAssign(assignRequest)">Accept</button>
-                    <button class="btn btn-danger" ng-click="rejectAssign(assignRequest)">Reject</button>
-
                 </div>
             </div>
         </div>
     </div>
-
+    <div ng-hide="assignRequest.requests.length">You have no requests.</div>
 </div>
 

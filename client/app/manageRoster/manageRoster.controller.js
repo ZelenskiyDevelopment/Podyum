@@ -36,9 +36,11 @@ angular.module('abroadathletesApp')
                 Teams.getPlayersByTeam({id:result[0]._id}).$promise.then(function(players){
 
                     angular.forEach(players, function(item, key){
-                        User.getUserById({id: item.id_user}).$promise.then(function(user){
-                            $scope.players.push(user);
-                        });
+                        if (item.accepted) {
+                            User.getUserById({id: item.id_user}).$promise.then(function(user){
+                                $scope.players.push(user);
+                            });
+                        }
 
                     });
                 });

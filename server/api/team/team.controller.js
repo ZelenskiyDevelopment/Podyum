@@ -42,11 +42,27 @@ exports.updateTeam = function(req, res) {
 };
 
 exports.acceptAssignRequest = function(req, res) {
-    var userId = req.user._id;
+    var id = req.params.id;
+    var data = {
+        accepted: true,
+        rejected: false
+    };
+    assignedToTeam.update({_id: id}, {$set:data}, {}, function (err) {
+        if (err) return validationError(res, err);
+        res.send(200);
+    });
 };
 
 exports.rejectAssignRequest = function(req, res) {
-    var userId = req.user._id;
+    var id = req.params.id;
+    var data = {
+        rejected: true,
+        accepted: false
+    };
+    assignedToTeam.update({_id: id}, {$set:data}, {}, function (err) {
+        if (err) return validationError(res, err);
+        res.send(200);
+    });
 };
 
 exports.addToTeam = function(req, res) {
@@ -82,14 +98,20 @@ exports.getPlayersByTeam = function(req, res) {
 
 exports.getAssignRequests = function(req, res) {
     var userId = req.params.id;
-
+    var response = [];
     assignedToTeam.find({
         id_user: userId
-    }).execQ().then(function (team) {
-        Team.findById(team[0].id_team, function (err, fromUser) {
-
-            return res.json(200, fromUser);
-        });
+    }).execQ().then(function (request) {
+        if (request.length == 0) {
+            return res.json(422,response);
+        }
+       // Team.findById(request[0].id_team, function (err, fromUser) {
+            //romUser.requests = [];
+//            response.push(fromUser);
+//            response.push({requests:request});
+           // console.log(fromUser);
+            return res.json(200, request);
+       // });
     }).catch(function (err) {
         return handleError(res, err);
     });

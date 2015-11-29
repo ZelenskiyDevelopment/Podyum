@@ -9,11 +9,14 @@ angular.module('abroadathletesApp').controller('sendMessageModalController', fun
   $scope.hide = $mdDialog.hide;
   $scope.cancel = $mdDialog.cancel;
   $scope.answer = function (answer) {
-    if (!_.isEmpty(answer.message)) {
-      var receiver = [];
-      receiver.push(receiver._id);
+
+   if (!_.isEmpty(answer.message)) {
+
+      var receivers = [];
+      receivers.push(receiver._id);
+
       var newConversation = {
-        members: receiver,
+        members: receivers,
         messages:[{
           author: Auth.getCurrentUser()._id,
           content: answer.message
@@ -21,7 +24,7 @@ angular.module('abroadathletesApp').controller('sendMessageModalController', fun
       };
       Conversation.createConversations(newConversation);
       $mdDialog.hide();
-    }
+   }
   };
 
 });

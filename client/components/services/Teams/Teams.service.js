@@ -35,6 +35,7 @@ angular.module('abroadathletesApp')
             },
                 getAssignRequests: {
                     method: 'GET',
+                    isArray: true,
                     params: {
                         controller: 'getAssignRequests'
                     }
@@ -46,15 +47,15 @@ angular.module('abroadathletesApp')
                     }
                 },
                 acceptAssignRequest: {
-                    method: 'POST',
+                    method: 'GET',
                     params: {
                         controller: 'acceptAssignRequest'
                     }
                 },
                 rejectAssignRequest: {
-                    method: 'POST',
+                    method: 'GET',
                     params: {
-                        controller: 'acceptAssignRequest'
+                        controller: 'rejectAssignRequest'
                      }
                 },
                 getAllTeam: {

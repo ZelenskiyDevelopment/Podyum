@@ -11,7 +11,7 @@
         <div class="tools">
             <div class="edit"></div>
             <div class="delete"></div>
-            <div class="message"></div>
+           <send-message-modal receiver="player"> <div class="message"></div></send-message-modal>
         </div>
     </div>
 
@@ -32,7 +32,7 @@
         <p class="md-body-1"> {{ player.player.birthPlace }} </p>
 
         <h3 class="md-subhead">EXPERIENCE : </h3>
-        <p class="md-body-1"> empty </p>
+        <p class="md-body-1"> {{ player.player.experience }} </p>
 
         <h3 class="md-subhead">HIGH SCHOOL : </h3>
         <p class="md-body-1"> empty </p>

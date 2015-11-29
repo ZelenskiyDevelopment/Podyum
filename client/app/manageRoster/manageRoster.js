@@ -7,5 +7,9 @@ angular.module('abroadathletesApp')
         url: '/manage-roster',
         templateUrl: 'app/manageRoster/manageRoster.html',
         controller: 'ManageRosterCtrl'
-      });
+      }).state('teams.manageRosterOld', {
+            url: '/manage-roster-old',
+            templateUrl: 'app/manageRoster/manageRoster_old.html',
+            controller: 'ManageRosterCtrl'
+        });
   });

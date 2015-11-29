@@ -1,6 +1,8 @@
 'use strict';
 
-var League = require('./league.model');
+var League = require('./league.model'),
+
+    assignedToLeague = require('./assignedToLeague.model');
 
 
 exports.addLeague = function(req, res) {
