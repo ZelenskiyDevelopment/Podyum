@@ -4,6 +4,8 @@ var Team = require('./team.model'),
 
     assignedToTeam = require('./assignedToTeam.model'),
 
+    assignedToLeague = require('../league/assignedToLeague.model');
+
     socket = require('../../config/socketio.js')();
 
 var mongo = require('mongodb');
@@ -15,10 +17,21 @@ exports.addTeam = function(req, res) {
     console.log(data);
     var newTeam = new Team(data);
 
-    newTeam.save(function(err){
+    newTeam.save(function(err, team){
         if (err) throw err;
 
-        res.send(200);
+        team.myLeagues.forEach(function(item){
+            var leagueAssigned = new assignedToLeague({
+                id_team: team._id,
+                id_league: item.user,
+                dateFrom: new Date(),
+                isPresent: true
+            });
+            leagueAssigned.save(function(err, assign){
+
+            });
+        });
+        res.send(200,team);
     });
 };
 
@@ -105,13 +118,9 @@ exports.getAssignRequests = function(req, res) {
         if (request.length == 0) {
             return res.json(422,response);
         }
-       // Team.findById(request[0].id_team, function (err, fromUser) {
-            //romUser.requests = [];
-//            response.push(fromUser);
-//            response.push({requests:request});
-           // console.log(fromUser);
-            return res.json(200, request);
-       // });
+
+        return res.json(200, request);
+
     }).catch(function (err) {
         return handleError(res, err);
     });

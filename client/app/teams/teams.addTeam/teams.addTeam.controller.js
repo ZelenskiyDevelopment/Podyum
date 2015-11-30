@@ -116,6 +116,13 @@ angular.module('abroadathletesApp')
 
 
         User.get().$promise.then(function (me) {
+
+            if(!me.completed){
+
+                $location.path('/creator');
+            }
+
+
             User.getAllHumanUsers({id: me._id}).$promise.then(function (result) {
                 $scope.allHumanUsers = result;
                 $scope.allCoaches = _.filter(result, function(user){
@@ -129,6 +136,14 @@ angular.module('abroadathletesApp')
                     league._lowername = league.leagueName.toLowerCase();
                     return league;
                 });
+            });
+
+
+            Teams.getTeam({id:me._id}).$promise.then(function(result){
+
+                if (result.length > 0) {
+                    $location.path('/teams');
+                }
             });
 
             $scope.user = me;
