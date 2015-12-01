@@ -76,6 +76,7 @@ navigationbar(user="me")
         td
           | {{player.user.player.hometown}}
         td
+
           send-message-modal(receiver="player.user")
             .button(class="btn our-button")
               | Send Message

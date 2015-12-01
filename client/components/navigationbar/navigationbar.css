@@ -16,6 +16,16 @@
   background: #071422 none repeat scroll 0% 0%;
 }
 
+.nav .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: -50px;
+        min-width: 188px;
+    background: white;
+    }
+.nav .dropdown-menu li {
+    width: 100%;
+}
 .navbar-inverse .navbar-form {
     width: 60%;
 }

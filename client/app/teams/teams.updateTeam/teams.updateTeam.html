@@ -38,7 +38,7 @@
             <div class="col-lg-12">
                 <md-input-container>
                     <label> Mascot </label>
-                    <input type="text" ng-model="team.mascot" required>
+                    <input type="text" ng-model="teamUpdate[0].mascot" required>
                 </md-input-container>
             </div>
             <div class="col-lg-12">
@@ -48,11 +48,11 @@
                 <div class="input-group col-lg-offset-4">
 
                     <div class="col-lg-7">
-                        <input type="text" class="form-control" ng-model="teamUpdate[0].color" required>
+                        <input type="text" class="form-control" ng-model="teamUpdate[0].teamColor" required>
                     </div>
 
                     <div class="col-lg-5">
-                        <spectrum ng-model="teamUpdate[0].color" options="colorOptions"></spectrum>
+                        <spectrum ng-model="teamUpdate[0].teamColor" options="colorOptions"></spectrum>
                     </div>
 
                 </div>
@@ -60,14 +60,14 @@
                 <div class="col-lg-12">
                     <md-content>
                         <h4 class="text-center"> Year founded </h4>
-                        <md-datepicker ng-model="teamUpdate[0].founded" class="col-lg-offset-4"
+                        <md-datepicker ng-model="teamUpdate[0].yearFounded" class="col-lg-offset-4"
                                        md-placeholder="Year founded"></md-datepicker>
                     </md-content>
                 </div>
                 <div class="col-lg-12">
                     <md-input-container>
                         <label> Stadium name </label>
-                        <input type="text" ng-model="teamUpdate[0].stadium" required>
+                        <input type="text" ng-model="teamUpdate[0].stadiumName" required>
                     </md-input-container>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                 <label class="col-lg-5"> Telephone number </label>
 
                 <div class="col-lg-5">
-                    <input type="text" international-phone-number ng-model="teamUpdate[0].phone" class="form-control" required>
+                    <input type="text" international-phone-number ng-model="teamUpdate[0].telephoneNumber" class="form-control" required>
                 </div>
             </div>
         </div>

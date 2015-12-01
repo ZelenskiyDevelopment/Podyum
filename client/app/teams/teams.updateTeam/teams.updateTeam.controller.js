@@ -60,6 +60,7 @@ angular.module('abroadathletesApp')
 
             Teams.getTeam({id:me._id}).$promise.then(function(result){
                 $scope.teamUpdate  = result;
+                $scope.teamUpdate[0].yearFounded = new Date($scope.teamUpdate[0].yearFounded);
             })
         });
 

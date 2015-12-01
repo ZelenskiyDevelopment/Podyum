@@ -4,6 +4,8 @@ var Team = require('./team.model'),
 
     assignedToTeam = require('./assignedToTeam.model'),
 
+    assignedToLeague = require('../league/assignedToLeague.model');
+
     socket = require('../../config/socketio.js')();
 
 var mongo = require('mongodb');
@@ -15,10 +17,21 @@ exports.addTeam = function(req, res) {
     console.log(data);
     var newTeam = new Team(data);
 
-    newTeam.save(function(err){
+    newTeam.save(function(err, team){
         if (err) throw err;
 
-        res.send(200);
+        team.myLeagues.forEach(function(item){
+            var leagueAssigned = new assignedToLeague({
+                id_team: team._id,
+                id_league: item.user,
+                dateFrom: new Date(),
+                isPresent: true
+            });
+            leagueAssigned.save(function(err, assign){
+
+            });
+        });
+        res.send(200,team);
     });
 };
 
@@ -42,11 +55,27 @@ exports.updateTeam = function(req, res) {
 };
 
 exports.acceptAssignRequest = function(req, res) {
-    var userId = req.user._id;
+    var id = req.params.id;
+    var data = {
+        accepted: true,
+        rejected: false
+    };
+    assignedToTeam.update({_id: id}, {$set:data}, {}, function (err) {
+        if (err) return validationError(res, err);
+        res.send(200);
+    });
 };
 
 exports.rejectAssignRequest = function(req, res) {
-    var userId = req.user._id;
+    var id = req.params.id;
+    var data = {
+        rejected: true,
+        accepted: false
+    };
+    assignedToTeam.update({_id: id}, {$set:data}, {}, function (err) {
+        if (err) return validationError(res, err);
+        res.send(200);
+    });
 };
 
 exports.addToTeam = function(req, res) {
@@ -65,16 +94,33 @@ exports.addToTeam = function(req, res) {
     });
 };
 
-exports.getAssignRequests = function(req, res) {
-    var userId = req.params.id;
+exports.getPlayersByTeam = function(req, res) {
+
+    var id = req.params.id;
 
     assignedToTeam.find({
-        id_user: userId
-    }).execQ().then(function (team) {
-        Team.findById(team[0].id_team, function (err, fromUser) {
+        id_team: id
+    }).execQ().then(function (playes) {
 
-            return res.json(200, fromUser);
-        });
+       return res.json(200, playes);
+    }).catch(function (err) {
+        return handleError(res, err);
+    });
+
+};
+
+exports.getAssignRequests = function(req, res) {
+    var userId = req.params.id;
+    var response = [];
+    assignedToTeam.find({
+        id_user: userId
+    }).execQ().then(function (request) {
+        if (request.length == 0) {
+            return res.json(422,response);
+        }
+
+        return res.json(200, request);
+
     }).catch(function (err) {
         return handleError(res, err);
     });

@@ -5,9 +5,9 @@
         <div class="md-headline header-title">
             Schedule 2015-2016
         </div>
-        <div class="form-team col-lg-offset-4">
+        <div class="form-team col-lg-offset-3">
 
-            <div class="col-lg-4">
+            <div class="col-lg-5">
                 <select class="select-team">
                     <option>Wroclaw Panthers</option>
                 </select>
@@ -29,7 +29,7 @@
         <div class="games" ng-repeat="game in games">
 
 
-            <game-schedule id="game._id" time="game.time" sport="game.sport" place="game.place" stream="game.liveStream"
+            <game-schedule id="game._id" index="$index" time="game.time" sport="game.sport" place="game.place" stream="game.liveStream"
                            stadium="game.stadiumArena" team1="game.team1" team2="game.team2" league="game.league"
                            date="game.date" data="game.data">
 
@@ -56,24 +56,23 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="form-group">
-                    <label for="guests" class="col-sm-2 control-label">Guests:</label>
+                    <label for="home_team" class="col-sm-3 control-label">Team 1:</label>
 
-                    <div class="col-sm-10">
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" disabled ng-model="team1[0].teamName" id="home_team">
+                    </div>
+                </div>
+                <div class="form-group"  ng-show="teams.length > 0">
+                    <label for="guests" class="col-sm-3 control-label">Team 2:</label>
+
+                    <div class="col-sm-9">
                         <select id="guests" class="form-control" ng-model="game.team2">
                             <option ng-repeat="team in teams"
                                     value="{{team._id}}">
                                 {{team.teamName}}
                             </option>
                         </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="home_team" class="col-sm-2 control-label">Home:</label>
-
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" ng-model="team1[0].teamName" id="home_team">
                     </div>
                 </div>
                 <div class="form-group">
@@ -114,6 +113,36 @@
                         <input type="text" class="form-control" ng-model="game.liveStream" id="live_stream">
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Home Team: </label>
+
+                    <div class="col-sm-9">
+                        <md-radio-group ng-model="game.homeTeam">
+                            <label>
+                                <md-radio-button type="radio" value="team1" checked  class="md-primary">Team 1</md-radio-button>
+                            </label>
+                            <label>
+                                <md-radio-button type="radio" value="team2" checked class="md-primary">Team 2</md-radio-button>
+                            </label>
+                        </md-radio-group>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Guest Team: </label>
+
+                    <div class="col-sm-9">
+                        <md-radio-group ng-model="game.guestTeam">
+                            <label>
+                                <md-radio-button type="radio" value="team1" checked  class="md-primary">Team 1</md-radio-button>
+                            </label>
+                            <label>
+                                <md-radio-button type="radio" value="team2" checked class="md-primary">Team 2</md-radio-button>
+                            </label>
+                        </md-radio-group>
+                    </div>
+                </div>
+                </div>
+
         </div>
         </form>
 

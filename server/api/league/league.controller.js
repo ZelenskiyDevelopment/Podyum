@@ -1,6 +1,8 @@
 'use strict';
 
-var League = require('./league.model');
+var League = require('./league.model'),
+
+    assignedToLeague = require('./assignedToLeague.model');
 
 
 exports.addLeague = function(req, res) {
@@ -17,7 +19,6 @@ exports.addLeague = function(req, res) {
 };
 
 exports.updateLeague = function(req, res) {
-
 
     var data = req.body,
 
@@ -55,5 +56,44 @@ exports.getLeague = function(req, res) {
         return res.json(200, events);
     }).catch(function (err) {
         return handleError(res, err);
+    });
+};
+
+exports.getAssignRequests = function(req, res) {
+    var id = req.params.id;
+    var response = [];
+    assignedToLeague.find({
+        id_league: id
+    }).execQ().then(function (request) {
+        if (request.length == 0) {
+            return res.json(422,response);
+        }
+        return res.json(200, request);
+    }).catch(function (err) {
+        return handleError(res, err);
+    });
+};
+
+exports.acceptAssignRequest = function(req, res) {
+    var id = req.params.id;
+    var data = {
+        accepted: true,
+        rejected: false
+    };
+    assignedToLeague.update({_id: id}, {$set:data}, {}, function (err) {
+        if (err) return validationError(res, err);
+        res.send(200);
+    });
+};
+
+exports.rejectAssignRequest = function(req, res) {
+    var id = req.params.id;
+    var data = {
+        rejected: true,
+        accepted: false
+    };
+    assignedToLeague.update({_id: id}, {$set:data}, {}, function (err) {
+        if (err) return validationError(res, err);
+        res.send(200);
     });
 };

@@ -8,7 +8,7 @@ angular.module('abroadathletesApp')
         $scope.teams = [];
         $scope.team = [];
         $scope.game = {};
-        $scope.game.league = '';
+        $scope.game.league = null;
         $scope.team1 = '';
         $scope.game.team2 = '';
         User.get().$promise.then(function (me) {
@@ -25,7 +25,12 @@ angular.module('abroadathletesApp')
         });
 
 
+        Teams.getAllTeam().$promise.then(function (result) {
+            $scope.teams = result;
+        });
+
         $scope.onChange = function (value) {
+            $scope.teams = [];
             Teams.getAllTeam().$promise.then(function (result) {
                 angular.forEach(result, function (item, key) {
 
@@ -45,12 +50,9 @@ angular.module('abroadathletesApp')
         $scope.save = function () {
 
             var time = new Date($scope.time);
-            var hours = time.getHours();
-            var minutes = "0" + time.getMinutes();
-            var seconds = "0" + time.getSeconds();
-            var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
             $scope.game.sport = 'football';
-            $scope.game.time = formattedTime;
+            $scope.game.time = time;
             $scope.game.team1 = $scope.team1[0]._id;
             $rootScope.$emit('AddGame', $scope.game);
         };

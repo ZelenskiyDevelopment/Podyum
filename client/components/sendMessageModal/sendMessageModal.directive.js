@@ -25,6 +25,7 @@ angular.module('abroadathletesApp').directive('sendMessageModal', function ($mdD
             parent: angular.element(document.body),
             disableParentScroll: false
           });
+
         };
       }
     };

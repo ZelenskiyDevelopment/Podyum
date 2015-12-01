@@ -58,6 +58,7 @@
       </button>
 
     </div>
+
     <div collapse="isCollapsedBottom" class="collapse navbar-collapse" id="navbar-collapse2">
       <ul class="nav navbar-nav">
         <li ng-class="{active: isActive('/home')}"><a ui-sref="home.update-status">Home</a></li>
@@ -70,7 +71,7 @@
           <a ui-sref="teams">
             My Team
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" ng-show="team.length > 0">
             <li><a ui-sref="teams.schedule">Schedule</a></li>
             <li><a ui-sref="teams.manageRoster">Manage Roster</a></li>
           </ul>

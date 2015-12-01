@@ -44,6 +44,7 @@ module.exports = function(orientDatabase) {
   router.put('/complete', auth.isAuthenticated(), controller.completeData);
   router.get('/:id', auth.isAuthenticated(), controller.show);
   router.post('/', controller.create);
+  router.post('/createUserByTeam', controller.createUserByTeam);
   router.post('/assign', auth.isAuthenticated(), assignRelationsController.assign);
   router.post('/addToTeam', auth.isAuthenticated(), assignRelationsController.addToTeam);
   router.post('/addToTeamAsAdmin', auth.isAuthenticated(), assignRelationsController.addToTeamAsAdmin);

@@ -1,146 +1,176 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .controller('NavbarCtrl', function ($scope, $rootScope, $location, $modal, Auth, User, socket, Teams) {
-    $scope.isCollapsedTop = true;
-    $scope.isCollapsedBottom = true;
-    $scope.user = [];
-    $scope.isLoggedIn = Auth.isLoggedIn;
-    $scope.isAdmin = Auth.isAdmin;
-    $scope.getCurrentUser = Auth.getCurrentUser;
+    .controller('NavbarCtrl', function ($scope, $rootScope, $location, $modal, Auth, User, socket, Teams, League) {
+        $scope.isCollapsedTop = true;
+        $scope.isCollapsedBottom = true;
+        $scope.user = [];
+        $scope.isLoggedIn = Auth.isLoggedIn;
+        $scope.isAdmin = Auth.isAdmin;
+        $scope.getCurrentUser = Auth.getCurrentUser;
 
-    $scope.logout = function() {
-      Auth.logout();
-      $location.path('/login');
-    };
+        $scope.logout = function () {
+            Auth.logout();
+            $location.path('/login');
+        };
 
-    $scope.isActive = function(route) {
-      return $location.path().indexOf(route)>-1;
-    };
+        $scope.isActive = function (route) {
+            return $location.path().indexOf(route) > -1;
+        };
 
-    $scope.logout = function(){
-      Auth.logout();
-      $location.path('/');
+        $scope.logout = function () {
+            Auth.logout();
+            $location.path('/');
 
-    };
+        };
 
-    $scope.invitationsNumber = 0;
-      $scope.invitations = [];
-
-//        User.get().$promise.then(function (me) {
-//            if(!me.completed){
-//                $location.path('/creator');
-//            }
-//            Teams.getAssignRequests({id:me._id}).$promise.then(function (requests) {
-//
-//
-//                $scope.invitations = requests;
-//            });
-//
-//        });
-//      User.getInvitations().$promise.then(function (users) {
-//        $scope.invitations = _.map(users, function (user) {
-//          return {
-//            firstName: user[user.kind].firstName,
-//            lastName: user[user.kind].lastName,
-//            profilePhoto: user.profilePhoto,
-//            _id: user._id
-//          }
-//        });
-//        if ($scope.invitations.length > 3) {
-//          $scope.invitationsNumber = 4;
-//        }
-//        else {
-//          $scope.invitationsNumber = $scope.invitations.length;
-//        }
-//      });
-
-
-      $scope.assignRequests = [];
-
+        $scope.invitationsNumber = 0;
+        $scope.invitations = [];
+        $scope.team = [];
+        $scope.league = [];
+        $scope.assignRequests = [];
+        $scope.assignRequestsLeague = [];
         User.get().$promise.then(function (me) {
 
-            Teams.getAssignRequests({id: me._id}).$promise.then(function (requests) {
+            if (me.completed) {
+
+                switch (me.kind) {
+                    case 'team':
+
+                        var allRequests = {};
+                        Teams.getAssignRequests({id: me._id}).$promise.then(function (requests) {
+                            if (requests.length) {
+                                Teams.getTeamById({id: requests[0].id_team}).$promise.then(function (team) {
+                                    allRequests = _.map(requests, function (request) {
+                                        if (request.accepted === false) {
+                                            return request;
+                                        }
+                                    });
+                                    if (angular.isObject(allRequests[0])) {
+                                        $scope.assignRequests.push({team: team[0], requests: allRequests});
+                                    }
+                                });
+                            }
+                        });
+
+                        Teams.getTeam({id: me._id}).$promise.then(function (result) {
+
+                            $scope.team = result;
+                        });
+
+                        break
+
+                    case 'league':
 
 
-                $scope.assignRequests[0] = requests;
+                        League.getLeague(me._id).then(function (result) {
+                            $scope.league = result.data;
+                            var allRequests = {};
+                            League.getAssignRequests($scope.league[0]._id).then(function (requests) {
+                                if (requests.data.length) {
+                                    Teams.getTeamById({id: requests.data[0].id_team}).$promise.then(function (team) {
+                                        allRequests = _.map(requests.data, function (request) {
+                                            if (request.accepted === false) {
+                                                return request;
+                                            }
+                                        });
+                                        if (angular.isObject(allRequests[0])) {
+                                            $scope.assignRequestsLeague.push({team: team[0], requests: allRequests});
+                                        }
 
-            });
+                                    });
+                                }
+                            });
+                        });
+                        break
+                }
 
-            $scope.user = me;
+                $scope.user = me;
 
+            }
         });
 
 
-    $scope.notificationsNumber = 0;
+        $scope.notificationsNumber = 0;
 
-    $scope.notifications = [];
-    User.getNotifications().$promise.then(function (serviceNotification) {
-      $scope.notifications = serviceNotification;
+        $scope.notifications = [];
+        User.getNotifications().$promise.then(function (serviceNotification) {
+            $scope.notifications = serviceNotification;
+        });
+
+        $scope.newNotifications = [];
+        User.getNewNotifications().$promise.then(function (serviceNotification) {
+            $scope.newNotifications = serviceNotification;
+            if ($scope.newNotifications.length > 3) {
+                $scope.notificationsNumber = 4;
+            }
+            else {
+                $scope.notificationsNumber = $scope.newNotifications.length;
+            }
+        });
+
+        $scope.updateNotifications = function () {
+            User.updateNotifications();
+            $scope.notificationsNumber = 0;
+        };
+
+        $scope.acceptInvitation = function (ID) {
+            User.acceptInvitation({id: ID});
+            _.remove($scope.invitations, function (invitation) {
+                return invitation._id === ID
+            });
+            $scope.invitationsNumber -= 1;
+        };
+
+        $scope.rejectInvitation = function (ID) {
+            User.rejectInvitation({id: ID});
+            _.remove($scope.invitations, function (invitation) {
+                return invitation._id === ID
+            });
+            $scope.invitationsNumber -= 1;
+        };
+
+        $scope.acceptAssign = function (request, index) {
+            Teams.acceptAssignRequest({id: request._id}).$promise.then(function (response) {
+
+            });
+            delete $scope.assignRequests[0].requests[index];
+            $scope.invitationsNumber -= 1;
+        };
+
+        $scope.rejectAssign = function (request, index) {
+            Teams.rejectAssignRequest({id: request._id}).$promise.then(function (response) {
+
+            });
+            delete $scope.assignRequests[0].requests[index];
+
+        };
+
+        $scope.acceptAssignToLeague = function (request, index) {
+            League.acceptAssignRequest(request._id).then(function (response) {
+
+            });
+            delete $scope.assignRequestsLeague[0].requests[index];
+            $scope.assignRequestsLeague = [];
+        };
+        $scope.rejectAssignToLeague = function (request, index) {
+            League.rejectAssignRequest(request._id).then(function (response) {
+
+            });
+
+            delete $scope.assignRequestsLeague[0].requests[index];
+            $scope.assignRequestsLeague = [];
+        };
+        socket.on('notification', function (notification) {
+            $scope.newNotifications.push(notification);
+            $scope.notificationsNumber++;
+        });
+        socket.on('invitation', function (invitation) {
+            $scope.invitations.push(invitation);
+            $scope.invitationsNumber++;
+        });
+        socket.on('assignRequest', function (invitation) {
+            $scope.assignRequests.push(invitation);
+            $scope.invitationsNumber++;
+        });
     });
-
-    $scope.newNotifications = [];
-    User.getNewNotifications().$promise.then(function (serviceNotification) {
-      $scope.newNotifications = serviceNotification;
-      if ($scope.newNotifications.length > 3) {
-        $scope.notificationsNumber = 4;
-      }
-      else {
-        $scope.notificationsNumber = $scope.newNotifications.length;
-      }
-    });
-
-    $scope.updateNotifications = function() {
-      User.updateNotifications();
-      $scope.notificationsNumber = 0;
-    };
-
-    $scope.acceptInvitation = function(ID){
-      User.acceptInvitation({id:ID});
-      _.remove($scope.invitations, function(invitation){return invitation._id === ID});
-      $scope.invitationsNumber -= 1;
-    };
-
-    $scope.rejectInvitation = function(ID){
-      User.rejectInvitation({id:ID});
-      _.remove($scope.invitations, function(invitation){return invitation._id === ID});
-      $scope.invitationsNumber -= 1;
-    };
-
-
-
-    $scope.acceptAssign = function(ID){
-      if(ID.name) {
-        User.acceptRecruitRequest({data:ID});
-      }
-      else {
-        User.acceptAssignRequests({data: ID});
-      }
-      _.remove($scope.assignRequests, function(assignRequest){return (assignRequest._id === ID._id && assignRequest.dateFrom === ID.dateFrom && assignRequest.dateTo === ID.dateTo)});
-      $scope.invitationsNumber -= 1;
-    };
-
-    $scope.rejectAssign = function(ID){
-      if(ID.name) {
-        User.rejectRecruitRequest({data:ID});
-      }
-      else {
-        User.rejectAssignRequests({data:ID});
-      }
-      _.remove($scope.assignRequests, function(assignRequest){return (assignRequest._id === ID._id && assignRequest.dateFrom === ID.dateFrom && assignRequest.dateTo === ID.dateTo)});
-      $scope.invitationsNumber -= 1;
-    };
-
-    socket.on('notification', function(notification){
-      $scope.newNotifications.push(notification);
-      $scope.notificationsNumber++;
-    });
-    socket.on('invitation', function(invitation){
-      $scope.invitations.push(invitation);
-      $scope.invitationsNumber++;
-    });
-    socket.on('assignRequest', function(invitation){
-      $scope.assignRequests.push(invitation);
-      $scope.invitationsNumber++;
-    });
-  });

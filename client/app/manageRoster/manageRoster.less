@@ -1,9 +1,315 @@
 .margin-bottom {
   margin-bottom: 20px;
 }
+.container-athlete {
+  margin-left: 35px;
+  width: 100%;
+  float: left;
+}
+
+#add-athlete {
+   input.ng-invalid.ng-touched {
+    border:1px solid #d9534f;
+  }
+  .error {
+    color:#d9534f;
+    padding: 5px;
+  }
+}
 
 button {
   &:focus {
     outline: none!important;
   }
+}
+
+.manage-roster {
+  .add-user-form {
+    width: 100%;
+    background: #e8e8e8;
+    height: 235px;
+    float:left;
+  }
+
+  .input {
+    background: white;
+    width: 383px;
+    padding-left: 23px;
+    height: 44px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    &.small-input{
+      width: 184px;
+      font-size: 14px;
+    }
+  }
+  .small {
+    float: left;
+    padding-right: 14px;
+    &:last-child {
+      padding-right: 0px;
+    }
+  }
+  .col-lg-offset-half {
+    margin-left:1.333333%;
+  }
+
+  .add-athlete {
+    float: left;
+    width: 100%;
+  }
+
+  .addAthlete {
+    width: 185px;
+    height: 50px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    margin: 8px auto;
+    display: block;
+  }
+
+  .search-section {
+    float: left;
+    height: 100px;
+    width: 100%;
+    background: url('../../assets/images/bg-search.png');
+    background-repeat: no-repeat;
+    h3 {
+      padding-top: 35px;
+      text-transform:uppercase ;
+    }
+    .circle {
+      height: 27px;
+      width: 27px;
+      background: url('../../assets/images/circle.png');
+      background-repeat: no-repeat;
+      margin-top: 35px;
+      float: left;
+    }
+  }
+  .search-form {
+    height: 100px;
+    float: left;
+    width: 100%;
+    background: #e8e8e8;
+    padding-top: 24px;
+    .select {
+      background: white;
+      border: none;
+      width: 100%;
+      padding-left: 23px;
+      height: 44px;
+      border-radius: 3px;
+      outline: none;
+    }
+    .input {
+      width: 100%;
+    }
+  }
+
+  .col-30 {
+    margin-right: 10px;
+    float: left;
+  }
+  .list-item {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb( 241, 241, 241 );
+    background-color: rgb( 255, 255, 255 );
+    box-shadow: 0.5px 0.8px 9px 0px #000000;
+    width: 1196px;
+    height: 164px;
+    margin-bottom: 40px;
+    .number {
+      width: 100px;
+      float: left;
+      margin-top: 70px;
+    }
+    .name {
+      margin-top: 53px;
+      p {
+        color: rgb( 130, 127, 121 );
+      }
+    }
+    .photo {
+      float: left;
+      margin-top: 16px;
+      width: 135px;
+      margin-left: 10px;
+      margin-right: 10px;
+      img {
+        border-radius: 85px;
+        width: 130px;
+        height: 130px;
+      }
+    }
+    .info {
+       margin-top: 26px;
+      .md-subhead {
+        font-weight: bold;
+        font-size: 14px;
+      }
+      p {
+        color: #827f79;
+      }
+    }
+    .tools {
+      float: right;
+      margin-top: 20px;
+    }
+    .delete {
+      width: 63px;
+      height: 56px;
+      float: left;
+      background-image: url('../../assets/images/big-sprite-icon.png');
+      background-repeat:  no-repeat;
+      background-position: -51px 15px;
+      background-color: #fbfbfb;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .message {
+      width: 63px;
+      height: 56px;
+      float: left;
+      background-image: url('../../assets/images/big-sprite-icon.png');
+      background-repeat:  no-repeat;
+      background-color: #fbfbfb;
+      background-position: -121px 14px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .edit {
+      width: 63px;
+      height: 56px;
+      float: left;
+      background-image: url('../../assets/images/big-sprite-icon.png');
+      background-repeat:  no-repeat;
+      background-color: #fbfbfb;
+      cursor: pointer;
+      background-position: 20px 16px;
+      margin-right: 10px;
+    }
+
+  }
+  .switch-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 3px;
+    background: none;
+
+    border-color: #c0c0c0;
+    &:hover, &:focus {
+      color: #f8c637;
+    }
+    &.blocks {
+      background: url('../../assets/images/block-icon.png') no-repeat;
+      background-position: 14px 14px;
+      &:hover, &.active {
+        background-image: url('../../assets/images/block-icon-hover.png');
+        background-repeat:  no-repeat;
+        background-position: 14px 14px;
+        background-color: white;
+        border-color: #fac553;
+      }
+    }
+    &.lines {
+      background: url('../../assets/images/lines-icon.png') no-repeat;
+      background-position: 14px 14px;
+      &:hover, &.active {
+        background-image: url('../../assets/images/lines-icon-hover.png');
+        background-repeat:  no-repeat;
+        background-position: 14px 14px;
+        background-color: white;
+        border-color: #fac553;
+      }
+    }
+  }
+  .container-athlete  {
+    margin-left: 35px;
+    .athlete-items {
+      min-height: 1000px;
+      margin-top: 35px;
+      float: left;
+      .athlete-item {
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgb( 241, 241, 241 );
+        background-color: rgb( 255, 255, 255 );
+        box-shadow: 0.5px 0.8px 9px 0px #000000;
+        width: 278px;
+        height: 346px;
+        margin-right: 35px;
+        margin-bottom: 35px;
+        padding: 0px;
+        &:nth-child(4n) {
+          margin-right: 0px;
+        }
+        .name {
+          padding: 10px 10px 0px 20px;
+          p {
+            color: rgb( 130, 127, 121 );
+          }
+        }
+        .photo {
+          float: left;
+          padding: 10px 25px 0px 13px;
+          margin-top: 27px;
+         img {
+           border-radius: 50px;
+           width: 88px;
+           height: 88px;
+         }
+        }
+        .info {
+          float: left;
+          .md-subhead {
+            font-weight: bold;
+            font-size: 14px;
+          }
+          p {
+            color: #827f79;
+          }
+        }
+        .head-tools {
+          height: 50px;
+          padding: 10px 10px 0px 20px;
+          background: #fbfbfb;
+          .number {
+            float: left;
+          }
+          .tools {
+            width: 85px;
+            float: right;
+            padding-top: 5px;
+            .delete {
+              width: 30px;
+              height: 30px;
+              float: left;
+              background: url('../../assets/images/sprite-icon.png') no-repeat;
+              background-position: -26px 0px;
+              cursor: pointer;
+            }
+            .message {
+              width: 30px;
+              height: 30px;
+              float: left;
+              background: url('../../assets/images/sprite-icon.png') no-repeat;
+              background-position: -56px 0px;
+              cursor: pointer;
+            }
+            .edit {
+              width: 21px;
+              height: 23px;
+              float: left;
+              background: url('../../assets/images/sprite-icon.png') no-repeat;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+
 }

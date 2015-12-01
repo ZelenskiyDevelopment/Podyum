@@ -263,7 +263,7 @@ angular.module('abroadathletesApp')
                 }
               }
               for (var i = 0; i < games.length; i++) {
-                if (games[i].data.isFinished) {
+                if (games[i].data.isFinished && games[i].team1.team !== undefined && games[i].team2.team !== undefined) {
                   $scope.previous.push({
                     event: {
                       title: games[i].team1.team.name + " vs " + games[i].team2.team.name,
@@ -271,7 +271,7 @@ angular.module('abroadathletesApp')
                     }
                   });
                 }
-                else {
+                else if (games[i].team1.team !== undefined && games[i].team2.team !== undefined){
                   $scope.upcoming.push({
                     event: {
                       title: games[i].team1.team.name + " vs " + games[i].team2.team.name,

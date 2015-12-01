@@ -116,6 +116,13 @@ angular.module('abroadathletesApp')
 
 
         User.get().$promise.then(function (me) {
+
+            if(!me.completed){
+
+                $location.path('/creator');
+            }
+
+
             User.getAllHumanUsers({id: me._id}).$promise.then(function (result) {
                 $scope.allHumanUsers = result;
                 $scope.allCoaches = _.filter(result, function(user){
@@ -129,6 +136,14 @@ angular.module('abroadathletesApp')
                     league._lowername = league.leagueName.toLowerCase();
                     return league;
                 });
+            });
+
+
+            Teams.getTeam({id:me._id}).$promise.then(function(result){
+
+                if (result.length > 0) {
+                    $location.path('/teams');
+                }
             });
 
             $scope.user = me;
@@ -181,15 +196,16 @@ angular.module('abroadathletesApp')
                         athleticDirector:  (angular.isObject($scope.athleticDirector)) ? $scope.athleticDirector._id : null,
                         id_user:  id_user,
                         logoStadium: logoStadium,
+                        logoTeam: logoTeam,
                         myLeagues: myLeagues,
                         teamName: $scope.createTeam.teamName,
                         country: $scope.createTeam.country,
                         address: $scope.createTeam.address,
                         mascot: $scope.createTeam.mascot,
-                        color: $scope.createTeam.color,
+                        teamColor: $scope.createTeam.color,
                         founded: $scope.createTeam.founded,
-                        stadium: $scope.createTeam.stadium,
-                        phone: $scope.createTeam.phone,
+                        stadiumName: $scope.createTeam.stadium,
+                        telephoneNumber: $scope.createTeam.phone,
                         email: $scope.createTeam.email,
                         website: $scope.createTeam.website
                     };

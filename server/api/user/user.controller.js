@@ -1,6 +1,7 @@
 'use strict';
 
 var User = require('./user.model');
+var assignedToTeam = require('../team/assignedToTeam.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
@@ -37,6 +38,37 @@ exports.create = function (req, res, next) {
     var token = jwt.sign({_id: user._id}, config.secrets.session, {expiresInMinutes: 60 * 5});
     res.json({token: token,id_user:user._id});
   });
+};
+
+
+/**
+ * Creates a new user
+ */
+exports.createUserByTeam = function (req, res, next) {
+    var id_team  = req.body.id_team;
+    delete req.body.id_team;
+    var newUser = new User(req.body);
+    newUser.provider = 'local';
+    newUser.role = 'premium';
+    newUser.save(function (err, user) {
+        if (err) return validationError(res, err);
+
+        var addToTeam  = new assignedToTeam({
+            id_team: id_team,
+            id_user: user._id,
+            accepted: true
+        });
+
+        addToTeam.save(function(err){
+//            Team.findById(data.id_team, function (err, fromUser) {
+//
+//                socket.directMessage(data.id_user, 'assignRequest', fromUser);
+//
+//            });
+
+        });
+        res.json({id_user:user._id});
+    });
 };
 
 /**
