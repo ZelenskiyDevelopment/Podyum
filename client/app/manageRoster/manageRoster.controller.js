@@ -222,7 +222,7 @@ angular.module('abroadathletesApp')
                     form.$setPristine();
                     form.$setUntouched();
 
-                    updatePlayers();
+                    $scope.updatePlayers();
                 });
 
 
@@ -244,11 +244,20 @@ angular.module('abroadathletesApp')
             if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
                 age--;
             }
+
             return age;
-        }
+        };
 
+        $scope.delete = function(id) {
 
-        function updatePlayers() {
+            User.delete({id:id}).$promise.then(function(response){
+                console.log(response);
+            });
+        };
+
+        $scope.updatePlayers =  function () {
+
+            $scope.players = [];
             Teams.getTeam({id:$scope.user._id}).$promise.then(function(result){
 
                 $scope.team  = result;
