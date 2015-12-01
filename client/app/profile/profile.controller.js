@@ -1053,5 +1053,6 @@ angular.module('abroadathletesApp')
       $scope.mapDataLimit = 10;
       $scope.linkDataLimit = 10;
       $scope.postsLimit = 10;
+      console.log($scope.user)
     }])
 ;

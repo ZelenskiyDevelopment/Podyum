@@ -18,6 +18,8 @@ angular.module('abroadathletesApp')
           scope.targetEvent = scope.event;
         }
         scope.isLiked = _.indexOf(scope.targetEvent.medals, me._id, true) !== -1;
+        console.log(scope.targetEvent.author._id)
+        console.log(me._id);
         scope.isMine = me._id === scope.targetEvent.author._id;
         scope.targetEvent.title = eventTitles.getTitle(scope.targetEvent.type);
 
