@@ -1,11 +1,14 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-    .controller('ManageRosterCtrl', function ($scope, User, Auth, Teams) {
+    .controller('ManageRosterCtrl', function ($scope, User, Auth, Teams, GamePositions, $filter) {
 
         $scope.athlete = {};
         $scope.players = [];
 
+
+
+        $scope.positions =  GamePositions.getPositionsForSport('football');
         $scope.templates =
             [
                 { name: 'blocks', url: 'app/manageRoster/blocks.html', viewBlocks:true},
@@ -39,11 +42,16 @@ angular.module('abroadathletesApp')
                         if (item.accepted) {
                             User.getUserById({id: item.id_user}).$promise.then(function(user){
                                 user.assigned = item;
+                                user.numberPlayer = user.player.number;
                                 $scope.players.push(user);
+
                             });
                         }
 
                     });
+
+
+
                 });
 
             });
@@ -269,6 +277,7 @@ angular.module('abroadathletesApp')
                         if (item.accepted) {
                             User.getUserById({id: item.id_user}).$promise.then(function(user){
                                 user.assigned = item;
+                                user.numberPlayer = user.player.number;
                                 $scope.players.push(user);
                             });
                         }

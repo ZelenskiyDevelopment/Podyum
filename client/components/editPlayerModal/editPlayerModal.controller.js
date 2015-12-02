@@ -58,6 +58,8 @@ angular.module('abroadathletesApp')
 
                 var id  = $scope.player._id;
                 delete $scope.player._id;
+                delete $scope.player.numberPlayer;
+
                 $scope.player.profilePhoto = data.photo;
                 User.updateProfile({id: id,data: $scope.player}).$promise.then(function (response){
                     $mdDialog.hide();
