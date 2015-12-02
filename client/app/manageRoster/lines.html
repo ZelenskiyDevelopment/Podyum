@@ -1,4 +1,4 @@
-<div class="col-lg-12 list-item" ng-repeat="player in players">
+<div class="col-lg-12 list-item" ng-repeat="player in players | filter:q | filter:position ">
 
     <div class="number">
         <h3 class="md-headline"># {{ player.player.number }} WR</h3>
