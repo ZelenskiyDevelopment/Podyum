@@ -10,13 +10,13 @@
 
     <div class="name col-lg-2">
         <h3 class="md-headline">{{ player.player.firstName }} {{ player.player.lastName }}</h3>
-        <p class="md-body-1"> {{ player.player.weight }} {{ player.player.height }} Lbs {{ (player.player.born.length > 0) ?  calculateAge(player.player.born.length) : calculateAge(player.player.birthday)  }} Years Old</p>
+        <p class="md-body-1"> {{ player.player.weight }} {{ player.player.height }} Lbs {{ (player.player.born.length > 0) ?  calculateAge(player.player.born) : calculateAge(player.player.birthday)  }} Years Old </p>
     </div>
     <div class="info">
 
         <div class="col-lg-2">
             <h3 class="md-subhead">BORN : </h3>
-            <p class="md-body-1">{{ player.player.born }}</p>
+            <p class="md-body-1">{{ player.player.born | date: 'longDate' }}</p>
 
             <h3 class="md-subhead">BIRTH PLACE : </h3>
             <p class="md-body-1">{{ player.player.birthPlace }}</p>
