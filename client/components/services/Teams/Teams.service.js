@@ -12,7 +12,7 @@ angular.module('abroadathletesApp')
                         controller: 'addTeam'
                     }
                 },
-                updateTeam:{
+                updateTeam: {
                     method: 'POST',
                     params: {
                         id: '@id',
@@ -27,12 +27,18 @@ angular.module('abroadathletesApp')
                     }
                 },
                 getTeamById: {
-                method: 'GET',
-                isArray: true,
-                params: {
-                    controller: 'getTeamById'
-                }
-            },
+                    method: 'GET',
+                    isArray: true,
+                    params: {
+                        controller: 'getTeamById'
+                    }
+                },
+                removePlayer: {
+                    method: 'GET',
+                    params: {
+                        controller: 'removePlayer'
+                    }
+                },
                 getAssignRequests: {
                     method: 'GET',
                     isArray: true,
@@ -56,7 +62,7 @@ angular.module('abroadathletesApp')
                     method: 'GET',
                     params: {
                         controller: 'rejectAssignRequest'
-                     }
+                    }
                 },
                 getAllTeam: {
                     method: 'GET',
@@ -73,5 +79,5 @@ angular.module('abroadathletesApp')
                     }
                 }
 
-                });
+            });
     });

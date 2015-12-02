@@ -1,6 +1,5 @@
 
-
-<div class="col-lg-3 athlete-item" ng-repeat="player in players">
+<div class="col-lg-3 athlete-item" ng-repeat="player in players | filter:q as results">
 
     <div class="head-tools">
 
@@ -10,7 +9,7 @@
 
         <div class="tools">
             <edit-player-modal player="player" update="updatePlayers"><div class="edit"></div></edit-player-modal>
-            <div class="delete" ng-click="delete(player._id)"></div>
+            <div class="delete" ng-click="delete(player.assigned._id)"></div>
            <send-message-modal receiver="player"> <div class="message"></div></send-message-modal>
         </div>
     </div>

@@ -8,6 +8,7 @@ router.post('/addTeam', controller.addTeam);
 router.post('/addToTeam', controller.addToTeam);
 router.post('/updateTeam', controller.updateTeam);
 
+router.get('/:id/removePlayer', controller.removePlayer);
 router.get('/:id/getTeam', controller.getTeam);
 router.get('/:id/getTeamById', controller.getTeamById);
 router.get('/:id/getAssignRequests', controller.getAssignRequests);

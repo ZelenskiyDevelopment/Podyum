@@ -94,6 +94,21 @@ exports.addToTeam = function(req, res) {
     });
 };
 
+exports.removePlayer = function(req, res) {
+
+    var id = req.params.id;
+    var data = {
+        rejected: true,
+        accepted: false,
+        dateTo: new Date(),
+        isPresent: false
+    };
+    assignedToTeam.update({_id: id}, {$set:data}, {}, function (err) {
+        if (err) return validationError(res, err);
+        res.send(200);
+    });
+};
+
 exports.getPlayersByTeam = function(req, res) {
 
     var id = req.params.id;

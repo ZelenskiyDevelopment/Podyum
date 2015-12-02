@@ -31,8 +31,8 @@
     </div>
 
     <div class="tools">
-        <div class="edit"></div>
-        <div class="delete"></div>
-        <div class="message"></div>
+        <edit-player-modal player="player" update="updatePlayers"><div class="edit"></div></edit-player-modal>
+        <div class="delete"  ng-click="delete(player.assigned._id)"></div>
+        <send-message-modal receiver="player"> <div class="message"></div></send-message-modal>
     </div>
 </div>

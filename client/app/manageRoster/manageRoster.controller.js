@@ -38,6 +38,7 @@ angular.module('abroadathletesApp')
                     angular.forEach(players, function(item, key){
                         if (item.accepted) {
                             User.getUserById({id: item.id_user}).$promise.then(function(user){
+                                user.assigned = item;
                                 $scope.players.push(user);
                             });
                         }
@@ -250,8 +251,8 @@ angular.module('abroadathletesApp')
 
         $scope.delete = function(id) {
 
-            User.delete({id:id}).$promise.then(function(response){
-                console.log(response);
+            Teams.removePlayer({id:id}).$promise.then(function(response){
+                $scope.updatePlayers();
             });
         };
 
@@ -265,9 +266,12 @@ angular.module('abroadathletesApp')
                 Teams.getPlayersByTeam({id:result[0]._id}).$promise.then(function(players){
 
                     angular.forEach(players, function(item, key){
-                        User.getUserById({id: item.id_user}).$promise.then(function(user){
-                            $scope.players.push(user);
-                        });
+                        if (item.accepted) {
+                            User.getUserById({id: item.id_user}).$promise.then(function(user){
+                                user.assigned = item;
+                                $scope.players.push(user);
+                            });
+                        }
 
                     });
                 });
