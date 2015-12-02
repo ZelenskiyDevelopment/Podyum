@@ -38,6 +38,7 @@ angular.module('abroadathletesApp')
                     angular.forEach(players, function(item, key){
                         if (item.accepted) {
                             User.getUserById({id: item.id_user}).$promise.then(function(user){
+                                user.assigned = item;
                                 $scope.players.push(user);
                             });
                         }
@@ -222,7 +223,7 @@ angular.module('abroadathletesApp')
                     form.$setPristine();
                     form.$setUntouched();
 
-                    updatePlayers();
+                    $scope.updatePlayers();
                 });
 
 
@@ -244,11 +245,20 @@ angular.module('abroadathletesApp')
             if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
                 age--;
             }
+
             return age;
-        }
+        };
 
+        $scope.delete = function(id) {
 
-        function updatePlayers() {
+            Teams.removePlayer({id:id}).$promise.then(function(response){
+                $scope.updatePlayers();
+            });
+        };
+
+        $scope.updatePlayers =  function () {
+
+            $scope.players = [];
             Teams.getTeam({id:$scope.user._id}).$promise.then(function(result){
 
                 $scope.team  = result;
@@ -256,9 +266,12 @@ angular.module('abroadathletesApp')
                 Teams.getPlayersByTeam({id:result[0]._id}).$promise.then(function(players){
 
                     angular.forEach(players, function(item, key){
-                        User.getUserById({id: item.id_user}).$promise.then(function(user){
-                            $scope.players.push(user);
-                        });
+                        if (item.accepted) {
+                            User.getUserById({id: item.id_user}).$promise.then(function(user){
+                                user.assigned = item;
+                                $scope.players.push(user);
+                            });
+                        }
 
                     });
                 });
