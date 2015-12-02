@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-    .controller('editPlayerModalController', function ($scope, player, update, $mdDialog, Auth, $filter, User, $window, Upload) {
+    .controller('editPlayerModalController', function ($scope, player, update, $mdDialog, Auth, $filter, User, $window, Upload, GamePositions) {
 
         console.log(player);
         $scope.player = angular.copy(player);
@@ -10,18 +10,8 @@ angular.module('abroadathletesApp')
 
         $scope.logoProfile = null;
         $scope.croppedLogoProfile = null;
+        $scope.positions =  GamePositions.getPositionsForSport('football');
 
-        $scope.selectProfilePhoto = function() {
-//            var file = evt.currentTarget.files[0];
-//            var reader = new FileReader();
-//            reader.onload = function (evt) {
-//                $scope.$apply(function($scope){
-//                    $scope.logoProfile = evt.target.result;
-//                });
-//            };
-//            reader.readAsDataURL(file);
-            alert('yes');
-        };
 
         function base64ToBlob(base64Data, contentType) {
             contentType = contentType || '';
