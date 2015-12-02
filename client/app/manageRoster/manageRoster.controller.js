@@ -259,9 +259,12 @@ angular.module('abroadathletesApp')
 
         $scope.delete = function(id) {
 
-            Teams.removePlayer({id:id}).$promise.then(function(response){
-                $scope.updatePlayers();
-            });
+            if (confirm('Delete player from Team ?')) {
+                Teams.removePlayer({id:id}).$promise.then(function(response){
+                    $scope.updatePlayers();
+                });
+            }
+
         };
 
         $scope.updatePlayers =  function () {
