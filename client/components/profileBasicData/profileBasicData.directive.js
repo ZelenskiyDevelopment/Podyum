@@ -7,6 +7,7 @@ angular.module('abroadathletesApp')
       restrict: 'E',
       scope: {
         user: '=',
+        team: '=',
         edit: '&',
         showedit: '=',
         onclickfriend: '&',
@@ -20,6 +21,10 @@ angular.module('abroadathletesApp')
         mypresentteams: '='
       },
       link: function(scope, element, attrs) {
+        console.log(scope);
+        scope.$watchCollection('team', function (val) {
+          console.log(val);
+        })
         scope.isNotInArray = function(array, id) {
           var element = _.find(array, function(user) {
             return user._id === id;
