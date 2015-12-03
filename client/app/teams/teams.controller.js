@@ -4,6 +4,7 @@ angular.module('abroadathletesApp')
   .controller('TeamsCtrl', function ($scope, User, $location, Teams, $state) {
 
         $scope.team = [];
+        $scope.user = [];
         $scope.currentUrl = '';
         $scope.currentUrl = $state.current.url;
 
@@ -17,6 +18,9 @@ angular.module('abroadathletesApp')
 
             $scope.team  = result;
         });
+
+          $scope.user = me;
+
     });
 
     $scope.stateChange = function() {
