@@ -47,11 +47,7 @@ angular.module('abroadathletesApp')
 
                             });
                         }
-
                     });
-
-
-
                 });
 
             });

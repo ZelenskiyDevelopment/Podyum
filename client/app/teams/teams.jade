@@ -1,25 +1,59 @@
 div(class="teams {{ (checkState('teams/manage-roster')) ? 'manage-roster' : '' }} {{ (checkState('/teams/schedule')) ? 'schedule' : '' }} ")
   .container
-    //md-input-container
-     // label Team
-    //  md-select(ng-model='selectedTeam')
-     //   md-option(ng-repeat="team in teams" value='{{team._id}}') {{team.team.name}}
-   // .row
-     // h3(ng-hide='selectedTeam') You have to be assigned to team and select a team from list.
-      //messages(ng-repeat='team in teams' team='team' ng-if='team._id === selectedTeam')
 
+    .col-lg-2.col-lg-offset-5.padding-bottom.padding-top( ng-if=" user.kind == 'player'"  )
+        a.btn.btn-default.our-button.pull-right(ng-click='joinToTeam()') Join existing team
+
+
+    script(type='text/ng-template', id='joinToTeam.html').
+      <form class="form-horizontal" name="joinTeam" ng-submit="send(joinTeam)">
+
+      <div class="modal-header">
+      <h3 class="modal-title">Join To Team</h3>
+      </div>
+      <div class="modal-body">
+
+       <md-input-container>
+              <label>Teams</label>
+              <md-select ng-model="team" name="selectTeam" required>
+              <md-option value="">Select team</md-option>
+                <md-option ng-repeat="team in teams"  value="{{team._id}}">
+                  {{team.teamName}}
+                </md-option>
+              </md-select>
+
+               <div ng-messages="joinTeam.selectTeam.$error" ng-show="joinTeam.selectTeam.$dirty">
+                     <div ng-message="required">This is required!</div>
+               </div>
+       </md-input-container>
+
+
+
+      </div>
+      <div class="modal-footer">
+      <button class="btn btn-warning" type="submit" >Send Request</button>
+      <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+      </div>
+      </form>
+
+    .col-lg-6.col-lg-offset-4.padding-bottom(ng-if="myTeam.length > 0 && user.kind == 'player' && myTeam.accepted === true" )
+         .navbar-default
+           ul.nav.navbar-nav
+             li(ng-class="{ active: isActive('/teams/task-manager') }")
+                a(ui-sref='teams.taskManager'  class='item-menu'  data-toggle="modal" role="button") Task Manager
 
     .col-lg-6.col-lg-offset-3.padding-bottom( ng-hide="checkState('/teams/schedule') || checkState('teams/manage-roster')")
-        a.btn.btn-default.our-button(ui-sref='teams.addTeam' ng-show="team.length == 0 && user.kind == 'team' || user.kind == 'coach'"  ) Create a Team
-        a.btn.btn-default.our-button.pull-right(ui-sref='#' ng-show="team.length == 0 && user.kind == 'team' || user.kind == 'coach'"  ) Join existing team
-    div(ng-hide="checkState('/schedule') || checkState('teams/manage-roster')")
+        a.btn.btn-default.our-button(ui-sref='teams.addTeam' ng-show="team.length == 0 && user.kind == 'team' || user.kind == 'coach'") Create a Team
+
+
+    div(ng-hide="checkState('/schedule') || checkState('teams/manage-roster')" ng-if="user.kind == 'team' || user.kind == 'coach'")
         .col-lg-6.col-lg-offset-4.padding-bottom(ng-show="team.length > 0" )
             .navbar-default
                 ul.nav.navbar-nav
                   li(ng-class="{ active: isActive('/teams/update-team') }")
-                   a(ui-sref='teams.updateTeam'  data-toggle="modal" role="button"  ng-if="user.kind == 'team' && user.kind == 'coach'") Update Team
+                   a(ui-sref='teams.updateTeam' class='item-menu'  data-toggle="modal" role="button"  ng-if="user.kind == 'team' && user.kind == 'coach'") Update Team
                   li(ng-class="{ active: isActive('/teams/task-manager') }")
-                   a(ui-sref='teams.taskManager'  data-toggle="modal" role="button") Task Manager
+                   a(ui-sref='teams.taskManager'  class='item-menu'  data-toggle="modal" role="button") Task Manager
                   li(ng-class="{ active: isActive('/teams/fans') }")
-                   a(ui-sref='teams.fans'  data-toggle="modal" role="button") Fans
+                   a(ui-sref='teams.fans' class='item-menu'   data-toggle="modal" role="button") Fans
   div(ui-view='')

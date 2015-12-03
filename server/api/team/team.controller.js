@@ -124,6 +124,22 @@ exports.getPlayersByTeam = function(req, res) {
 
 };
 
+exports.getAssignRequestsToTeam = function(req, res) {
+    var teamId = req.params.id;
+
+    assignedToTeam.find({
+        id_team: teamId
+    }).execQ().then(function (request) {
+        if (request.length == 0) {
+            return res.json(422,response);
+        }
+        return res.json(200, request);
+
+    }).catch(function (err) {
+        return handleError(res, err);
+    });
+};
+
 exports.getAssignRequests = function(req, res) {
     var userId = req.params.id;
     var response = [];
@@ -139,6 +155,31 @@ exports.getAssignRequests = function(req, res) {
     }).catch(function (err) {
         return handleError(res, err);
     });
+};
+
+exports.sendRequestToTeam = function(req, res) {
+
+    var request = req.body;
+
+    var data = {
+        accepted: false,
+        requestToTeam: true,
+        rejected: false,
+        isPresent: true,
+        dateFrom: new Date(),
+        id_user: request.id_user,
+        id_team: request.id_team
+    };
+
+
+    var addToTeam  = new assignedToTeam(data);
+
+    addToTeam.save(function(err, request){
+
+        return res.json(200, request);
+
+    });
+
 };
 
 exports.getTeam = function(req, res) {

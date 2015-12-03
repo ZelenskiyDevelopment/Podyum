@@ -69,7 +69,6 @@
                         </div>
                     </md-input-container>
                     <md-input-container>
-                        <md-input-container>
                             <label>Position</label>
                             <md-select ng-model="player.player.position" name="position" >
                                 <md-option ng-repeat="position in positions" value="{{position}}">
@@ -80,7 +79,6 @@
                         <div ng-messages="userForm.position.$error" ng-show="userForm.position.$dirty">
                             <div ng-message="required">This is required!</div>
                         </div>
-                    </md-input-container>
                     <md-input-container>
                         <label>Birth place</label>
                         <input name="birthPlace" ng-model="player.player.birthPlace" required>

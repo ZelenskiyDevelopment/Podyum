@@ -7,11 +7,14 @@ var controller = require('./team.controller'),
 router.post('/addTeam', controller.addTeam);
 router.post('/addToTeam', controller.addToTeam);
 router.post('/updateTeam', controller.updateTeam);
+router.post('/sendRequestToTeam', controller.sendRequestToTeam);
+
 
 router.get('/:id/removePlayer', controller.removePlayer);
 router.get('/:id/getTeam', controller.getTeam);
 router.get('/:id/getTeamById', controller.getTeamById);
 router.get('/:id/getAssignRequests', controller.getAssignRequests);
+router.get('/:id/getAssignRequestsToTeam', controller.getAssignRequestsToTeam);
 router.get('/:id/getPlayersByTeam', controller.getPlayersByTeam);
 router.get('/:id/acceptAssignRequest', controller.acceptAssignRequest);
 router.get('/:id/rejectAssignRequest', controller.rejectAssignRequest);

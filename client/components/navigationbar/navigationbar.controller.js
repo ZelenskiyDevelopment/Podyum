@@ -29,6 +29,7 @@ angular.module('abroadathletesApp')
         $scope.team = [];
         $scope.league = [];
         $scope.assignRequests = [];
+        $scope.assignRequestsTeam = [];
         $scope.assignRequestsLeague = [];
         User.get().$promise.then(function (me) {
 
@@ -38,6 +39,8 @@ angular.module('abroadathletesApp')
                     case 'team':
 
                         var allRequests = {};
+                        var AllRequestTeam = {};
+
                         Teams.getAssignRequests({id: me._id}).$promise.then(function (requests) {
                             if (requests.length) {
                                 Teams.getTeamById({id: requests[0].id_team}).$promise.then(function (team) {
@@ -56,6 +59,26 @@ angular.module('abroadathletesApp')
                         Teams.getTeam({id: me._id}).$promise.then(function (result) {
 
                             $scope.team = result;
+
+                            Teams.getAssignRequestsToTeam({id: result[0]._id}).$promise.then(function (requests) {
+
+
+                                angular.forEach(requests, function (request, key) {
+
+                                    User.getUserById({id: request.id_user}).$promise.then(function (user) {
+
+                                        request.user = user;
+
+                                        if (request.requestToTeam === true && request.accepted === false) {
+                                            $scope.assignRequestsTeam.push(request);
+                                        }
+
+                                    });
+
+
+                                });
+
+                            });
                         });
 
                         break
@@ -136,6 +159,22 @@ angular.module('abroadathletesApp')
             });
             delete $scope.assignRequests[0].requests[index];
             $scope.invitationsNumber -= 1;
+        };
+
+        $scope.acceptAssignToTeam = function (request, index) {
+            Teams.acceptAssignRequest({id: request._id}).$promise.then(function (response) {
+
+            });
+            $scope.assignRequestsTeam = [];
+            $scope.invitationsNumber -= 1;
+        };
+
+        $scope.rejectAssignToTeam = function (request, index) {
+            Teams.rejectAssignRequest({id: request._id}).$promise.then(function (response) {
+
+            });
+            $scope.assignRequestsTeam = [];
+
         };
 
         $scope.rejectAssign = function (request, index) {
