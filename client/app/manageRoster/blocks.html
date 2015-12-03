@@ -1,10 +1,10 @@
 
-<div class="col-lg-3 athlete-item" ng-repeat="player in players | filter:q | filter:position ">
+<div class="col-lg-3 athlete-item" ng-repeat="player in players | orderBy:'numberPlayer' | filter: {numberPlayer: number} | filter:position | filter:name ">
 
     <div class="head-tools">
 
         <div class="number">
-            <h3 class="md-headline"># {{ player.player.number }} WR</h3>
+            <h3 class="md-headline">#{{ player.player.number }} WR</h3>
         </div>
 
         <div class="tools">

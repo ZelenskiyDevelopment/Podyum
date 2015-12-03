@@ -70,8 +70,11 @@
                     </div>
                     <div class="small">
                         <div class="form-group">
-                            <input type="text" class="input small-input" name="position" placeholder="Position"
-                                   ng-model="athlete.position" required="">
+
+                            <select class="select-position select" ng-model="athlete.position">
+                                <option  value="">Select Position</option>
+                                <option ng-repeat="position in positions" value="{{ position }}">{{ position }}</option>
+                            </select>
 
                             <div ng-show="athleteForm.$submitted || athleteForm.position.$touched">
                                 <div ng-show="!athlete.position || !athlete.position"><label class="error">Field is
@@ -129,19 +132,23 @@
             <div class="col-lg-offset-2">
                 <div class="col-lg-1">
                     <select class="select-number select" ng-model="number">
-                        <option selected>#</option>
+                        <option  value="">#</option>
+                        <option ng-repeat="player in players | orderBy:'numberPlayer'" value="{{ player.player.number }}">{{ player.player.number }}</option>
                     </select>
                 </div>
                 <div class="col-lg-2">
-                    <input type="text" class="input" ng-model="position" placeholder="Position" ng-model="text">
+                    <select class="select-position select" ng-model="position">
+                        <option  value="">Position</option>
+                        <option ng-repeat="position in positions" value="{{ position }}">{{ position }}</option>
+                    </select>
 
                 </div>
                 <div class="col-lg-4">
-                    <input type="text" class="input" ng-model="q" placeholder="Search" ng-model="text">
+                    <input type="text" class="input" ng-model="name" placeholder="Search" ng-model="text">
                 </div>
                 <div class="col-lg-2">
                     <select class="select-season select" ng-model="season">
-                        <option selected>#</option>
+                        <option >#</option>
                     </select>
                 </div>
                 <div class="col-30">
