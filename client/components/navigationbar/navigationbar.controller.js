@@ -165,7 +165,7 @@ angular.module('abroadathletesApp')
             Teams.acceptAssignRequest({id: request._id}).$promise.then(function (response) {
 
             });
-            $scope.assignRequestsTeam = [];
+            $scope.assignRequestsTeam[index] = {};
             $scope.invitationsNumber -= 1;
         };
 
@@ -173,7 +173,7 @@ angular.module('abroadathletesApp')
             Teams.rejectAssignRequest({id: request._id}).$promise.then(function (response) {
 
             });
-            $scope.assignRequestsTeam = [];
+            $scope.assignRequestsTeam[index] = {};
 
         };
 

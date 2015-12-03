@@ -20,8 +20,8 @@
     <!--</div>-->
     <!--</div>-->
 
-
-        <div class="media" ng-repeat="assignRequest in assignRequestsTeam">
+<div class="{{ assignRequestsTeam }}"></div>
+        <div class="media" ng-repeat="assignRequest in assignRequestsTeam" ng-show="assignRequest._id.length > 0">
             <div class="media-left">
 
                 <a  ui-sref="profile.common-story({id: assignRequest.user._id})">
