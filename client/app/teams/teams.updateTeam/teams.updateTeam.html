@@ -104,6 +104,22 @@
                     <!--<img ng-src="{{croppedLogoTeam}}">-->
                 <!--</div>-->
             <!--</div>-->
+            <div class="col-lg-12">
+                <div class="md-headline">Logo team</div>
+                <div class="upload"> +
+                    <input type="file" id="fileInputLogo">
+                </div>
+                <div class="image-crop">
+                    <img-crop image='logoTeam' result-image='croppedLogoTeam' area-type="square"
+                              result-image-quality="1.0"></img-crop>
+                </div>
+
+                <div class="preview-img" ng-show="logoTeam">
+                    <div class="md-title">Preview:</div>
+                    <img ng-src="{{croppedLogoTeam}}">
+                </div>
+            </div>
+
         </div>
         <div class="big-q">Contact info</div>
         <div class="col-lg-12">
