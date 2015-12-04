@@ -51,7 +51,7 @@ div(class="teams {{ (checkState('teams/manage-roster')) ? 'manage-roster' : '' }
             .navbar-default
                 ul.nav.navbar-nav
                   li(ng-class="{ active: isActive('/teams/update-team') }")
-                   a(ui-sref='teams.updateTeam' class='item-menu'  data-toggle="modal" role="button"  ng-if="user.kind == 'team' && user.kind == 'coach'") Update Team
+                   a(ui-sref='teams.updateTeam' class='item-menu'  data-toggle="modal" role="button"  ng-if="user.kind == 'team' || user.kind == 'coach'") Update Team
                   li(ng-class="{ active: isActive('/teams/task-manager') }")
                    a(ui-sref='teams.taskManager'  class='item-menu'  data-toggle="modal" role="button") Task Manager
                   li(ng-class="{ active: isActive('/teams/fans') }")
