@@ -27,20 +27,28 @@
         <div class="col-md-12">
           <div class="row light-gray timeouts-container">
             <div class="col-md-4">
-              <span class="timeout {{hostTeam.timeouts > 0 ? 'timeout-active' : 'timeout-inactive'}}" ng-click="hostTeam.timeouts > 0 ? takeTimeout(true) : addTimeout(true)"></span>
-              <span class="timeout {{hostTeam.timeouts > 1 ? 'timeout-active' : 'timeout-inactive'}}" ng-click="hostTeam.timeouts > 1 ? takeTimeout(true) : addTimeout(true)"></span>
-              <span class="timeout {{hostTeam.timeouts > 2 ? 'timeout-active' : 'timeout-inactive'}}" ng-click="hostTeam.timeouts > 2 ? takeTimeout(true) : addTimeout(true)"></span>
+              <span class="timeout {{hostTeam.timeouts > 0 ? 'timeout-active' : 'timeout-inactive'}}"
+                    ng-click="hostTeam.timeouts > 0 ? takeTimeout(true) : addTimeout(true)"></span>
+              <span class="timeout {{hostTeam.timeouts > 1 ? 'timeout-active' : 'timeout-inactive'}}"
+                    ng-click="hostTeam.timeouts > 1 ? takeTimeout(true) : addTimeout(true)"></span>
+              <span class="timeout {{hostTeam.timeouts > 2 ? 'timeout-active' : 'timeout-inactive'}}"
+                    ng-click="hostTeam.timeouts > 2 ? takeTimeout(true) : addTimeout(true)"></span>
             </div>
             <div class="col-md-4 col-md-offset-4">
-              <span class="timeout {{guestTeam.timeouts > 0 ? 'timeout-active' : 'timeout-inactive'}}" ng-click="guestTeam.timeouts > 0 ? takeTimeout(false) : addTimeout(false)"></span>
-              <span class="timeout {{guestTeam.timeouts > 1 ? 'timeout-active' : 'timeout-inactive'}}" ng-click="guestTeam.timeouts > 1 ? takeTimeout(false) : addTimeout(false)"></span>
-              <span class="timeout {{guestTeam.timeouts > 2 ? 'timeout-active' : 'timeout-inactive'}}" ng-click="guestTeam.timeouts > 2 ? takeTimeout(false) : addTimeout(false)"></span>
+              <span class="timeout {{guestTeam.timeouts > 0 ? 'timeout-active' : 'timeout-inactive'}}"
+                    ng-click="guestTeam.timeouts > 0 ? takeTimeout(false) : addTimeout(false)"></span>
+              <span class="timeout {{guestTeam.timeouts > 1 ? 'timeout-active' : 'timeout-inactive'}}"
+                    ng-click="guestTeam.timeouts > 1 ? takeTimeout(false) : addTimeout(false)"></span>
+              <span class="timeout {{guestTeam.timeouts > 2 ? 'timeout-active' : 'timeout-inactive'}}"
+                    ng-click="guestTeam.timeouts > 2 ? takeTimeout(false) : addTimeout(false)"></span>
             </div>
           </div>
           <div class="row light-gray">
             <div class="col-md-4" style="align-content: center">
               <h1 ng-show="!changingHostScore" ng-click="changingHostScore=true">{{game.data.score1}}</h1>
-              <input style="margin-left: 62px;" class="form-control custom-input" ng-model="game.data.score1" ng-blur="changingHostScore = false" ng-show="changingHostScore">
+              <input style="margin-left: 62px;" class="form-control custom-input" ng-model="game.data.score1"
+                     ng-blur="changingHostScore = false" ng-show="changingHostScore">
+
               <h3>{{game.team1.team.name}}</h3>
             </div>
             <div class="col-md-1">
@@ -49,7 +57,8 @@
             </div>
             <div class="col-md-2">
               <h1 ng-show="!changingTimer" ng-click="changingTimer=1">{{gameStats.counter | timerDisplay}}</h1>
-              <input class="form-control custom-input" ng-model="gameStats.counterString" ng-blur="manuallyChangeTimer()" ng-show="changingTimer">
+              <input class="form-control custom-input" ng-model="gameStats.counterString"
+                     ng-blur="manuallyChangeTimer()" ng-show="changingTimer">
             </div>
             <div class="col-md-1">
               <span class="ball {{gameStats.teamOffence == 1 ? 'ball-active' : 'ball-inactive'}}"
@@ -57,7 +66,8 @@
             </div>
             <div class="col-md-4">
               <h1 ng-show="!changingGuestScore" ng-click="changingGuestScore=true">{{game.data.score2}}</h1>
-              <input style="margin-left: 62px;" class="form-control custom-input" ng-model="game.data.score2" ng-blur="changingGuestScore = false" ng-show="changingGuestScore">
+              <input style="margin-left: 62px;" class="form-control custom-input" ng-model="game.data.score2"
+                     ng-blur="changingGuestScore = false" ng-show="changingGuestScore">
 
               <h3>{{game.team2.team.name}}</h3>
             </div>
@@ -66,21 +76,35 @@
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-3">
-                  <span class="big" ng-show="!changingDown" ng-click="changingDown = true">{{gameStats.down}}</span><input type="number" class="form-control custom-input" ng-model="gameStats.down" ng-show="changingDown" ng-blur="changingDown = false"><span class="normal">&nbsp;&nbsp;DOWN</span>
+                  <span class="big" ng-show="!changingDown"
+                        ng-click="changingDown = true">{{gameStats.down}}</span><input type="number"
+                                                                                       class="form-control custom-input"
+                                                                                       ng-model="gameStats.down"
+                                                                                       ng-show="changingDown"
+                                                                                       ng-blur="changingDown = false"><span
+                  class="normal">&nbsp;&nbsp;DOWN</span>
                 </div>
                 <div class="col-md-3">
-                  <span class="big" ng-show="!changingToGo" ng-click="changingToGo = true">{{gameStats.toGo = 90-gameStats.ballPosition;}}</span><input type="number" class="form-control custom-input" ng-model="gameStats.toGo" ng-show="changingToGo" ng-blur="changingToGo = false"><span class="normal">&nbsp;&nbsp;TO GO</span>
+                  <span class="big" ng-show="!changingToGo" ng-click="changingToGo = true">{{gameStats.toGo = 90-gameStats.ballPosition;}}</span><input
+                  type="number" class="form-control custom-input" ng-model="gameStats.toGo" ng-show="changingToGo"
+                  ng-blur="changingToGo = false"><span class="normal">&nbsp;&nbsp;TO GO</span>
                 </div>
                 <div class="col-md-3">
-                  <span class="big" ng-show="!changingBallOn" ng-click="changingBallOn = true">{{gameStats.ballPosition}}</span><input type="number" class="form-control custom-input" ng-model="gameStats.ballPosition" ng-show="changingBallOn" ng-blur="changingBallOn = false"><span class="normal">&nbsp;&nbsp;BALL ON</span>
+                  <span class="big" ng-show="!changingBallOn" ng-click="changingBallOn = true">{{gameStats.ballPosition}}</span><input
+                  type="number" class="form-control custom-input" ng-model="gameStats.ballPosition"
+                  ng-show="changingBallOn" ng-blur="changingBallOn = false"><span
+                  class="normal">&nbsp;&nbsp;BALL ON</span>
                 </div>
                 <div class="col-md-3">
-                  <span class="big" ng-show="!changingQtr" ng-click="changingQtr = true">{{gameStats.quarter < 4 ? gameStats.quarter : 'Ended'}}</span><input type="number" class="form-control custom-input" ng-model="gameStats.quarter" ng-blur="changingQtr = false" ng-show="changingQtr" /><span class="normal">&nbsp;&nbsp;QTR</span>
+                  <span class="big" ng-show="!changingQtr" ng-click="changingQtr = true">{{gameStats.quarter < 4 ? gameStats.quarter : 'Ended'}}</span><input
+                  type="number" class="form-control custom-input" ng-model="gameStats.quarter"
+                  ng-blur="changingQtr = false" ng-show="changingQtr"/><span class="normal">&nbsp;&nbsp;QTR</span>
                 </div>
               </div>
               <div class="row custom-btn-group">
                 <div class="col-md-12">
-                  <button class="btn-custom btn-timeout" ng-click="takeTimeout(gameStats.teamOffence == 0)">TIME OUT</button>
+                  <button class="btn-custom btn-timeout" ng-click="takeTimeout(gameStats.teamOffence == 0)">TIME OUT
+                  </button>
                   <button class="btn-custom btn-timer" ng-click="startCount()">START/STOP</button>
                   <button class="btn-custom btn-end-qtr" ng-click="endQtr()">{{getQuarterString()}}</button>
                 </div>
@@ -91,7 +115,8 @@
             <div class="col-md-12">
               <div ng-cloak>
                 <md-content>
-                  <md-tabs class="md-dynamic-height md-border-bottom" md-align-tabs="top" md-selected="selectedPlaytype">
+                  <md-tabs class="md-dynamic-height md-border-bottom" md-align-tabs="top"
+                           md-selected="selectedPlaytype">
                     <!-- run play start -->
                     <md-tab id="run" md-on-select="playSelected = true; setOffence(gameStats.teamOffence)">
                       <md-tab-label>RUN</md-tab-label>
@@ -101,7 +126,8 @@
                             Runner
                           </div>
                           <div class="col-md-2">
-                            <input ng-focus="lastPlayerInputField = 'round.runner'" type="number" class="form-control custom-input" ng-model="round.runner"/>
+                            <input ng-focus="lastPlayerInputField = 'round.runner'" type="number"
+                                   class="form-control custom-input" ng-model="round.runner"/>
                           </div>
 
                           <div class="col-md-8 advanced-button-container">
@@ -118,15 +144,17 @@
                         <div class="row light-grey">
                           <div class="col-md-4">
                             <span>START:&nbsp;</span><input type="number" ng-model="round.start"
-                                                            ng-focus="setCurrentPositionSelector('round.start')" ng-change="round.gained = round.end - round.start"/>
+                                                            ng-focus="setCurrentPositionSelector('round.start')"
+                                                            ng-change="round.gained = round.end - round.start"/>
                           </div>
                           <div class="col-md-4">
-                            <span>END:&nbsp;</span><input type="number" ng-model="round.end" ng-change="round.gained = round.end - round.start"
-                                                          ng-focus="setCurrentPositionSelector('round.end')" />
+                            <span>END:&nbsp;</span><input type="number" ng-model="round.end"
+                                                          ng-change="round.gained = round.end - round.start"
+                                                          ng-focus="setCurrentPositionSelector('round.end')"/>
                           </div>
                           <div class="col-md-4">
                             <span>GAINED:&nbsp;</span><input type="number" ng-model="round.gained"
-                                                             value="{{round.end-round.start}}" />
+                                                             value="{{round.end-round.start}}"/>
                           </div>
                         </div>
                         <div class="row football-field">
@@ -1051,22 +1079,474 @@
                               </div>
                             </div>
                           </div>
-                          <div class="row" ng-show="round.special=='punt'">
-                            <div class="col-md-12">
+                        </div>
+                        <div class="row" ng-show="round.special=='punt'">
+                          <div class="col-md-12">
+                            <div class="row row-advanced-controls">
+                              <div class="col-md-2">
+                                Kicker
+                              </div>
+                              <div class="col-md-2">
+                                <input type="number" class="form-control custom-input" ng-model="round.kicker"/>
+                              </div>
 
+                              <div class="col-md-8 advanced-button-container">
+                                <button class="button-top-players-active">#7 bredgewater</button>
+                                <button class="button-top-players-inactive">#2 vick</button>
+                                <button class="button-top-players-inactive">#13 richardson</button>
+                              </div>
                             </div>
-                          </div>
-                          <div class="row" ng-show="round.special=='fieldGoal'">
-                            <div class="col-md-12">
+                            <div class="row light-grey">
+                              <div class="col-md-4">
+                                <span>START:&nbsp;</span><input type="number" ng-model="round.kickoffStart"
+                                                                ng-focus="setCurrentPositionSelector('round.kickoffStart')"/>
+                              </div>
+                              <div class="col-md-4">
+                                <span>END:&nbsp;</span><input type="number" ng-model="round.kickoffEnd"
+                                                              ng-focus="setCurrentPositionSelector('round.kickoffEnd')"/>
+                              </div>
+                              <div class="col-md-4">
+                                <span>GAINED:&nbsp;</span><input type="number" ng-model="round.kickoffGained"
+                                                                 value="{{round.kickoffEnd-round.kickoffStart}}"/>
+                              </div>
+                            </div>
+                            <div class="row football-field">
+                              <div class="tochdown-zone-host" ng-click=""></div>
+                              <div class="football-field-inner" ng-click="fieldClick($event)">
+                                <div class="even" data-mark="1">{{getFieldMark(1)}}</div>
+                                <div class="odd" data-mark="2">{{getFieldMark(2)}}</div>
+                                <div class="even" data-mark="3">{{getFieldMark(3)}}</div>
+                                <div class="odd" data-mark="4">{{getFieldMark(4)}}</div>
+                                <div class="even" data-mark="5">{{getFieldMark(5)}}</div>
+                                <div class="odd" data-mark="6">{{getFieldMark(-4)}}</div>
+                                <div class="even" data-mark="7">{{getFieldMark(-3)}}</div>
+                                <div class="odd" data-mark="8">{{getFieldMark(-2)}}</div>
+                                <div class="even" data-mark="9">{{getFieldMark(-1)}}</div>
+                              </div>
+                              <div class="tochdown-zone-guest" ng-click=""></div>
+                            </div>
+                            <div class="row row-advanced-controls">
+                              <div class="col-md-12">
+                                <button
+                                  class="{{round.punt=='touchback' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.punt='touchback'">touchback
+                                </button>
+                                <button
+                                  class="{{round.punt=='fumble' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.punt='fumble'">fumble
+                                </button>
+                                <button
+                                  class="{{round.punt=='penalty' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.punt='penalty'">penalty
+                                </button>
+                                <button
+                                  class="{{round.punt=='saftey' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.punt='saftey'">saftey
+                                </button>
+                                <button
+                                  class="{{round.punt=='blocked' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.punt='blocked'">blocked
+                                </button>
+                                <button
+                                  class="{{round.punt=='noReturn' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.punt='noReturn'">no return
+                                </button>
+                              </div>
+                            </div>
 
-                            </div>
-                          </div>
-                          <div class="row" ng-show="round.special=='pointAfter'">
-                            <div class="col-md-12">
+                            <div class="row" ng-hide="round.punt=='noReturn'">
+                              <div class="col-md-12">
+                                <div class="row row-advanced-controls">
+                                  <div class="col-md-2">
+                                    Returner
+                                  </div>
+                                  <div class="col-md-2">
+                                    <input type="number" class="form-control custom-input" ng-model="round.returner"/>
+                                  </div>
+
+                                  <div class="col-md-8 advanced-button-container">
+                                    <button class="button-top-players-active">#7 bredgewater</button>
+                                    <button class="button-top-players-inactive">#2 vick</button>
+                                    <button class="button-top-players-inactive">#13 richardson</button>
+                                  </div>
+                                </div>
+                                <div class="row light-grey">
+                                  <div class="col-md-4">
+                                    <span>START:&nbsp;</span><input type="number" ng-model="round.kickoffReturnStart"
+                                                                    ng-focus="setCurrentPositionSelector('round.kickoffReturnStart')"/>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <span>END:&nbsp;</span><input type="number" ng-model="round.kickoffReturnEnd"
+                                                                  ng-focus="setCurrentPositionSelector('round.kickoffReturnEnd')"/>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <span>GAINED:&nbsp;</span><input type="number" ng-model="round.kickoffReturnGained"
+                                                                     value="{{round.kickoffEnd-round.kickoffReturnStart}}"/>
+                                  </div>
+                                </div>
+                                <div class="row football-field">
+                                  <div class="tochdown-zone-host" ng-click=""></div>
+                                  <div class="football-field-inner" ng-click="fieldClick($event)">
+                                    <div class="even" data-mark="1">{{getFieldMark(1)}}</div>
+                                    <div class="odd" data-mark="2">{{getFieldMark(2)}}</div>
+                                    <div class="even" data-mark="3">{{getFieldMark(3)}}</div>
+                                    <div class="odd" data-mark="4">{{getFieldMark(4)}}</div>
+                                    <div class="even" data-mark="5">{{getFieldMark(5)}}</div>
+                                    <div class="odd" data-mark="6">{{getFieldMark(-4)}}</div>
+                                    <div class="even" data-mark="7">{{getFieldMark(-3)}}</div>
+                                    <div class="odd" data-mark="8">{{getFieldMark(-2)}}</div>
+                                    <div class="even" data-mark="9">{{getFieldMark(-1)}}</div>
+                                  </div>
+                                  <div class="tochdown-zone-guest" ng-click=""></div>
+                                </div>
+                                <div class="row row-advanced-controls">
+                                  <div class="col-md-12">
+                                    <button
+                                      class="{{round.puntReturn=='fairCatch' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                      ng-click="round.puntReturn='fairCatch'">fair catch
+                                    </button>
+                                    <button
+                                      class="{{round.puntReturn=='touchdown' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                      ng-click="round.puntReturn='touchdown'">touchdown
+                                    </button>
+                                    <button
+                                      class="{{round.puntReturn=='fumble' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                      ng-click="round.puntReturn='fumble'">fumble
+                                    </button>
+                                    <button
+                                      class="{{round.puntReturn=='penalty' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                      ng-click="round.puntReturn='penalty'">penalty
+                                    </button>
+                                    <button
+                                      class="{{round.puntReturn=='lateral' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                      ng-click="round.puntReturn='lateral'">lateral
+                                    </button>
+                                  </div>
+                                </div>
+
+                              </div>
 
                             </div>
                           </div>
                         </div>
+                        <div class="row" ng-show="round.special=='fieldGoal'">
+                          <div class="col-md-12">
+                            <div class="row row-advanced-controls">
+                              <div class="col-md-2">
+                                Kicker
+                              </div>
+                              <div class="col-md-2">
+                                <input type="number" class="form-control custom-input" ng-model="round.kicker"/>
+                              </div>
+
+                              <div class="col-md-8 advanced-button-container">
+                                <button class="button-top-players-active">#7 bredgewater</button>
+                                <button class="button-top-players-inactive">#2 vick</button>
+                                <button class="button-top-players-inactive">#13 richardson</button>
+                              </div>
+                            </div>
+                            <div class="row light-grey">
+                              <div class="col-md-4">
+                                <span>START:&nbsp;</span><input type="number" ng-model="round.fieldGoalStart"
+                                                                ng-focus="setCurrentPositionSelector('round.fieldGoalStart')"/>
+                              </div>
+                              <div class="col-md-4">
+                                <span>END:&nbsp;</span><input type="number" ng-model="round.fieldGoalEnd"
+                                                              ng-focus="setCurrentPositionSelector('round.fieldGoalEnd')"/>
+                              </div>
+                              <div class="col-md-4">
+                                <span>GAINED:&nbsp;</span><input type="number" ng-model="round.fieldGoalGained"
+                                                                 value="{{round.fieldGoalGained-round.fieldGoalStart}}"/>
+                              </div>
+                            </div>
+                            <div class="row football-field">
+                              <div class="tochdown-zone-host" ng-click=""></div>
+                              <div class="football-field-inner" ng-click="fieldClick($event)">
+                                <div class="even" data-mark="1">{{getFieldMark(1)}}</div>
+                                <div class="odd" data-mark="2">{{getFieldMark(2)}}</div>
+                                <div class="even" data-mark="3">{{getFieldMark(3)}}</div>
+                                <div class="odd" data-mark="4">{{getFieldMark(4)}}</div>
+                                <div class="even" data-mark="5">{{getFieldMark(5)}}</div>
+                                <div class="odd" data-mark="6">{{getFieldMark(-4)}}</div>
+                                <div class="even" data-mark="7">{{getFieldMark(-3)}}</div>
+                                <div class="odd" data-mark="8">{{getFieldMark(-2)}}</div>
+                                <div class="even" data-mark="9">{{getFieldMark(-1)}}</div>
+                              </div>
+                              <div class="tochdown-zone-guest" ng-click=""></div>
+                            </div>
+                            <div class="row row-advanced-controls">
+                              <div class="col-md-12">
+                                <button
+                                  class="{{round.fieldGoalResult=='good' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.fieldGoalResult='good'">good
+                                </button>
+                                <button
+                                  class="{{round.fieldGoalResult=='blocked' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.fieldGoalResult='blocked'">blocked
+                                </button>
+                                <button
+                                  class="{{round.fieldGoalResult=='penalty' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.fieldGoalResult='penalty'">penalty
+                                </button>
+                              </div>
+                            </div>
+                            <div  ng-show="round.fieldGoalResult=='blocked'">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                      <h1>Which team recovered</h1>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                      <button
+                                        class="{{round.fieldGoalRecovered == 0 ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                        ng-click="round.fieldGoalRecovered = 0">{{game.team1.team.name}}
+                                      </button>
+                                      <button
+                                        class="{{round.fieldGoalRecovered == 1 ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                        ng-click="round.fieldGoalRecovered = 1">{{game.team2.team.name}}
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  Recovered by
+                                </div>
+                                <div class="col-md-2">
+                                  <input type="number" class="form-control custom-input" ng-model="round.recoverer"/>
+                                </div>
+
+                                <div class="col-md-7 advanced-button-container">
+                                  <button class="button-top-players-active">#7 bredgewater</button>
+                                  <button class="button-top-players-inactive">#2 vick</button>
+                                  <button class="button-top-players-inactive">#13 richardson</button>
+                                </div>
+                              </div>
+                              <div class="row light-grey">
+                                <div class="col-md-4">
+                                  <span>START:&nbsp;</span><input type="number" ng-model="round.recoverStart"
+                                                                  ng-focus="setCurrentPositionSelector('round.recoverStart')"/>
+                                </div>
+                                <div class="col-md-4">
+                                  <span>END:&nbsp;</span><input type="number" ng-model="round.recoverEnd"
+                                                                ng-focus="setCurrentPositionSelector('round.recoverEnd')"/>
+                                </div>
+                                <div class="col-md-4">
+                                  <span>GAINED:&nbsp;</span><input type="number" ng-model="round.recoverGained"
+                                                                   value="{{round.recoverEnd-round.recoverStart}}"/>
+                                </div>
+                              </div>
+                              <div class="row football-field">
+                                <div class="tochdown-zone-host" ng-click=""></div>
+                                <div class="football-field-inner" ng-click="fieldClick($event)">
+                                  <div class="even" data-mark="1">{{getFieldMark(1)}}</div>
+                                  <div class="odd" data-mark="2">{{getFieldMark(2)}}</div>
+                                  <div class="even" data-mark="3">{{getFieldMark(3)}}</div>
+                                  <div class="odd" data-mark="4">{{getFieldMark(4)}}</div>
+                                  <div class="even" data-mark="5">{{getFieldMark(5)}}</div>
+                                  <div class="odd" data-mark="6">{{getFieldMark(-4)}}</div>
+                                  <div class="even" data-mark="7">{{getFieldMark(-3)}}</div>
+                                  <div class="odd" data-mark="8">{{getFieldMark(-2)}}</div>
+                                  <div class="even" data-mark="9">{{getFieldMark(-1)}}</div>
+                                </div>
+                                <div class="tochdown-zone-guest" ng-click=""></div>
+                              </div>
+
+                              <div class="row row-advanced-controls">
+                                <div class="col-md-12">
+                                  <button
+                                    class="{{round.runFumble=='tochdown' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                    ng-click="round.runFumble='tochdown'">tochdown
+                                  </button>
+                                  <button
+                                    class="{{round.runFumble=='fumble' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                    ng-click="round.runFumble='fumble'">fumble
+                                  </button>
+                                  <button
+                                    class="{{round.runFumble=='penalty' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                    ng-click="round.runFumble='penalty'">penalty
+                                  </button>
+                                  <button
+                                    class="{{round.runFumble=='lateral' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                    ng-click="round.runFumble='lateral'">lateral
+                                  </button>
+                                  <button
+                                    class="{{round.runFumble=='saftey' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                    ng-click="round.runFumble='saftey'">saftey
+                                  </button>
+                                </div>
+                              </div>
+                              <div class="row row-advanced-controls">
+                                <div class="col-md-12">
+                                  <h1>Tackler(s)</h1>
+                                </div>
+                              </div>
+                              <div class="row row-advanced-controls">
+                                <div class="col-md-12">
+                                  <md-chips ng-model="selectedTacklers" md-autocomplete-snap=""
+                                            md-transform-chip="transformChip($chip)" md-require-match="false">
+                                    <md-autocomplete md-selected-item="ctrl.selectedItem" md-search-text="ctrl.searchText"
+                                                     md-items="item in deffenceTeam" md-item-text="item.player.lastName"
+                                                     placeholder="Search for a tackler(s)">
+                                      <span md-highlight-text="ctrl.searchText">{{item.player.number}} :: {{item.player.lastName}}</span>
+                                    </md-autocomplete>
+                                    <md-chip-template>
+                                  <span>
+                                    <strong>{{$chip.player.number}}</strong>
+                                    <em>({{$chip.player.lastName}})</em>
+                                  </span>
+                                    </md-chip-template>
+                                  </md-chips>
+                                </div>
+                              </div>
+                              <div class="row row-advanced-controls">
+                                <div class="col-md-12">
+                                  <h1>Tackler assistant(s)</h1>
+                                </div>
+                              </div>
+                              <div class="row row-advanced-controls">
+                                <div class="col-md-12">
+                                  <md-chips ng-model="selectedTacklersAsists" md-autocomplete-snap=""
+                                            md-transform-chip="transformChip($chip)" md-require-match="false">
+                                    <md-autocomplete md-selected-item="ctrl.selectedItem" md-search-text="ctrl.searchText"
+                                                     md-items="item in deffenceTeam" md-item-text="item.player.lastName"
+                                                     placeholder="Search for a tackler(s) assists">
+                                      <span md-highlight-text="ctrl.searchText">{{item.player.number}} :: {{item.player.lastName}}</span>
+                                    </md-autocomplete>
+                                    <md-chip-template>
+                                  <span>
+                                    <strong>{{$chip.player.number}}</strong>
+                                    <em>({{$chip.player.lastName}})</em>
+                                  </span>
+                                    </md-chip-template>
+                                  </md-chips>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row" ng-show="round.special=='pointAfter'">
+                          <div class="col-md-12">
+                            <div class="row row-advanced-controls">
+                              <div class="col-md-12">
+                                <button
+                                  class="{{round.pointAfter=='kick' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.pointAfter='kick'">kick
+                                </button>
+                                <button
+                                  class="{{round.pointAfter=='run' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.pointAfter='run'">run
+                                </button>
+                                <button
+                                  class="{{round.pointAfter=='pass' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.pointAfter='pass'">pass
+                                </button>
+                              </div>
+                            </div>
+
+                            <div class="row" ng-show="round.pointAfter=='kick'">
+                              <div class="col-md-12">
+                                <div class="row row-advanced-controls">
+                                  <div class="col-md-2">
+                                    Kicker
+                                  </div>
+                                  <div class="col-md-2">
+                                    <input type="number" class="form-control custom-input" ng-model="round.kicker"/>
+                                  </div>
+
+                                  <div class="col-md-8 advanced-button-container">
+                                    <button class="button-top-players-active">#7 bredgewater</button>
+                                    <button class="button-top-players-inactive">#2 vick</button>
+                                    <button class="button-top-players-inactive">#13 richardson</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row row-advanced-controls" ng-show="round.pointAfter=='kick'">
+                              <div class="col-md-12">
+                                <button
+                                  class="{{round.pointAfterKick=='good' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.pointAfterKick='good'">good
+                                </button>
+                                <button
+                                  class="{{round.pointAfterKick=='blocked' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.pointAfterKick='blocked'">blocked
+                                </button>
+                                <button
+                                  class="{{round.pointAfterKick=='penalty' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.pointAfterKick='penalty'">penalty
+                                </button>
+                              </div>
+                            </div>
+                            <div class="row row-advanced-controls" ng-show="round.pointAfter=='run'">
+                              <div class="col-md-12">
+                                <button
+                                  class="{{round.pointAfterRun=='good' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.pointAfterRun='good'">good
+                                </button>
+                                <button
+                                  class="{{round.pointAfterRun=='penalty' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.pointAfterRun='penalty'">penalty
+                                </button>
+                              </div>
+                            </div>
+
+
+                            <div class="row" ng-show="round.pointAfter=='pass'">
+                              <div class="col-md-12">
+                                <div class="row row-advanced-controls">
+                                  <div class="col-md-2">
+                                    Passer
+                                  </div>
+                                  <div class="col-md-2">
+                                    <input type="number" class="form-control custom-input" ng-model="round.passer"/>
+                                  </div>
+
+                                  <div class="col-md-8 advanced-button-container">
+                                    <button class="button-top-players-active">#7 bredgewater</button>
+                                    <button class="button-top-players-inactive">#2 vick</button>
+                                    <button class="button-top-players-inactive">#13 richardson</button>
+                                  </div>
+                                </div>
+                                <div class="row row-advanced-controls">
+                                  <div class="col-md-2">
+                                    Reciever
+                                  </div>
+                                  <div class="col-md-2">
+                                    <input type="number" class="form-control custom-input" ng-model="round.reciever"/>
+                                  </div>
+
+                                  <div class="col-md-8 advanced-button-container">
+                                    <button class="button-top-players-active">#7 bredgewater</button>
+                                    <button class="button-top-players-inactive">#2 vick</button>
+                                    <button class="button-top-players-inactive">#13 richardson</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row row-advanced-controls" ng-show="round.pointAfter=='pass'">
+                              <div class="col-md-12">
+                                <button
+                                  class="{{round.pointAfterPass=='good' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.pointAfterPass='good'">good
+                                </button>
+                                <button
+                                  class="{{round.pointAfterPass=='penalty' ? 'button-top-players-active' : 'button-top-players-inactive'}}"
+                                  ng-click="round.pointAfterPass='penalty'">penalty
+                                </button>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+
                       </md-tab-body>
                     </md-tab>
                     <md-tab id="penalty" md-on-select="playSelected = true; setOffence(gameStats.teamOffence)">
@@ -1260,9 +1740,10 @@
               </button>
             </div>
           </div>
-          <div class="row">
+          <div class="row" ng-show="playbyplay.length > 0">
             <div class="col-md-4">
               <h2>Play-by-Play</h2>
+
               <div ng-repeat="playDesc in playbyplay track by $index">
                 <div ng-repeat="event in playDesc">
                   {{event | footballDescription}}

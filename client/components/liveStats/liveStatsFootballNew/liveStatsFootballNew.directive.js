@@ -111,7 +111,7 @@ angular.module('abroadathletesApp')
               qtrString = 'End 3rd Qtr';
               break;
             case 4:
-              qtrString = 'End Game';
+              qtrString = 'End 4th Qtr';
               break;
             default:
               qtrString = 'Game ended';
@@ -382,7 +382,7 @@ angular.module('abroadathletesApp')
           }
 
 
-          $scope.playbyplay.push($scope.events);
+          $scope.playbyplay.push(events);
           angular.forEach(events, function (value) {
             if ($filter('footballDescription')(value).length > 0) {
               notify({message: $filter('footballDescription')(value), classes: 'alert-success', position: 'right'});
@@ -394,7 +394,10 @@ angular.module('abroadathletesApp')
                 console.log('yes');
               });
           });
-          console.log('SubmitPlay', $scope.round, $scope.selectedPlaytype, events);
+          $scope.round = {};
+          $scope.setOffence(!$scope.gameStats.teamOffence);
+          $scope.selectedPlaytype = -1;
+          $scope.playSelected = 0;
         };
 
       },
