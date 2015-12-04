@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-    .controller('UpdateTeamCtrl', function($scope, Teams, User, Upload){
+    .controller('UpdateTeamCtrl', function($scope, Teams, User, Upload, $location){
 
         $scope.countries = [
             "Afghanistan", "Aland Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola",
@@ -124,6 +124,8 @@ angular.module('abroadathletesApp')
 
                     $scope.teamUpdate[0].logoTeam = dataTeam.photo;
                     Teams.updateTeam($scope.teamUpdate[0]).$promise.then(function(){
+
+                        $location.path('/teams');
 
                     });
                 });
