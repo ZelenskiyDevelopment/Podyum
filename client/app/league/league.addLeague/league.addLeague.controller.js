@@ -52,12 +52,23 @@ angular.module('abroadathletesApp')
 
         User.get().$promise.then(function (me) {
 
-              User.getAllHumanUsers({id: me._id}).$promise.then(function (result) {
-                    $scope.allHumanUsers = result;
+                if(!me.completed){
+                    $location.path('/creator');
+                }
 
-                });
+                  User.getAllHumanUsers({id: me._id}).$promise.then(function (result) {
+                        $scope.allHumanUsers = result;
 
-            //$scope.createLeague.id_user = me._id;
+                    });
+
+            League.getLeague(me._id).then(function(result){
+
+                if (result.data.length > 0) {
+                    $location.path('/league');
+                }
+
+            });
+
            $scope.user = me;
         });
 

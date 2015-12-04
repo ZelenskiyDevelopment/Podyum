@@ -24,6 +24,7 @@
     "morgan": "~1.0.0",
     "multiparty": "^4.1.1",
     "mv": "^2.0.3",
+    "ng-twitter": "0.0.4",
     "orientjs": "^2.1.0",
     "passport": "~0.2.0",
     "passport-facebook": "latest",

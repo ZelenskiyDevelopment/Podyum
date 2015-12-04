@@ -1,4 +1,7 @@
 <div focusable-popover="">
+
+
+
     <!--<div ng-repeat="invitation in invitations">-->
     <!--<div class="media">-->
     <!--<div class="media-left">-->
@@ -17,6 +20,90 @@
     <!--</div>-->
     <!--</div>-->
 
+<div class="{{ assignRequestsTeam }}"></div>
+        <div class="media" ng-repeat="assignRequest in assignRequestsTeam" ng-show="assignRequest._id.length > 0">
+            <div class="media-left">
+
+                <a  ui-sref="profile.common-story({id: assignRequest.user._id})">
+                    <img class="media-object" src="photos/{{ assignRequest.user.profilePhoto }}" alt="" style="width:64px;height:64px;">
+                </a>
+            </div>
+            <div class="media-body">
+                <div ng-if="assignRequest.user.player.firstName">
+                    <h4 class="media-heading">{{assignRequest.user.player.firstName}} {{assignRequest.user.player.lastName}}</h4>
+
+                    <div ng-if="assignRequest.isPresent">
+                        Player {{assignRequest.user.player.firstName}} {{assignRequest.user.player.lastName}}  Wants to assigned to your team
+                    </div>
+
+                </div>
+                <div ng-if="!request.name">
+                    <h4 class="media-heading">{{assignRequest.firstName}} {{assignRequest.lastName}}</h4>
+
+                    <div ng-if="!assignRequest.isPresent">
+                        <div ng-if="!assignRequest.isPresent">
+                            Ask for confirmation of being your member in the past from {{request.dateFrom | date :
+                            'yyyy-MM'}} to {{request.dateTo | date : 'yyyy-MM'}}
+                        </div>
+                        <div ng-if="assignRequest.isPresent">
+                            Ask for confirmation of being your member since {{request.dateFrom | date : 'yyyy-MM'}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success" ng-click="acceptAssignToTeam(assignRequest, $index)">Accept</button>
+                        <button class="btn btn-danger" ng-click="rejectAssignToTeam(assignRequest, $index)">Reject</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    <div ng-repeat="assignRequest in assignRequestsLeague">
+
+        <div class="media" ng-repeat="request in assignRequest.requests" ng-show="request._id.length > 0">
+            <div class="media-left">
+                <!--<a ui-sref="profile.common-story({id: assignRequest._id})">-->
+                <!--<img class="media-object" src="photos/user.png" alt="" style="width:64px;height:64px;">-->
+                <!--<img class="media-object" src="photos/user.png" alt="" style="width:64px;height:64px;">-->
+                <!--</a>-->
+                <a ui-sref="#">
+                    <img class="media-object" src="photos/{{ assignRequest.team.logoTeam }}" alt="" style="width:64px;height:64px;">
+                </a>
+            </div>
+            <div class="media-body">
+                <div ng-if="assignRequest.team.teamName">
+                    <h4 class="media-heading">{{assignRequest.team.teamName}}</h4>
+
+                    <div ng-if="assignRequest.isPresent">
+                      Team {{assignRequest.team.teamName}}  Wants to assigned to your league
+                    </div>
+
+                </div>
+                <div ng-if="!request.name">
+                    <h4 class="media-heading">{{assignRequest.firstName}} {{assignRequest.lastName}}</h4>
+
+                    <div ng-if="!request.isPresent">
+                        <div ng-if="!request.isPresent">
+                            Ask for confirmation of being your member in the past from {{request.dateFrom | date :
+                            'yyyy-MM'}} to {{request.dateTo | date : 'yyyy-MM'}}
+                        </div>
+                        <div ng-if="request.isPresent">
+                            Ask for confirmation of being your member since {{request.dateFrom | date : 'yyyy-MM'}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success" ng-click="acceptAssignToLeague(request, $index)">Accept</button>
+                        <button class="btn btn-danger" ng-click="rejectAssignToLeague(request, $index)">Reject</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="user.kind === 'league'">
+        <div ng-show="assignRequestsLeague.length == 0" ng-hide="assignRequestsLeague.length > 0">You have no requests.</div>
+    </div>
     <div ng-repeat="assignRequest in assignRequests">
 
         <div class="media" ng-repeat="request in assignRequest.requests" ng-show="request._id.length > 0">
@@ -58,6 +145,12 @@
             </div>
         </div>
     </div>
-    <div ng-hide="assignRequest.requests.length">You have no requests.</div>
+
+    <div ng-show="user.kind === 'player'">
+        <div ng-show="assignRequest.requests.length == 0" ng-hide="assignRequest.length > 0">You have no requests.</div>
+    </div>
+    <div ng-show="user.kind === 'team' && assignRequestsTeam.length == 0">
+        <div>You have no requests.</div>
+    </div>
 </div>
 

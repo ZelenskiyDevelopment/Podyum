@@ -39,6 +39,7 @@ module.exports = function(orientDatabase) {
   router.get('/:id/getUserById', auth.isAuthenticated(), controller.getUserById);
 
   router.delete('/:id', auth.hasRole('admin'), controller.destroy);
+  router.get('/:id/delete', controller.delete);
   router.get('/me', auth.isAuthenticated(), controller.me);
   router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
   router.put('/complete', auth.isAuthenticated(), controller.completeData);

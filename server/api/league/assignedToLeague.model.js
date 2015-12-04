@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 
 
 var assignedToLeague  = ({
-    id_user: {
+    id_team: {
         type: mongoose.Schema.Types.ObjectId, ref: 'User'
     },
     id_league: {

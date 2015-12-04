@@ -46,6 +46,21 @@ angular.module('abroadathletesApp')
                 return $http.get('/api/league/getAll').then(function(result) {
                     return result;
                 });
+            },
+            getAssignRequests: function(id) {
+                return $http.get('/api/league/'+id+'/getAssignRequests').then(function(result) {
+                    return result;
+                });
+            },
+            acceptAssignRequest: function(id) {
+                return $http.get('/api/league/'+id+'/acceptAssignRequest').then(function(result) {
+                    return result;
+                });
+            },
+            rejectAssignRequest: function(id) {
+                return $http.get('/api/league/'+id+'/rejectAssignRequest').then(function(result) {
+                    return result;
+                });
             }
         };
     });

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-    .controller('TaskCtrl', function ($scope, $uibModalInstance, $mdDialog,  $rootScope, TaskManager, User, $log, $q, $timeout) {
+    .controller('TaskCtrl', function ($scope, $uibModalInstance, $mdDialog, $rootScope, Teams, TaskManager, User, $log, $q, $timeout) {
 
         $scope.task = [];
         $scope.user = [];
@@ -17,6 +17,58 @@ angular.module('abroadathletesApp')
             $scope.myPlayers = $scope.user.assigned.filter(function (assignedUser) {
                 return assignedUser.user.kind === 'player' && assignedUser.isPresent;
             });
+
+            switch(me.kind) {
+                case 'player':
+
+                    Teams.getAssignRequests({id: me._id}).$promise.then(function (team) {
+
+
+                        Teams.getPlayersByTeam({id: team[0].id_team}).$promise.then(function (players) {
+
+                            angular.forEach(players, function (item, key) {
+                                if (item.accepted) {
+                                    User.getUserById({id: item.id_user}).$promise.then(function (user) {
+                                        user.assigned = item;
+                                        user.numberPlayer = user.player.number;
+                                        $scope.myPlayers.push(user);
+                                        console.log(user);
+                                    });
+                                }
+
+                            });
+                        });
+
+                    });
+
+                    break
+
+                case 'team':
+                case 'coach':
+
+                    Teams.getTeam({id:me._id}).$promise.then(function(result){
+
+                        $scope.team  = result;
+
+                        Teams.getPlayersByTeam({id:result[0]._id}).$promise.then(function(players){
+
+                            angular.forEach(players, function(item, key){
+                                if (item.accepted) {
+                                    User.getUserById({id: item.id_user}).$promise.then(function(user){
+                                        user.assigned = item;
+                                        user.numberPlayer = user.player.number;
+                                        $scope.players.push(user);
+
+                                    });
+                                }
+                            });
+                        });
+
+                    });
+
+                    break
+            }
+
         });
 
         $rootScope.alertMessageTask = '';
@@ -33,13 +85,13 @@ angular.module('abroadathletesApp')
 
             };
 
-            TaskManager.AddTask($scope.user._id, args).then(function(response){
+            TaskManager.AddTask($scope.user._id, args).then(function (response) {
                 $uibModalInstance.dismiss('close');
             })
 
-     };
+        };
 
-        $scope.cancel = function() {
+        $scope.cancel = function () {
             $uibModalInstance.dismiss('close');
         }
 
@@ -50,9 +102,9 @@ angular.module('abroadathletesApp')
             angular.forEach($scope.myPlayers, function (item, key) {
 
                 $scope.forTask.push({
-                    value: item.user.player.firstName.toLowerCase()+' '+item.user.player.lastName.toLowerCase() ,
-                    id: item.user._id,
-                    display: item.user.player.firstName + ' ' + item.user.player.lastName
+                    value: item.player.firstName.toLowerCase() + ' ' + item.player.lastName.toLowerCase(),
+                    id: item._id,
+                    display: item.player.firstName + ' ' + item.player.lastName
                 })
 
             });
@@ -60,17 +112,17 @@ angular.module('abroadathletesApp')
         }, 1000)
 
 
-         $scope.openDialog = function($event) {
-             $mdDialog.show({
-                 controller: DialogCtrl,
-                 controllerAs: 'ctrl',
-                 templateUrl: 'app/teams/teams.taskManager/addTask/dialog.html',
-                 parent: angular.element(document.body),
-                 targetEvent: $event,
-                 clickOutsideToClose:true
+        $scope.openDialog = function ($event) {
+            $mdDialog.show({
+                controller: DialogCtrl,
+                controllerAs: 'ctrl',
+                templateUrl: 'app/teams/teams.taskManager/addTask/dialog.html',
+                parent: angular.element(document.body),
+                targetEvent: $event,
+                clickOutsideToClose: true
 
             });
-         }
+        }
         function querySearch(query) {
             var results = query ? $scope.forTask.filter(createFilterFor(query)) : $scope.forTask,
                 deferred;
@@ -81,7 +133,7 @@ angular.module('abroadathletesApp')
                 }, Math.random() * 1000, false);
                 return deferred.promise;
             } else {
-               console.log(results);
+                console.log(results);
                 return results;
             }
         }
@@ -105,4 +157,4 @@ angular.module('abroadathletesApp')
         }
 
 
-});
+    });

@@ -73,6 +73,12 @@ angular.module('abroadathletesApp')
           controller:'leave'
         }
       },
+      delete: {
+        method: 'GET',
+        params: {
+            controller:'delete'
+        }
+      },
       removeFromTeam: {
         method: 'POST',
         params: {

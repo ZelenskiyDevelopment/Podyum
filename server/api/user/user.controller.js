@@ -14,6 +14,7 @@ var mongo = require('mongodb');
 /**
  * Get list of users
  * restriction: 'admin'
+ * restriction: 'admin'
  */
 exports.index = function (req, res) {
   var query = _.omit(req.query, _.isEmpty),
@@ -99,6 +100,19 @@ exports.destroy = function (req, res) {
     if (err) return res.send(500, err);
     return res.send(204);
   });
+};
+
+exports.delete = function (req, res) {
+
+    var findId = new mongo.ObjectID(req.params.id);
+
+    User.remove({_id: findId}, function(err, result) {
+        if (err) {
+            console.log(err);
+        }
+        return res.send(204);
+
+    });
 };
 
 /**

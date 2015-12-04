@@ -22,7 +22,8 @@ var assignedToTeam  = ({
     },
     dateFrom: Date,
     dateTo: Date,
-    isPresent:Boolean
+    isPresent: Boolean,
+    requestToTeam: Boolean
 });
 
 module.exports = mongoose.model('assignedToTeam', assignedToTeam);

@@ -14,6 +14,7 @@ angular.module('abroadathletesApp')
         scope.addComment = function () {
           Event.addComment({
             id: scope.eventId,
+            author: scope.author,
             comment: scope.comment
           }).$promise.then(function (result) {
               eventCommentsCtrl.addComment(result);

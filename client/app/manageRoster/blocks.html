@@ -1,16 +1,15 @@
 
-
-<div class="col-lg-3 athlete-item" ng-repeat="player in players">
+<div class="col-lg-3 athlete-item" ng-repeat="player in players | orderBy:'numberPlayer' | filter: {numberPlayer: number} | filter:position | filter:name ">
 
     <div class="head-tools">
 
         <div class="number">
-            <h3 class="md-headline"># {{ player.player.number }} WR</h3>
+            <h3 class="md-headline">#{{ player.player.number }} WR</h3>
         </div>
 
         <div class="tools">
-            <div class="edit"></div>
-            <div class="delete"></div>
+            <edit-player-modal player="player" update="updatePlayers"><div class="edit"></div></edit-player-modal>
+            <div class="delete" ng-click="delete(player.assigned._id)"></div>
            <send-message-modal receiver="player"> <div class="message"></div></send-message-modal>
         </div>
     </div>
@@ -21,12 +20,12 @@
     </div>
 
     <div class="photo">
-        <img src="https://placeholdit.imgix.net/~text?txtsize=9&txt=100%C3%97100&w=100&h=100">
+        <img src="photos/{{ player.profilePhoto }}">
     </div>
     <div class="info">
 
         <h3 class="md-subhead">BORN : </h3>
-        <p class="md-body-1">{{ player.player.born }}</p>
+        <p class="md-body-1">{{ player.player.born | date: 'longDate' }}</p>
 
         <h3 class="md-subhead">BIRTH PLACE : </h3>
         <p class="md-body-1"> {{ player.player.birthPlace }} </p>

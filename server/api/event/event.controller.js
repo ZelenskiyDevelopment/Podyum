@@ -184,6 +184,7 @@ exports.destroy = function (req, res) {
 
 exports.addComment = function (req, res) {
   Event.findById(req.params.id, function (err, event) {
+    console.log(req.body);
     if (err) {
       return handleError(res, err);
     }
@@ -191,7 +192,7 @@ exports.addComment = function (req, res) {
       return res.send(404);
     }
     var comment = {
-      author: req.user,
+      author: req.body.user,
       comment: req.body.comment,
       date: new Date()
     };
