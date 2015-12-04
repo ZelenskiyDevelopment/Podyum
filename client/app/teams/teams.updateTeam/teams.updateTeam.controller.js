@@ -112,22 +112,31 @@ angular.module('abroadathletesApp')
             $scope.updateTeam = function() {
 
 
+                var photo = '';
+
                 var logoTeam = base64ToBlob($scope.croppedLogoTeam.replace('data:image/png;base64,',''), 'image/jpeg');
 
-                Upload.upload({
-                    url: '/api/uploads/photos',
-                    file: logoTeam
-                }).progress(function (evt) {
+                if ($scope.croppedLogoTeam) {
+                    Upload.upload({
+                        url: '/api/uploads/photos',
+                        file: logoTeam
+                    }).progress(function (evt) {
 
-                }).success(function (dataTeam, status, headers, config) {
+                    }).success(function (dataTeam, status, headers, config) {
+
+                        $scope.teamUpdate[0].logoTeam = dataTeam.photo;
 
 
-                    $scope.teamUpdate[0].logoTeam = dataTeam.photo;
-                    Teams.updateTeam($scope.teamUpdate[0]).$promise.then(function(){
-
-                        $location.path('/teams');
 
                     });
+
+                }
+
+
+                Teams.updateTeam($scope.teamUpdate[0]).$promise.then(function(){
+
+                    $location.path('/teams');
+
                 });
 
 
