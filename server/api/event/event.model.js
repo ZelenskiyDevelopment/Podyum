@@ -17,7 +17,8 @@ var EventSchema = new Schema({
   originalEvent: {type: mongoose.Schema.Types.ObjectId, ref: 'Event'},
   comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
   medals: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
-  author: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+  author: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  toUser: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
 module.exports = mongoose.model('Event', EventSchema);

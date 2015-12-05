@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .directive('publisher', function (Upload, Event, $mdDialog, User) {
+  .directive('publisher', function (Upload, Event, $mdDialog, User, $stateParams) {
     return {
       templateUrl: 'components/wall/publisher/publisher.html',
       restrict: 'E',
@@ -14,6 +14,7 @@ angular.module('abroadathletesApp')
         scope.description = '';
         scope.user = [];
 
+
         User.get().$promise.then(function (me) {
 
             scope.user = me;
@@ -24,7 +25,6 @@ angular.module('abroadathletesApp')
             });
 
         });
-
 
         scope.upload = function (files) {
           if (files && files.length) {
@@ -68,6 +68,7 @@ angular.module('abroadathletesApp')
               description: scope.description,
               photos: scope.uploadedFiles,
               _id: scope.user._id,
+              toUser: ($stateParams.id) ? $stateParams.id : null,
               video: scope.video
             }).$promise;
 

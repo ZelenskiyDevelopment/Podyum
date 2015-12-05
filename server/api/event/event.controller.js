@@ -89,8 +89,69 @@ exports.index = function (req, res) {
         }).catch();
 };
 
+exports.getCommentsForEvent = function (req, res) {
+
+    var Id = req.params.id;
+
+    Comment.find({
+        _id: Id
+    }).populate('author')
+        .execQ().then(function (comment) {
+            return res.json(200, comment);
+        }).catch(function (err) {
+            return handleError(res, err);
+        });
+};
+
 exports.getOwnEventsById = function (req, res) {
     var userId = req.params.id,
+        optionsAuthor = PopulateUtils.userPopulateOptions('author'),
+        optionsCommentsAuthor = PopulateUtils.userPopulateOptions('comments.author');
+    Event.find({
+        author: userId
+    }).sort({date: -1})
+        .populate(optionsAuthor)
+        .populate('originalEvent')
+        .populate('originalEvent.photos')
+        .populate('photos')
+        .populate('comments')
+        .populate('comments.author')
+        .execQ().then(function (events) {
+            var promiseArray = [];
+            _.each(events, function (event) {
+                var deffered = Q.defer();
+                promiseArray.push(deffered.promise);
+                getCommentsForEvent(event).then(function (event) {
+                    if (event.originalEvent) {
+                        Event.findById(event.originalEvent,function (err, event) {
+                        }).populate(optionsAuthor)
+                            .populate(optionsCommentsAuthor)
+                            .populate('photos')
+                            .populate('comments')
+                            .execQ().then(function (originalEvent) {
+
+                                event.originalEvent = originalEvent;
+                                getCommentsForEvent(originalEvent).then(function (originalEvent) {
+                                    event.originalEvent = originalEvent;
+                                    deffered.resolve(event);
+                                });
+                            })
+                    }
+                    else {
+                        deffered.resolve(event);
+                    }
+                });
+            });
+            Q.all(promiseArray).then(function (events) {
+                return res.json(200, events);
+            });
+        }).catch(function (err) {
+            return handleError(res, err);
+        });
+};
+
+exports.getOwnEvents = function (req, res) {
+    var userId = req.user._id,
         optionsAuthor = PopulateUtils.userPopulateOptions('author'),
         optionsCommentsAuthor = PopulateUtils.userPopulateOptions('comments.author');
     Event.find({
@@ -135,12 +196,12 @@ exports.getOwnEventsById = function (req, res) {
         });
 };
 
-exports.getOwnEvents = function (req, res) {
-    var userId = req.user._id,
+exports.getOwnEventsToUser = function (req, res) {
+    var userId = req.params.id,
         optionsAuthor = PopulateUtils.userPopulateOptions('author'),
         optionsCommentsAuthor = PopulateUtils.userPopulateOptions('comments.author');
     Event.find({
-        author: userId
+        toUser: userId
     }).sort({date: -1})
         .populate(optionsAuthor)
         .populate(optionsCommentsAuthor)
@@ -263,7 +324,7 @@ exports.addComment = function (req, res) {
             return res.send(404);
         }
         var comment = {
-            author: req.body.user,
+            author: req.user._id,
             comment: req.body.comment,
             date: new Date()
         };
