@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .controller('HomeCtrl', function ($scope, $state, User, $location, socket, $mdDialog, Milestone) {
+  .controller('HomeCtrl', function ($scope, $state, User, $location, socket, $mdDialog, Milestone, Event) {
       if ($state.is('home.update-status')) {
         $state.go('home.update-status.update-fans', {}, {reload: false});
       }
@@ -23,6 +23,10 @@ angular.module('abroadathletesApp')
         $scope.myMilestones = _.map(response, 'content');
       });
     }*/
+
+        Event.getOwnEvents().$promise.then(function(results){
+            $scope.events = results;
+        });
 
     $scope.changeMembership = function() {
       if($scope.user.role === 'free')
