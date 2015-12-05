@@ -28,7 +28,7 @@ var Teams = new Schema({
     president:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     myLeagues:[{
         user: {
-            type: mongoose.Schema.Types.ObjectId, ref: 'User'
+            type: mongoose.Schema.Types.ObjectId, ref: 'League'
         },
         _id: false
     }],

@@ -7,7 +7,10 @@ angular.module('abroadathletesApp')
     }, {
       create: {
         method: 'POST',
-        params: {}
+        params: {
+            id: '@id',
+            controller: 'create'
+        }
       },
       addComment: {
         method: 'POST',
@@ -39,11 +42,26 @@ angular.module('abroadathletesApp')
         isArray: true,
         params: {}
       },
+      getMyPosts: {
+        method: 'GET',
+        isArray: true,
+        params: {
+            controller: 'getMyPosts'
+        }
+      },
       getOwnEvents: {
         method: 'GET',
         isArray: true,
         params: {
           controller: 'own'
+        }
+      },
+      getOwnEventsById: {
+        method: 'GET',
+        isArray: true,
+        id: '@id',
+        params: {
+          controller: 'getOwnEventsById'
         }
       }
     });

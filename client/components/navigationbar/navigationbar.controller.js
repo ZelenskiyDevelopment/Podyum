@@ -58,27 +58,30 @@ angular.module('abroadathletesApp')
 
                         Teams.getTeam({id: me._id}).$promise.then(function (result) {
 
-                            $scope.team = result;
+                            if (result.length) {
+                                $scope.team = result;
 
-                            Teams.getAssignRequestsToTeam({id: result[0]._id}).$promise.then(function (requests) {
+                                Teams.getAssignRequestsToTeam({id: result[0]._id}).$promise.then(function (requests) {
 
 
-                                angular.forEach(requests, function (request, key) {
+                                    angular.forEach(requests, function (request, key) {
 
-                                    User.getUserById({id: request.id_user}).$promise.then(function (user) {
+                                        User.getUserById({id: request.id_user}).$promise.then(function (user) {
 
-                                        request.user = user;
+                                            request.user = user;
 
-                                        if (request.requestToTeam === true && request.accepted === false) {
-                                            $scope.assignRequestsTeam.push(request);
-                                        }
+                                            if (request.requestToTeam === true && request.accepted === false) {
+                                                $scope.assignRequestsTeam.push(request);
+                                            }
+
+                                        });
+
 
                                     });
 
-
                                 });
+                            }
 
-                            });
                         });
 
                         break

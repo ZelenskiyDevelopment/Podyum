@@ -5,7 +5,7 @@ angular.module('abroadathletesApp')
 
         console.log(player);
         $scope.player = angular.copy(player);
-        $scope.player.player.born = new Date($scope.player.player.born);
+        $scope.player.id_user.player.born = new Date($scope.player.id_user.player.born);
         $scope.cancel = $mdDialog.hide;
 
         $scope.logoProfile = null;
@@ -46,17 +46,21 @@ angular.module('abroadathletesApp')
 
             }).success(function (data, status, headers, config) {
 
-                var id  = $scope.player._id;
-                delete $scope.player._id;
-                delete $scope.player.numberPlayer;
 
-                $scope.player.profilePhoto = data.photo;
-                User.updateProfile({id: id,data: $scope.player}).$promise.then(function (response){
-                    $mdDialog.hide();
-                    update();
-                });
+                $scope.player.id_user.profilePhoto = data.photo;
+
             });
 
+
+            var id  = $scope.player.id_user._id;
+            delete $scope.player.id_user._id;
+            delete $scope.player.id_user.numberPlayer;
+
+
+            User.updateProfile({id: id,data: $scope.player.id_user}).$promise.then(function (response){
+                $mdDialog.hide();
+                update();
+            });
 
         };
 

@@ -200,10 +200,6 @@ md-divider {
   margin-bottom: 10px;
 }
 
-md-list-item {
-  border-bottom: 1px solid #efefef;
-}
-
 .face {
   width: 55px !important;
   height: 55px !important;

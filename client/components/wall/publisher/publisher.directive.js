@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .directive('publisher', function (Upload, Event, $mdDialog) {
+  .directive('publisher', function (Upload, Event, $mdDialog, User) {
     return {
       templateUrl: 'components/wall/publisher/publisher.html',
       restrict: 'E',
@@ -12,6 +12,19 @@ angular.module('abroadathletesApp')
         scope.uploadedFiles = [];
         scope.chips = [];
         scope.description = '';
+        scope.user = [];
+
+        User.get().$promise.then(function (me) {
+
+            scope.user = me;
+
+
+            Event.getMyPosts({id: scope.user._id}).$promise.then(function(events){
+                console.log(events);
+            });
+
+        });
+
 
         scope.upload = function (files) {
           if (files && files.length) {
@@ -48,11 +61,13 @@ angular.module('abroadathletesApp')
             }
           };
 
+
           if (scope.noOfFilesToUpload === 0 && !(_.isEmpty(scope.description) && _.isEmpty(scope.uploadedFiles))) {
             var postPromise = Event.create({
               type: getEventType(),
               description: scope.description,
               photos: scope.uploadedFiles,
+              _id: scope.user._id,
               video: scope.video
             }).$promise;
 

@@ -14,7 +14,7 @@ angular.module('abroadathletesApp')
     '$q',
     'sharedScope',
     'Teams',
-    function ($scope, User, $stateParams, Modal, ModalEvent, $location, AssignModal, Game, Event, $q, sharedScope, Teams) {
+    function ($scope, User, $stateParams, Modal, ModalEvent, $location, AssignModal, Game, Event, $q, sharedScope, Teams, $rootScope) {
       sharedScope.games = $q.defer();
       sharedScope.myPlayers = $q.defer();
       sharedScope.myCoaches = $q.defer();
@@ -24,8 +24,11 @@ angular.module('abroadathletesApp')
         ownerPromise = User.get().$promise;
       if ($stateParams.id) {
         userPromise = User.getUser({id: $stateParams.id}).$promise;
+
+          console.log('$stateParams.id === true');
       } else {
         userPromise = ownerPromise;
+          console.log('$stateParams.id === false');
       }
 
       $q.all([userPromise, ownerPromise]).then(function (result) {
@@ -39,7 +42,6 @@ angular.module('abroadathletesApp')
           });
         }
         var me = $scope.owner;
-        console.log($scope.user);
         $scope.team = {};
         Teams.getTeam({id: $scope.user._id}).$promise.then(function (resp) {
           $scope.team = resp[0];
@@ -66,9 +68,6 @@ angular.module('abroadathletesApp')
             $scope.user.myTeam = myTeam.team.name;
           });
         }
-
-
-
 
         if ($scope.user.kind === "player") {
           /*    Game.getGamesForTeams({id: $scope.user._id}).$promise.then(function (games) {

@@ -113,9 +113,11 @@ exports.getPlayersByTeam = function(req, res) {
 
     var id = req.params.id;
 
-    assignedToTeam.find({
-        id_team: id
-    }).execQ().then(function (playes) {
+    assignedToTeam
+    .find({id_team: id})
+    .populate('id_user')
+    .populate('id_team')
+    .execQ().then(function (playes) {
 
        return res.json(200, playes);
     }).catch(function (err) {
@@ -184,9 +186,10 @@ exports.sendRequestToTeam = function(req, res) {
 
 exports.getTeam = function(req, res) {
     var userId = req.params.id;
-    Team.find({
-        id_user: userId
-    }).execQ().then(function (events) {
+    Team
+    .find({ id_user: userId})
+    .populate('myLeagues.user')
+    .execQ().then(function (events) {
         return res.json(200, events);
     }).catch(function (err) {
         return handleError(res, err);

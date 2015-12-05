@@ -1,29 +1,29 @@
-<div class="col-lg-12 list-item" ng-repeat="player in players | orderBy:'numberPlayer' | filter:number | filter:position | filter:name">
+<div class="col-lg-12 list-item" ng-repeat="player in players | orderBy:'numberPlayer' | filter:number | filter:position | filter:name" ng-if="player.accepted === true">
 
     <div class="number">
-        <h3 class="md-headline">#{{ player.player.number }} WR</h3>
+        <h3 class="md-headline">#{{ player.id_user.player.number }} WR</h3>
     </div>
 
     <div class="photo">
-        <img src="photos/{{ player.profilePhoto }}">
+        <img src="photos/{{ player.id_user.profilePhoto }}">
     </div>
 
     <div class="name col-lg-2">
-        <h3 class="md-headline">{{ player.player.firstName }} {{ player.player.lastName }}</h3>
-        <p class="md-body-1"> {{ player.player.weight }} {{ player.player.height }} Lbs {{ (player.player.born.length > 0) ?  calculateAge(player.player.born) : calculateAge(player.player.birthday)  }} Years Old </p>
+        <h3 class="md-headline">{{ player.id_user.player.firstName }} {{ player.id_user.player.lastName }}</h3>
+        <p class="md-body-1"> {{ player.id_user.player.weight }} {{ player.id_user.player.height }} Lbs {{ (player.id_user.player.born.length > 0) ?  calculateAge(player.id_user.player.born) : calculateAge(player.id_user.player.birthday)  }} Years Old </p>
     </div>
     <div class="info">
 
         <div class="col-lg-2">
             <h3 class="md-subhead">BORN : </h3>
-            <p class="md-body-1">{{ player.player.born | date: 'longDate' }}</p>
+            <p class="md-body-1">{{ player.id_user.player.born | date: 'longDate' }}</p>
 
             <h3 class="md-subhead">BIRTH PLACE : </h3>
-            <p class="md-body-1">{{ player.player.birthPlace }}</p>
+            <p class="md-body-1">{{ player.id_user.player.birthPlace }}</p>
         </div>
         <div class="col-lg-2">
             <h3 class="md-subhead">EXPERIENCE : </h3>
-            <p class="md-body-1"> {{ player.player.experience }}</p>
+            <p class="md-body-1"> {{ player.id_user.player.experience }}</p>
 
             <h3 class="md-subhead">HIGH SCHOOL : </h3>
             <p class="md-body-1">empty</p>
@@ -32,7 +32,7 @@
 
     <div class="tools">
         <edit-player-modal player="player" update="updatePlayers"><div class="edit"></div></edit-player-modal>
-        <div class="delete"  ng-click="delete(player.assigned._id)"></div>
+        <div class="delete"  ng-click="delete(player._id)"></div>
         <send-message-modal receiver="player"> <div class="message"></div></send-message-modal>
     </div>
 </div>
