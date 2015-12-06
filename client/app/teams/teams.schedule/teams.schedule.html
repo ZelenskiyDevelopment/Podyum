@@ -29,7 +29,7 @@
         <div class="games" ng-repeat="game in games">
 
 
-            <game-schedule id="game._id" index="$index" time="game.time" sport="game.sport" place="game.place" stream="game.liveStream"
+            <game-schedule update="loadGame" id="game._id" index="$index" time="game.time" sport="game.sport" place="game.place" stream="game.liveStream"
                            stadium="game.stadiumArena" team1="game.team1" team2="game.team2" league="game.league"
                            date="game.date" data="game.data">
 

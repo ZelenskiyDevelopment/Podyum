@@ -7,31 +7,7 @@ angular.module('abroadathletesApp')
             console.log(data);
         };
 
-        loadGame();
-
-        $scope.open = function (size) {
-
-            var modalInstance = $uibModal.open({
-                animation: $scope.animationsEnabled,
-                templateUrl: 'ModalAddGame.html',
-                controller: 'addGameCtrl',
-                size: size
-            });
-        };
-
-        $rootScope.$on('AddGame', function (event, args) {
-
-            Game.create(args).$promise.then(function () {
-
-                loadGame();
-
-            });
-
-            $rootScope.$emit('CloseModalAddGame', {close: true});
-        });
-
-
-        function loadGame() {
+        $scope.loadGame = function () {
 
 
             User.get().$promise.then(function (me) {
@@ -49,5 +25,31 @@ angular.module('abroadathletesApp')
             });
 
         };
+
+        $scope.loadGame();
+
+        $scope.open = function (size) {
+
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: 'ModalAddGame.html',
+                controller: 'addGameCtrl',
+                size: size
+            });
+        };
+
+        $rootScope.$on('AddGame', function (event, args) {
+
+            Game.create(args).$promise.then(function () {
+
+                $scope.loadGame();
+
+            });
+
+            $rootScope.$emit('CloseModalAddGame', {close: true});
+        });
+
+
+
 
     });
