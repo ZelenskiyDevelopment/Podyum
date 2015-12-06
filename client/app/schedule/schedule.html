@@ -1,35 +1,11 @@
-<div class="schedule">
-
-    <div class="section-form">
-
-        <div class="md-headline header-title">
-            Schedule 2015-2016
-        </div>
-        <div class="form-team col-lg-offset-3">
-
-            <div class="col-lg-5">
-                <select class="select-team">
-                    <option>Wroclaw Panthers</option>
-                </select>
-            </div>
-            <div class="col-lg-2">
-                <select class="select-year">
-                    <option>2015</option>
-                </select>
-            </div>
-        </div>
-
-    </div>
+<div class="all-schedule">
 
     <div class="container">
 
-        <div class="add-game">
-            <button class="pull-right btn btn-default our-button" ng-click="open()"><span></span> add game</button>
-        </div>
         <div class="games" ng-repeat="game in games">
 
 
-            <game-schedule viewall="false" update="loadGame" id="game._id" index="$index" time="game.time" sport="game.sport" place="game.place" stream="game.liveStream"
+            <game-schedule viewall="true" update="loadGame" id="game._id" index="$index" time="game.time" sport="game.sport" place="game.place" stream="game.liveStream"
                            stadium="game.stadiumArena" team1="game.team1" team2="game.team2" league="game.league"
                            date="game.date" data="game.data">
 
@@ -141,7 +117,7 @@
                         </md-radio-group>
                     </div>
                 </div>
-                </div>
+        </div>
 
         </div>
         </form>

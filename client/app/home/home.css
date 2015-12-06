@@ -376,6 +376,11 @@ h3,h4,h5 {
     max-height: 213px;
     overflow: auto;
 }
+.see-more {
+    margin: 0px auto;
+    display: block;
+    float: none;
+}
 
 .upcoming-schedule .table-header {
   color: #fac553;

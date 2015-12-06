@@ -23,30 +23,44 @@ angular.module('abroadathletesApp')
             });
 
 
-            switch (me.kind) {
+//            switch (me.kind) {
+//
+//                case 'player':
+//                case 'fan':
+//                case 'league':
+//
+//
+//
+//                    break;
+//
+//                case 'team':
+//                case 'coach':
+//                    Teams.getTeam({id: me._id}).$promise.then(function (result) {
+//                        Game.getGames({id: result[0]._id}).$promise.then(function (games) {
+//                            $scope.games = games;
+//                        });
+//                    });
+//                break;
+//
+//            }
 
-                case 'player':
-                case 'fan':
-                case 'league':
-
-                    Game.getAllGames().$promise.then(function (games) {
-                        $scope.games = games;
-                    });
-
-                    break;
-
-                case 'team':
-                case 'coach':
-                    Teams.getTeam({id: me._id}).$promise.then(function (result) {
-                        Game.getGames({id: result[0]._id}).$promise.then(function (games) {
-                            $scope.games = games;
-                        });
-                    });
-                break;
-
-            }
+            Game.getAllGames().$promise.then(function (games) {
+                $scope.games = games;
+            });
 
         });
+
+        $scope.checkIfTodayDate = function(date) {
+
+            var date1 = new Date(date);
+            var today = new Date();
+
+            if (today.toDateString() == date1.toDateString()) {
+                return 'Live Now';
+            } else {
+                return date;
+            }
+        };
 
         $scope.changeMembership = function () {
             if ($scope.user.role === 'free')

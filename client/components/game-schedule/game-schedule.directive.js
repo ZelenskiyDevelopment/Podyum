@@ -20,7 +20,8 @@ angular.module('abroadathletesApp')
                 time: '=',
                 index: '=',
                 update: '=',
-                userid: '=?'
+                userid: '=?',
+                viewall: '='
             },
             controller: function ($scope, Teams, Game) {
 

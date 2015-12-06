@@ -179,6 +179,8 @@ exports.getAllGames = function (req, res) {
 
 
     Game.find()
+        .sort({date: -1})
+        .limit(4)
         .populate('team1')
         .populate('team1')
         .populate('league')
