@@ -8,7 +8,8 @@ angular.module('abroadathletesApp')
       replace: true,
       transclude: true,
       scope: {
-        events: '='
+        events: '=',
+        hide: '='
       },
       link: function (scope, element, attrs) {
         scope.events = [];

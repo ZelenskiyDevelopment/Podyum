@@ -8,7 +8,6 @@ angular.module('abroadathletesApp')
          Event.getOwnEventsById({id:$stateParams.id}).$promise.then(function (results) {
              angular.forEach(results, function(item, key){
 
-
                  angular.forEach(item.comments, function(comment, key){
 
 
@@ -16,8 +15,12 @@ angular.module('abroadathletesApp')
 
                       });
                  });
+                 if (item.toUser === null) {
+                     $scope.wallEvents.push(item);
+                 }
              });
-             $scope.wallEvents = results;
+
+
 
             angular.forEach()
          });
@@ -37,10 +40,16 @@ angular.module('abroadathletesApp')
          User.get().$promise.then(function (me) {
 
              Event.getOwnEvents().$promise.then(function (results) {
-                 $scope.wallEvents = results;
+                 angular.forEach(results, function(item, key){
+                     if (item.toUser === null) {
+                         $scope.wallEvents.push(item);
+                     }
+
+                 });
+
              });
 
-             Event.getOwnEventsToUser({id:me.id}).$promise.then(function (results) {
+             Event.getOwnEventsToUser({id:me._id}).$promise.then(function (results) {
 
                  if (angular.isObject(results[0])) {
                      angular.forEach(results, function(item){

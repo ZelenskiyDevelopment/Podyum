@@ -15,6 +15,19 @@ angular.module('abroadathletesApp')
       $scope.friendsNumber = $scope.user.friends.length;
       $scope.followersNumber = $scope.user.followed.length;
      // fetchMyMilestones();
+
+
+        Event.getOwnEvents().$promise.then(function (results) {
+
+            angular.forEach(results, function(item, key){
+                if (item.toUser === null) {
+                    $scope.events.push(item);
+                }
+
+            });
+
+        });
+
     });
 
    /* $scope.fetchMyMilestones = fetchMyMilestones;
@@ -24,9 +37,7 @@ angular.module('abroadathletesApp')
       });
     }*/
 
-        Event.getOwnEvents().$promise.then(function(results){
-            $scope.events = results;
-        });
+
 
     $scope.changeMembership = function() {
       if($scope.user.role === 'free')
