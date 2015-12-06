@@ -377,7 +377,7 @@ h3,h4,h5 {
     overflow: auto;
 }
 .see-more {
-    margin: 0px auto;
+    margin: 25px auto 0px;
     display: block;
     float: none;
 }
@@ -393,7 +393,6 @@ h3,h4,h5 {
 
 .upcoming-schedule .table-striped>tbody>tr>td {
     padding: 7px 15px;
-    font-size: 13px;
 }
 
 .upcoming-schedule .table-striped>tbody>tr>.text-center {
