@@ -197,7 +197,7 @@ exports.getOwnEvents = function (req, res) {
 };
 
 exports.getOwnEventsToUser = function (req, res) {
-    var userId = req.params.id,
+    var userId = new mongo.ObjectID(req.params.id),
         optionsAuthor = PopulateUtils.userPopulateOptions('author'),
         optionsCommentsAuthor = PopulateUtils.userPopulateOptions('comments.author');
     Event.find({
