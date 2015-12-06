@@ -5,9 +5,9 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var GameSchema = new Schema({
-  league: {type: mongoose.Schema.Types.ObjectId, ref: 'User',   default: null},
-  team1: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-  team2: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  league: {type: mongoose.Schema.Types.ObjectId, ref: 'League',   default: null},
+  team1: {type: mongoose.Schema.Types.ObjectId, ref: 'Teams'},
+  team2: {type: mongoose.Schema.Types.ObjectId, ref: 'Teams'},
   date: Date,
   data: {T1: [], T2: [], score1: Number, score2: Number, winner: Number, isFinished: Boolean, quart: Number, time: Number},
   userData: {},

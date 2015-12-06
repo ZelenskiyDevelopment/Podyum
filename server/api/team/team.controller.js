@@ -90,7 +90,8 @@ exports.addToTeam = function(req, res) {
             socket.directMessage(data.id_user, 'assignRequest', fromUser);
 
         });
-
+        if (err) return validationError(res, err);
+        res.send(200);
     });
 };
 
@@ -131,7 +132,9 @@ exports.getAssignRequestsToTeam = function(req, res) {
 
     assignedToTeam.find({
         id_team: teamId
-    }).execQ().then(function (request) {
+    }).populate('id_user')
+      .populate('id_team')
+      .execQ().then(function (request) {
         if (request.length == 0) {
             return res.json(422,response);
         }
@@ -147,7 +150,9 @@ exports.getAssignRequests = function(req, res) {
     var response = [];
     assignedToTeam.find({
         id_user: userId
-    }).execQ().then(function (request) {
+    }).populate('id_user')
+      .populate('id_team')
+      .execQ().then(function (request) {
         if (request.length == 0) {
             return res.json(422,response);
         }

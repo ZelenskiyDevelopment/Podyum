@@ -18,11 +18,10 @@ exports.index = function (req, res) {
 
 // Get a single game
 exports.show = function (req, res) {
-  var optionsTeam1 = PopulateUtils.userPopulateOptions('team1'),
-    optionsTeam2 = PopulateUtils.userPopulateOptions('team2');
   Game.findById(req.params.id)
-    .populate(optionsTeam1)
-    .populate(optionsTeam2)
+    .populate('team1')
+    .populate('team2')
+    .populate('league')
     .exec(function (err, game) {
       if (err) {
         return handleError(res, err);
@@ -91,11 +90,13 @@ exports.destroy = function (req, res) {
 };
 
 exports.getGamesWithId = function (req, res) {
-  var id = req.params.id,
-    optionsTeam1 = PopulateUtils.userPopulateOptions('team1'),
-    optionsTeam2 = PopulateUtils.userPopulateOptions('team2');
-  Game.find({$or: [{'league': id}, {'team1': id}, {'team2': id}]})
 
+  var id = req.params.id;
+
+  Game.find({$or: [{'league': id}, {'team1': id}, {'team2': id}]})
+      .populate('team1')
+      .populate('team2')
+      .populate('league')
     .exec(function (err, games) {
       if (err) {
         return handleError(res, err);

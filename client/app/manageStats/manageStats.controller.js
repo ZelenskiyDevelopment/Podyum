@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .controller('ManageStatsCtrl', function ($scope, User,NewGameModal, Game, socket) {
+  .controller('ManageStatsCtrl', function ($scope, User,NewGameModal, Game, socket, Teams) {
     User.get().$promise.then(function (me) {
       $scope.user = me;
       $scope.myPlayers = $scope.user.assigned.filter(function (assignedUser) {
@@ -17,9 +17,19 @@ angular.module('abroadathletesApp')
       });
 
       if(me.kind ==="team" || me.kind ==="league") {
-        Game.getGames({id: me._id}).$promise.then(function (games) {
-          $scope.games = games;
-        });
+//        Game.getGames({id: me._id}).$promise.then(function (games) {
+//          $scope.games = games;
+//        });
+
+          Teams.getTeam({id:me._id}).$promise.then(function(result){
+              $scope.team = result;
+              Game.getGames({id: result[0]._id}).$promise.then(function (games) {
+                  $scope.games = games;
+
+              });
+
+          });
+
       }
 
       if(me.managesStats.length > 0) {

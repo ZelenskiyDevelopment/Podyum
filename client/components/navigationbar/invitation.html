@@ -25,15 +25,15 @@
             <div class="media-left">
 
                 <a  ui-sref="profile.common-story({id: assignRequest.user._id})">
-                    <img class="media-object" src="photos/{{ assignRequest.user.profilePhoto }}" alt="" style="width:64px;height:64px;">
+                    <img class="media-object" src="photos/{{ assignRequest.id_user.profilePhoto }}" alt="" style="width:64px;height:64px;">
                 </a>
             </div>
             <div class="media-body">
-                <div ng-if="assignRequest.user.player.firstName">
-                    <h4 class="media-heading">{{assignRequest.user.player.firstName}} {{assignRequest.user.player.lastName}}</h4>
+                <div ng-if="assignRequest.id_user.player.firstName">
+                    <h4 class="media-heading">{{assignRequest.id_user.player.firstName}} {{assignRequest.id_user.player.lastName}}</h4>
 
                     <div ng-if="assignRequest.isPresent">
-                        Player {{assignRequest.user.player.firstName}} {{assignRequest.user.player.lastName}}  Wants to assigned to your team
+                        Player {{assignRequest.id_user.player.firstName}} {{assignRequest.id_user.player.lastName}}  Wants to assigned to your team
                     </div>
 
                 </div>
@@ -104,24 +104,19 @@
     <div ng-show="user.kind === 'league'">
         <div ng-show="assignRequestsLeague.length == 0" ng-hide="assignRequestsLeague.length > 0">You have no requests.</div>
     </div>
-    <div ng-repeat="assignRequest in assignRequests">
 
-        <div class="media" ng-repeat="request in assignRequest.requests" ng-show="request._id.length > 0">
+        <div class="media" ng-repeat="request in assignRequests" ng-show="request._id.length > 0">
             <div class="media-left">
-                <!--<a ui-sref="profile.common-story({id: assignRequest._id})">-->
-                <!--<img class="media-object" src="photos/user.png" alt="" style="width:64px;height:64px;">-->
-                <!--<img class="media-object" src="photos/user.png" alt="" style="width:64px;height:64px;">-->
-                <!--</a>-->
-                <a ui-sref="#">
-                    <img class="media-object" src="photos/user.png" alt="" style="width:64px;height:64px;">
+                <a ui-sref="profile.common-story({id: request.id_team.id_user})">
+                    <img class="media-object" src="photos/{{ request.id_team.logoTeam }}" alt="" style="width:64px;height:64px;">
                 </a>
             </div>
             <div class="media-body">
-                <div ng-if="assignRequest.team.teamName">
-                    <h4 class="media-heading">{{assignRequest.team.teamName}}</h4>
+                <div ng-if="request.id_team.teamName">
+                    <h4 class="media-heading">{{request.id_team.teamName}}</h4>
 
                     <div ng-if="request.isPresent">
-                        Wants to recruit you!
+                      Team {{request.id_team.teamName}}  Wants to recruit you!
                     </div>
 
                 </div>
@@ -144,10 +139,9 @@
                 </div>
             </div>
         </div>
-    </div>
 
     <div ng-show="user.kind === 'player'">
-        <div ng-show="assignRequest.requests.length == 0" ng-hide="assignRequest.length > 0">You have no requests.</div>
+        <div ng-show="assignRequest.length == 0" >You have no requests.</div>
     </div>
     <div ng-show="user.kind === 'team' && assignRequestsTeam.length == 0">
         <div>You have no requests.</div>

@@ -13,10 +13,11 @@ angular.module('abroadathletesApp')
         data:'=',
         sport:'=',
         id:'=',
+        time: '=',
         userdata:'=',
         userid:'=?'
       },
-      controller: function($scope, StatsEditModal, UserStatsEditModal, Game){
+      controller: function($scope, StatsEditModal, UserStatsEditModal, Game, $location){
         $scope.isShow = false;
         if(!$scope.userid){
           $scope.userData = $scope.userdata;
@@ -26,6 +27,10 @@ angular.module('abroadathletesApp')
           });
 
         }
+          $scope.isActive = function (route) {
+              return $location.path().indexOf(route) > -1;
+          };
+
         $scope.edit  = function(){
           var data = {
             data : $scope.data,

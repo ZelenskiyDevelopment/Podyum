@@ -23,15 +23,6 @@ angular.module('abroadathletesApp')
             },
             controller: function ($scope, Teams) {
 
-
-                Teams.getTeamById({id: $scope.team1}).$promise.then(function (result) {
-                    $scope.team1 = result;
-                });
-                Teams.getTeamById({id: $scope.team2}).$promise.then(function (result) {
-                    $scope.team2 = result;
-
-                });
-
             },
             link: function (scope, element, attrs) {
                 scope.showInfo = function () {

@@ -16,23 +16,23 @@
 
 
 <div class="col-lg-2 cols">
-    <p> {{date | date : 'dd.MM.yyyy'}} </p>
+    <p> {{date | date : 'EEE, d/MM'}} </p>
 </div>
 <div class="col-lg-1 cols time-col">
-    <p>  empty </p>
+    <p>   {{ time | date:'h:mm' }} </p>
 </div>
 <div class="col-lg-1 cols logo-col">
-    <p> empty </p>
+    <img height="52" class="logo-team" src="/photos/{{ team1.logoTeam }}">
 </div>
 <div class="col-lg-3 cols">
-    <p> {{team1.team.name}} - {{team2.team.name}} </p>
+    <p> {{team2.teamName}} </p>
 </div>
 <div class="col-lg-4 cols">
-    <div class="col-lg-6 button" data-url="{{ id }}" ui-sref="statsEdit({id: id, isLive: 'liveResults'})">
+    <div class="col-lg-6 button"  ng-class="{ active: isActive('/manage-stats/stats-edit/'+id+'/liveResults') }" data-url="{{ id }}" ui-sref="manageStats.statsEdit({id: id, isLive: 'liveResults'})">
   <p>Manage live</p>
 
     </div>
-    <div class="col-lg-6 button" data-url="{{ id }}" ui-sref="statsEdit({id: id, isLive: 'postResults'})">
+    <div class="col-lg-6 button" ng-class="{ active: isActive('/manage-stats/stats-edit/'+id+'/postResults') }"  data-url="{{ id }}" ui-sref="manageStats.statsEdit({id: id, isLive: 'postResults'})">
     <p>  Input Results</p>
 
     </div>
