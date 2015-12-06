@@ -47,16 +47,6 @@ angular.module('abroadathletesApp')
 
                     });
 
-//                    angular.forEach(players, function(item, key){
-//                        if (item.accepted) {
-//                            User.getUserById({id: item.id_user}).$promise.then(function(user){
-//                                user.assigned = item;
-//                                user.numberPlayer = user.player.number;
-//                                $scope.players.push(user);
-//
-//                            });
-//                        }
-//                    });
                 });
 
             });

@@ -8,22 +8,14 @@ angular.module('abroadathletesApp')
         };
 
         $scope.loadGame = function () {
-
-
             User.get().$promise.then(function (me) {
                 $scope.user = me;
-
                 Teams.getTeam({id:me._id}).$promise.then(function(result){
-
                     Game.getGames({id: result[0]._id}).$promise.then(function (games) {
                         $scope.games = games;
-
                     });
-
                 });
-
             });
-
         };
 
         $scope.loadGame();

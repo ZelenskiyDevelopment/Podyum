@@ -4,7 +4,7 @@
             .row
                 .col-sm-5.col-md-5.col-lg-5
                     .info-card(style='text-align:center;')
-                        .main-picture
+                        .main-picture(ng-switch='user.kind')
                             img(ng-src='photos/{{user.profilePhoto}}', alt='')
                         .kind-user(ng-switch='user.kind')
                             div(ng-switch-when='player')
@@ -35,42 +35,16 @@
                                 th Time
                                 th Location
                                 th Event
-                            tr
-                                td Live Now
-                                td 7:15 pm
-                                td
-                                    img(ng-src='photos/{{user.profilePhoto}}', alt='')
-                                    | @Gdynia
-                                td 4th quartet 56-21
-                            tr
-                                td Sun 11/15
-                                td 11:30 am
-                                td
-                                    img(ng-src='photos/{{user.profilePhoto}}', alt='')
-                                    | @Rynek
-                                td Football in square
-                            tr
-                                td Mon 11/26
-                                td 6:00 pm
-                                td
-                                    img(ng-src='photos/{{user.profilePhoto}}', alt='')
-                                    | Vs. Byalistok
-                                td.text-center
-                                    a(href='')
-                                        img(src='assets/images/play-btn.png', alt='')
-                                    a(ui-sref='manageStats')
-                                        img(src='assets/images/stat-btn.png', alt='')
-                            tr
-                                td Thur 11/29
-                                td 7:00 pm
-                                td
-                                    img(ng-src='photos/{{user.profilePhoto}}', alt='')
-                                    | Vs. Warsaw Eagles
-                                td.text-center
-                                    a(href='')
-                                        img(src='assets/images/play-btn.png', alt='')
-                                    a(ui-sref='manageStats')
-                                        img(src='assets/images/stat-btn.png', alt='')
+                            tr(ng-repeat="game in games")
+                                td  {{ game.date | date : 'EEE d/MM' }}
+                                td  {{ game.time | date:'shortTime' }}
+                                td  Stadium  - {{ game.stadiumArena }},
+                                    | {{ game.team1.teamName }} vs {{ game.team2.teamName }}
+                                td.text-center(ng-if="user.kind == 'team' || user.kind == 'coach' ")
+                                   a(ui-sref="manageStats.statsEdit({id: game._id, isLive: 'liveResults'})")
+                                      img(src='assets/images/play-btn.png', alt='')
+                                   a(ui-sref='manageStats')
+                                      img(src='assets/images/stat-btn.png', alt='')
             home-navbar
             .tab-content
                 div(ui-view='')

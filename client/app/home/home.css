@@ -373,7 +373,8 @@ h3,h4,h5 {
 
 .upcoming-schedule table {
     width: 100%;
-    height: 213px;
+    max-height: 213px;
+    overflow: auto;
 }
 
 .upcoming-schedule .table-header {
@@ -415,6 +416,7 @@ h3,h4,h5 {
     padding: 10px 24px;
     color: #a4a4a4;
     font-weight: normal;
+    height: 20px;
 }
 
 .upcoming-schedule .table-striped>tbody>tr:nth-of-type(even) {

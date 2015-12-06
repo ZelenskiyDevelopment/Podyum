@@ -176,39 +176,54 @@ exports.getGamesForTeams = function (req, res) {
 };
 
 exports.getAllGames = function (req, res) {
-  var user = req.user,
-    usersInRelation = getInterestedUserIds(user, user.settings);
 
-  var query = {
-    kind: 'team',
-    $or: [
-      {_id: {$in: usersInRelation}},
-      {'assigned': {$elemMatch: {user: {$in: usersInRelation}, isPresent:true}}},
-      {'assignedTo': {$elemMatch: {user: {$in: usersInRelation}, isPresent:true}}}
-    ]
-  };
 
-  var teamsPromise = User.findQ(query);
-  var teamIds;
-  teamsPromise.then(function (teams) {
-    teamIds = _.map(teams, '_id');
-    return User.findQ({kind: 'league', 'assigned.user': {$in: teamIds}});
-  }).then(function (leagues) {
-    return _.flatten([_.map(leagues, '_id'), teamIds]);
-  }).then(function (ids) {
-    var optionsTeam1 = PopulateUtils.userPopulateOptions('team1'),
-      optionsTeam2 = PopulateUtils.userPopulateOptions('team2'),
-      optionsLeague = PopulateUtils.userPopulateOptions('league');
-    return Game.find({$or: [{'league': {$in: ids}}, {'team1': {$in: ids}}, {'team2': {$in: ids}}]})
-      .populate(optionsTeam1)
-      .populate(optionsTeam2)
-      .populate(optionsLeague)
-      .execQ();
-  }).then(function (result) {
-    return res.json(result);
-  }).catch(function (err) {
-    return handleError(res, err);
-  });
+    Game.find()
+        .populate('team1')
+        .populate('team1')
+        .populate('league')
+        .execQ().then(function (games) {
+        return res.json(200, games);
+    }).catch(function (err) {
+        return handleError(res, err);
+    });
+
+
+
+
+//  var user = req.user,
+//    usersInRelation = getInterestedUserIds(user, user.settings);
+//
+//  var query = {
+//    kind: 'team',
+//    $or: [
+//      {_id: {$in: usersInRelation}},
+//      {'assigned': {$elemMatch: {user: {$in: usersInRelation}, isPresent:true}}},
+//      {'assignedTo': {$elemMatch: {user: {$in: usersInRelation}, isPresent:true}}}
+//    ]
+//  };
+//
+//  var teamsPromise = User.findQ(query);
+//  var teamIds;
+//  teamsPromise.then(function (teams) {
+//    teamIds = _.map(teams, '_id');
+//    return User.findQ({kind: 'league', 'assigned.user': {$in: teamIds}});
+//  }).then(function (leagues) {
+//    return _.flatten([_.map(leagues, '_id'), teamIds]);
+//  }).then(function (ids) {
+//    var optionsTeam1 = PopulateUtils.userPopulateOptions('team1'),
+//      optionsTeam2 = PopulateUtils.userPopulateOptions('team2'),
+//      optionsLeague = PopulateUtils.userPopulateOptions('league');
+//    return Game.find({$or: [{'league': {$in: ids}}, {'team1': {$in: ids}}, {'team2': {$in: ids}}]})
+//      .populate(optionsTeam1)
+//      .populate(optionsTeam2)
+//      .populate(optionsLeague)
+//      .execQ();
+//  }).then(function (result) {
+//    return res.json(result);
+//  }).catch(function (err) {
+//    return handleError(res, err);
+//  });
 };
 
 function getInterestedUserIds(user, settings) {
