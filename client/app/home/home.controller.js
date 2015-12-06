@@ -26,6 +26,8 @@ angular.module('abroadathletesApp')
             switch (me.kind) {
 
                 case 'player':
+                case 'fan':
+                case 'league':
 
                     Game.getAllGames().$promise.then(function (games) {
                         $scope.games = games;
