@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .controller('ProfileCommonStoryCtrl', function ($scope, Event, $rootScope,$stateParams) {
+  .controller('ProfileCommonStoryCtrl', function ($scope, Event, $rootScope,$stateParams, User) {
     $scope.events = [];
 
      if ($stateParams.id) {
@@ -14,8 +14,6 @@ angular.module('abroadathletesApp')
 
                       Event.getCommentsForEvent({id:comment._id}).$promise.then(function(author){
 
-                     //     comment.author =   author;
-console.log(author);
                       });
                  });
              });
@@ -35,9 +33,25 @@ console.log(author);
          });
 
      } else {
-         Event.getOwnEvents().$promise.then(function (results) {
-             $scope.wallEvents = results;
+
+         User.get().$promise.then(function (me) {
+
+             Event.getOwnEvents().$promise.then(function (results) {
+                 $scope.wallEvents = results;
+             });
+
+             Event.getOwnEventsToUser({id:me.id}).$promise.then(function (results) {
+
+                 if (angular.isObject(results[0])) {
+                     angular.forEach(results, function(item){
+                         $scope.wallEvents.push(item);
+                     });
+                 }
+
+             });
+
          });
+
      }
 
   });
