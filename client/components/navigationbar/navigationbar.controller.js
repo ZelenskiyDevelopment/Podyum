@@ -37,7 +37,7 @@ angular.module('abroadathletesApp')
 
                 switch (me.kind) {
                     case 'team':
-
+                    case 'coach':
                         var allRequests = {};
                         var AllRequestTeam = {};
 
