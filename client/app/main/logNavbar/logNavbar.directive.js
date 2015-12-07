@@ -50,8 +50,19 @@ angular.module('abroadathletesApp')
         var el = angular.element('.main-container')[0],
             topElem = angular.element('#top')[0],
             nav = angular.element('.log-nav')[0];
+          //keypress
+
+          angular.element('.registerForm').find('input').bind('keypress keyup', function(){
+              if (angular.element(this).val().length > 0) {
+                  angular.element(this).css('background-color','#858182');
+              } else {
+                  angular.element(this).css('background-color','#EAEFF1');
+              }
+
+          });
 
         angular.element(el).bind("scroll", function() {
+
 
           if(el.scrollTop > topElem.offsetHeight - nav.offsetHeight) {
             scope.boolChangeClass = true;
