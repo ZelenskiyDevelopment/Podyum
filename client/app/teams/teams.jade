@@ -42,7 +42,7 @@ div(class="teams {{ (checkState('teams/manage-roster')) ? 'manage-roster' : '' }
              li(ng-class="{ active: isActive('/teams/task-manager') }")
                 a(ui-sref='teams.taskManager'  class='item-menu'  data-toggle="modal" role="button") Task Manager
 
-    .col-lg-6.col-lg-offset-3.padding-bottom( ng-hide="checkState('/teams/schedule') || checkState('teams/manage-roster')")
+    .col-lg-6.col-lg-offset-3.padding-bottom( ng-hide="checkState('/teams/schedule') || checkState('teams/manage-roster')" ng-if="user.kind == 'team' || user.kind == 'coach'")
         a.btn.btn-default.our-button(ui-sref='teams.addTeam' ng-show="team.length == 0") Create a Team
 
 
