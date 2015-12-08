@@ -60,7 +60,14 @@ angular.module('abroadathletesApp')
               }
 
           });
+          angular.element('.loginForm').find('input').bind('keypress keyup', function(){
+              if (angular.element(this).val().length > 0) {
+                  angular.element(this).css('background-color','#858182');
+              } else {
+                  angular.element(this).css('background-color','#EAEFF1');
+              }
 
+          });
         angular.element(el).bind("scroll", function() {
 
 
