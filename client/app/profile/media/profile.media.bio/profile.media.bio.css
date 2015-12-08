@@ -1,0 +1,21 @@
+.user-about .fan-bio-info {
+    text-align: center;
+}
+
+.fan-biography {
+    text-align: justify;
+    margin-left: 30px;
+    font-size: 14px;
+}
+
+.fan-biography h3 {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #111e2b;
+}
+
+.user-about strong {
+    text-transform: uppercase;
+    color: #111e2b;
+}

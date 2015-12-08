@@ -33,6 +33,6 @@ angular.module('abroadathletesApp').factory('instagram', ['$http', function($htt
 			});
 		}
 	}
-}).call(this);
+});
 
 
