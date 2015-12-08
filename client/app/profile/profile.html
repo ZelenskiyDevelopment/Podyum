@@ -163,21 +163,28 @@
           </div>
         </div>-->
         <div ng-if="user.kind === 'team'" class="team-profile-side">
-          <h2>Upcoming events:</h2>
-          <table class="table">
-            <tr>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Event</th>
-            </tr>
-            <tr ng-repeat="event in upcoming |orderBy:'event.date' | limitTo:5">
-              <td>{{event.event.date | date:'EEE m/d'}}</td>
-              <td>{{event.event.date | date:'h:mm'}}</td>
-              <td>
-                {{event.event.title}}
-              </td>
-            </tr>
-          </table>
+          <div class="upcomming-schedule">
+            <div class="schedule-wrap" id="style-2">
+              <h2>Upcoming events:</h2>
+              <table class="table">
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Location</th>
+                  <th ng-if="user.kind == 'team' || user.kind == 'coach' ">Event</th>
+                </tr>
+                <tr ng-repeat="game in games | limitTo:4">
+                  <td> {{ checkIfTodayDate(game.date) | date : 'EEE d/MM' }}</td>
+                  <td> {{ game.time | date:'shortTime' }}</td>
+                  <td>
+                     Stadium  - {{ game.stadiumArena }},
+                    {{ game.team1.teamName }} vs {{ game.team2.teamName }}
+                  </td>
+                  <td ng-if="user.kind == 'team' || user.kind == 'coach' " class="text-center"><a ui-sref="manageStats.statsEdit({id: game._id, isLive: 'liveResults'})"><img src="assets/images/play-btn.png" alt=""/></a><a ui-sref="manageStats"><img src="assets/images/stat-btn.png" alt=""/></a></td>
+                </tr>
+              </table>
+            </div>
+          </div>
           <div class="instagram_feed">
             <ui-instagram></ui-instagram> 
           </div>
