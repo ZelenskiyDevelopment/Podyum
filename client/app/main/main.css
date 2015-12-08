@@ -23,6 +23,9 @@
 .registerForm input {
     outline: none;
 }
+.loginForm  input {
+    outline: none;
+}
 .log-nav-buttons {
     padding-left: 40px;
     position: absolute;

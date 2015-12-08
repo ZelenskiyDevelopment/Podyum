@@ -305,6 +305,48 @@
 					</div>
 				</div>
 			</div>
+            <div class="row">
+                <div class="col-md-7 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="ll-item" ng-repeat = "n in news">
+                                <div class="ll-item-top">
+                                    <img src="http://static.nfl.com/static/content/{{ n.relatedImageUri }}" ng-if="n.relatedImageUri.length > 0" />
+                                    <div>{{ n.newsBoxHeadline }}</div>
+                                </div>
+                                <div>{{ n.caption }}</div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="ll-item" ng-repeat = "n in news_page_two">
+                                <div class="ll-item-top">
+                                    <img src="http://static.nfl.com/static/content/{{ n.relatedImageUri }}" ng-if="n.relatedImageUri.length > 0" />
+                                    <div>{{ n.newsBoxHeadline }}</div>
+                                </div>
+                                <div>{{ n.caption }}</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-6 col-xs-12">
+                            <div class="ll-item" ng-repeat = "n in news_page_three">
+                                <div class="ll-item-top">
+                                    <img src="http://static.nfl.com/static/content/{{ n.relatedImageUri }}" ng-if="n.relatedImageUri.length > 0" />
+                                    <div>{{ n.newsBoxHeadline }}</div>
+                                </div>
+                                <div>{{ n.caption }}</div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div id="ll-load-more-btn">
