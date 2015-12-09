@@ -1,6 +1,8 @@
 <div>
   <h4 class="bio-headers">Short bio</h4>
-  <pre>{{user.player.bio}}</pre>
+  <pre ng-if="user.kind=='coach'">{{user.coach.bio}}</pre>
+
+  <pre ng-if="user.kind=='player'">{{user.player.bio}}</pre>
   <h4 class="bio-headers">Team history</h4>
 
   <table class="table table-bordered" style="margin-top:20px;">
