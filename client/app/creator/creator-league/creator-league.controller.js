@@ -1,5 +1,15 @@
 'use strict';
 
+/**
+ * @ngdoc object
+ * @name abroadathletesApp.controller:CreatorLeagueCtrl
+ * @requires  $scope
+ * @requires  CitizenShips
+ * @requires  User
+ * @description
+ * Creator League Profile Controller
+ */
+
 angular.module('abroadathletesApp')
     .controller('CreatorLeagueCtrl',function($scope, User, CitizenShips){
 

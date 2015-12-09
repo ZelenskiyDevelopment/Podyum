@@ -1,8 +1,29 @@
 'use strict';
 
+
+/**
+ * @ngdoc object
+ * @name abroadathletesApp.controller:HomeCtrl
+ * @requires  $scope
+ * @requires  $state
+ * @requires User
+ * @requires $location
+ * @requires uiCalendarConfig
+ * @requires socket
+ * @requires $mdDialog
+ * @requires Milestone
+ * @requires Event
+ * @requires Teams
+ * @requires Game
+ * @description
+ * Home controller
+ */
+
 angular.module('abroadathletesApp')
-    .controller('HomeCtrl', function ($scope, $state, User, $location, socket, $mdDialog, Milestone, Event, Teams, Game) {
+    .controller('HomeCtrl', function ($scope, $state, User, $location, uiCalendarConfig, socket, $mdDialog, Milestone, Event, Teams, Game) {
         $scope.games = [];
+        $scope.gamesTable = true;
+        $scope.eventsTable = false;
         $scope.userPromise = User.get().$promise;
         $scope.userPromise.then(function (me) {
             if (!me.completed) {
@@ -23,30 +44,45 @@ angular.module('abroadathletesApp')
             });
 
 
-//            switch (me.kind) {
-//
-//                case 'player':
-//                case 'fan':
-//                case 'league':
-//
-//
-//
-//                    break;
-//
-//                case 'team':
-//                case 'coach':
-//                    Teams.getTeam({id: me._id}).$promise.then(function (result) {
-//                        Game.getGames({id: result[0]._id}).$promise.then(function (games) {
-//                            $scope.games = games;
-//                        });
-//                    });
-//                break;
-//
-//            }
+            switch (me.kind) {
 
-            Game.getAllGames().$promise.then(function (games) {
-                $scope.games = games;
-            });
+                case 'player':
+
+                    Teams.getAssignRequests({id: me._id}).$promise.then(function (team) {
+
+                        if (angular.isObject(team)) {
+
+                            if (team.accepted) {
+                                Game.getGames({id: team[0].id_team._id}).$promise.then(function (games) {
+                                    $scope.games = games;
+                                });
+                            }
+
+                        }
+
+                    });
+
+
+                case 'fan':
+                case 'league':
+                case 'media':
+
+                    Game.getAllGames().$promise.then(function (games) {
+                        $scope.games = games;
+                    });
+
+                    break;
+
+                case 'team':
+                case 'coach':
+                    Teams.getTeam({id: me._id}).$promise.then(function (result) {
+                        Game.getGames({id: result[0]._id}).$promise.then(function (games) {
+                            $scope.games = games;
+                        });
+                    });
+                break;
+
+            }
 
         });
 
@@ -71,6 +107,16 @@ angular.module('abroadathletesApp')
                 User.get().$promise.then(function (me) {
                 });
             });
+        };
+
+        $scope.showTable = function(type) {
+            if(type ==='gamesTable') {
+                $scope.gamesTable = true;
+                $scope.eventsTable = false;
+            } else if (type ==='eventsTable') {
+                $scope.gamesTable = false;
+                $scope.eventsTable = true;
+            }
         };
 
         $scope.showTrackingModal = function (event) {

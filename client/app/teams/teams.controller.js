@@ -1,5 +1,14 @@
 'use strict';
 
+
+/**
+ * @ngdoc object
+ * @name abroadathletesApp.controller:TeamsCtrl
+ * @requires  $scope
+ * @description
+ * Teams controller
+ */
+
 angular.module('abroadathletesApp')
     .controller('TeamsCtrl', function ($scope, User, $location, Teams, $state, $uibModal) {
 
@@ -15,18 +24,31 @@ angular.module('abroadathletesApp')
                 $location.path('/creator');
             }
 
-            Teams.getTeam({id: me._id}).$promise.then(function (result) {
 
-                $scope.team = result;
-            });
+            switch(me.kind) {
 
-            Teams.getAssignRequests({id: me._id}).$promise.then(function (team) {
+                case "player":
 
-                if (angular.isObject(team)) {
-                    $scope.myTeam = team;
-                }
+                    Teams.getAssignRequests({id: me._id}).$promise.then(function (team) {
 
-            });
+                        if (angular.isObject(team)) {
+                            $scope.myTeam = team;
+                        }
+
+                    });
+
+                    break
+
+
+                case "team":
+
+                    Teams.getTeam({id: me._id}).$promise.then(function (result) {
+
+                        $scope.team = result;
+                    });
+
+
+            }
 
             $scope.user = me;
 

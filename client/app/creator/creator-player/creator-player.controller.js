@@ -1,5 +1,21 @@
 'use strict';
 
+/**
+ * @ngdoc object
+ * @name abroadathletesApp.controller:CreatorPlayerCtrl
+ * @requires  $scope
+ * @requires  GamePositions
+ * @requires  AwardsPlayer
+ * @requires  CategoriesLevel
+ * @requires  LevelsCollege
+ * @requires  CitizenShips
+ * @requires  $window
+ * @requires  $log
+ * @requires  User
+ * @description
+ * Creator Player Profile Controller
+ */
+
 angular.module('abroadathletesApp')
   .controller('CreatorPlayerCtrl', function ($scope, GamePositions, AwardsPlayer, CategoriesLevel, LevelsCollege, CitizenShips, $window, User, $log) {
 
