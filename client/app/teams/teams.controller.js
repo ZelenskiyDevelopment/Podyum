@@ -5,6 +5,11 @@
  * @ngdoc object
  * @name abroadathletesApp.controller:TeamsCtrl
  * @requires  $scope
+ * @requires User
+ * @requires $location
+ * @requires Teams
+ * @requires $state
+ * @requires $uibModal
  * @description
  * Teams controller
  */
@@ -54,18 +59,44 @@ angular.module('abroadathletesApp')
 
         });
 
+        /**
+         * @ngdoc method
+         * @name stateChange
+         * @methodOf abroadathletesApp.controller:TeamsCtrl
+         * @description Go To Select State
+         */
+
         $scope.stateChange = function () {
             $state.go($scope.stateSelected);
 
         };
 
+        /**
+         * @ngdoc method
+         * @name isActive
+         * @methodOf abroadathletesApp.controller:TeamsCtrl
+         * @param {String} string Route
+         * @returns {boolean} return true or false if is active route
+         * @description Check if is active route
+         */
+
         $scope.isActive = function (route) {
             return $location.path().indexOf(route) > -1;
         };
 
+        /**
+         * @ngdoc method
+         * @name checkState
+         * @methodOf abroadathletesApp.controller:TeamsCtrl
+         * @param {String} string Route
+         * @returns {boolean} return true or false if is active route
+         * @description Check if is active route
+         */
+
         $scope.checkState = function (check) {
             return $location.path().indexOf(check) > -1;
         };
+
         User.getMyTeams().$promise.then(function (teams) {
             $scope.teams = teams;
             console.log(teams);
@@ -100,6 +131,13 @@ angular.module('abroadathletesApp')
                 }
             });
         };
+
+        /**
+         * @ngdoc method
+         * @name joinToTeam
+         * @methodOf abroadathletesApp.controller:TeamsCtrl
+         * @description Open modal aialog for join to team
+         */
 
         $scope.joinToTeam = function (size) {
 
