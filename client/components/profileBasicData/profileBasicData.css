@@ -93,13 +93,20 @@
 	padding: 0 0 0 45px;
 }
 
-.user-fans a, .user-friends a, .user-fans-team a {
+.user-friends-coach {
+  display: table-cell;
+  vertical-align: middle;
+  height: 304px;
+  padding: 0 0 0 45px;
+}
+
+.user-fans a, .user-friends a, .user-fans-team a, .user-friends-coach a {
 	font-size: 30px;
 	color: #111e2b;
 	display: block;
 }
 
-.user-fans a:hover, .user-friends a:hover, .user-fans-team a:hover {
+.user-fans a:hover, .user-friends a:hover, .user-fans-team a:hover, .user-friends-coach a:hover {
 	text-decoration: none;
 }
 
@@ -124,6 +131,18 @@
     top: 121px;
     left: 19px;
 }
+
+.user-friends-coach a:before {
+  content: ' ';
+  background: url(../../assets/images/friends-icon.png) 100% 100%;
+  display: block;
+  width: 32px;
+  height: 22px;
+  position: absolute;
+  top: 41%;
+  left: 22px;
+}
+
 
 .user-friends a:before {
 	content: ' ';
@@ -152,7 +171,7 @@
 }
 
 .social a {
-	margin: 0 35px 0 15px; 
+	margin: 0 35px 0 15px;
 }
 
 .btn-basic-team button {
