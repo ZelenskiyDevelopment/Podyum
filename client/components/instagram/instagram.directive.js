@@ -4,7 +4,7 @@ angular.module('abroadathletesApp').factory('instagram', ['$http', function($htt
 	return {
 		fetchPopular: function(callback) {
 			var clientId = '8ac0de07da134bc7a5376e2b539c83d7'
-			var userId
+			var userId;
 			var endPoint = "https://api.instagram.com/v1/users/" + userId + "/media/recent/?client_id=" + clientId + "&callback=JSON_CALLBACK";
 			$http.jsonp(endPoint).success(function(response) {
 				callback(response.data);
