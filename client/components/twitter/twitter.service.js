@@ -1,11 +1,11 @@
-angular.module('twitterApp.services', []).factory('twitterService', function($q) {
+angular.module('abroadathletesApp').factory('twitterService', function($q) {
 
     var authorizationResult = false;
 
     return {
         initialize: function() {
             //initialize OAuth.io with public key of the application
-            OAuth.initialize('e6u0TKccWPGCnAqheXQYg76Vf2M', {cache:true});
+            OAuth.initialize('EclbxKEV_wDP6A_2mMloxl23m24', {cache:true});
             //try to create an authorization result when the page loads, this means a returning user won't have to click the twitter button again
             authorizationResult = OAuth.create('twitter');
         },
