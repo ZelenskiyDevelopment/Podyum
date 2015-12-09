@@ -16,7 +16,7 @@ angular.module('abroadathletesApp')
         return follower.kind==='player' || follower.kind==='coach' || follower.kind==='fan';
       });
 
-      if(me.kind ==="team" || me.kind ==="league") {
+      if(me.kind ==="team" || me.kind ==="league" || me.kind ==="coach") {
 //        Game.getGames({id: me._id}).$promise.then(function (games) {
 //          $scope.games = games;
 //        });
