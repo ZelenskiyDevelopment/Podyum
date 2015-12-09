@@ -122,6 +122,13 @@ angular.module('abroadathletesApp')
         });
 
 
+        /**
+         * @ngdoc method
+         * @name beginCreating
+         * @methodOf abroadathletesApp.controller:CreatorCtrl
+         * @returns {boolean} Check if page creator
+         */
+
         $scope.beginCreating = function () {
             return $location.path() === '/creator';
         };

@@ -6,15 +6,15 @@
  * @name abroadathletesApp.controller:HomeCtrl
  * @requires  $scope
  * @requires  $state
- * @requires User
+ * @requires abroadathletesApp.User
  * @requires $location
  * @requires uiCalendarConfig
  * @requires socket
  * @requires $mdDialog
- * @requires Milestone
- * @requires Event
- * @requires Teams
- * @requires Game
+ * @requires abroadathletesApp.Milestone
+ * @requires abroadathletesApp.Event
+ * @requires abroadathletesApp.Teams
+ * @requires abroadathletesApp.Game
  * @description
  * Home controller
  */
@@ -86,6 +86,15 @@ angular.module('abroadathletesApp')
 
         });
 
+        /**
+         * @ngdoc method
+         * @name checkIfTodayDate
+         * @methodOf abroadathletesApp.controller:HomeCtrl
+         * @param {Date} date Check If Today Date
+         * @returns {boolean} Return true or false if today Date
+         *
+         */
+
         $scope.checkIfTodayDate = function(date) {
 
             var date1 = new Date(date);
@@ -109,6 +118,14 @@ angular.module('abroadathletesApp')
             });
         };
 
+        /**
+         * @ngdoc method
+         * @name showTable
+         * @methodOf abroadathletesApp.controller:HomeCtrl
+         * @param {string} string Type table
+         *
+         */
+
         $scope.showTable = function(type) {
             if(type ==='gamesTable') {
                 $scope.gamesTable = true;
@@ -118,6 +135,13 @@ angular.module('abroadathletesApp')
                 $scope.eventsTable = true;
             }
         };
+
+        /**
+         * @ngdoc method
+         * @name showTrackingModal
+         * @methodOf abroadathletesApp.controller:HomeCtrl
+         *
+         */
 
         $scope.showTrackingModal = function (event) {
             $mdDialog.show({

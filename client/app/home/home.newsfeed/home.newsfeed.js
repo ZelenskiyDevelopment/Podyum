@@ -6,6 +6,6 @@ angular.module('abroadathletesApp')
       .state('home.newsfeed', {
         url: '/newsfeed',
         templateUrl: 'app/home/home.newsfeed/home.newsfeed.html',
-        controller: 'HomeNewsfeedCtrl'
+        controller: 'HomeNewsFeedCtrl'
       });
   });

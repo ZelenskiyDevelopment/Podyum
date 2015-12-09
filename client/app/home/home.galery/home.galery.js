@@ -6,6 +6,6 @@ angular.module('abroadathletesApp')
       .state('home.galery', {
         url: '/home-galery',
         templateUrl: 'app/home/home.galery/home.galery.html',
-        controller: 'ProfilePlayerGaleryCtrl'
+        controller: 'ProfilePlayerGalleryCtrl'
       });
   });
