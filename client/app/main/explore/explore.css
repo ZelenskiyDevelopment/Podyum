@@ -12,6 +12,19 @@
 }
 #topnav .container {
 	margin-top: 100px;
+
+}
+.read-more {
+    margin-bottom:0px;
+    display: block;
+    text-align: right;
+    padding-right: 15px;
+    color:black;
+
+}
+.read-more:hover {
+    text-decoration: none;
+    color: #F1A227;
 }
 /*content*/
 #ll-content{

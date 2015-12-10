@@ -11,6 +11,11 @@
   padding-top:10px;
 }
 
+.instagram_feed {
+  background: #fff;
+  margin: 20px 0;
+}
+
 pre {
   border:0px;
   background-color:#fff;
@@ -34,10 +39,41 @@ pre {
 
 }
 
-.team-profile-side, .user-profile-side {
+.team-profile-side .upcomming-schedule {
   background: #fff;
   border: 1px solid #f1f1f1;
-  margin-bottom: 18px;
+  padding: 0 0 20px 0;
+}
+
+.team-profile-side .upcomming-schedule .schedule-wrap {
+  overflow-x: scroll;
+}
+
+#style-2::-webkit-scrollbar-track
+{
+  background-color: #F5F5F5;
+  margin: 0 10px;
+}
+
+#style-2::-webkit-scrollbar
+{
+  width: 7px;
+  height: 7px;
+}
+
+#style-2::-webkit-scrollbar-thumb
+{
+  background-color: #fac553;
+
+}
+.team-profile-side .upcomming-schedule .table {
+  width: 400px;
+}
+
+.team-profile-side .upcomming-schedule .table > tbody > tr > th {
+  text-transform: uppercase;
+  font-weight: normal;
+  min-width: 100px;
 }
 
 
@@ -198,10 +234,6 @@ pre {
 md-divider {
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-md-list-item {
-  border-bottom: 1px solid #efefef;
 }
 
 .face {

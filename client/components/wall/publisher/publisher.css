@@ -1,6 +1,11 @@
 .tile {
   background-color:#fff;
   padding:5px;
+
+}
+
+.tile h4 {
+    margin-left: 30px;
 }
 
 .publisher {

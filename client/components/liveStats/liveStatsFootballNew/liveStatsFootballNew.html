@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container live-stats-edit">
   <div class="row game-container">
     <div class="roster">
       <div class="header">
@@ -8,8 +8,8 @@
       </div>
       <ul class="roster-player-list">
         <li class="player-in-roster" ng-repeat="player in roster1 | filter:roster1Filter">
-          <button style="width: 100%;" class="btn" ng-click="choosePlayer(player.player.number)">
-            <span>{{player.player.number}}</span>&nbsp;&nbsp;{{player.player.firstName}}&nbsp;{{player.player.lastName}}
+          <button style="width: 100%;" class="btn" ng-click="choosePlayer(player.id_user.player.number)">
+            <span>{{player.player.number}}</span>&nbsp;&nbsp;{{player.id_user.player.firstName}}&nbsp;{{player.id_user.player.lastName}}
           </button>
         </li>
       </ul>
@@ -18,9 +18,9 @@
       <div class="row header">
         <h3>Manage Live Match</h3>
 
-        <h1>{{game.team1.team.name}} Vs. {{game.team2.team.name}}</h1>
+        <h1>{{game.team1.teamName}} Vs. {{game.team2.teamName}}</h1>
 
-        <p><span></span>07.11.2015, Wroclaw Stadion, Attendance 15,043</p>
+        <p><span></span>{{ game.date | date : 'dd.MM.yyyy' }}, {{ game.stadiumArena }}, Attendance 15,043</p>
         <button><span>Edit Game Details</span></button>
       </div>
       <div class="row game-details">
@@ -49,7 +49,7 @@
               <input style="margin-left: 62px;" class="form-control custom-input" ng-model="game.data.score1"
                      ng-blur="changingHostScore = false" ng-show="changingHostScore">
 
-              <h3>{{game.team1.team.name}}</h3>
+              <h3>{{game.team1.teamName}}</h3>
             </div>
             <div class="col-md-1">
               <span class="ball {{gameStats.teamOffence == 0 ? 'ball-active' : 'ball-inactive'}}"
@@ -69,7 +69,7 @@
               <input style="margin-left: 62px;" class="form-control custom-input" ng-model="game.data.score2"
                      ng-blur="changingGuestScore = false" ng-show="changingGuestScore">
 
-              <h3>{{game.team2.team.name}}</h3>
+              <h3>{{game.team2.teamName}}</h3>
             </div>
           </div>
           <div class="row dark-gray">
@@ -1766,8 +1766,8 @@
       </div>
       <ul class="roster-player-list">
         <li class="player-in-roster" ng-repeat="player in roster2 | filter:roster2Filter">
-          <button style="width: 100%;" class="btn" ng-click="choosePlayer(player.player.number)">
-            <span>{{player.player.number}}</span>&nbsp;&nbsp;{{player.player.firstName}}&nbsp;{{player.player.lastName}}
+          <button style="width: 100%;" class="btn" ng-click="choosePlayer(player.id_user.player.number)">
+            <span>{{player.player.number}}</span>&nbsp;&nbsp;{{player.id_user.player.firstName}}&nbsp;{{player.id_user.player.lastName}}
           </button>
         </li>
       </ul>

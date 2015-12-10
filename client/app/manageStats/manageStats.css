@@ -6,6 +6,13 @@
     margin-top: 5px;
     color: #152e34;
 }
+.manage-stats-section {
+    margin-top:72px;
+    background: white;
+}
+.manage-section {
+    margin-top:72px;
+}
 .manage-section h3 {
     font-family: latoblack;
 }
@@ -13,7 +20,8 @@
     font-family: latosemibold;
 }
 .manage-section .command-name {
-    margin-top: 50px;
+    margin-top: 25px;
+    margin-left: 40px;
 }
 .manage-section .rows-section-manage p {
     text-align: center;
@@ -62,7 +70,7 @@
     border-top: 2px solid #464f52;
     border-right: 2px solid #464f52;
     border-bottom: 2px solid #464f52;
-    width: 108px;
+    width: 124px;
     float: left;
     height: 60px;
 }
@@ -70,6 +78,7 @@
     padding: 20px 12px 20px 11px;
       background-color: #152e34;
       color:white;
+    text-align: center;
 }
 .manage-section .rows-section-manage-text .cols:last-child {
     border-right-style: solid;
@@ -92,6 +101,7 @@
     height: 26px;
 margin: 15px auto;
 width: 430px;
+    text-align: center;
 }
 .manage-section .button {
     height: 52px;
@@ -115,6 +125,10 @@ width: 430px;
     background-color: #f8c637;
 }
 
+.manage-section .button.active {
+    background-color: #f8c637;
+}
+
 .manage-section   .time-col  ,.manage-section   .logo-col{
-    width: 85px;
+    width: 93px;
 }

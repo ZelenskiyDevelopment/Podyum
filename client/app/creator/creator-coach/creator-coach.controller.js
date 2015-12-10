@@ -1,5 +1,16 @@
 'use strict';
 
+/**
+ * @ngdoc object
+ * @name abroadathletesApp.controller:CreatorCoachCtrl
+ * @requires  $scope
+ * @requires  PlayLevels
+ * @requires  CitizenShips
+ * @requires  $log
+ * @description
+ * Creator Coach Profile Controller
+ */
+
 angular.module('abroadathletesApp')
     .controller('CreatorCoachCtrl', function ($scope, PlayLevels, CitizenShips, $log) {
         $scope.playLevels = PlayLevels.getPlayLevels($scope.formData.sport);

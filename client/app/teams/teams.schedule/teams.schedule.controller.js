@@ -7,7 +7,18 @@ angular.module('abroadathletesApp')
             console.log(data);
         };
 
-        loadGame();
+        $scope.loadGame = function () {
+            User.get().$promise.then(function (me) {
+                $scope.user = me;
+                Teams.getTeam({id:me._id}).$promise.then(function(result){
+                    Game.getGames({id: result[0]._id}).$promise.then(function (games) {
+                        $scope.games = games;
+                    });
+                });
+            });
+        };
+
+        $scope.loadGame();
 
         $scope.open = function (size) {
 
@@ -23,7 +34,7 @@ angular.module('abroadathletesApp')
 
             Game.create(args).$promise.then(function () {
 
-                loadGame();
+                $scope.loadGame();
 
             });
 
@@ -31,23 +42,6 @@ angular.module('abroadathletesApp')
         });
 
 
-        function loadGame() {
 
-
-            User.get().$promise.then(function (me) {
-                $scope.user = me;
-
-                Teams.getTeam({id:me._id}).$promise.then(function(result){
-
-                    Game.getGames({id: result[0]._id}).$promise.then(function (games) {
-                        $scope.games = games;
-
-                    });
-
-                });
-
-            });
-
-        };
 
     });

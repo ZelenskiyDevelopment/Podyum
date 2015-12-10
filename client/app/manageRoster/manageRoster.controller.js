@@ -38,16 +38,15 @@ angular.module('abroadathletesApp')
 
                 Teams.getPlayersByTeam({id:result[0]._id}).$promise.then(function(players){
 
-                    angular.forEach(players, function(item, key){
-                        if (item.accepted) {
-                            User.getUserById({id: item.id_user}).$promise.then(function(user){
-                                user.assigned = item;
-                                user.numberPlayer = user.player.number;
-                                $scope.players.push(user);
+                    $scope.players = players;
 
-                            });
+                    angular.forEach($scope.players, function(item, key){
+                        if (angular.isObject(item.id_user)) {
+                            item.numberPlayer = item.id_user.player.number;
                         }
+
                     });
+
                 });
 
             });
@@ -266,21 +265,18 @@ angular.module('abroadathletesApp')
         $scope.updatePlayers =  function () {
 
             $scope.players = [];
+
             Teams.getTeam({id:$scope.user._id}).$promise.then(function(result){
 
                 $scope.team  = result;
 
                 Teams.getPlayersByTeam({id:result[0]._id}).$promise.then(function(players){
 
-                    angular.forEach(players, function(item, key){
-                        if (item.accepted) {
-                            User.getUserById({id: item.id_user}).$promise.then(function(user){
-                                user.assigned = item;
-                                user.numberPlayer = user.player.number;
-                                $scope.players.push(user);
-                            });
-                        }
+                    $scope.players = players;
 
+                    angular.forEach($scope.players, function(item, key){
+
+                        item.id_user.numberPlayer = item.id_user.player.number;
                     });
                 });
 

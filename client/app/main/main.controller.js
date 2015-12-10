@@ -9,7 +9,7 @@ angular.module('abroadathletesApp')
     $scope.images = [
         //"assets/images/mainpageslides/mainfootball2.jpg",
         //"assets/images/mainpageslides/mainfootball1.jpg",
-        "assets/images/mainpageslides/main-banner-img.jpg"
+        "assets/images/mainpageslides/main-banner-img.png"
     ];
 
     $scope.$watch(function(){
@@ -56,6 +56,8 @@ angular.module('abroadathletesApp')
     $scope.remember = function(value){
         $localStorage['remember'] = value;
     };
+
+
 
     $scope.changeFeature = function(choice) {
         $scope.chosenFeature = choice;

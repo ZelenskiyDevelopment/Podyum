@@ -10,7 +10,7 @@ var assignedToTeam  = ({
         type: mongoose.Schema.Types.ObjectId, ref: 'User'
     },
     id_team: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'User'
+        type: mongoose.Schema.Types.ObjectId, ref: 'Teams'
     },
     accepted:{
         type: Boolean,

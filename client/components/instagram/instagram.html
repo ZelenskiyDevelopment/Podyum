@@ -1,0 +1,20 @@
+<div class="instagram">
+
+	<div class="bar">
+		<a class="list-icon" ng-class="{active: isLayout('list')}" ng-click="setLayout('list')"></a>
+		<a class="grid-icon" ng-class="{active: isLayout('grid')}" ng-click="setLayout('grid')"></a>
+	</div>
+	<ul ng-show="isLayout('grid')" class="grid">
+		<!-- A view with big photos and no text -->
+		<li ng-repeat="p in pics">
+			<a href="{{p.link}}" target="_blank"><img ng-src="{{p.images.low_resolution.url}}" /></a>
+		</li>
+	</ul>
+
+	<ul ng-show="isLayout('list')" class="list">
+		<li ng-repeat="p in pics">
+			<a href="{{p.link}}" target="_blank"><img ng-src="{{p.images.thumbnail.url}}" /></a>
+			<p>{{p.caption.text}}</p>
+		</li>
+	</ul>
+</div>

@@ -1,5 +1,19 @@
 'use strict';
 
+/**
+ * @ngdoc object
+ * @name abroadathletesApp.controller:AddTeamCtrl
+ * @requires $scope
+ * @requires abroadathletesApp.User
+ * @requires abroadathletesApp.Teams
+ * @requires $location
+ * @requires abroadathletesApp.Upload
+ * @requires abroadathletesApp.League
+ * @requires $http
+ * @description
+ * Home controller
+ */
+
 angular.module('abroadathletesApp')
     .controller('AddTeamCtrl',function($scope, Team, User, Teams, $location, Upload, League, $http){
 
@@ -59,9 +73,13 @@ angular.module('abroadathletesApp')
 
         $scope.allLeagues = [];
         $scope.createTeam  = [];
-        /*
-         * Select Logo Team
+
+        /**
+         * @ngdoc method
+         * @name selectLogoTeam
+         * @methodOf abroadathletesApp.controller:AddTeamCtrl
          */
+
         var selectLogoTeam = function(evt) {
             var file = evt.currentTarget.files[0];
             var reader = new FileReader();
@@ -73,8 +91,10 @@ angular.module('abroadathletesApp')
             reader.readAsDataURL(file);
         };
 
-        /*
-         * Select Logo Stadium
+        /**
+         * @ngdoc method
+         * @name selectStadiumLogo
+         * @methodOf abroadathletesApp.controller:AddTeamCtrl
          */
 
         var selectStadiumLogo = function(evt) {
@@ -87,6 +107,15 @@ angular.module('abroadathletesApp')
             };
             reader.readAsDataURL(file);
         };
+
+        /**
+         * @ngdoc method
+         * @name base64ToBlob
+         * @methodOf abroadathletesApp.controller:AddTeamCtrl
+         * @param {String} string base64Data
+         * @param {String} string contentType
+         * @returns {Array} array Blob
+         */
 
         function base64ToBlob(base64Data, contentType) {
             contentType = contentType || '';
@@ -148,6 +177,14 @@ angular.module('abroadathletesApp')
 
             $scope.user = me;
         });
+
+        /**
+         * @ngdoc method
+         * @name saveTeam
+         * @methodOf abroadathletesApp.controller:AddTeamCtrl
+         * @param {Object} object
+         *            $scope.createTeam
+         */
 
         $scope.saveTeam = function() {
 
@@ -231,8 +268,13 @@ angular.module('abroadathletesApp')
         $scope.numberBuffer = '';
 
         /**
-         * Search for vegetables.
+         * @ngdoc method
+         * @name querySearch
+         * @methodOf abroadathletesApp.controller:AddTeamCtrl
+         * @param {String} string query
+         * @returns {Array} array Results
          */
+
         function querySearch (query) {
 
             var results = query ?  $scope.Leagues.filter(createFilterFor(query)) : [];
@@ -243,8 +285,13 @@ angular.module('abroadathletesApp')
         }
 
         /**
-         * Create filter function for a query string
+         * @ngdoc method
+         * @name createFilterFor
+         * @methodOf abroadathletesApp.controller:AddTeamCtrl
+         * @param {String} string query
+         * @returns {String} string Results
          */
+
         function createFilterFor(query) {
             var lowercaseQuery = angular.lowercase(query);
 

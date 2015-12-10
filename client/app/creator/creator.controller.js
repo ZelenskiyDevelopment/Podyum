@@ -1,5 +1,23 @@
 'use strict';
 
+/**
+ * @ngdoc object
+ * @name abroadathletesApp.controller:CreatorCtrl
+ * @requires  $scope
+ * @requires  $timeout
+ * @requires  User
+ * @requires  $window
+ * @requires  Upload
+ * @requires  $location
+ * @requires  sports
+ * @requires  $state
+ * @requires  $http
+ * @requires  Teams
+ * @requires  $filter
+ * @description
+ * Creator Profile Controller
+ */
+
 angular.module('abroadathletesApp')
     .controller('CreatorCtrl', function ($scope, $timeout, User, $window, Upload, $location, sports, $state, $http, Teams, $filter) {
 
@@ -45,25 +63,34 @@ angular.module('abroadathletesApp')
             "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu",
             "Venezuela, Bolivarian Republic of", "Viet Nam", "Virgin Islands, British", "Virgin Islands, U.S.",
             "Wallis and Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"
-        ].map(function (country) { return { abbrev: country }; });
+        ].map(function (country) {
+                return { abbrev: country };
+            });
 
-        $scope.changeProgress = function(x) {
+        /**
+         * @ngdoc method
+         * @name changeProgress
+         * @methodOf abroadathletesApp.controller:CreatorCtrl
+         * @param {int} int Progress Line
+         */
+
+        $scope.changeProgress = function (x) {
             $scope.progressValue = x;
         };
 
-        $scope.$watch(function(){
+        $scope.$watch(function () {
             return $window.innerHeight;
-        }, function(value) {
+        }, function (value) {
             $scope.myHeight = value;
         });
 
-        $scope.$watch(function(){
+        $scope.$watch(function () {
             return $window.innerWidth;
-        }, function(value) {
+        }, function (value) {
             $scope.myWidth = value;
         });
 
-        $scope.steps = ['type','sport','photo','data','finish'];
+        $scope.steps = ['type', 'sport', 'photo', 'data', 'finish'];
         $scope.formData = {};
 
         User.get().$promise.then(function (me) {
@@ -71,7 +98,7 @@ angular.module('abroadathletesApp')
         });
 
         $scope.formData.sportData = [];
-        $scope.formData.sportData[0] = {name:'football', data:{}};
+        $scope.formData.sportData[0] = {name: 'football', data: {}};
         $scope.formData.sport = {};
         $scope.formData.sport.football = true;
         $scope.formData.sport_type = 'football';
@@ -95,13 +122,26 @@ angular.module('abroadathletesApp')
         });
 
 
-        $scope.beginCreating = function() {
-            return $location.path()==='/creator';
+        /**
+         * @ngdoc method
+         * @name beginCreating
+         * @methodOf abroadathletesApp.controller:CreatorCtrl
+         * @returns {boolean} Check if page creator
+         */
+
+        $scope.beginCreating = function () {
+            return $location.path() === '/creator';
         };
 
+        /**
+         * @ngdoc method
+         * @name processForm
+         * @methodOf abroadathletesApp.controller:CreatorCtrl
+         * @param {Object} object
+         *            $scope.formData
+         */
 
-
-        $scope.processForm = function() {
+        $scope.processForm = function () {
 
             $scope.finalData = {};
             $scope.finalData.type = $scope.formData.type;
@@ -120,7 +160,7 @@ angular.module('abroadathletesApp')
             var CitizenShip = [];
 
             if ($scope.formData.citizenship.length > 0) {
-                angular.forEach($scope.formData.citizenship, function(value,key){
+                angular.forEach($scope.formData.citizenship, function (value, key) {
                     CitizenShip.push({
                         name: value.name
                     })
@@ -132,7 +172,7 @@ angular.module('abroadathletesApp')
                 case "player":
 
                     if ($scope.formData.sportData[0].data.positions.length > 0) {
-                        angular.forEach($scope.formData.sportData[0].data.positions ,function(value,key){
+                        angular.forEach($scope.formData.sportData[0].data.positions, function (value, key) {
                             positionPlayer.push({
                                 name: value.name
                             })
@@ -140,8 +180,8 @@ angular.module('abroadathletesApp')
                     }
 
 
-                    if ($scope.formData.otherAwards  != null) {
-                        angular.forEach($scope.formData.otherAwards.split(','), function(value,key){
+                    if ($scope.formData.otherAwards != null) {
+                        angular.forEach($scope.formData.otherAwards.split(','), function (value, key) {
                             $scope.formData.awards.push({
                                 name: value
                             });
@@ -149,7 +189,7 @@ angular.module('abroadathletesApp')
                     }
 
                     if ($scope.formData.awards.length > 0) {
-                        angular.forEach($scope.formData.awards ,function(value,key){
+                        angular.forEach($scope.formData.awards, function (value, key) {
                             AwardsPlayer.push({
                                 name: value
                             });
@@ -157,23 +197,23 @@ angular.module('abroadathletesApp')
                     }
 
                     if ($scope.formData.collegeLevels.length > 0) {
-                            CollegeLevels.push({
-                                name: $scope.formData.collegeLevels
-                            });
+                        CollegeLevels.push({
+                            name: $scope.formData.collegeLevels
+                        });
 
                         console.log(CollegeLevels);
                     }
 
                     if ($scope.formData.otherCategories != null) {
-                        angular.forEach($scope.formData.otherCategories.split(','), function(value,key){
+                        angular.forEach($scope.formData.otherCategories.split(','), function (value, key) {
                             $scope.formData.categoriesLevel.push({
-                                name:value
+                                name: value
                             });
                         });
                     }
 
                     if ($scope.formData.categoriesLevel.length > 0) {
-                        angular.forEach($scope.formData.categoriesLevel ,function(value,key){
+                        angular.forEach($scope.formData.categoriesLevel, function (value, key) {
                             CategoriesLevel.push({
                                 name: value,
                                 year: $scope.formData.years[key]
@@ -185,7 +225,7 @@ angular.module('abroadathletesApp')
 
                     if (angular.isObject($scope.formData.selectedTeam)) {
                         var data = {id_user: $scope.formData.id, id_team: $scope.formData.selectedTeam.id, dateFrom: new Date(), isPresent: true};
-                        Teams.addToTeam(data).$promise.then(function(result) {
+                        Teams.addToTeam(data).$promise.then(function (result) {
                             console.log(result);
                         });
                     }
@@ -208,7 +248,7 @@ angular.module('abroadathletesApp')
                         kind: $scope.formData.type,
                         sport: $scope.formData.sport_type,
                         sex: $scope.formData.sex,
-                        country:  $scope.formData.country,
+                        country: $scope.formData.country,
                         completed: true
                     };
 
@@ -306,7 +346,7 @@ angular.module('abroadathletesApp')
                             id_user: $scope.formData.id,
                             _id: $scope.formData.selectedTeam.id
                         };
-                        Teams.updateTeam(team).$promise.then(function(){
+                        Teams.updateTeam(team).$promise.then(function () {
 
                         });
                     }
@@ -330,15 +370,24 @@ angular.module('abroadathletesApp')
 
                     break
 
-            };
+            }
+            ;
 
-            User.updateProfile({id:$scope.formData.id,data:UserUpdate}).$promise.then(function (response){
-               $location.path('/home');
-           });
+            User.updateProfile({id: $scope.formData.id, data: UserUpdate}).$promise.then(function (response) {
+                $location.path('/home');
+            });
         };
-        $scope.setType = function(type) {
+
+        /**
+         * @ngdoc method
+         * @name setType
+         * @methodOf abroadathletesApp.controller:CreatorCtrl
+         * @param {string} string Type User
+         */
+
+        $scope.setType = function (type) {
             $scope.progressValue = 20;
-            if(type==='player' || type==='coach' || type==='fan') {
+            if (type === 'player' || type === 'coach' || type === 'fan') {
                 $scope.formData.citizenship = [];
             }
 
@@ -353,7 +402,7 @@ angular.module('abroadathletesApp')
 
             if (type === 'team') {
                 $scope.formData.athleticDirector = [];
-                $scope.formData.headCoach  = [];
+                $scope.formData.headCoach = [];
                 $scope.formData.president = [];
             }
 
@@ -362,31 +411,27 @@ angular.module('abroadathletesApp')
                 $scope.formData.executive = [];
 
             }
-            if(type==='media') {
+            if (type === 'media') {
                 $scope.formData.writers = [];
                 $scope.formData.tags = [];
             }
             User.get().$promise.then(function (me) {
 
-                if (type === 'player' || type==='coach' || type==='fan') {
-//                    User.getAllTeams({id: me._id}).$promise.then(function (result) {
-//                        $scope.allTeams = result;
-//                    });
-
+                if (type === 'player' || type === 'coach' || type === 'fan') {
                     Teams.getAllTeam().$promise.then(function (result) {
                         $scope.allTeams = result;
                     });
                 }
-                if(type ==='team' || type==='fan') {
+                if (type === 'team' || type === 'fan') {
                     User.getAllLeagues({id: me._id}).$promise.then(function (result) {
                         $scope.allLeagues = result;
                     });
                 }
-                if(type ==='league' || type ==='team') {
+                if (type === 'league' || type === 'team') {
                     User.getAllHumanUsers({id: me._id}).$promise.then(function (result) {
                         $scope.allHumanUsers = result;
-                        $scope.allCoaches = _.filter(result, function(user){
-                            return user.kind ==='coach';
+                        $scope.allCoaches = _.filter(result, function (user) {
+                            return user.kind === 'coach';
                         });
                     });
                 }
@@ -394,12 +439,12 @@ angular.module('abroadathletesApp')
         };
 
 
-        $scope.$on("cropme:done", function(ev, result, canvasEl) {
+        $scope.$on("cropme:done", function (ev, result, canvasEl) {
             $scope.formData.photo = result.croppedImage;
             $scope.upload(result.croppedImage);
         });
 
-        if(!$scope.formData.type) {
+        if (!$scope.formData.type) {
             $state.go('creator')
         }
 

@@ -1,30 +1,30 @@
 <div class="container">
   <div class="row">
     <div class ="col-md-2">
-      <h5>{{game.team1.team.name}} </h5>
+      <h5>{{game.team1.teamName}} </h5>
       <div ng-repeat="player in roster1 track by $index">
-        <button class="btn button-roster1-{{roster1Bool[$index]}}" ng-click="fromBench(1,$index)" style="width:100%;">#{{player.player.number}} {{player.player.firstName}} {{player.player.lastName}}</button>
+        <button class="btn button-roster1-{{roster1Bool[$index]}}" ng-click="fromBench(1,$index)" style="width:100%;">#{{player.id_user.player.number}} {{player.id_user.player.firstName}} {{player.id_user.player.lastName}}</button>
       </div>
 
     </div>
     <div class ="col-md-8">
       <div class = "row">
         <div class = "col-md-6" style="text-align:center;">
-          <img src="photos/{{game.team1.profilePhoto}}" alt="s" class="img-rounded center-block" style="width:350px;height:250px;">
+          <img src="photos/{{game.team1.logoTeam}}" alt="s" class="img-rounded center-block" style="width:350px;height:250px;">
           <input type="number" ng-model="game.data.score1" name="size"
                  min="0" integer>
         </div>
         <div class = "col-md-6" style="text-align:center;">
-          <img src="photos/{{game.team2.profilePhoto}}" alt="s" class="img-rounded center-block" style="width:350px;height:250px;">
+          <img src="photos/{{game.team2.logoTeam}}" alt="s" class="img-rounded center-block" style="width:350px;height:250px;">
           <input type="number" ng-model="game.data.score2" name="size"
                  min="0" integer>
         </div>
       </div>
     </div>
     <div class ="col-md-2">
-      <h5>{{game.team2.team.name}}</h5>
+      <h5>{{game.team2.teamName}}</h5>
       <div ng-repeat="player in roster2">
-        <button class="btn button-roster2-{{roster2Bool[$index]}}" ng-click="fromBench(2,$index)" style="width:100%;">#{{player.player.number}} {{player.player.firstName}} {{player.player.lastName}}</button>
+        <button class="btn button-roster2-{{roster2Bool[$index]}}" ng-click="fromBench(2,$index)" style="width:100%;">#{{player.id_user.player.number}} {{player.id_user.player.firstName}} {{player.id_user.player.lastName}}</button>
       </div>
     </div>
   </div>

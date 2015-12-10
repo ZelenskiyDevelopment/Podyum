@@ -61,7 +61,7 @@ angular.module('abroadathletesApp')
             });
 
          // User.addToTeam({data: data});
-         // element.find('.recruiter').hide();
+         element.find('.recruiter').hide();
         };
       }
     };

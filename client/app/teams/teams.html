@@ -274,130 +274,110 @@
                     <div class="row">
                       <div class="col-md-9 profile-content">
                         <md-tabs id="inside-tabs" class="md-dynamic-height md-border-bottom" md-align-tabs="top"
-                                 md-selected="4">
-                          <md-tab id="insights" md-on-select="" label="INSIGHT">
+                                 md-selected="0">
+                          <md-tab id="insights" md-on-select="changeDetalization(0)" label="INSIGHT">
                             <md-content class="inner-tab-content">
-                              <div class="row light-gray">
-                                <div class="col-md-12">
-
-                                </div>
-                              </div>
                             </md-content>
                           </md-tab>
-                          <md-tab id="days" md-on-select="" label="DAYS">
+                          <md-tab id="days" md-on-select="changeDetalization(1)" label="DAYS">
                             <md-content class="inner-tab-content">
-                              <div class="row light-gray">
-                                <div class="col-md-12">
-
-                                </div>
-                              </div>
                             </md-content>
                           </md-tab>
-                          <md-tab id="weeks" md-on-select="" label="WEEKS">
+                          <md-tab id="weeks" md-on-select="changeDetalization(2)" label="WEEKS">
                             <md-content class="inner-tab-content">
-                              <div class="row light-gray">
-                                <div class="col-md-12">
-
-                                </div>
-                              </div>
                             </md-content>
                           </md-tab>
-                          <md-tab id="month" md-on-select="" label="MONTH">
+                          <md-tab id="month" md-on-select="changeDetalization(3)" label="MONTH">
                             <md-content class="inner-tab-content">
-                              <div class="row light-gray">
-                                <div class="col-md-12">
-
-                                </div>
-                              </div>
                             </md-content>
                           </md-tab>
-                          <md-tab id="years" md-on-select="" label="YEARS">
+                          <md-tab id="years" md-on-select="changeDetalization(4)" label="YEARS">
                             <md-content class="inner-tab-content">
-                              <div class="row light-gray">
-                                <div class="col-md-12" style="padding-left: 50px;">
-                                  <div class="row  white">
-                                    <div class="col-md-12">
-                                      <nvd3 options="chartOptions" data="chartData"
-                                            style="min-width: 300px; min-height: 300px; display: block;"></nvd3>
-                                    </div>
-                                  </div>
-                                  <div class="row  white">
-                                    <div class="col-md-6" style="padding-left: 50px;">
-                                      <h2>Fans by country</h2>
-
-                                      <div id="chartdiv" class="chartdiv"></div>
-                                      <div class="white">
-                                        <ul class="list-unstyled country-list">
-                                          <li ng-repeat="item in mapData | limitTo:mapDataLimit">
-                                            <div class="row">
-                                              <div class="col-md-1">
-                                                <img src="{{item.flag}}" width="24" height="16"/>
-                                              </div>
-                                              <div class="col-md-8">
-                                                {{item.name}}
-                                              </div>
-                                              <div class="col-md-3">
-                                                {{item.value}}
-                                              </div>
-                                            </div>
-                                          </li>
-                                        </ul>
-                                      </div>
-                                      <div class="row white">
-                                        <div class="col-md-12">
-                                          <div class="view-all" ng-click="mapDataLimit = 300"
-                                               ng-hide="mapDataLimit>10">
-                                            <div class="view-all-content">
-                                              View All
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-6 white">
-                                      <h2>Link clicks</h2>
-
-                                      <div class="row white">
-                                        <div class="col-md-12">
-                                          <nvd3 options="pieChartOptions" data="pieChartData"
-                                                style="min-width: 300px; min-height: 300px; display: block;"></nvd3>
-                                        </div>
-                                      </div>
-                                      <div class="row white">
-                                        <div class="col-md-12">
-                                          <div class="">
-                                            <ul class="list-unstyled country-list">
-                                              <li ng-repeat="item in linksData | limitTo:linkDataLimit">
-                                                <div class="row">
-                                                  <div class="col-md-10">
-                                                    {{item.link}}
-                                                  </div>
-                                                  <div class="col-md-2">
-                                                    {{item.views}}
-                                                  </div>
-                                                </div>
-                                              </li>
-                                            </ul>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="row white">
-                                        <div class="col-md-12">
-                                          <div class="view-all" ng-click="linkDataLimit = 300"
-                                               ng-hide="linkDataLimit>10">
-                                            <div class="view-all-content">
-                                              View All
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
                             </md-content>
                           </md-tab>
                         </md-tabs>
+                        <div class="row light-gray">
+                          <div class="col-md-12" style="padding-left: 50px;">
+                            <div class="row  white">
+                              <div class="col-md-12">
+                                <nvd3 options="chartOptions" data="chartData"
+                                      style="min-width: 300px; min-height: 300px; display: block;"></nvd3>
+                              </div>
+                            </div>
+                            <div class="row  white">
+                              <div class="col-md-6" style="padding-left: 50px;">
+                                <h2>Fans by country</h2>
+
+                                <div id="chartdiv" class="chartdiv"></div>
+                                <div class="white">
+                                  <ul class="list-unstyled country-list">
+                                    <li ng-repeat="item in mapData | limitTo:mapDataLimit">
+                                      <div class="row">
+                                        <div class="col-md-1">
+                                          <img src="{{item.flag}}" width="24" height="16"/>
+                                        </div>
+                                        <div class="col-md-8">
+                                          {{item.name}}
+                                        </div>
+                                        <div class="col-md-3">
+                                          {{item.value}}
+                                        </div>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="row white">
+                                  <div class="col-md-12">
+                                    <div class="view-all" ng-click="mapDataLimit = 300"
+                                         ng-hide="mapDataLimit>10">
+                                      <div class="view-all-content">
+                                        View All
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6 white">
+                                <h2>Link clicks</h2>
+
+                                <div class="row white">
+                                  <div class="col-md-12">
+                                    <nvd3 options="pieChartOptions" data="pieChartData"
+                                          style="min-width: 300px; min-height: 300px; display: block;"></nvd3>
+                                  </div>
+                                </div>
+                                <div class="row white">
+                                  <div class="col-md-12">
+                                    <div class="">
+                                      <ul class="list-unstyled country-list">
+                                        <li ng-repeat="item in linksData | limitTo:linkDataLimit">
+                                          <div class="row">
+                                            <div class="col-md-10">
+                                              {{item.link}}
+                                            </div>
+                                            <div class="col-md-2">
+                                              {{item.views}}
+                                            </div>
+                                          </div>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row white">
+                                  <div class="col-md-12">
+                                    <div class="view-all" ng-click="linkDataLimit = 300"
+                                         ng-hide="linkDataLimit>10">
+                                      <div class="view-all-content">
+                                        View All
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
 
                       <div class="col-md-3 profile-sidebar">

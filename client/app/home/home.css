@@ -77,7 +77,39 @@ you can use the generic selector below, but it's slower:
     font-style: normal;
 
 }
-
+@font-face {
+    font-family: 'latosemibold';
+    src: url('../../assets/fonts/lato-semibold-webfont.eot');
+    src: url('../../assets/fonts/lato-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../../assets/fonts/lato-semibold-webfont.woff2') format('woff2'),
+    url('../../assets/fonts/lato-semibold-webfont.woff') format('woff'),
+    url('../../assets/fonts/lato-semibold-webfont.ttf') format('truetype'),
+    url('../../assets/fonts/lato-semibold-webfont.svg#latobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'latoblack';
+    src: url('../../assets/fonts/lato-black-webfont.eot');
+    src: url('../../assets/fonts/lato-black-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../../assets/fonts/lato-black-webfont.woff2') format('woff2'),
+    url('../../assets/fonts/lato-black-webfont.woff') format('woff'),
+    url('../../assets/fonts/lato-black-webfont.ttf') format('truetype'),
+    url('../../assets/fonts/lato-black-webfont.svg#latobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'latomedium';
+    src: url('../../assets/fonts/lato-medium-webfont.eot');
+    src: url('../../assets/fonts/lato-medium-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../../assets/fonts/lato-medium-webfont.woff2') format('woff2'),
+    url('../../assets/fonts/lato-medium-webfont.woff') format('woff'),
+    url('../../assets/fonts/lato-medium-webfont.ttf') format('truetype'),
+    url('../../assets/fonts/lato-medium-webfont.svg#latobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 @font-face {
     font-family: 'aileronregular';
@@ -331,7 +363,7 @@ h3,h4,h5 {
 }
 
 .upcoming-schedule {
-    height: 250px;
+    /*height: 250px;*/
 }
 
 .upcoming-schedule img {
@@ -341,7 +373,13 @@ h3,h4,h5 {
 
 .upcoming-schedule table {
     width: 100%;
-    height: 213px;
+    max-height: 213px;
+    overflow: auto;
+}
+.see-more {
+    margin: 25px auto 0px;
+    display: block;
+    float: none;
 }
 
 .upcoming-schedule .table-header {
@@ -353,13 +391,22 @@ h3,h4,h5 {
     background: #fff;
 }
 
-.upcoming-schedule .table-striped>tbody>tr>td {
-    padding: 7px 15px;
-    font-size: 13px;
-}
-
 .upcoming-schedule .table-striped>tbody>tr>.text-center {
     text-align: center;
+}
+.change-table {
+    padding: 10px 0px 10px 0px;
+    display: block;
+    text-align: center;
+    color: #777;
+    height: 40px;
+    margin-bottom: 10px;
+}
+.change-table:hover, .change-table:focus {
+    text-decoration: none;  color: #fac553;
+}
+.change-table.active {
+    border-bottom: 2px solid #fcd98e;
 }
 
 .upcoming-schedule .table-striped>tbody>tr>.text-center>a:first-child {
@@ -376,6 +423,10 @@ h3,h4,h5 {
     padding: 0;
     font-size: 20px;
     color: #fac553;
+    display: inline-block;
+}
+.upcoming-schedule h3:last-child {
+    padding-left: 56px;
 }
 
 .upcoming-schedule .table-striped>tbody>tr>th {
@@ -383,6 +434,7 @@ h3,h4,h5 {
     padding: 10px 24px;
     color: #a4a4a4;
     font-weight: normal;
+    height: 20px;
 }
 
 .upcoming-schedule .table-striped>tbody>tr:nth-of-type(even) {

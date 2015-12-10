@@ -8,13 +8,14 @@ angular.module('abroadathletesApp')
       replace: true,
       transclude: true,
       scope: {
-        events: '='
+        events: '=',
+        hide: '='
       },
       link: function (scope, element, attrs) {
         scope.events = [];
-        Event.getAllEvents().$promise.then(function(results){
-          scope.events = results;
-        });
+//        Event.getAllEvents().$promise.then(function(results){
+//          scope.events = results;
+//        });
 
         scope.refreshEventAfterModalDismiss = function(){
           Event.getAllEvents().$promise.then(function(results){

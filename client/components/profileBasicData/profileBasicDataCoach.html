@@ -1,46 +1,64 @@
-<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ffffff; padding: 20px;">
+<div class="col-md-12 col-sm-12 col-xs-12 profile-data">
   <button class="btn" ng-show="showedit" ng-click="edit()"
-          style="position: absolute; top:0px; right:0px; background-color: Transparent;"><img src="assets/images/pen.png"/>
+          style="position: absolute; top:0px; right:0px; background-color: Transparent; z-index: 1;"><img src="assets/images/pen.png"/>
   </button>
-  <a ui-sref="friends({id: user._id})" ng-if="!showedit" style="position: absolute; top:2px; right:0px;">Friends</a>
   <div class="row">
-    <div class="col-md-4 col-sm-4 col-xs-12">
-      <a href="#" class="thumbnail" style="margin-top:40px;">
-        <img src="photos/{{user.profilePhoto}}" alt="s" class="img-rounded">
+    <div class="col-md-3" style="border-right: 1px solid #f5f5f5;padding: 30px 0">
+      <a href="#">
+        <img class="profile-main-photo img-rounded" src="photos/{{user.profilePhoto}}">
       </a>
-
-    </div>
-    <div class="col-md-8 col-sm-8 col-xs-12">
-      <h1>{{user.coach.firstName}} {{user.coach.lastName}}</h1>
-      <h4><div ng-repeat="presentTeam in mypresentteams">{{presentTeam.user.team.name}}, {{presentTeam.position}}</div></h4>
-
-      <div class="col-md-4 col-sm-4 col-xs-6">
-        <p>Age</p>
-
-        <p>Coaching exp</p>
-
-        <p>Specialty</p>
-
-        <p>Looking for team</p>
-
-        <p>Past teams</p>
-
-
+      <div class="profile-name">
+        <h1>{{user.firstName}} {{user.lastName}}</h1>
+        <h4><div ng-repeat="presentTeam in mypresentteams">{{presentTeam.user.team.name}}, {{presentTeam.position}}</div></h4>
       </div>
-      <div class="col-md-8 col-sm-8 col-xs-6">
-        <p>{{user.coach.age}}</p>
-
-        <p>{{user.coach.experience}}</p>
-
-        <p>{{user.coach.specialty}}</p>
-
-        <p>{{user.coach.isLookingFor}}</p>
-
-        <p>{{user.coach.pastTeams}}</p>
+      <div class="profile-main-info">
+        <p><span></span></p>
+      </div>
+    </div>
+    <div class="col-md-6" style="padding:30px 0">
+      <div class="row additional-block" style="min-height: 130px">
+        <div class="col-md-6">
+          <div ng-if="user.coach.age" class="additional-info">
+            <p>Age&nbsp;:</p>
+            <span>{{user.coach.age}}</span>
+          </div>
+          <div ng-if="user.coach.experience" class="additional-info">
+            <p>Experience&nbsp;:</p>
+            <span>{{user.coach.experience}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div ng-if="user.coach.specialty" class="additional-info">
+            <p>Specialty&nbsp;:</p>
+            <span>{{user.coach.specialty}}</span>
+          </div>
+          <div ng-if="user.coach.isLookingFor" class="additional-info">
+            <p>Looking for team&nbsp;:</p>
+            <span>{{user.coach.isLookingFor}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 social">
+          <a href="#"><img src="assets/images/facebook-ico.png" alt=""></a>
+          <a href="#"><img src="assets/images/twiter-md-ico.png" alt=""></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 btn-basic-coach">
+          <profile-buttons user="user" owner="owner"></profile-buttons>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3" style="background: #fbfbfb; display: table;">
+      <div class="user-friends-coach">
+        <a ui-sref="friends({id: user._id})">{{user.friends.length}}</a>
+        <p>Friends</p>
       </div>
     </div>
   </div>
-  <profile-buttons user="user" owner="owner"></profile-buttons>
+</div>
+
   <!--<div class="row" ng-show="user._id !== owner._id && user.completed">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <button class="btn-sm btn-default our-button round-corners" ng-show="(owner.kind === 'coach' || owner.kind==='player' || owner.kind ==='fan') && owner['follows'].indexOf(user['_id']) === -1" ng-click="onclickfollow()">Follow!</button>
@@ -50,4 +68,4 @@
 
     </div>
   </div>-->
-</div>
+

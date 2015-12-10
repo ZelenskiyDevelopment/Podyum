@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .directive('eventComments', function () {
+  .directive('eventComments', function (Event) {
     return {
       templateUrl: 'components/wall/event/event-comments/event-comments.html',
       restrict: 'E',
@@ -16,6 +16,7 @@ angular.module('abroadathletesApp')
         this.addComment = function (comment) {
           $scope.comments.push(comment);
         }
+
       }
     };
   });

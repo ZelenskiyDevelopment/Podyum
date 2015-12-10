@@ -133,7 +133,7 @@
                 <div class="col-lg-1">
                     <select class="select-number select" ng-model="number">
                         <option  value="">#</option>
-                        <option ng-repeat="player in players | orderBy:'numberPlayer'" value="{{ player.player.number }}">{{ player.player.number }}</option>
+                        <option ng-repeat="player in players | orderBy:'numberPlayer'" ng-if="player.accepted === true" value="{{ player.id_user.player.number }}">{{ player.id_user.player.number }}</option>
                     </select>
                 </div>
                 <div class="col-lg-2">

@@ -1,5 +1,9 @@
 <div class="col-md-12 col-sm-12 col-xs-12" style="padding: 0px; margin: 0px;" >
     <log-navbar></log-navbar>
+    <div ng-init="isLogin=false;isSignup=false" class="col-md-4 col-sm-5 col-xs-12 log-nav-buttons">
+        <button ng-click="isLogin=true;isSignup=false;scrollTo(&quot;top&quot;)" class="main-button">Sign Up</button>
+        <button ng-click="isLogin=false;isSignup=true;scrollTo(&quot;top&quot;)" class="main-button">Log in</button>
+    </div>
     <div id="top" class="col-md-12 col-sm-12 col-xs-12"
          style="padding: 0px; margin: 0px; height: 1000px; background-position: top;">
         <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12" style="margin: 0px; padding: 0px;"></div>
@@ -122,7 +126,7 @@
                     <div class="landing-big-font">
                         <h2>LOGIN</h2>
                     </div>
-                    <form name="loginForm" ng-submit="login(loginForm)" novalidate="">
+                    <form name="loginForm" ng-submit="login(loginForm)" novalidate="" class="loginForm">
                         <div style="width: 100%; float: left"
                              ng-class="{ 'has-success': registerSubmitted,      'has-error': registerSubmitted }"
                              class="form-group"><input placeholder="Email" type="email" name="email"

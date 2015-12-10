@@ -19,21 +19,25 @@ angular.module('abroadathletesApp')
                 place: '=',
                 time: '=',
                 index: '=',
-                userid: '=?'
+                update: '=',
+                userid: '=?',
+                viewall: '='
             },
-            controller: function ($scope, Teams) {
+            controller: function ($scope, Teams, Game) {
 
+                $scope.delete = function(index,id) {
+                    if (confirm('Delete game ?')) {
 
-                Teams.getTeamById({id: $scope.team1}).$promise.then(function (result) {
-                    $scope.team1 = result;
-                });
-                Teams.getTeamById({id: $scope.team2}).$promise.then(function (result) {
-                    $scope.team2 = result;
+                        Game.delete({id:id}).$promise.then(function(){
+                            $scope.update();
+                        });
 
-                });
+                    }
+                };
 
             },
             link: function (scope, element, attrs) {
+
                 scope.showInfo = function () {
                     if (element.find('.section-info-team').css('display') === 'none') {
                         element.find('.section-info-team').css('display', 'block');
@@ -42,10 +46,6 @@ angular.module('abroadathletesApp')
                     }
                 };
 
-                scope.delete = function($index,id) {
-                    console.log($index);
-                    console.log(id);
-                };
             }
         };
     });

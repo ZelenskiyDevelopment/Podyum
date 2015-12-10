@@ -1,5 +1,13 @@
 'use strict';
 
+
+/**
+ * @ngdoc overview
+ * @name abroadathletesApp
+ * @description
+ * Main app
+ */
+
 angular.module('abroadathletesApp', [
   'ngCookies',
   'ngResource',

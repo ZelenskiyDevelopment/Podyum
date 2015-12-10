@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .directive('eventPublisher', function (Event) {
+  .directive('eventPublisher', function (Event, User) {
     return {
       templateUrl: 'components/wall/event/event-comments/event-publisher/event-publisher.html',
       restrict: 'E',
@@ -11,10 +11,17 @@ angular.module('abroadathletesApp')
       },
       link: function (scope, element, attrs, eventCommentsCtrl) {
         scope.comment = '';
+        scope.user = [];
+        User.get().$promise.then(function (me) {
+
+            scope.user = me;
+
+        });
+
         scope.addComment = function () {
           Event.addComment({
             id: scope.eventId,
-            author: scope.author,
+            author: scope.user._id,
             comment: scope.comment
           }).$promise.then(function (result) {
               eventCommentsCtrl.addComment(result);

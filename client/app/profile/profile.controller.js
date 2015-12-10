@@ -14,7 +14,7 @@ angular.module('abroadathletesApp')
     '$q',
     'sharedScope',
     'Teams',
-    function ($scope, User, $stateParams, Modal, ModalEvent, $location, AssignModal, Game, Event, $q, sharedScope, Teams) {
+    function($scope, User, $stateParams, Modal, ModalEvent, $location, AssignModal, Game, Event, $q, sharedScope, Teams, $rootScope) {
       sharedScope.games = $q.defer();
       sharedScope.myPlayers = $q.defer();
       sharedScope.myCoaches = $q.defer();
@@ -23,52 +23,58 @@ angular.module('abroadathletesApp')
       var userPromise,
         ownerPromise = User.get().$promise;
       if ($stateParams.id) {
-        userPromise = User.getUser({id: $stateParams.id}).$promise;
+        userPromise = User.getUser({
+          id: $stateParams.id
+        }).$promise;
+
+        console.log('$stateParams.id === true');
       } else {
         userPromise = ownerPromise;
+        console.log('$stateParams.id === false');
       }
 
-      $q.all([userPromise, ownerPromise]).then(function (result) {
+      $q.all([userPromise, ownerPromise]).then(function(result) {
         $scope.owner = _.last(result);
         $scope.user = _.first(result);
         $scope.canEdit = $scope.owner._id === $scope.user._id;
-        if(!$scope.canEdit) {
+        if (!$scope.canEdit) {
           User.trackUser({
             trackedUser: $scope.owner,
             trackingUser: $scope.user
           });
         }
         var me = $scope.owner;
-        console.log($scope.user);
         $scope.team = {};
-        Teams.getTeam({id: $scope.user._id}).$promise.then(function (resp) {
+        Teams.getTeam({
+          id: $scope.user._id
+        }).$promise.then(function(resp) {
           $scope.team = resp[0];
           console.log($scope.team);
         });
 
         if ($scope.user.kind === "player" || $scope.user.kind === "coach") {
-          User.getUserByTeam({id: $scope.user._id}).$promise.then(function (user) {
+          User.getUserByTeam({
+            id: $scope.user._id
+          }).$promise.then(function(user) {
             $scope.user.myTeams = user.assignedTo;
             $scope.myPresentTeams = [];
             $scope.myPastTeams = [];
             for (var i = 0; i < user.assignedTo.length; i++) {
-              if(user.assignedTo[i].isPresent) {
+              if (user.assignedTo[i].isPresent) {
                 $scope.myPresentTeams.push(user.assignedTo[i]);
-              }
-              else {
+              } else {
                 $scope.myPastTeams.push(user.assignedTo[i]);
               }
             }
           });
         }
         if (($scope.user.kind === "player" || $scope.user.kind === "coach") && $scope.user.assignTo) {
-          User.get({id: $scope.user.assignTo}).$promise.then(function (myTeam) {
+          User.get({
+            id: $scope.user.assignTo
+          }).$promise.then(function(myTeam) {
             $scope.user.myTeam = myTeam.team.name;
           });
         }
-
-
-
 
         if ($scope.user.kind === "player") {
           /*    Game.getGamesForTeams({id: $scope.user._id}).$promise.then(function (games) {
@@ -92,27 +98,37 @@ angular.module('abroadathletesApp')
            }
            }); */
         } else {
-          Game.getGames({id: $scope.user._id}).$promise.then(function (games) {
-            if($scope.user.kind === "team") {
+          Game.getGames({
+            id: $scope.user._id
+          }).$promise.then(function(games) {
+            if ($scope.user.kind === "team") {
               $scope.upcoming = [];
               $scope.previous = [];
               $scope.events = $scope.user.events;
-              for(var i = 0; i < $scope.events.length; i++) {
-                if(new Date($scope.events[i].event.date) > new Date()) {
+              for (var i = 0; i < $scope.events.length; i++) {
+                if (new Date($scope.events[i].event.date) > new Date()) {
                   $scope.upcoming.push($scope.events[i]);
-                }
-                else {
+                } else {
                   $scope.previous.push($scope.events[i]);
                 }
               }
-              for (var i = 0; i < games.length; i++) {
-                if(games[i].data.isFinished) {
-                  $scope.previous.push({event:{title:games[i].team1.team.name + " vs " + games[i].team2.team.name, date:games[i].date}});
+              /*for (var i = 0; i < games.length; i++) {
+                if (games[i].data.isFinished) {
+                  $scope.previous.push({
+                    event: {
+                      title: games[i].team1.team.name + " vs " + games[i].team2.team.name,
+                      date: games[i].date
+                    }
+                  });
+                } else {
+                  $scope.upcoming.push({
+                    event: {
+                      title: games[i].team1.team.name + " vs " + games[i].team2.team.name,
+                      date: games[i].date
+                    }
+                  });
                 }
-                else {
-                  $scope.upcoming.push({event:{title:games[i].team1.team.name + " vs " + games[i].team2.team.name, date:games[i].date}});
-                }
-              }
+              }*/
             }
             _.remove(games, function(game) {
               return !game.data.isFinished;
@@ -122,16 +138,18 @@ angular.module('abroadathletesApp')
           });
         }
         if ($scope.user.kind === "team" || $scope.user.kind === "league") {
-          User.getUserByTeam({id: $scope.user._id}).$promise.then(function (user) {
-            $scope.myPlayers = user.assigned.filter(function (assignedUser) {
+          User.getUserByTeam({
+            id: $scope.user._id
+          }).$promise.then(function(user) {
+            $scope.myPlayers = user.assigned.filter(function(assignedUser) {
               return assignedUser.user.kind === 'player' && assignedUser.isPresent;
             });
 
-            $scope.myCoaches = user.assigned.filter(function (assignedUser) {
+            $scope.myCoaches = user.assigned.filter(function(assignedUser) {
               return assignedUser.user.kind === 'coach' && assignedUser.isPresent;
             });
 
-            $scope.myTeams = user.assigned.filter(function (assignedUser) {
+            $scope.myTeams = user.assigned.filter(function(assignedUser) {
               return assignedUser.user.kind === 'team';
             });
             sharedScope.myPlayers.resolve($scope.myPlayers);
@@ -139,8 +157,12 @@ angular.module('abroadathletesApp')
             sharedScope.myTeams.resolve($scope.myTeams);
           });
         }
-        var leaguePromises = [Game.getGames({id: $scope.user._id}).$promise,  User.getUserByTeam({id: $scope.user._id}).$promise];
-        if($scope.user.kind === "league") {
+        var leaguePromises = [Game.getGames({
+          id: $scope.user._id
+        }).$promise, User.getUserByTeam({
+          id: $scope.user._id
+        }).$promise];
+        if ($scope.user.kind === "league") {
           $q.all(leaguePromises).then(function(result) {
             $scope.myTeams = _.last(result).assigned;
             $scope.games = _.first(result);
@@ -156,18 +178,16 @@ angular.module('abroadathletesApp')
               });
             }
             for (var i = 0; i < $scope.games.length; i++) {
-              if($scope.games[i].data.isFinished) {
+              if ($scope.games[i].data.isFinished) {
                 $scope.previous.push($scope.games[i]);
-              }
-              else {
+              } else {
                 $scope.upcoming.push($scope.games[i]);
               }
               if ($scope.games[i].data.winner) {
                 if ($scope.games[i].data.winner == 1) {
                   $scope.addWin($scope.games[i].team1._id)
                   $scope.addLose($scope.games[i].team2._id)
-                }
-                else if ($scope.games[i].data.winner == 2) {
+                } else if ($scope.games[i].data.winner == 2) {
                   $scope.addWin($scope.games[i].team2._id)
                   $scope.addLose($scope.games[i].team1._id)
                 }
@@ -180,25 +200,39 @@ angular.module('abroadathletesApp')
         //   $scope.user.player.position = '';
         // }
       });
+      Game.getAllGames().$promise.then(function(games) {
+        $scope.games = games;
+      });
 
+      $scope.checkIfTodayDate = function(date) {
+
+            var date1 = new Date(date);
+            var today = new Date();
+
+            if (today.toDateString() == date1.toDateString()) {
+                return 'Live Now';
+            } else {
+                return date;
+            }
+        };
 
 
 
       $scope.addWin = function(id) {
         _.find($scope.myStandings, function(team) {
-          if(team.id === id) {
+          if (team.id === id) {
             team.wins++;
           }
         })
       };
       $scope.addLose = function(id) {
         _.find($scope.myStandings, function(team) {
-          if(team.id === id) {
+          if (team.id === id) {
             team.loses++;
           }
         })
       };
-      $scope.deleteTrait = function (index, type) {
+      $scope.deleteTrait = function(index, type) {
         if (type === "player") {
           $scope.user.player.traits.splice(index, 1);
         }
@@ -218,10 +252,10 @@ angular.module('abroadathletesApp')
       };
 
 
-      $scope.calendarOptions.dateClick = function (dateClicked) {
-        ModalEvent.confirm.delete()(dateClicked, $scope.canEdit, function () {
+      $scope.calendarOptions.dateClick = function(dateClicked) {
+        ModalEvent.confirm.delete()(dateClicked, $scope.canEdit, function() {
           var newEvents = [];
-          _.each(dateClicked.events, function (event) {
+          _.each(dateClicked.events, function(event) {
             var newEv = {};
             newEv['event'] = {};
             newEv['event'].date = event.date;
@@ -231,7 +265,7 @@ angular.module('abroadathletesApp')
             newEv['year'] = dateClicked.year;
             newEvents.push(newEv);
           });
-          _.remove($scope.user.events, function (event) {
+          _.remove($scope.user.events, function(event) {
             return event.day === dateClicked.day && event.month === dateClicked.month && event.year === dateClicked.year;
           });
           $scope.user.events.push.apply($scope.user.events, newEvents);
@@ -239,11 +273,13 @@ angular.module('abroadathletesApp')
         });
       };
 
-      $scope.follow = function () {
+      $scope.follow = function() {
         var ID = $stateParams.id;
-        User.followUser({id: ID}).$promise.then(function(result){
+        User.followUser({
+          id: ID
+        }).$promise.then(function(result) {
           $scope.owner.follows.push(ID);
-          if(result.friends === 1) {
+          if (result.friends === 1) {
             var newFriend = {
               _id: ID,
               profilePhoto: $scope.user.profilePhoto,
@@ -256,37 +292,48 @@ angular.module('abroadathletesApp')
 
       };
 
-      $scope.unfollow = function () {
+      $scope.unfollow = function() {
         var ID = $stateParams.id;
-        User.unFollowUser({id: ID});
-        _.remove($scope.owner.follows, function (elem) {
+        User.unFollowUser({
+          id: ID
+        });
+        _.remove($scope.owner.follows, function(elem) {
           return elem === $scope.user._id;
         });
       };
-      $scope.friend = function () {
+      $scope.friend = function() {
         var ID = $stateParams.id;
-        User.inviteToFriends({id: ID});
+        User.inviteToFriends({
+          id: ID
+        });
         $scope.owner.invited.push(ID);
         //$scope.friendsNumber = $scope.user.friends.length;
         console.log($scope.friendsNumber = $scope.user.friends.length);
       };
 
-      $scope.assign = function () {
-        AssignModal.assign.open()($scope.user.kind, function (data) {
+      $scope.assign = function() {
+        AssignModal.assign.open()($scope.user.kind, function(data) {
           data.id = $stateParams.id;
-          User.assignTo({data: data});
+          User.assignTo({
+            data: data
+          });
         });
       };
 
       $scope.recruit = function() {
-        var data = {id: $stateParams.id, dtFrom: new Date()};
-        User.addToTeam({data: data});
+        var data = {
+          id: $stateParams.id,
+          dtFrom: new Date()
+        };
+        User.addToTeam({
+          data: data
+        });
         console.log("recruit")
       };
 
-      $scope.edit = function () {
-        Modal.confirm.delete(function () {
-          User.get().$promise.then(function (me) {
+      $scope.edit = function() {
+        Modal.confirm.delete(function() {
+          User.get().$promise.then(function(me) {
             $scope.user = me;
           });
         })('', $scope);
@@ -295,15 +342,22 @@ angular.module('abroadathletesApp')
       $scope.leave = function(index, ID, from, to, position, isPresent) {
         console.log(index);
         if ($scope.user.kind === "player" || $scope.user.kind === "coach")
-          if(isPresent) {
+          if (isPresent) {
             $scope.user.myTeams[index].dateTo = new Date();
             $scope.user.myTeams[index].isPresent = false;
-          }
-          else {
+          } else {
             $scope.user.myTeams.splice(index, 1);
           }
-        User.leave({idChild: $scope.user._id, idParent: ID, dateFrom: from, dateTo: to, position: position, isPresent: isPresent});
+        User.leave({
+          idChild: $scope.user._id,
+          idParent: ID,
+          dateFrom: from,
+          dateTo: to,
+          position: position,
+          isPresent: isPresent
+        });
 
       };
 
-    }]);
+    }
+  ]);

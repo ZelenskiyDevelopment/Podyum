@@ -4,7 +4,7 @@ angular.module('abroadathletesApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('manageStats', {
-        url:'/manageStats',
+        url:'/manage-stats',
         templateUrl: 'app/manageStats/manageStats.html',
         controller: 'ManageStatsCtrl'
       });

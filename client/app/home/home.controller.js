@@ -1,65 +1,160 @@
 'use strict';
 
+
+/**
+ * @ngdoc object
+ * @name abroadathletesApp.controller:HomeCtrl
+ * @requires  $scope
+ * @requires  $state
+ * @requires abroadathletesApp.User
+ * @requires $location
+ * @requires uiCalendarConfig
+ * @requires socket
+ * @requires $mdDialog
+ * @requires abroadathletesApp.Milestone
+ * @requires abroadathletesApp.Event
+ * @requires abroadathletesApp.Teams
+ * @requires abroadathletesApp.Game
+ * @description
+ * Home controller
+ */
+
 angular.module('abroadathletesApp')
-  .controller('HomeCtrl', function ($scope, $state, User, $location, socket, $mdDialog, Milestone) {
-      if ($state.is('home.update-status')) {
-        $state.go('home.update-status.update-fans', {}, {reload: false});
-      }
+    .controller('HomeCtrl', function ($scope, $state, User, $location, uiCalendarConfig, socket, $mdDialog, Milestone, Event, Teams, Game) {
+        $scope.games = [];
+        $scope.gamesTable = true;
+        $scope.eventsTable = false;
+        $scope.userPromise = User.get().$promise;
+        $scope.userPromise.then(function (me) {
+            if (!me.completed) {
+                $location.path('/creator');
+            }
+            $scope.user = me;
+            $scope.friendsNumber = $scope.user.friends.length;
+            $scope.followersNumber = $scope.user.followed.length;
+            Event.getOwnEvents().$promise.then(function (results) {
 
-    $scope.userPromise = User.get().$promise;
-    $scope.userPromise.then(function (me) {
-      if (!me.completed) {
-        $location.path('/creator');
-      }
-      $scope.user = me;
-      $scope.friendsNumber = $scope.user.friends.length;
-      $scope.followersNumber = $scope.user.followed.length;
-     // fetchMyMilestones();
-    });
+                angular.forEach(results, function (item, key) {
+                    if (item.toUser === null) {
+                        $scope.events.push(item);
+                    }
 
-   /* $scope.fetchMyMilestones = fetchMyMilestones;
-    function fetchMyMilestones(){
-      Milestone.getOwn({owner: $scope.user._id}).$promise.then(function(response){
-        $scope.myMilestones = _.map(response, 'content');
-      });
-    }*/
+                });
 
-    $scope.changeMembership = function() {
-      if($scope.user.role === 'free')
-        $scope.user.role = 'premium';
-      else
-        $scope.user.role = 'free';
-      User.changeMembership({data: $scope.user.role}).$promise.then(function() {
-        User.get().$promise.then(function(me) {
+            });
+
+
+            switch (me.kind) {
+
+                case 'player':
+
+                    Teams.getAssignRequests({id: me._id}).$promise.then(function (team) {
+
+                        if (angular.isObject(team)) {
+
+                            if (team.accepted) {
+                                Game.getGames({id: team[0].id_team._id}).$promise.then(function (games) {
+                                    $scope.games = games;
+                                });
+                            }
+
+                        }
+
+                    });
+
+
+                case 'fan':
+                case 'league':
+                case 'media':
+
+                    Game.getAllGames().$promise.then(function (games) {
+                        $scope.games = games;
+                    });
+
+                    break;
+
+                case 'team':
+                case 'coach':
+                    Teams.getTeam({id: me._id}).$promise.then(function (result) {
+                        Game.getGames({id: result[0]._id}).$promise.then(function (games) {
+                            $scope.games = games;
+                        });
+                    });
+                break;
+
+            }
+
         });
-      });
-    };
 
-    $scope.showTrackingModal = function(event){
-      $mdDialog.show({
-        controller: 'easyModalCtrl',
-        resolve: {
-          value: function () {
-            return $scope.user.trackedBy;
-          }
-        },
-        templateUrl: 'app/home/profileTracker/profileTracker.html',
-        targetEvent: event,
-        parent: document.body,
-        clickOutsideToClose:true
-      });
-    };
+        /**
+         * @ngdoc method
+         * @name checkIfTodayDate
+         * @methodOf abroadathletesApp.controller:HomeCtrl
+         * @param {Date} date Check If Today Date
+         * @returns {boolean} Return true or false if today Date
+         *
+         */
 
-    //function easyModalCtrl($scope, value){
-    //  $scope.value = value;
-    //  $scope.cancel = function() {
-    //    $mdDialog.cancel();
-    //  };
-    //
-    //  $scope.applyForJob = function(){
-    //    $mdDialog.hide($scope.value);
-    //  };
-    //}
+        $scope.checkIfTodayDate = function(date) {
 
-    //$scope.myMilestones = ["Average over 90 points per game", "Average over 20 assists per game", "1st seed in Eastern Conference", "Average less than 10 turnovers per game", "3 players average 20 points per game"];
-  });
+            var date1 = new Date(date);
+            var today = new Date();
+
+            if (today.toDateString() == date1.toDateString()) {
+                return 'Live Now';
+            } else {
+                return date;
+            }
+        };
+
+        $scope.changeMembership = function () {
+            if ($scope.user.role === 'free')
+                $scope.user.role = 'premium';
+            else
+                $scope.user.role = 'free';
+            User.changeMembership({data: $scope.user.role}).$promise.then(function () {
+                User.get().$promise.then(function (me) {
+                });
+            });
+        };
+
+        /**
+         * @ngdoc method
+         * @name showTable
+         * @methodOf abroadathletesApp.controller:HomeCtrl
+         * @param {string} string Type table
+         *
+         */
+
+        $scope.showTable = function(type) {
+            if(type ==='gamesTable') {
+                $scope.gamesTable = true;
+                $scope.eventsTable = false;
+            } else if (type ==='eventsTable') {
+                $scope.gamesTable = false;
+                $scope.eventsTable = true;
+            }
+        };
+
+        /**
+         * @ngdoc method
+         * @name showTrackingModal
+         * @methodOf abroadathletesApp.controller:HomeCtrl
+         *
+         */
+
+        $scope.showTrackingModal = function (event) {
+            $mdDialog.show({
+                controller: 'easyModalCtrl',
+                resolve: {
+                    value: function () {
+                        return $scope.user.trackedBy;
+                    }
+                },
+                templateUrl: 'app/home/profileTracker/profileTracker.html',
+                targetEvent: event,
+                parent: document.body,
+                clickOutsideToClose: true
+            });
+        };
+    });

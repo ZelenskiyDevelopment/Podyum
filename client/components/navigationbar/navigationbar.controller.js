@@ -37,48 +37,27 @@ angular.module('abroadathletesApp')
 
                 switch (me.kind) {
                     case 'team':
-
+                    case 'coach':
                         var allRequests = {};
                         var AllRequestTeam = {};
 
-                        Teams.getAssignRequests({id: me._id}).$promise.then(function (requests) {
-                            if (requests.length) {
-                                Teams.getTeamById({id: requests[0].id_team}).$promise.then(function (team) {
-                                    allRequests = _.map(requests, function (request) {
-                                        if (request.accepted === false) {
-                                            return request;
-                                        }
-                                    });
-                                    if (angular.isObject(allRequests[0])) {
-                                        $scope.assignRequests.push({team: team[0], requests: allRequests});
-                                    }
-                                });
-                            }
-                        });
-
                         Teams.getTeam({id: me._id}).$promise.then(function (result) {
 
-                            $scope.team = result;
+                            if (result.length) {
+                                $scope.team = result;
 
-                            Teams.getAssignRequestsToTeam({id: result[0]._id}).$promise.then(function (requests) {
+                                Teams.getAssignRequestsToTeam({id: result[0]._id}).$promise.then(function (requests) {
 
-
-                                angular.forEach(requests, function (request, key) {
-
-                                    User.getUserById({id: request.id_user}).$promise.then(function (user) {
-
-                                        request.user = user;
-
-                                        if (request.requestToTeam === true && request.accepted === false) {
-                                            $scope.assignRequestsTeam.push(request);
-                                        }
+                                    angular.forEach(requests, function (request, key) {
+                                            if (request.requestToTeam === true && request.accepted === false) {
+                                                $scope.assignRequestsTeam.push(request);
+                                            }
 
                                     });
 
-
                                 });
+                            }
 
-                            });
                         });
 
                         break
@@ -105,6 +84,25 @@ angular.module('abroadathletesApp')
                                 }
                             });
                         });
+                        break
+
+
+                    case "player":
+
+                        Teams.getAssignRequests({id: me._id}).$promise.then(function (requests) {
+                            if (requests.length) {
+
+                                allRequests = _.map(requests, function (request) {
+                                    if (request.accepted === false) {
+                                        return request;
+                                    }
+                                });
+                                if (angular.isObject(allRequests[0])) {
+                                    $scope.assignRequests = allRequests;
+                                }
+                            }
+                        });
+
                         break
                 }
 

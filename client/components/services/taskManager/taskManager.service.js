@@ -1,5 +1,12 @@
 'use strict';
 
+/**
+ * @ngdoc service
+ * @name abroadathletesApp.TaskManager
+ * @description
+ * # TaskManager
+ * Service to talk with backend api.
+ */
 angular.module('abroadathletesApp')
     .factory('TaskManager', function ($http) {
         return {
@@ -17,6 +24,18 @@ angular.module('abroadathletesApp')
                     return result;
                 });
             },
+            /**
+             * @ngdoc
+             * @name abroadathletesApp.TaskManager#getAllEventsUser
+             * @methodOf abroadathletesApp.TaskManager
+             *
+             * @description
+             * Method to get data form the backend api
+             * @example
+             * TaskManager.getAllEventsUser(id);
+             * @param {int} entity id
+             * @returns {httpPromise} resolve with fetched data, or fails with error description.
+             */
             getAllEventsUser: function(id_user) {
                 return $http.get('/api/taskmanager/'+id_user+'/getAllEventsUser').then(function(result) {
                     return result;

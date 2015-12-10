@@ -1,5 +1,17 @@
 'use strict';
 
+/**
+ * @ngdoc object
+ * @name abroadathletesApp.controller:CreatorMediaCtrl
+ * @requires  $scope
+ * @requires  CitizenShips
+ * @requires  PlayLevels
+ * @requires  User
+ * @description
+ * Creator Media Profile Controller
+ */
+
+
 angular.module('abroadathletesApp')
     .controller('CreatorMediaCtrl', function ($scope, PlayLevels, CitizenShips, User) {
         $scope.playLevels = PlayLevels.getPlayLevels($scope.formData.sport);
