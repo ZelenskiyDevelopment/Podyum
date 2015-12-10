@@ -3,6 +3,12 @@
 angular.module('abroadathletesApp')
   .controller('TeamsCtrl', function ($scope, User, Game, $location, Teams, $state, $uibModal) {
 
+    console.log($state.current.name);
+
+    $scope.checkState = function (state){
+      return state === $state.current.name;
+    }
+
     $scope.user = User.get();
 
     $scope.chartData = [
