@@ -213,7 +213,8 @@
                                 Caused by
                               </div>
                               <div class="col-md-2">
-                                <input type="number" class="form-control custom-input" ng-model="round.fumbler"/>
+                                <input type="number" class="form-control custom-input" ng-model="round.fumbler"
+                                       ng-focus="lastPlayerInputField = 'round.fumbler'" />
                               </div>
 
                               <div class="col-md-7 advanced-button-container">
@@ -227,7 +228,8 @@
                                 Recovered by
                               </div>
                               <div class="col-md-2">
-                                <input type="number" class="form-control custom-input" ng-model="round.recoverer"/>
+                                <input type="number" class="form-control custom-input" ng-model="round.recoverer"
+                                       ng-focus="lastPlayerInputField = 'round.recoverer'" />
                               </div>
 
                               <div class="col-md-7 advanced-button-container">
