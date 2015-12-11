@@ -3,13 +3,28 @@
 angular.module('abroadathletesApp')
   .controller('TeamsCtrl', function ($scope, User, Game, $location, Teams, $state, $uibModal) {
 
-    console.log($state.current.name);
-
     $scope.checkState = function (state){
       return state === $state.current.name;
-    }
+    };
 
     $scope.user = User.get();
+
+    setTimeout(function(){
+      console.log('GetDans');
+      $scope.fans = $scope.user.follows;
+      console.log($scope.fans);
+
+      $scope.realFans = [];
+
+      angular.forEach($scope.fans, function(v, k){
+        User.getUserById(v).$promise.then(function(user) {
+          $scope.realFans.push(user);
+          console.log(user);
+        });
+      });
+
+console.log($scope.realFans);
+    }, 1000);
 
     $scope.chartData = [
       {
@@ -180,28 +195,7 @@ angular.module('abroadathletesApp')
 
 
     if ($scope.user.kind === "player") {
-      /*    Game.getGamesForTeams({id: $scope.user._id}).$promise.then(function (games) {
-       _.remove(games, function(game) {
-       return !game.data.isFinished || !game.userData;
-       });
-       $scope.games = games;
-       sharedScope.games.resolve(games);
 
-       $scope.myGameStats = new Array($scope.games.length);
-       for (var i = 0; i < $scope.games.length; i++) {
-       if ($scope.games[i].userData && $scope.games[i].userData[$scope.user._id]) {
-       $scope.myGameStats[i] = $scope.games[i].userData[$scope.user._id];
-       }
-       }
-       $scope.myStats = _.fill(Array(14), 0);
-
-       for (var i = 0; i < $scope.myGameStats.length; i++) {
-       for (var j = 0; j < 14; j++) {
-       if($scope.myGameStats[i])
-       $scope.myStats[j] += $scope.myGameStats[i][j];
-       }
-       }
-       }); */
     } else {
       Game.getGames({id: $scope.user._id}).$promise.then(function (games) {
         if ($scope.user.kind === "team") {
