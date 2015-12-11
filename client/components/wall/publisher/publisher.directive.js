@@ -21,7 +21,7 @@ angular.module('abroadathletesApp')
 
 
             Event.getMyPosts({id: scope.user._id}).$promise.then(function(events){
-                console.log(events);
+
             });
 
         });
