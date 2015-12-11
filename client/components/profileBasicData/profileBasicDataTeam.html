@@ -3,15 +3,18 @@
           style="position: absolute; top:0px; right:0px; background-color: Transparent; z-index: 1;"><img src="assets/images/pen.png"/>
   </button>
   <div class="row">
-    <div class="col-md-3" style="border-right: 1px solid #f5f5f5;padding: 30px 0">
+    <div class="col-md-3" style="border-right: 1px solid #f5f5f5;padding: 30px 0;">
       <a href="#">
-        <img class="profile-main-photo img-rounded" src="photos/{{team.logoTeam}}">
+        <img ng-if="team.logoTeam" class="profile-main-photo img-rounded" src="photos/{{team.logoTeam}}">
+        <img ng-if="user.profilePhoto" ng-hide="team.logoTeam" class="profile-main-photo img-rounded" src="photos/{{user.profilePhoto}}" alt="">
       </a>
       <div class="profile-name">
-        <h1>{{team.teamName}} {{team.short}}</h1>
+        <h1 ng-if="team.teamName">{{team.teamName}} {{team.short}}</h1>
+        <h1 ng-if="user.team.name" ng-hide="team.teamName">{{user.team.name}}</h1>
       </div>
       <div class="profile-main-info">
-        <p><span>{{team.myLeagues[0].user.leagueName}}</span></p>
+        <p ng-if="team.myLeagues[0].user.leagueName"><span>{{team.myLeagues[0].user.leagueName}}</span></p>
+        <p ng-if="user.team.league" ng-hide="team.myLeagues[0].user.leagueName">{{user.team.league}}</p>
       </div>
     </div>
     <div class="col-md-5" style="padding:30px 0">
