@@ -71,7 +71,7 @@ module.exports = function(orientDatabase) {
 
   router.post('/followUser', auth.isAuthenticated(), followRelationsController.followUser);
   router.post('/unFollowUser', auth.isAuthenticated(), followRelationsController.unFollowUser);
-  router.get('/:id/getUserByTeam', auth.isAuthenticated(), relationController.getUserByTeam);
+ // router.get('/:id/getUserByTeam', auth.isAuthenticated(), relationController.getUserByTeam);
   router.get('/:id/getUsersAndFollowersByTeam', auth.isAuthenticated(), relationController.getUsersAndFollowersByTeam);
   router.get('/:id/getUserFriends', auth.isAuthenticated(), relationController.getUserFriends);
   router.get('/:id/getUserStatsAdmins', auth.isAuthenticated(), relationController.getUserStatsAdmins);

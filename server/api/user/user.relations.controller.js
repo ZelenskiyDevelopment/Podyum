@@ -325,20 +325,20 @@ exports.getUserManagesRoster = function(req, res, next) {
     });
 }
 
-exports.getUserByTeam = function (req, res, next) {
-  var userId = req.params.id,
-    optionsAssignedTo = PopulateUtils.userPopulateOptions('assignedTo.user'),
-    optionsAssigned = PopulateUtils.userPopulateOptions('assigned.user');
-
-  User.findById(userId, '-salt -hashedPassword')
-    .populate(optionsAssignedTo)
-    .populate(optionsAssigned)
-    .exec(function (err, user) {
-      if (err) return next(err);
-      if (!user) return res.send(401);
-      res.json(user);
-    });
-};
+//exports.getUserByTeam = function (req, res, next) {
+//  var userId = req.params.id,
+//    optionsAssignedTo = PopulateUtils.userPopulateOptions('assignedTo.user'),
+//    optionsAssigned = PopulateUtils.userPopulateOptions('assigned.user');
+//
+//  User.findById(userId, '-salt -hashedPassword')
+//    .populate(optionsAssignedTo)
+//    .populate(optionsAssigned)
+//    .exec(function (err, user) {
+//      if (err) return next(err);
+//      if (!user) return res.send(401);
+//      res.json(user);
+//    });
+//};
 
 exports.getUsersAndFollowersByTeam = function (req, res, next) {
   var userId = req.params.id,

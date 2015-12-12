@@ -156,6 +156,7 @@ exports.getUserById = function (req, res) {
 
 /**
  * Get my info
+ *
  */
 exports.me = function (req, res, next) {
   var userId = req.user._id,

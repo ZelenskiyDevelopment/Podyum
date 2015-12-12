@@ -30,9 +30,9 @@
       </div>
     </form>
   </script>
-  <div ui-view="" class="ng-scope"></div>
 
-  <div class="row" ng-show="checkState('teams')">
+
+  <div class="row" >
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-3">
@@ -117,45 +117,45 @@
 
               </table>
             </div>
-            <div ng-if="user.kind === 'team'" class="team-profile-side">
-              <div class="col-md-12">
-                <!-- ngIf: myTeam.length > 0 && user.kind == 'player' && myTeam.accepted === true -->
-                <div ng-hide="checkState('teams.schedule') || checkState('teams.manageRoster')"
-                     class="col-lg-6 col-lg-offset-3 padding-bottom" aria-hidden="false">
-                  <a ui-sref="teams.addTeam" class="btn btn-default our-button" href="/teams/add-team" aria-hidden="false" style=" color: #fff">Create a Team</a>
-                </div>
-                <!-- ngIf: user.kind == 'team' || user.kind == 'coach' -->
-                <div ng-hide="checkState('teams.schedule') || checkState('teams.manageRoster')"
-                     ng-if="user.kind == 'team' || user.kind == 'coach'" class="ng-scope" aria-hidden="false">
-                  <div ng-show="" class="col-md-12" aria-hidden="false">
-                    <div class="navbar-default">
-                      <ul class="nav navbar-nav">
-                        <li ng-class="{ active: isActive('/teams/update-team') }">
-                          <!-- ngIf: user.kind == 'team' || user.kind == 'coach' -->
-                          <a ui-sref="teams.updateTeam" data-toggle="modal" role="button"
-                             ng-if="user.kind == 'team' || user.kind == 'coach'" class="item-menu"
-                             href="/teams/update-team">Update Team</a>
-                          <!-- end ngIf: user.kind == 'team' || user.kind == 'coach' -->
-                        </li>
-                        <li ng-class="{ active: isActive('/teams/task-manager') }">
-                          <a ui-sref="teams.taskManager" data-toggle="modal" role="button" class="item-menu"
-                             href="/teams/task-manager">Task Manager</a>
-                        </li>
-                        <li ng-class="{ active: isActive('/teams/fans') }">
-                          <a ui-sref="teams.fans" data-toggle="modal" role="button" class="item-menu">Fans</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div><!-- end ngIf: user.kind == 'team' || user.kind == 'coach' -->
-              </div>
-            </div>
+            <!--<div ng-if="user.kind === 'team'" class="team-profile-side">-->
+              <!--<div class="col-md-12">-->
+                <!--&lt;!&ndash; ngIf: myTeam.length > 0 && user.kind == 'player' && myTeam.accepted === true &ndash;&gt;-->
+                <!--<div ng-hide="checkState('teams.schedule') || checkState('teams.manageRoster')"-->
+                     <!--class="col-lg-6 col-lg-offset-3 padding-bottom" aria-hidden="false">-->
+                  <!--<a ui-sref="teams.addTeam" class="btn btn-default our-button" href="/teams/add-team" aria-hidden="false" style=" color: #fff">Create a Team</a>-->
+                <!--</div>-->
+                <!--&lt;!&ndash; ngIf: user.kind == 'team' || user.kind == 'coach' &ndash;&gt;-->
+                <!--<div ng-hide="checkState('teams.schedule') || checkState('teams.manageRoster')"-->
+                     <!--ng-if="user.kind == 'team' || user.kind == 'coach'" class="ng-scope" aria-hidden="false">-->
+                  <!--<div ng-show="" class="col-md-12" aria-hidden="false">-->
+                    <!--<div class="navbar-default">-->
+                      <!--<ul class="nav navbar-nav">-->
+                        <!--<li ng-class="{ active: isActive('/teams/update-team') }">-->
+                          <!--&lt;!&ndash; ngIf: user.kind == 'team' || user.kind == 'coach' &ndash;&gt;-->
+                          <!--<a ui-sref="teams.updateTeam" data-toggle="modal" role="button"-->
+                             <!--ng-if="user.kind == 'team' || user.kind == 'coach'" class="item-menu"-->
+                             <!--href="/teams/update-team">Update Team</a>-->
+                          <!--&lt;!&ndash; end ngIf: user.kind == 'team' || user.kind == 'coach' &ndash;&gt;-->
+                        <!--</li>-->
+                        <!--<li ng-class="{ active: isActive('/teams/task-manager') }">-->
+                          <!--<a ui-sref="teams.taskManager" data-toggle="modal" role="button" class="item-menu"-->
+                             <!--href="/teams/task-manager">Task Manager</a>-->
+                        <!--</li>-->
+                        <!--<li ng-class="{ active: isActive('/teams/fans') }">-->
+                          <!--<a ui-sref="teams.fans" data-toggle="modal" role="button" class="item-menu">Fans</a>-->
+                        <!--</li>-->
+                      <!--</ul>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>&lt;!&ndash; end ngIf: user.kind == 'team' || user.kind == 'coach' &ndash;&gt;-->
+              <!--</div>-->
+            <!--</div>-->
           </div>
 
 
         </div>
         <div class="col-md-3">
-          <div class="upcoming-schedule" style="height: 250px">
+          <div class="upcoming-schedule" style="height: 200px">
             <div class="table-header"><h3>Team Goals</h3></div>
             <table class="table table-striped">
               <tr>
@@ -192,215 +192,33 @@
               </tr>
             </table>
           </div>
+            <div class="col-md-12">
+                <a class="btn btn-default our-button col-md-12" ng-click="joinToTeam()" ng-if=" user.kind == 'player'" >Join existing team</a>
+
+            </div>
         </div>
+
       </div>
       <div class="row">
         <div class="col-md-12">
           <div ng-cloak>
-            <md-content>
-              <md-tabs id="top-tabs" class="md-dynamic-height md-border-bottom" md-align-tabs="top" md-selected="3">
-                <md-tab id="update-team" md-on-select="">
-                  <md-tab-label>UPDATE TEAM</md-tab-label>
-                  <md-tab-body>
-                    Some body
-                  </md-tab-body>
-                </md-tab>
-                <md-tab id="message-team" md-on-select="">
-                  <md-tab-label>MESSAGE TEAM</md-tab-label>
-                  <md-tab-body>
-                    Some body
-                  </md-tab-body>
-                </md-tab>
-                <md-tab id="task-manager" md-on-select="">
-                  <md-tab-label>TASK MANAGER</md-tab-label>
-                  <md-tab-body>
-                    Some body
-                  </md-tab-body>
-                </md-tab>
-                <md-tab id="notifications" md-on-select="">
-                  <md-tab-label>DASHBOARD</md-tab-label>
-                  <md-tab-body>
-                    <div class="row row-advanced-controls-profile dark-grey">
-                      <div class="col-md-12" style="text-align: center">
-                        <h2>FAN ANALYTICS</h2>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-9 profile-content">
-                        <md-tabs id="inside-tabs" class="md-dynamic-height md-border-bottom" md-align-tabs="top"
-                                 md-selected="0">
-                          <md-tab id="insights" md-on-select="changeDetalization(0)" label="INSIGHT">
-                            <md-content class="inner-tab-content">
-                            </md-content>
-                          </md-tab>
-                          <md-tab id="days" md-on-select="changeDetalization(1)" label="DAYS">
-                            <md-content class="inner-tab-content">
-                            </md-content>
-                          </md-tab>
-                          <md-tab id="weeks" md-on-select="changeDetalization(2)" label="WEEKS">
-                            <md-content class="inner-tab-content">
-                            </md-content>
-                          </md-tab>
-                          <md-tab id="month" md-on-select="changeDetalization(3)" label="MONTH">
-                            <md-content class="inner-tab-content">
-                            </md-content>
-                          </md-tab>
-                          <md-tab id="years" md-on-select="changeDetalization(4)" label="YEARS">
-                            <md-content class="inner-tab-content">
-                            </md-content>
-                          </md-tab>
-                        </md-tabs>
-                        <div class="row light-gray">
-                          <div class="col-md-12" style="padding-left: 50px;">
-                            <div class="row  white">
-                              <div class="col-md-12">
-                                <nvd3 options="chartOptions" data="chartData"
-                                      style="min-width: 300px; min-height: 300px; display: block;"></nvd3>
-                              </div>
-                            </div>
-                            <div class="row  white">
-                              <div class="col-md-6" style="padding-left: 50px;">
-                                <h2>Fans by country</h2>
 
-                                <div id="chartdiv" class="chartdiv"></div>
-                                <div class="white">
-                                  <ul class="list-unstyled country-list">
-                                    <li ng-repeat="item in mapData | limitTo:mapDataLimit">
-                                      <div class="row">
-                                        <div class="col-md-1">
-                                          <img src="{{item.flag}}" width="24" height="16"/>
-                                        </div>
-                                        <div class="col-md-8">
-                                          {{item.name}}
-                                        </div>
-                                        <div class="col-md-3">
-                                          {{item.value}}
-                                        </div>
-                                      </div>
-                                    </li>
-                                  </ul>
-                                </div>
-                                <div class="row white">
-                                  <div class="col-md-12">
-                                    <div class="view-all" ng-click="mapDataLimit = 300"
-                                         ng-hide="mapDataLimit>10">
-                                      <div class="view-all-content">
-                                        View All
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-md-6 white">
-                                <h2>Link clicks</h2>
+          <ul class="nav nav-pills nav-bar-team" ng-if="user.kind == 'team' || user.kind == 'coach'">
+              <li role="presentation" ng-show="team.length > 0" ng-class="{ active: isActive('/teams/update-team') }"><a ui-sref="teams.updateTeam">UPDATE TEAM</a></li>
+              <li role="presentation" ng-show="team.length == 0" ng-if="user.kind == 'team' || user.kind == 'coach'" ng-class="{ active: isActive('/teams/update-team') }"><a ui-sref="teams.updateTeam">CREATE A TEAM</a></li>
+              <li role="presentation" ng-show="team.length > 0"><a href="#">MESSAGE TEAM</a></li>
+              <li role="presentation" ng-show="team.length > 0" ng-class="{ active: isActive('/teams/task-manager') }"><a ui-sref="teams.taskManager">TASK MANAGER</a></li>
+              <li role="presentation" ng-show="team.length > 0"><a href="#">DASHBOARD</a></li>
+          </ul>
 
-                                <div class="row white">
-                                  <div class="col-md-12">
-                                    <nvd3 options="pieChartOptions" data="pieChartData"
-                                          style="min-width: 300px; min-height: 300px; display: block;"></nvd3>
-                                  </div>
-                                </div>
-                                <div class="row white">
-                                  <div class="col-md-12">
-                                    <div class="">
-                                      <ul class="list-unstyled country-list">
-                                        <li ng-repeat="item in linksData | limitTo:linkDataLimit">
-                                          <div class="row">
-                                            <div class="col-md-10">
-                                              {{item.link}}
-                                            </div>
-                                            <div class="col-md-2">
-                                              {{item.views}}
-                                            </div>
-                                          </div>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="row white">
-                                  <div class="col-md-12">
-                                    <div class="view-all" ng-click="linkDataLimit = 300"
-                                         ng-hide="linkDataLimit>10">
-                                      <div class="view-all-content">
-                                        View All
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+          <ul class="nav nav-pills nav-bar-team" ng-id="user.kind == 'player'">
+              <li role="presentation" ng-show="myTeam.length > 0"><a href="#">MESSAGE TEAM</a></li>
+              <li role="presentation" ng-show="myTeam.length > 0" ng-class="{ active: isActive('/teams/task-manager') }"><a ui-sref="teams.taskManager">TASK MANAGER</a></li>
+              <li role="presentation" ng-show="myTeam.length > 0" ng-class="{ active: isActive('/teams/dashboard') }"><a ui-sref="teams.dashBoard">DASHBOARD</a></li>
+          </ul>
 
-                      <div class="col-md-3 profile-sidebar">
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="upcoming-schedule" style="height: auto !important">
-                              <div class="table-header">
-                                <h3>Profile Views Tracker</h3>
-                              </div>
-                              <md-content class="light-gray info-card">
-                                <md-list>
-                                  <md-list-item class="md-3-line" ng-repeat="item in todos">
-                                    <img ng-src="{{item.face}}?{{$index}}" class="md-avatar face"
-                                         alt="{{item.name}}"
-                                         width="55" height="55">
+            <div ui-view class="team-page"></div>
 
-                                    <div class="md-list-item-text" layout="column">
-                                      <h3>{{ item.name }}</h3>
-                                      <h4>{{ item.position }}</h4>
-                                    </div>
-                                  </md-list-item>
-                                </md-list>
-                              </md-content>
-                            </div>
-
-                            <md-content style="overflow: hidden">
-                              <div class="upcoming-schedule" style="height: auto !important">
-                                <div class="table-header">
-                                  <h3>Post & Pages</h3>
-                                </div>
-                                <div class="row white" style="padding-top: 20px;">
-                                  <div class="col-md-9" style="padding-left: 30px;">
-                                    Title
-                                  </div>
-                                  <div class="col-md-3">
-                                    Views
-                                  </div>
-                                </div>
-                                <div class="row white">
-                                  <ul class="list-unstyled posts-list">
-                                    <li ng-repeat="item in posts | limitTo:postsLimit">
-                                      <div class="col-md-9">
-                                        <a href="#">{{item.name}}</a>
-                                      </div>
-                                      <div class="col-md-3">
-                                        {{item.views}}
-                                      </div>
-                                    </li>
-                                  </ul>
-                                </div>
-                                <div class="row white">
-                                  <div class="col-md-12">
-                                    <div class="view-all" ng-click="postsLimit = 1000"
-                                         ng-hide="postsLimit>100">
-                                      <div class="view-all-content">
-                                        View All
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </md-content>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </md-tab-body>
-                </md-tab>
-              </md-tabs>
           </div>
         </div>
       </div>

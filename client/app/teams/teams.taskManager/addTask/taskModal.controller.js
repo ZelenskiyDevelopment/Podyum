@@ -10,30 +10,20 @@ angular.module('abroadathletesApp')
         $scope.querySearch = querySearch;
         $scope.selectedItemChange = selectedItemChange;
         $scope.searchTextChange = searchTextChange;
-
+        $scope.myPlayers = [];
         User.get().$promise.then(function (me) {
             $scope.user = me;
-
-            $scope.myPlayers = $scope.user.assigned.filter(function (assignedUser) {
-                return assignedUser.user.kind === 'player' && assignedUser.isPresent;
-            });
-
             switch(me.kind) {
                 case 'player':
 
                     Teams.getAssignRequests({id: me._id}).$promise.then(function (team) {
 
 
-                        Teams.getPlayersByTeam({id: team[0].id_team}).$promise.then(function (players) {
+                        Teams.getPlayersByTeam({id: team[0].id_team._id}).$promise.then(function (players) {
 
-                            angular.forEach(players, function (item, key) {
-                                if (item.accepted) {
-                                    User.getUserById({id: item.id_user}).$promise.then(function (user) {
-                                        user.assigned = item;
-                                        user.numberPlayer = user.player.number;
-                                        $scope.myPlayers.push(user);
-                                        console.log(user);
-                                    });
+                            angular.forEach(players, function (player, key) {
+                                if (player.accepted) {
+                                    $scope.myPlayers.push(player.id_user);
                                 }
 
                             });
