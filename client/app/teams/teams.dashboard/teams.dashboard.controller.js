@@ -254,43 +254,43 @@ angular.module('abroadathletesApp')
 //        sharedScope.myTeams.resolve($scope.myTeams);
 //      });
 //    }
-        var leaguePromises = [Game.getGames({id: $scope.user._id}).$promise, User.getUserByTeam({id: $scope.user._id}).$promise];
-        if ($scope.user.kind === "league") {
-            $q.all(leaguePromises).then(function (result) {
-                $scope.myTeams = _.last(result).assigned;
-                $scope.games = _.first(result);
-                $scope.myStandings = [];
-                $scope.upcoming = [];
-                $scope.previous = [];
-                for (var i = 0; i < $scope.myTeams.length; i++) {
-                    $scope.myStandings.push({
-                        id: $scope.myTeams[i].user._id,
-                        teamName: $scope.myTeams[i].user.team.name,
-                        wins: 0,
-                        loses: 0
-                    });
-                }
-                for (var i = 0; i < $scope.games.length; i++) {
-                    if ($scope.games[i].data.isFinished) {
-                        $scope.previous.push($scope.games[i]);
-                    }
-                    else {
-                        $scope.upcoming.push($scope.games[i]);
-                    }
-                    if ($scope.games[i].data.winner) {
-                        if ($scope.games[i].data.winner == 1) {
-                            $scope.addWin($scope.games[i].team1._id)
-                            $scope.addLose($scope.games[i].team2._id)
-                        }
-                        else if ($scope.games[i].data.winner == 2) {
-                            $scope.addWin($scope.games[i].team2._id)
-                            $scope.addLose($scope.games[i].team1._id)
-                        }
-                    }
-                }
-            });
-        }
-        $scope.events = $scope.user.events;
+//        var leaguePromises = [Game.getGames({id: $scope.user._id}).$promise, User.getUserByTeam({id: $scope.user._id}).$promise];
+//        if ($scope.user.kind === "league") {
+//            $q.all(leaguePromises).then(function (result) {
+//                $scope.myTeams = _.last(result).assigned;
+//                $scope.games = _.first(result);
+//                $scope.myStandings = [];
+//                $scope.upcoming = [];
+//                $scope.previous = [];
+//                for (var i = 0; i < $scope.myTeams.length; i++) {
+//                    $scope.myStandings.push({
+//                        id: $scope.myTeams[i].user._id,
+//                        teamName: $scope.myTeams[i].user.team.name,
+//                        wins: 0,
+//                        loses: 0
+//                    });
+//                }
+//                for (var i = 0; i < $scope.games.length; i++) {
+//                    if ($scope.games[i].data.isFinished) {
+//                        $scope.previous.push($scope.games[i]);
+//                    }
+//                    else {
+//                        $scope.upcoming.push($scope.games[i]);
+//                    }
+//                    if ($scope.games[i].data.winner) {
+//                        if ($scope.games[i].data.winner == 1) {
+//                            $scope.addWin($scope.games[i].team1._id)
+//                            $scope.addLose($scope.games[i].team2._id)
+//                        }
+//                        else if ($scope.games[i].data.winner == 2) {
+//                            $scope.addWin($scope.games[i].team2._id)
+//                            $scope.addLose($scope.games[i].team1._id)
+//                        }
+//                    }
+//                }
+//            });
+//        }
+//        $scope.events = $scope.user.events;
         // if ($scope.user.player.position = []) {
         //   $scope.user.player.position = '';
         // }
