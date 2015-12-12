@@ -19,7 +19,7 @@
  */
 
 angular.module('abroadathletesApp')
-    .controller('CreatorCtrl', function ($scope, $timeout, User, $window, Upload, $location, sports, $state, $http, Teams, $filter) {
+    .controller('CreatorCtrl', function ($scope, $timeout, User, $window, Upload, $location, sports, $state, $http, Teams, $filter, $rootScope) {
 
         $scope.progressValue = 10;
 
@@ -92,11 +92,15 @@ angular.module('abroadathletesApp')
 
         $scope.steps = ['type', 'sport', 'photo', 'data', 'finish'];
         $scope.formData = {};
-
+        $scope.twitter  = {};
+        $scope.formData.emailUser = '';
+        $scope.formData.passwordUser = '';
         User.get().$promise.then(function (me) {
             $scope.formData.id = me._id;
+            $scope.twitter = me.twitter;
         });
-
+        var socialAuth = false;
+        var password = '';
         $scope.formData.sportData = [];
         $scope.formData.sportData[0] = {name: 'football', data: {}};
         $scope.formData.sport = {};
@@ -166,6 +170,7 @@ angular.module('abroadathletesApp')
                     })
                 });
             }
+
 
             switch ($scope.formData.type) {
 
@@ -249,7 +254,8 @@ angular.module('abroadathletesApp')
                         sport: $scope.formData.sport_type,
                         sex: $scope.formData.sex,
                         country: $scope.formData.country,
-                        completed: true
+                        completed: true,
+                        email: $scope.formData.emailUser.toLowerCase()
                     };
 
                     break
@@ -269,7 +275,8 @@ angular.module('abroadathletesApp')
                         kind: $scope.formData.type,
                         sport: $scope.formData.sport_type,
                         completed: true,
-                        country: $scope.formData.country
+                        country: $scope.formData.country,
+                        email: $scope.formData.emailUser.toLowerCase()
                     };
 
 
@@ -290,7 +297,9 @@ angular.module('abroadathletesApp')
                         kind: $scope.formData.type,
                         sport: $scope.formData.sport_type,
                         completed: true,
-                        country: $scope.formData.country
+                        country: $scope.formData.country,
+                        email: $scope.formData.emailUser.toLowerCase()
+
                     };
 
 
@@ -312,7 +321,8 @@ angular.module('abroadathletesApp')
                         kind: $scope.formData.type,
                         sport: $scope.formData.sport_type,
                         completed: true,
-                        country: $scope.formData.country
+                        country: $scope.formData.country,
+                        email: $scope.formData.emailUser.toLowerCase()
                     }
 
 
@@ -333,7 +343,8 @@ angular.module('abroadathletesApp')
                         kind: $scope.formData.type,
                         sport: $scope.formData.sport_type,
                         completed: true,
-                        country: $scope.formData.country
+                        country: $scope.formData.country,
+                        email: $scope.formData.emailUser.toLowerCase()
                     };
 
 
@@ -365,18 +376,31 @@ angular.module('abroadathletesApp')
                         kind: $scope.formData.type,
                         sport: $scope.formData.sport_type,
                         completed: true,
-                        country: $scope.formData.country
+                        country: $scope.formData.country,
+                        email: $scope.formData.emailUser.toLowerCase()
                     };
 
                     break
 
+            };
+
+            if ($scope.twitter.auth) {
+                socialAuth = true;
+
             }
-            ;
+
 
             User.updateProfile({id: $scope.formData.id, data: UserUpdate}).$promise.then(function (response) {
-                $location.path('/home');
+                User.changePassword({id:$scope.formData.id,oldPassword:'210716hiq', newPassword: $scope.formData.passwordUser}).$promise.then(function(res){
+                  $location.path('/home');
+                });
             });
         };
+
+        $scope.check = function() {
+            console.log($scope.formData.emailUser);
+            console.log($scope.formData.passwordUser);
+        }
 
         /**
          * @ngdoc method

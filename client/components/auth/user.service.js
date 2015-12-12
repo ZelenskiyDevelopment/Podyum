@@ -9,6 +9,7 @@ angular.module('abroadathletesApp')
       changePassword: {
         method: 'PUT',
         params: {
+          id: '@id',
           controller:'password'
         }
       },

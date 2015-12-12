@@ -375,6 +375,7 @@ md-datepicker {
   height: 50px;
   border-radius: 30px;
   padding: 10px;
+    cursor: pointer;
 }
 
 .social-links li.twitter a {

@@ -1,6 +1,23 @@
 .col-xs-12.col-sm-12.col-md-12
   .big-q(style="text-align: center;") Thank you for creating your profile, we are excited to have you with us!
 
+    .div(class="creator-q  text-center" ng-show="twitter.auth") You went through a social network, enter the data for confirmation
+
+  .col-md-2.col-sm-1
+  .col-md-8.col-sm-10.col-xs-12(ng-show="twitter.auth")
+    .col-md-12.col-sm-12.col-xs-12
+      .col-md-6.col-sm-6.col-xs-6
+        .div(class="creator-q")  Email
+      .col-md-6.col-sm-6.col-xs-6
+        label
+          input(type="email" class="form-inline" id="email" ng-model="formData.emailUser")
+    .col-md-12.col-sm-12.col-xs-12
+      .col-md-6.col-sm-6.col-xs-6
+        .div(class="creator-q")  Password
+      .col-md-6.col-sm-6.col-xs-6
+        label
+          input(type="password" class="form-inline" id="password" ng-model="formData.passwordUser")
+
 .col-xs-12.col-sm-12.col-md-12.row
   .col-xs-2.col-sm-3.col-md-3
   .col-xs-8.col-sm-6.col-md-6
@@ -10,6 +27,9 @@
           .i(class="fa fa-arrow-left" style="font-size: 22px; margin: 0; padding: 0;")
           | &#32; Back
       .col-xs-6.col-sm-6.col-md-6
-        a(ui-sref="creator.finish").md-button.create-button(type="submit" ng-click="processForm()")
+        a(ui-sref="creator.finish").md-button.create-button(type="submit" ng-click="processForm()" ng-if="twitter.auth===true" ng-show="formData.emailUser.length && formData.passwordUser.length")
+          | Submit!
+      .col-xs-6.col-sm-6.col-md-6
+        a(ui-sref="creator.finish").md-button.create-button(type="submit" ng-click="processForm()" ng-if="twitter.auth===false")
           | Submit!
   .col-xs-2.col-sm-3.col-md-3

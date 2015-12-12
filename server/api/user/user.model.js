@@ -18,7 +18,17 @@ var UserSchema = new Schema({
   salt: String,
   birthday: Date,
   facebook: {},
-  twitter: {},
+  twitter: {
+      auth: {
+          default: false,
+          type: Boolean
+      },
+      id: {
+          default: null,
+          type: String
+      }
+
+  },
   google: {},
   github: {},
   completed: Boolean,

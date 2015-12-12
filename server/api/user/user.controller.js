@@ -121,10 +121,12 @@ exports.delete = function (req, res) {
 exports.changePassword = function (req, res, next) {
   var userId = req.user._id;
   var oldPass = String(req.body.oldPassword);
-  var newPass = String(req.body.newPassword);
+  var newPass = req.body.newPassword;
 
   User.findById(userId, function (err, user) {
     if (user.authenticate(oldPass)) {
+
+        console.log(newPass);
       user.password = newPass;
       user.save(function (err) {
         if (err) return validationError(res, err);
@@ -223,10 +225,28 @@ exports.updateProfile = function(req,res) {
 
     var id = req.body.id;
      var data = req.body.data;
-    User.update({_id: id}, {$set:data}, {}, function (err) {
+
+    User.update({_id: id}, {$set:data}, {}, function (err, user) {
        if (err) return validationError(res, err);
-       res.send(200);
+
+        res.send(200);
+
+//        if (req.body.social) {
+//            User.findById(req.body.id, function (err, user) {
+//                user.password = req.body.password;
+//                user.save(function (err) {
+//                    if (err) return validationError(res, err);
+//                    res.json(200,user);
+//                });
+//
+//            });
+//        }
+
     });
+
+
+
+
 }
 
 exports.updateStats = function (req, res, next) {

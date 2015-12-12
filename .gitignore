@@ -2,6 +2,7 @@ node_modules
 public
 .tmp
 .idea
+docs
 client/bower_components
 dist
 client/photos

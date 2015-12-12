@@ -4,10 +4,9 @@ angular.module('abroadathletesApp').factory('twitterService', function($q) {
 
     return {
         initialize: function() {
-            //initialize OAuth.io with public key of the application
-            OAuth.initialize('EclbxKEV_wDP6A_2mMloxl23m24', {cache:true});
-            //try to create an authorization result when the page loads, this means a returning user won't have to click the twitter button again
+            OAuth.initialize('tduidpr8l0dzDEL9PN4Kye4RJJU', {cache:true});
             authorizationResult = OAuth.create('twitter');
+            console.log(authorizationResult);
         },
         isReady: function() {
             return (authorizationResult);
@@ -19,7 +18,7 @@ angular.module('abroadathletesApp').factory('twitterService', function($q) {
                     authorizationResult = result;
                     deferred.resolve();
                 } else {
-                    //do something if there's an error
+
                 }
             });
             return deferred.promise;
@@ -28,14 +27,18 @@ angular.module('abroadathletesApp').factory('twitterService', function($q) {
             OAuth.clearCache('twitter');
             authorizationResult = false;
         },
-        getLatestTweets: function () {
-            //create a deferred object using Angular's $q service
+        geUser: function() {
             var deferred = $q.defer();
-            var promise = authorizationResult.get('/1.1/statuses/home_timeline.json').done(function(data) { //https://dev.twitter.com/docs/api/1.1/get/statuses/home_timeline
-                //when the data is retrieved resolved the deferred object
+            var promise = authorizationResult.get('/1.1/account/verify_credentials.json').done(function(data) {
                 deferred.resolve(data)
             });
-            //return the promise of the deferred object
+            return deferred.promise;
+        },
+        getLatestTweets: function () {
+            var deferred = $q.defer();
+            var promise = authorizationResult.get('/1.1/statuses/home_timeline.json').done(function(data) {
+                deferred.resolve(data)
+            });
             return deferred.promise;
         }
     }

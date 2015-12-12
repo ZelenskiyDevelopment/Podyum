@@ -5,6 +5,7 @@ angular.module('abroadathletesApp')
     $stateProvider
       .state('creator.finish', {
         url: '/finish',
-        templateUrl: 'app/creator/creator-finish/creator-finish.html'
+        templateUrl: 'app/creator/creator-finish/creator-finish.html',
+        controller:'CreatorFinishCtrl'
       });
   });

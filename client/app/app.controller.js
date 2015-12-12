@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('abroadathletesApp')
-  .controller('AppCtrl', function ($scope, $state) {
+  .controller('AppCtrl', function ($scope, $state, twitterService) {
     $scope.excludedStates = ['', 'main', 'explore', 'about', 'football', 'basketball', 'creator'];
     $scope.$state = $state;
     $scope.datalists = [
@@ -9,6 +9,9 @@ angular.module('abroadathletesApp')
       {"name": "EXPLORE", "href":"/explore"},
       {"name": "ABOUT", "href":"/about"}
     ];
+
+
+    twitterService.initialize();
 
     $scope.select= function(item) {
       $scope.selected = item;

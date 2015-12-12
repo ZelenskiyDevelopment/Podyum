@@ -20,7 +20,7 @@
  */
 
 angular.module('abroadathletesApp')
-    .controller('HomeCtrl', function ($scope, $state, User, $location, uiCalendarConfig, socket, $mdDialog, Milestone, Event, Teams, Game) {
+    .controller('HomeCtrl', function ($scope, $state, User, $location, uiCalendarConfig, socket, $mdDialog, Milestone, Event, Teams, Game, TwitterApi) {
         $scope.games = [];
         $scope.gamesTable = true;
         $scope.eventsTable = false;
@@ -30,6 +30,11 @@ angular.module('abroadathletesApp')
                 $location.path('/creator');
             }
             $scope.user = me;
+
+            TwitterApi.getUserTimeLine({id:me.twitter.id}).$promise.then(function(result){
+               console.log(result);
+            });
+
             $scope.friendsNumber = $scope.user.friends.length;
             $scope.followersNumber = $scope.user.followed.length;
             Event.getOwnEvents().$promise.then(function (results) {
