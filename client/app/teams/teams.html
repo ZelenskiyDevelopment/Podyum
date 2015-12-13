@@ -208,7 +208,7 @@
               <li role="presentation" ng-show="team.length == 0" ng-if="user.kind == 'team' || user.kind == 'coach'" ng-class="{ active: isActive('/teams/update-team') }"><a ui-sref="teams.updateTeam">CREATE A TEAM</a></li>
               <li role="presentation" ng-show="team.length > 0"><a href="#">MESSAGE TEAM</a></li>
               <li role="presentation" ng-show="team.length > 0" ng-class="{ active: isActive('/teams/task-manager') }"><a ui-sref="teams.taskManager">TASK MANAGER</a></li>
-              <li role="presentation" ng-show="team.length > 0"><a href="#">DASHBOARD</a></li>
+              <li role="presentation" ng-show="team.length > 0"><a ui-sref="teams.dashBoard">DASHBOARD</a></li>
           </ul>
 
           <ul class="nav nav-pills nav-bar-team" ng-id="user.kind == 'player'">
