@@ -1,4 +1,27 @@
+<div ui-view="pageTeam" class="  {{ (checkState('teams/manage-roster')) ? 'manage-roster' : '' }} {{ (checkState('/teams/schedule')) ? 'schedule' : '' }}"></div>
 <div class="container" style="margin-top:100px">
+
+ <div class="show-no-team" ng-if="team.length === 0 "  ng-show="user.kind == 'team' || user.kind == 'coach' || user.kind == 'player'" >
+
+     <div class="md-headline text-center">
+         You are not apart of team yet
+     </div>
+
+    <div class="col-lg-12 col-md-12">
+
+        <div class="col-md-3 col-lg-offset-3">
+            <a class="md-primary md-button md-ink-ripple btn-team" ui-sref="teams.addTeam" ng-if="user.kind == 'coach' || user.kind == 'team'">CREATE A TEAM</a>
+        </div>
+        <div class="col-md-3 col-lg-offset-0">
+            <a class="md-primary md-button md-ink-ripple btn-team" ng-click="joinToTeam()" ng-if="user.kind == 'player' || user.kind == 'coach'">Join existing team</a>
+        </div>
+
+    </div>
+
+ </div>
+
+ <div ui-view="" ng-if="team.length === 0 "  ng-show="user.kind == 'team' || user.kind == 'coach'"></div>
+
 
   <script type="text/ng-template" id="joinToTeam.html">
     <form class="form-horizontal" name="joinTeam" ng-submit="send(joinTeam)">
@@ -32,7 +55,7 @@
   </script>
 
 
-  <div class="row" >
+  <div class="row" ng-if="myTeam.length > 0 || team.length > 0" ng-hide="checkState('/teams/schedule') || checkState('teams/manage-roster')">
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-3">
@@ -192,10 +215,10 @@
               </tr>
             </table>
           </div>
-            <div class="col-md-12">
-                <a class="btn btn-default our-button col-md-12" ng-click="joinToTeam()" ng-if="user.kind == 'player' || user.kind == 'coach'" >Join existing team</a>
+            <!--<div class="col-md-12">-->
+                <!--<a class="btn btn-default our-button col-md-12" ng-click="joinToTeam()" ng-if="user.kind == 'player' || user.kind == 'coach'" >Join existing team</a>-->
 
-            </div>
+            <!--</div>-->
         </div>
 
       </div>
@@ -205,8 +228,7 @@
 
           <ul class="nav nav-pills nav-bar-team" ng-if="user.kind == 'team' || user.kind == 'coach'">
               <li role="presentation" ng-show="team.length > 0" ng-class="{ active: isActive('/teams/update-team') }"><a ui-sref="teams.updateTeam">UPDATE TEAM</a></li>
-              <li role="presentation" ng-show="team.length == 0" ng-if="user.kind == 'team' || user.kind == 'coach'" ng-class="{ active: isActive('/teams/update-team') }"><a ui-sref="teams.updateTeam">CREATE A TEAM</a></li>
-              <li role="presentation" ng-show="team.length > 0"><a href="#">MESSAGE TEAM</a></li>
+             <li role="presentation" ng-show="team.length > 0"><a href="#">MESSAGE TEAM</a></li>
               <li role="presentation" ng-show="team.length > 0" ng-class="{ active: isActive('/teams/task-manager') }"><a ui-sref="teams.taskManager">TASK MANAGER</a></li>
               <li role="presentation" ng-show="team.length > 0"><a ui-sref="teams.dashBoard">DASHBOARD</a></li>
           </ul>
