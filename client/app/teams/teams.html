@@ -193,7 +193,7 @@
             </table>
           </div>
             <div class="col-md-12">
-                <a class="btn btn-default our-button col-md-12" ng-click="joinToTeam()" ng-if=" user.kind == 'player'" >Join existing team</a>
+                <a class="btn btn-default our-button col-md-12" ng-click="joinToTeam()" ng-if="user.kind == 'player' || user.kind == 'coach'" >Join existing team</a>
 
             </div>
         </div>
