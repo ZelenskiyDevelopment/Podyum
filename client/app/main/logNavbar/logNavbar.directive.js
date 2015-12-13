@@ -17,7 +17,7 @@ angular.module('abroadathletesApp')
 
           if (form.$valid) {
             Auth.login({
-              email: $scope.loginUser.email,
+              email: $scope.loginUser.email.toLowerCase(),
               password: $scope.loginUser.password
             })
               .then(function () {

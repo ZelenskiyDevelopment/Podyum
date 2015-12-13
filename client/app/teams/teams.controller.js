@@ -25,6 +25,14 @@ angular.module('abroadathletesApp')
         $scope.currentUrl = '';
         $scope.currentUrl = $state.current.url;
 
+        $scope.checkTeam = function() {
+            if($scope.team.length == 0 || $scope.myTeam.length == 0  ) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
         User.get().$promise.then(function (me) {
             if (!me.completed) {
 

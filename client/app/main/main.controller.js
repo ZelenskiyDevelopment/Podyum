@@ -141,7 +141,7 @@ angular.module('abroadathletesApp')
                     lastName: $scope.registerUser.lastName,
                     sex: $scope.registerUser.sex,
                     birthday: $scope.registerUser.birthday,
-                    email: $scope.registerUser.email,
+                    email: $scope.registerUser.email.toLowerCase(),
                     password: $scope.registerUser.password
                 })
                     .then(function () {

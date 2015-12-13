@@ -98,6 +98,7 @@ angular.module('abroadathletesApp')
         User.get().$promise.then(function (me) {
             $scope.formData.id = me._id;
             $scope.twitter = me.twitter;
+            $scope.email = me.email;
         });
         var socialAuth = false;
         var password = '';
@@ -255,7 +256,7 @@ angular.module('abroadathletesApp')
                         sex: $scope.formData.sex,
                         country: $scope.formData.country,
                         completed: true,
-                        email: $scope.formData.emailUser.toLowerCase()
+                        email: ($scope.formData.emailUser.length > 0) ? $scope.formData.emailUser.toLowerCase() : $scope.email
                     };
 
                     break
@@ -276,7 +277,7 @@ angular.module('abroadathletesApp')
                         sport: $scope.formData.sport_type,
                         completed: true,
                         country: $scope.formData.country,
-                        email: $scope.formData.emailUser.toLowerCase()
+                        email: ($scope.formData.emailUser.length > 0) ? $scope.formData.emailUser.toLowerCase() : $scope.email
                     };
 
 
@@ -298,7 +299,7 @@ angular.module('abroadathletesApp')
                         sport: $scope.formData.sport_type,
                         completed: true,
                         country: $scope.formData.country,
-                        email: $scope.formData.emailUser.toLowerCase()
+                        email: ($scope.formData.emailUser.length > 0) ? $scope.formData.emailUser.toLowerCase() : $scope.email
 
                     };
 
@@ -322,7 +323,7 @@ angular.module('abroadathletesApp')
                         sport: $scope.formData.sport_type,
                         completed: true,
                         country: $scope.formData.country,
-                        email: $scope.formData.emailUser.toLowerCase()
+                        email: ($scope.formData.emailUser.length > 0) ? $scope.formData.emailUser.toLowerCase() : $scope.email
                     }
 
 
@@ -344,7 +345,7 @@ angular.module('abroadathletesApp')
                         sport: $scope.formData.sport_type,
                         completed: true,
                         country: $scope.formData.country,
-                        email: $scope.formData.emailUser.toLowerCase()
+                        email: ($scope.formData.emailUser.length > 0) ? $scope.formData.emailUser.toLowerCase() : $scope.email
                     };
 
 
@@ -377,7 +378,7 @@ angular.module('abroadathletesApp')
                         sport: $scope.formData.sport_type,
                         completed: true,
                         country: $scope.formData.country,
-                        email: $scope.formData.emailUser.toLowerCase()
+                        email: ($scope.formData.emailUser.length > 0) ? $scope.formData.emailUser.toLowerCase() : $scope.email
                     };
 
                     break
@@ -397,7 +398,7 @@ angular.module('abroadathletesApp')
                     });
                 }
 
-                $location.path('/home');
+              $location.path('/home');
             });
         };
 
