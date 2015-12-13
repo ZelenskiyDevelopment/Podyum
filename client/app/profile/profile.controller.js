@@ -53,27 +53,27 @@ angular.module('abroadathletesApp')
         });
 
         if ($scope.user.kind === "player" || $scope.user.kind === "coach") {
-          User.getUserByTeam({
-            id: $scope.user._id
-          }).$promise.then(function(user) {
-            $scope.user.myTeams = user.assignedTo;
-            $scope.myPresentTeams = [];
-            $scope.myPastTeams = [];
-            for (var i = 0; i < user.assignedTo.length; i++) {
-              if (user.assignedTo[i].isPresent) {
-                $scope.myPresentTeams.push(user.assignedTo[i]);
-              } else {
-                $scope.myPastTeams.push(user.assignedTo[i]);
-              }
-            }
-          });
+//          User.getUserByTeam({
+//            id: $scope.user._id
+//          }).$promise.then(function(user) {
+//            $scope.user.myTeams = user.assignedTo;
+//            $scope.myPresentTeams = [];
+//            $scope.myPastTeams = [];
+//            for (var i = 0; i < user.assignedTo.length; i++) {
+//              if (user.assignedTo[i].isPresent) {
+//                $scope.myPresentTeams.push(user.assignedTo[i]);
+//              } else {
+//                $scope.myPastTeams.push(user.assignedTo[i]);
+//              }
+//            }
+//          });
         }
         if (($scope.user.kind === "player" || $scope.user.kind === "coach") && $scope.user.assignTo) {
-          User.get({
-            id: $scope.user.assignTo
-          }).$promise.then(function(myTeam) {
-            $scope.user.myTeam = myTeam.team.name;
-          });
+//          User.get({
+//            id: $scope.user.assignTo
+//          }).$promise.then(function(myTeam) {
+//            $scope.user.myTeam = myTeam.team.name;
+//          });
         }
 
         if ($scope.user.kind === "player") {

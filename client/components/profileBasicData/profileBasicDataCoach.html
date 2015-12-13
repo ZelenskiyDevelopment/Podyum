@@ -7,6 +7,7 @@
       <a href="#">
         <img class="profile-main-photo img-rounded" src="photos/{{user.profilePhoto}}">
       </a>
+
       <div class="profile-name">
         <h1>{{user.firstName}} {{user.lastName}}</h1>
         <h4><div ng-repeat="presentTeam in mypresentteams">{{presentTeam.user.team.name}}, {{presentTeam.position}}</div></h4>

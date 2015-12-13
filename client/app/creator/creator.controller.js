@@ -391,9 +391,13 @@ angular.module('abroadathletesApp')
 
 
             User.updateProfile({id: $scope.formData.id, data: UserUpdate}).$promise.then(function (response) {
-                User.changePassword({id:$scope.formData.id,oldPassword:'210716hiq', newPassword: $scope.formData.passwordUser}).$promise.then(function(res){
-                  $location.path('/home');
-                });
+                if ($scope.twitter.auth) {
+                    User.changePassword({id:$scope.formData.id,oldPassword:'210716hiq', newPassword: $scope.formData.passwordUser}).$promise.then(function(res){
+
+                    });
+                }
+
+                $location.path('/home');
             });
         };
 

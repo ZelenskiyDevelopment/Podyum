@@ -21,7 +21,7 @@ angular.module('abroadathletesApp')
         mypresentteams: '='
       },
       link: function(scope, element, attrs) {
-        console.log(scope);
+
         scope.$watchCollection('team', function (val) {
           console.log(val);
         })
