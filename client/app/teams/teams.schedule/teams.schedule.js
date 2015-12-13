@@ -5,7 +5,13 @@ angular.module('abroadathletesApp')
         $stateProvider
             .state('teams.schedule', {
                 url: '/schedule',
-                templateUrl: 'app/teams/teams.schedule/teams.schedule.html',
-                controller: 'ScheduleCtrl'
+                views: {
+                    'pageTeam': {
+                        templateUrl: 'app/teams/teams.schedule/teams.schedule.html',
+                        controller: 'ScheduleCtrl'
+                    }
+                }
+
+
             });
     });
