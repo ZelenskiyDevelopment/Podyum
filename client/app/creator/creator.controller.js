@@ -387,7 +387,6 @@ angular.module('abroadathletesApp')
 
             if ($scope.twitter.auth) {
                 socialAuth = true;
-
             }
 
 
@@ -403,9 +402,9 @@ angular.module('abroadathletesApp')
         };
 
         $scope.check = function() {
-            console.log($scope.formData.emailUser);
-            console.log($scope.formData.passwordUser);
-        }
+        console.log($scope.formData.emailUser);
+        console.log($scope.formData.passwordUser);
+      }
 
         /**
          * @ngdoc method

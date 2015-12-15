@@ -262,3 +262,57 @@ md-divider {
 .posts-list a:hover {
   color: #fac553;
 }
+/*Styles twitter*/
+.twitter-section  {
+  background: #fff;
+  border: 1px solid #F1F1F1;
+  margin: 0 0 20px 0;
+}
+
+.tweets-block {
+  max-height: 250px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.twitter_footer {
+  border-top: 1px solid #f1f1f1;
+}
+
+
+.twitter-section .twitter-img {
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+}
+
+.twitter-section .twitter-header h2>a {
+  color: #827f79;
+  display: block;
+  background: url(../../assets/images/pointer.png) no-repeat;
+  background-position: 210px;
+}
+
+.twitter-section .twitter-header h2>a:hover {
+  text-decoration: none;
+}
+
+
+.twitter-section .twitter-user-name h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #616161;
+  font-family: 'aileronregular';
+  padding-bottom: 10px;
+}
+
+.twitter-section .one-tweet {
+  padding: 10px 0;
+  border-top: 1px solid #F1F1F1;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.twitter-section .twitter-user-name h3>span {
+  color: #919191;
+}

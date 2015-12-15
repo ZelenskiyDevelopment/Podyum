@@ -85,24 +85,43 @@
                 <div id="instagram_feed">
                     <h2>Instagram Feed</h2><img src="assets/images/img1.jpg" alt=""/><img src="assets/images/img2.jpg" alt=""/><img src="assets/images/img3.jpg" alt=""/><img src="assets/images/img4.jpg" alt=""/><img src="assets/images/img5.jpg" alt=""/><img src="assets/images/img6.jpg" alt=""/>
                 </div>
-                <div id="twitter_feed">
-                    <h2>Twitter Feed</h2>
-                    <div class="twit clearfix"><img src="assets/images/twitter-img1.png" alt="" class="twitter_img"/>
-                        <div class="twit_content">
-                            <h3>Luke Wroblewski<span>@ DE</span></h3>
-                            <p>Bring on the self-driving cars. They use turn signals.</p><img src="assets/images/twitter-icon.png" alt=""/>
-                        </div>
+
+                  <div class="twitter-section">
+                    <div class="twitter-header clearfix">
+                      <h2>
+                        <a href="https://twitter.com/{{tweets[0].user.screen_name}}">Twitter Feed</a>
+                      </h2>
                     </div>
-                    <div class="twit clearfix"><img src="assets/images/twitter-img2.png" alt="" class="twitter_img"/>
-                        <div class="twit_content">
-                            <h3>Luke Wroblewski<span>@ DE</span></h3>
-                            <p>Bring on the self-driving cars. They use turn signals.</p><img src="assets/images/twitter-icon.png" alt=""/>
+                    <div class="tweets-block">
+                      <div ng-repeat="tweet in tweets" class="one-tweet">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="twitter-img">
+                              <div ng-if="tweet.retweeted_status.user.profile_image_url_https">
+                                <img class="img-rounded" src="{{tweet.retweeted_status.user.profile_image_url_https}}" alt="">
+                              </div>
+                              <div ng-if="!tweet.retweeted_status.user.profile_image_url_https">
+                                <img class="img-rounded" src="{{tweet.user.profile_image_url_https}}" alt="">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-8" style="padding-left: 0">
+                            <div class="twitter-user-name">
+                              <h3 ng-if="tweet.retweeted_status.user.name">{{tweet.retweeted_status.user.name}}&nbsp; <span>@{{tweet.retweeted_status.user.screen_name}}</span></h3>
+                              <h3 ng-if="!tweet.retweeted_status.user.name">{{tweet.user.name}}&nbsp; <span>@{{tweet.user.screen_name}}</span></h3>
+                            </div>
+                            <div class="twitter-text">
+                              <p>{{tweet.text}}</p>
+                            </div>
+                          </div>
                         </div>
+                      </div>
                     </div>
                     <div class="twitter_footer clearfix">
-                        <p><a href="#">Follow us on Podium</a> for the latest news</p>
+                      <p><a href="https://twitter.com/ThePodyum">Follow us on Podium</a> for the latest news</p>
                     </div>
-                </div>
+                  </div>
+
             </div>
         </div>
     </div>

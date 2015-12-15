@@ -19,6 +19,42 @@
     </div>
 
     <div id="right_sidebar" class="col-md-3 col-sm-3 col-xs-12">
+      <div class="twitter-section">
+        <div class="twitter-header clearfix">
+          <h2>
+            <a href="https://twitter.com/{{tweets[0].user.screen_name}}">Twitter Feed</a>
+          </h2>
+        </div>
+        <div class="tweets-block">
+          <div ng-repeat="tweet in tweets" class="one-tweet">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="twitter-img">
+                  <div ng-if="tweet.retweeted_status.user.profile_image_url_https">
+                    <img class="img-rounded" src="{{tweet.retweeted_status.user.profile_image_url_https}}" alt="">
+                  </div>
+                  <div ng-if="!tweet.retweeted_status.user.profile_image_url_https">
+                    <img class="img-rounded" src="{{tweet.user.profile_image_url_https}}" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8" style="padding-left: 0">
+                <div class="twitter-user-name">
+                  <h3 ng-if="tweet.retweeted_status.user.name">{{tweet.retweeted_status.user.name}}&nbsp; <span>@{{tweet.retweeted_status.user.screen_name}}</span></h3>
+                  <h3 ng-if="!tweet.retweeted_status.user.name">{{tweet.user.name}}&nbsp; <span>@{{tweet.user.screen_name}}</span></h3>
+                </div>
+                <div class="twitter-text">
+                  <p>{{tweet.text}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="twitter_footer clearfix">
+          <p><a href="https://twitter.com/ThePodyum">Follow us on Podium</a> for the latest news</p>
+        </div>
+      </div>
+
       <div ng-switch="user.kind">
         <div ng-switch-when="player">
           <div class="user-profile-side">
@@ -54,9 +90,9 @@
             </div>
           </div>
           <div class="instagram_feed">
-            <ui-instagram></ui-instagram> 
+            <ui-instagram></ui-instagram>
           </div>
-          
+
         </div>
         <div ng-switch-when="league" class="team-profile-side">
           <div class="sponsor-block">
@@ -90,7 +126,7 @@
 
           </table>
           <div class="instagram_feed">
-            <ui-instagram></ui-instagram> 
+            <ui-instagram></ui-instagram>
           </div>
           <!-- <div>
             <table class="table">
@@ -156,7 +192,7 @@
               </th>
             </tr>
           </table> -->
-          
+
         </div>
         <!--<div ng-switch-when="team">
           <div>
@@ -186,9 +222,9 @@
                 </table>
             </div>
           </div>
-          
+
           <div class="instagram_feed">
-            <ui-instagram></ui-instagram> 
+            <ui-instagram></ui-instagram>
           </div>
           <!-- <h2>Previous events:</h2>
           <table class="table">
@@ -203,8 +239,9 @@
               </td>
             </tr>
           </table> -->
-          
+
         </div>
+
       </div>
     </div>
   </div>

@@ -14,7 +14,8 @@ angular.module('abroadathletesApp')
     '$q',
     'sharedScope',
     'Teams',
-    function($scope, User, $stateParams, Modal, ModalEvent, $location, AssignModal, Game, Event, $q, sharedScope, Teams, $rootScope) {
+    'TwitterApi',
+    function($scope, User, $stateParams, Modal, ModalEvent, $location, AssignModal, Game, Event, $q, sharedScope, Teams, TwitterApi, $rootScope) {
       sharedScope.games = $q.defer();
       sharedScope.myPlayers = $q.defer();
       sharedScope.myCoaches = $q.defer();
@@ -49,8 +50,16 @@ angular.module('abroadathletesApp')
           id: $scope.user._id
         }).$promise.then(function(resp) {
           $scope.team = resp[0];
-          console.log($scope.team);
         });
+        $scope.tweets = [];
+        if ($scope.user.twitter.auth) {
+          TwitterApi.getUserTimeLine({id:$scope.user.twitter.id}).$promise.then(function(result){
+              $scope.tweets = result;
+              console.log($scope.tweets);
+          });
+        }
+
+
 
         if ($scope.user.kind === "player" || $scope.user.kind === "coach") {
 //          User.getUserByTeam({
@@ -185,10 +194,10 @@ angular.module('abroadathletesApp')
               }
               if ($scope.games[i].data.winner) {
                 if ($scope.games[i].data.winner == 1) {
-                  $scope.addWin($scope.games[i].team1._id)
+                  $scope.addWin($scope.games[i].team1._id);
                   $scope.addLose($scope.games[i].team2._id)
                 } else if ($scope.games[i].data.winner == 2) {
-                  $scope.addWin($scope.games[i].team2._id)
+                  $scope.addWin($scope.games[i].team2._id);
                   $scope.addLose($scope.games[i].team1._id)
                 }
               }

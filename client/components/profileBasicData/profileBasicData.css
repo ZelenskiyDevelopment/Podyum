@@ -15,6 +15,12 @@
 	font-weight: 700;
 }
 
+.profile-data {
+  -webkit-box-shadow: 0px 1px 0px 0px rgba(241,241,241,1);
+  -moz-box-shadow: 0px 1px 0px 0px rgba(241,241,241,1);
+  box-shadow: 0px 1px 0px 0px rgba(241,241,241,1);
+}
+
 .profile-main-photo {
   width: 150px;
   height: 150px;
@@ -24,7 +30,7 @@
 .profile-name h1 {
 	font-size: 22px;
 	font-family: 'aileronlight';
-	color: #3c4651;
+	color: #111e2b;
 	text-align: center;
 	padding: 0;
 }
@@ -75,6 +81,11 @@
 	font-weight: normal;
 	text-transform: none;
 }
+
+.additional-info span>a {
+  color: #827f79;
+}
+
 
 .user-fans {
 	padding: 46px 0 30px 45px;

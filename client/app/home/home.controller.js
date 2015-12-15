@@ -31,9 +31,11 @@ angular.module('abroadathletesApp')
             }
             $scope.user = me;
 
+            $scope.tweets = [];
             if (me.twitter.auth) {
                 TwitterApi.getUserTimeLine({id:me.twitter.id}).$promise.then(function(result){
-                    console.log(result);
+                    $scope.tweets = result;
+                    console.log($scope.tweets);
                 });
             }
 
