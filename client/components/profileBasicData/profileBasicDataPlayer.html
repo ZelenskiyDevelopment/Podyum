@@ -13,7 +13,7 @@
       <div class="profile-main-info">
         <p>
           <span ng-if="user.player.number">{{user.player.number}}</span>
-          <span ng-if="user.player.position">,{{user.player.position}}</span>
+          <span ng-if="user.player.position" ng-repeat="x in user.player.position">,{{x.name}}</span>
           <a href="#" ng-if="user.myTeams"><span>,&nbsp;</span>{{user.myTeam}}</a>
         </p>
       </div>

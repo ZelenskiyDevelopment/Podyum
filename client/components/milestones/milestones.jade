@@ -1,6 +1,6 @@
 div(ng-init='limit = 5; results=0')
    perfect-scrollbar.scroller(wheel-propagation='true', wheel-speed='10', min-scrollbar-length='20', scroll-glue='glued')
-       div(ng-repeat='group in myMilestonesGroups | limitTo: limit as results track by $index', style='margin-left:10px;')
+       div(ng-repeat='group in myMilestonesGroups | limitTo: limit as results track by $index', style='margin-left:31px;')
          h4 {{group}}:
          div(ng-repeat='milestone in myMilestones[group]')
            li(ng-if="milestone.subkind") {{milestone.subkind}}: {{milestone.value}}
